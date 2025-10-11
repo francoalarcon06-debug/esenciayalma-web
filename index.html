@@ -1,236 +1,58 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Perfumes Yasna - Fragancias inspiradas</title>
-  <meta name="description" content="Descubre nuestra exclusiva colección de perfumes inspirados en las mejores fragancias del mundo." />
-
-  <!-- Fuente -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      --bg:#fff8fb;
-      --text:#2b2327;
-      --muted:#6f5e64;
-      --brand-1:#f28ab3;
-      --brand-2:#d1658e;
-      --pill:#fde9f0;
-      --white:#ffffff;
-      --shadow: 0 20px 40px rgba(0,0,0,.08);
-    }
-
-    /* Reset básico */
-    *{ box-sizing: border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0;
-      font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji", "Segoe UI Symbol";
-      color:var(--text);
-      background:var(--bg);
-      line-height:1.5;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      scroll-behavior:smooth;
-    }
-    img{ max-width:100%; display:block; }
-
-    /* NAV FIJA (simple) */
-    .nav{
-      position:sticky; top:0; z-index:40;
-      backdrop-filter: blur(8px);
-      background:color-mix(in oklab, var(--white) 75%, transparent);
-      border-bottom:1px solid rgba(0,0,0,.05);
-    }
-    .nav .wrap{
-      max-width:1200px; margin:auto;
-      display:flex; align-items:center; justify-content:flex-end;
-      gap: 28px; padding: 12px 20px;
-    }
-    .nav a{
-      color:#4a3b40; text-decoration:none; font-weight:500;
-    }
-    .nav a:hover{ opacity:.8; }
-
-    /* HERO A PANTALLA COMPLETA */
-    .hero{
-      position:relative;
-      min-height:100svh; /* ocupa alto de la pantalla */
-      display:grid; place-items:center;
-      overflow:clip;
-      isolation:isolate;
-    }
-    /* Fondo con cover */
-    .hero::before{
-      content:"";
-      position:absolute; inset:0;
-      background-image: url('assets/images/flores-inicio.png'); /* <- AJUSTA AQUÍ SI NO RENOMBRAS */
-      background-size:cover;
-      background-position:center 35%;
-      background-repeat:no-repeat;
-      transform:translateZ(0);
-      z-index:-2;
-    }
-    /* Velo suave + degradado a blanco abajo */
-    .hero::after{
-      content:"";
-      position:absolute; inset:0;
-      background:
-        linear-gradient(to bottom, rgba(255,255,255,.04) 0%, rgba(255,255,255,.18) 20%, rgba(255,255,255,.75) 100%);
-      z-index:-1;
-    }
-
-    .hero .inner{
-      width:100%;
-      max-width: 1200px;
-      margin-inline:auto;
-      padding: clamp(18px, 3vw, 28px);
-      text-align:center;
-    }
-
-    /* Pill (etiqueta) */
-    .pill{
-      display:inline-flex; align-items:center; gap:10px;
-      background:var(--pill);
-      color:#6a404f;
-      padding:10px 16px;
-      border-radius:999px;
-      box-shadow: var(--shadow);
-      font-weight:600;
-      font-size:14px;
-      margin: 0 auto clamp(18px, 2.8vw, 24px);
-    }
-    .pill .spark{
-      width:20px; height:20px; display:grid; place-items:center;
-      border-radius:999px;
-      background: radial-gradient(circle at 50% 50%, #ffb6cf 0%, #ff7fb0 70%, #e86aa1 100%);
-      color:#fff; font-size:12px; font-weight:700;
-    }
-
-    /* Barra rosada */
-    .promo-bar{
-      width:min(900px, 90%);
-      height:74px;
-      margin: 0 auto clamp(18px, 2.8vw, 28px);
-      border-radius:14px;
-      background: linear-gradient(90deg, var(--brand-2), var(--brand-1));
-      box-shadow: var(--shadow);
-      opacity:.95;
-    }
-
-    /* Título + botones */
-    .hero h1{
-      font-weight:700;
-      letter-spacing:.2px;
-      font-size: clamp(22px, 3.2vw + .6rem, 40px);
-      line-height: 1.25;
-      color: color-mix(in oklab, var(--text) 92%, #000 8%);
-      text-wrap:balance;
-      margin: 0 auto clamp(22px, 3.4vw, 32px);
-      max-width: 980px;
-      filter: drop-shadow(0 4px 18px rgba(255,255,255,.25));
-    }
-
-    .cta{
-      display:flex; gap:16px; justify-content:center; flex-wrap:wrap;
-    }
-    .btn{
-      appearance:none; border:0; cursor:pointer;
-      font-weight:600;
-      padding: 14px 22px;
-      border-radius:12px;
-      transition:.18s ease;
-      box-shadow: var(--shadow);
-      font-size: 15px;
-    }
-    .btn-primary{
-      color:#fff; background: linear-gradient(90deg, var(--brand-2), var(--brand-1));
-    }
-    .btn-primary:hover{ transform: translateY(-1px); filter:brightness(1.03); }
-    .btn-ghost{
-      color:#4a3b40; background: #fff;
-    }
-    .btn-ghost:hover{ transform: translateY(-1px); filter:brightness(1.02); }
-
-    /* Sección dummy para probar navegación */
-    section#catalogo{
-      padding: 56px 20px 90px;
-      max-width: 1200px; margin-inline:auto;
-    }
-    section#catalogo h2{
-      font-size: clamp(20px, 2.2vw + .6rem, 28px);
-      margin:0 0 10px 0;
-    }
-
-    /* Barra decorativa arriba (como en tu captura) */
-    .decor{
-      position:fixed; top:10px; left:50%;
-      translate:-50% 0;
-      width:min(340px, 40vw); height:26px;
-      border-radius:10px; z-index:50;
-      background: linear-gradient(90deg, var(--brand-2), var(--brand-1));
-      opacity:.6;
-      box-shadow: var(--shadow);
-      pointer-events:none;
-    }
-
-    @media (max-width: 740px){
-      .promo-bar{ height:58px; }
-      .pill{ font-size:13px; padding:9px 14px; }
-      .hero::before{ background-position:center 30%; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Perfumes Yasna</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--rosa1:#f28ab3;--rosa2:#d1658e;--txt:#2b2327}
+  *{box-sizing:border-box}html,body{height:100%}body{margin:0;font-family:Poppins,system-ui,sans-serif;color:var(--txt)}
+  /* NAV simple (opcional) */
+  .nav{position:sticky;top:0;background:rgba(255,255,255,.7);backdrop-filter:blur(6px);padding:10px 18px}
+  .nav a{margin-left:18px;text-decoration:none;color:#412f35;font-weight:600}
+  /* HERO con imagen de fondo */
+  .hero{
+    min-height:100vh; display:grid; place-items:center; text-align:center; padding:64px 16px;
+    background:
+      linear-gradient(to bottom, rgba(255,255,255,.08), rgba(255,255,255,.82)),
+      url("assets/images/flores-inicio.png") center 35%/cover no-repeat;
+  }
+  .pill{display:inline-block;background:#fde9f0;padding:10px 16px;border-radius:999px;font-weight:700;margin-bottom:18px}
+  .barra{width:min(900px,92%);height:68px;margin:0 auto 18px;border-radius:14px;background:linear-gradient(90deg,var(--rosa2),var(--rosa1));opacity:.95}
+  h1{margin:18px auto 26px;max-width:980px;font-size:clamp(22px,3.2vw + .6rem,40px);line-height:1.25}
+  .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn{border:0;border-radius:12px;padding:12px 18px;font-weight:700;cursor:pointer;box-shadow:0 14px 30px rgba(0,0,0,.08)}
+  .prim{color:#fff;background:linear-gradient(90deg,var(--rosa2),var(--rosa1))}
+  .ghost{background:#fff;color:#46353b}
+</style>
 </head>
 <body>
-
-  <!-- barra decorativa superior -->
-  <div class="decor" aria-hidden="true"></div>
-
-  <!-- NAV -->
   <nav class="nav">
-    <div class="wrap">
-      <a href="#inicio">Inicio</a>
-      <a href="#catalogo">Catálogo</a>
-      <a href="#contacto">Contacto</a>
+    <div style="max-width:1200px;margin:auto;text-align:right">
+      <a href="#inicio">Inicio</a><a href="#catalogo">Catálogo</a><a href="#contacto">Contacto</a>
     </div>
   </nav>
 
-  <!-- HERO -->
-  <header id="inicio" class="hero" role="banner" aria-label="Hero perfumes">
-    <div class="inner">
-
-      <div class="pill" aria-label="Etiqueta de mensaje">
-        <span class="spark">✦</span>
-        Fragancias inspiradas en marcas de lujo
-      </div>
-
-      <div class="promo-bar" aria-hidden="true"></div>
-
-      <h1>
-        Descubre nuestra exclusiva colección de perfumes inspirados
-        en las mejores fragancias del mundo
-      </h1>
-
+  <header id="inicio" class="hero">
+    <div>
+      <div class="pill">✦ Fragancias inspiradas en marcas de lujo</div>
+      <div class="barra" aria-hidden="true"></div>
+      <h1>Descubre nuestra exclusiva colección de perfumes inspirados en las mejores fragancias del mundo</h1>
       <div class="cta">
-        <a class="btn btn-primary" href="#catalogo">Ver Catálogo</a>
-        <a class="btn btn-ghost" href="#contacto">Contactar ahora</a>
+        <a class="btn prim" href="#catalogo">Ver Catálogo</a>
+        <a class="btn ghost" href="#contacto">Contactar ahora</a>
       </div>
     </div>
   </header>
 
-  <!-- SECCIÓN DE PRUEBA PARA ANCLA -->
-  <section id="catalogo" aria-label="Catálogo">
+  <!-- Secciones de ancla de ejemplo -->
+  <section id="catalogo" style="max-width:1200px;margin:50px auto;padding:0 16px">
     <h2>Catálogo</h2>
-    <p>Contenido del catálogo… (aquí añadimos las tarjetas más adelante).</p>
+    <p>…</p>
   </section>
-
-  <footer id="contacto" style="padding:40px 20px; border-top:1px solid rgba(0,0,0,.06); background:#fff">
-    <div style="max-width:1200px; margin:auto">
-      <h3 style="margin-top:0">Contacto</h3>
-      <p>WhatsApp, Instagram, dirección, etc.</p>
-    </div>
+  <footer id="contacto" style="background:#fff;border-top:1px solid #eee;padding:28px 16px">
+    <div style="max-width:1200px;margin:auto">Contacto…</div>
   </footer>
 </body>
 </html>
