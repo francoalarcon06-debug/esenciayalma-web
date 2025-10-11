@@ -1,66 +1,42 @@
 {
   "women": [
     {
-      "id": "w-100",
       "name": "Perfume de Mujer 100ml",
-      "subtitle": "Fragancia elegante y sofisticada",
-      "price": 16000,
-      "img": "assets/women/w-100.jpg",
-      "tag": "Mujer",
-      "active": true
-    },
-    {
-      "id": "w-050",
-      "name": "Perfume de Mujer 50ml",
-      "subtitle": "Elegante y sofisticada",
-      "price": 10000,
-      "img": "assets/women/w-050.jpg",
-      "tag": "Mujer",
-      "active": true
+      "description": "Fragancia elegante y sofisticada.",
+      "price": "16000",
+      "image": "assets/women/Perfume women prueba.png"
     }
   ],
   "men": [
     {
-      "id": "m-100",
       "name": "Perfume de Hombre 100ml",
-      "subtitle": "Aroma intenso y masculino",
-      "price": 16000,
-      "img": "assets/men/m-100.jpg",
-      "tag": "Hombre",
-      "active": true
+      "description": "Aroma intenso y masculino.",
+      "price": "16000",
+      "image": "assets/men/Perfume men prueba.png"
     }
   ],
   "black": [
     {
-      "id": "b-100",
       "name": "Black Parfums 100ml",
-      "subtitle": "Inspirado en fragancias de nicho",
-      "price": 26000,
-      "img": "assets/black/b-100.jpg",
-      "tag": "Black",
-      "active": true
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "price": "26000",
+      "image": "assets/black/Perfume black prueba.png"
     }
   ],
   "red": [
     {
-      "id": "r-100",
       "name": "Red Parfums 100ml",
-      "subtitle": "Romántica y cautivadora",
-      "price": 24000,
-      "img": "assets/red/r-100.jpg",
-      "tag": "Red",
-      "active": true
+      "description": "Fragancias románticas y cautivadoras.",
+      "price": "24000",
+      "image": "assets/red/Perfume red prueba.jpg"
     }
   ],
   "lavit": [
     {
-      "id": "l-210",
       "name": "LAVIT Body Splash 210ml",
-      "subtitle": "Frescura y vitalidad todo el día",
-      "price": 9000,
-      "img": "assets/lavit/l-210.jpg",
-      "tag": "LAVIT",
-      "active": true
+      "description": "Frescura y vitalidad todo el día.",
+      "price": "8000",
+      "image": "assets/lavit/Perfume lavit prueba.jpg"
     }
   ]
 }
