@@ -1,0 +1,42 @@
+{
+  "women": [
+    {
+      "name": "Perfume de Mujer 100ml",
+      "description": "Fragancia elegante y sofisticada.",
+      "price": "16000",
+      "image": "assets/women/Perfume women prueba.png"
+    }
+  ],
+  "men": [
+    {
+      "name": "Perfume de Hombre 100ml",
+      "description": "Aroma intenso y masculino.",
+      "price": "16000",
+      "image": "assets/men/Perfume men prueba.png"
+    }
+  ],
+  "black": [
+    {
+      "name": "Black Parfums 100ml",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "price": "26000",
+      "image": "assets/black/Perfume black prueba.png"
+    }
+  ],
+  "red": [
+    {
+      "name": "Red Parfums 100ml",
+      "description": "Fragancias románticas y cautivadoras.",
+      "price": "24000",
+      "image": "assets/red/Perfume red prueba.jpg"
+    }
+  ],
+  "lavit": [
+    {
+      "name": "LAVIT Body Splash 210ml",
+      "description": "Frescura y vitalidad todo el día.",
+      "price": "8000",
+      "image": "assets/lavit/Perfume lavit prueba.jpg"
+    }
+  ]
+}
