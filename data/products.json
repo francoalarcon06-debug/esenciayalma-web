@@ -5,44 +5,43 @@
       "description": "Fragancia elegante y sofisticada.",
       "price": "16000",
       "image": "assets/women/Perfume women prueba.png"
-    }
+    },
     {
-  "name": "La Rêve",
-  "description": "Fragancia femenina y elegante 50ml",
-  "price": "7400",
-  "image": "assets/women/Perfume women prueba.png"
-},
-{
-  "name": "Belle Vie",
-  "description": "Aroma floral y dulce 50ml",
-  "price": "7400",
-  "image": "assets/women/Perfume women prueba.png"
-},
-{
-  "name": "Chérie Amour",
-  "description": "Notas románticas y suaves 50ml",
-  "price": "7400",
-  "image": "assets/women/Perfume women prueba.png"
-},
-{
-  "name": "Rosé Divine",
-  "description": "Esencia delicada y fresca 50ml",
-  "price": "7400",
-  "image": "assets/women/Perfume women prueba.png"
-},
-{
-  "name": "Fleur d’Été",
-  "description": "Perfume de verano con notas cítricas 50ml",
-  "price": "7400",
-  "image": "assets/women/Perfume women prueba.png"
-},
-{
-  "name": "Velvet Bloom",
-  "description": "Aroma envolvente con toques florales 50ml",
-  "price": "7400",
-  "image": "assets/women/Perfume women prueba.png"
-}
-
+      "name": "La Rêve",
+      "description": "Fragancia femenina y elegante 50ml",
+      "price": "7400",
+      "image": "assets/women/Perfume women prueba.png"
+    },
+    {
+      "name": "Belle Vie",
+      "description": "Aroma floral y dulce 50ml",
+      "price": "7400",
+      "image": "assets/women/Perfume women prueba.png"
+    },
+    {
+      "name": "Chérie Amour",
+      "description": "Notas románticas y suaves 50ml",
+      "price": "7400",
+      "image": "assets/women/Perfume women prueba.png"
+    },
+    {
+      "name": "Rosé Divine",
+      "description": "Esencia delicada y fresca 50ml",
+      "price": "7400",
+      "image": "assets/women/Perfume women prueba.png"
+    },
+    {
+      "name": "Fleur d’Été",
+      "description": "Perfume de verano con notas cítricas 50ml",
+      "price": "7400",
+      "image": "assets/women/Perfume women prueba.png"
+    },
+    {
+      "name": "Velvet Bloom",
+      "description": "Aroma envolvente con toques florales 50ml",
+      "price": "7400",
+      "image": "assets/women/Perfume women prueba.png"
+    }
   ],
   "men": [
     {
