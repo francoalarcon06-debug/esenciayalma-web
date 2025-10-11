@@ -1,58 +1,95 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Perfumes Yasna</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{--rosa1:#f28ab3;--rosa2:#d1658e;--txt:#2b2327}
-  *{box-sizing:border-box}html,body{height:100%}body{margin:0;font-family:Poppins,system-ui,sans-serif;color:var(--txt)}
-  /* NAV simple (opcional) */
-  .nav{position:sticky;top:0;background:rgba(255,255,255,.7);backdrop-filter:blur(6px);padding:10px 18px}
-  .nav a{margin-left:18px;text-decoration:none;color:#412f35;font-weight:600}
-  /* HERO con imagen de fondo */
-  .hero{
-    min-height:100vh; display:grid; place-items:center; text-align:center; padding:64px 16px;
-    background:
-      linear-gradient(to bottom, rgba(255,255,255,.08), rgba(255,255,255,.82)),
-      url("assets/images/flores-inicio.png") center 35%/cover no-repeat;
+  :root{
+    --pink:#e86f9a;
+    --pink-strong:#e0558b;
+    --text:#1a1a1a;
+    --white:#fff;
+    --shadow:0 18px 40px rgba(2,40,90,.12);
   }
-  .pill{display:inline-block;background:#fde9f0;padding:10px 16px;border-radius:999px;font-weight:700;margin-bottom:18px}
-  .barra{width:min(900px,92%);height:68px;margin:0 auto 18px;border-radius:14px;background:linear-gradient(90deg,var(--rosa2),var(--rosa1));opacity:.95}
-  h1{margin:18px auto 26px;max-width:980px;font-size:clamp(22px,3.2vw + .6rem,40px);line-height:1.25}
-  .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-  .btn{border:0;border-radius:12px;padding:12px 18px;font-weight:700;cursor:pointer;box-shadow:0 14px 30px rgba(0,0,0,.08)}
-  .prim{color:#fff;background:linear-gradient(90deg,var(--rosa2),var(--rosa1))}
-  .ghost{background:#fff;color:#46353b}
+  *{box-sizing:border-box;margin:0}
+  body{font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--text);background:#fff}
+
+  /* NAV */
+  .nav{
+    position:fixed; inset:0 0 auto 0; height:64px; display:flex; align-items:center; gap:28px;
+    padding:0 24px; z-index:50; backdrop-filter:saturate(1.2) blur(8px);
+    background:rgba(255,255,255,.85); border-bottom:1px solid rgba(0,0,0,.06);
+  }
+  .brand{width:170px;height:28px;border-radius:999px;background:linear-gradient(90deg,#f09cbc,#e06395); box-shadow:var(--shadow)}
+  .nav a{margin-left:auto;text-decoration:none;color:#333;font-weight:600; margin-right:20px}
+  .nav a:last-child{margin-right:0}
+
+  /* HERO con la imagen de tu repo */
+  .hero{
+    min-height:90vh; display:grid; place-items:center; text-align:center; padding:120px 16px 64px;
+    position:relative; overflow:hidden;
+    background-image:url('./assets/images/Flores%20inicio.png'); /* 👈 tu imagen */
+    background-size:cover; background-position:center; background-repeat:no-repeat;
+  }
+  /* velo suave */
+  .hero::before{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(rgba(255,255,255,.70), rgba(255,255,255,.70));
+    backdrop-filter: blur(2px);
+  }
+  .hero > *{position:relative; z-index:1}
+
+  /* badge */
+  .badge{
+    display:inline-flex; align-items:center; gap:8px;
+    background:#ffe5ef; color:#7b3a52; font-weight:600; padding:10px 16px; border-radius:999px;
+    box-shadow:var(--shadow); margin-bottom:18px
+  }
+  .pill-title{
+    display:inline-block; min-width:min(900px,86vw);
+    padding:26px 24px; border-radius:14px;
+    background:linear-gradient(90deg,#f09cbc,#e06395);
+    color:#fff; font-weight:700; font-size:clamp(22px,3.2vw,28px);
+    margin:0 auto 14px;
+  }
+  h1{
+    font-size:clamp(26px,3.6vw,34px); line-height:1.25; font-weight:800; max-width:1100px; margin:0 auto 26px;
+  }
+  .actions{display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-top:10px}
+  .btn{
+    appearance:none; border:0; cursor:pointer; padding:14px 22px; border-radius:14px; font-weight:700;
+    background:#fff; color:#333; box-shadow:var(--shadow)
+  }
+  .btn--primary{background:var(--pink); color:#fff}
+  .btn--primary:hover{background:var(--pink-strong)}
+  .spacer{height:48vh}
 </style>
 </head>
 <body>
   <nav class="nav">
-    <div style="max-width:1200px;margin:auto;text-align:right">
-      <a href="#inicio">Inicio</a><a href="#catalogo">Catálogo</a><a href="#contacto">Contacto</a>
-    </div>
+    <div class="brand" aria-label="logo"></div>
+    <a href="#inicio">Inicio</a>
+    <a href="#catalogo">Catálogo</a>
+    <a href="#contacto">Contacto</a>
   </nav>
 
-  <header id="inicio" class="hero">
+  <header id="inicio" class="hero" role="banner">
     <div>
-      <div class="pill">✦ Fragancias inspiradas en marcas de lujo</div>
-      <div class="barra" aria-hidden="true"></div>
+      <div class="badge">✚ Fragancias inspiradas en marcas de lujo</div>
+      <div class="pill-title">&nbsp;</div>
       <h1>Descubre nuestra exclusiva colección de perfumes inspirados en las mejores fragancias del mundo</h1>
-      <div class="cta">
-        <a class="btn prim" href="#catalogo">Ver Catálogo</a>
-        <a class="btn ghost" href="#contacto">Contactar ahora</a>
+      <div class="actions">
+        <a class="btn btn--primary" href="#catalogo">Ver Catálogo</a>
+        <a class="btn" href="#contacto">Contactar ahora</a>
       </div>
     </div>
   </header>
 
-  <!-- Secciones de ancla de ejemplo -->
-  <section id="catalogo" style="max-width:1200px;margin:50px auto;padding:0 16px">
-    <h2>Catálogo</h2>
-    <p>…</p>
-  </section>
-  <footer id="contacto" style="background:#fff;border-top:1px solid #eee;padding:28px 16px">
-    <div style="max-width:1200px;margin:auto">Contacto…</div>
-  </footer>
+  <main class="spacer"></main>
 </body>
 </html>
+
