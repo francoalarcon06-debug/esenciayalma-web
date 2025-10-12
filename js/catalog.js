@@ -1,25 +1,28 @@
-/* Carrusel FLEX con auto-rotación en bucle + flechas
-   Arranca el auto SOLO cuando hay overflow real (tras cargar imágenes)
+/* Carrusel simple y robusto:
+   - Duplica las tarjetas para bucle perfecto
+   - Auto-rotación continua con requestAnimationFrame
+   - Pausa con hover, touch o flechas
+   - Arranca SOLO cuando existe overflow (tras cargar imágenes)
 */
 
-/* Config WhatsApp */
+// WhatsApp
 const WA_PHONE = "56912345678";
 const WA_MSG   = encodeURIComponent("Hola, me interesa este producto 👇");
 
-/* Utils */
+// Utils
 const money = (v) => {
   const n = Number(String(v).replace(/[^\d]/g, "")) || 0;
   return `$${n.toLocaleString("es-CL")}`;
 };
 
-/* Data */
+// Data
 async function loadData() {
   const res = await fetch("data/products.json", { cache: "no-store" });
   if (!res.ok) throw new Error("No pude cargar data/products.json");
   return res.json();
 }
 
-/* Tarjeta */
+// Tarjeta
 function card(product) {
   const el = document.createElement("article");
   el.className = "card";
@@ -45,104 +48,100 @@ function card(product) {
   return el;
 }
 
-/* -------- Auto-scroll infinito -------- */
-function reallyStartAuto(scroller, { pxPerSec = 28, pauseAfterClick = 1200 } = {}) {
-  if (scroller._autoStarted) return;
-  scroller._autoStarted = true;
+/* Espera a que todas las <img> dentro de un contenedor estén “cargadas” */
+function waitImages(container) {
+  const imgs = Array.from(container.querySelectorAll("img"));
+  if (imgs.length === 0) return Promise.resolve();
+  const pend = imgs.filter(i => !i.complete);
+  if (pend.length === 0) return Promise.resolve();
+  return new Promise((resolve) => {
+    let left = pend.length;
+    const done = () => (--left === 0 && resolve());
+    pend.forEach(i => {
+      i.addEventListener("load", done, { once: true });
+      i.addEventListener("error", done, { once: true });
+    });
+  });
+}
 
-  // Duplicar contenido para bucle perfecto una sola vez
-  if (!scroller._cloned) {
-    const originals = Array.from(scroller.children);
-    scroller.append(...originals.map(n => n.cloneNode(true)));
-    scroller._halfWidth = scroller.scrollWidth / 2; // después de clonar
-    scroller._cloned = true;
+/* Auto-scroll continuo con bucle perfecto */
+function startAutoLoop(track, { pxPerSec = 26, pauseAfterClick = 1200 } = {}) {
+  if (track._autoStarted) return;
+  track._autoStarted = true;
+
+  // Duplicar tarjetas si aún no se ha hecho (para el bucle)
+  if (!track._cloned) {
+    const originalChildren = Array.from(track.children);
+    const clones = originalChildren.map(n => n.cloneNode(true));
+    track.append(...clones);
+    track._cloned = true;
   }
 
+  // Metadatos de bucle
+  const calcHalf = () => (track._halfWidth = track.scrollWidth / 2);
+  calcHalf();
+
+  // Animación
   let last = 0;
   let paused = false;
   let pauseUntil = 0;
-  let rafId = 0;
 
   const tick = (ts) => {
     if (!last) last = ts;
 
-    // pausa por click en flechas
     if (pauseUntil > ts) {
-      rafId = requestAnimationFrame(tick);
+      requestAnimationFrame(tick);
       return;
     }
 
     if (!paused) {
       const dt = (ts - last) / 1000;
-      scroller.scrollLeft += pxPerSec * dt;
+      track.scrollLeft += pxPerSec * dt;
 
-      // loop suave
-      if (scroller.scrollLeft >= scroller._halfWidth) {
-        scroller.scrollLeft -= scroller._halfWidth;
+      // loop suave (volvemos al primer “bloque”)
+      if (track.scrollLeft >= track._halfWidth) {
+        track.scrollLeft -= track._halfWidth;
       }
     }
 
     last = ts;
-    rafId = requestAnimationFrame(tick);
+    requestAnimationFrame(tick);
   };
 
-  rafId = requestAnimationFrame(tick);
+  requestAnimationFrame(tick);
 
   // API para flechas
-  scroller._pauseAfterClick = () => {
+  track._pauseAfterClick = () => {
     pauseUntil = performance.now() + pauseAfterClick;
   };
 
   // Pausas por hover/touch
   const setPaused = (v) => { paused = v; };
-  scroller.addEventListener("mouseenter", () => setPaused(true));
-  scroller.addEventListener("mouseleave", () => setPaused(false));
-  scroller.addEventListener("touchstart", () => setPaused(true), { passive: true });
-  scroller.addEventListener("touchend",   () => setPaused(false));
+  track.addEventListener("mouseenter", () => setPaused(true));
+  track.addEventListener("mouseleave", () => setPaused(false));
+  track.addEventListener("touchstart", () => setPaused(true), { passive: true });
+  track.addEventListener("touchend",   () => setPaused(false));
 
-  // Recalcular mitad si cambia el layout
+  // Recalcular mitad cuando cambie el layout
   let t;
   const onResize = () => {
     clearTimeout(t);
     t = setTimeout(() => {
-      scroller._halfWidth = scroller.scrollWidth / 2;
-      scroller.scrollLeft = scroller.scrollLeft % scroller._halfWidth;
+      calcHalf();
+      track.scrollLeft = track.scrollLeft % track._halfWidth;
     }, 120);
   };
   window.addEventListener("resize", onResize);
 }
 
-/* Espera a que haya overflow real y entonces inicia el auto */
-function ensureAutoWhenOverflow(scroller, opts) {
-  const tryStart = () => {
-    const hasOverflow = scroller.scrollWidth > scroller.clientWidth + 1;
-    if (hasOverflow) {
-      reallyStartAuto(scroller, opts);
-      if (ro) ro.disconnect();
-      imgs.forEach(img => img.removeEventListener("load", tryStart));
-    }
-  };
-
-  // 1) Reintento por si ya hay overflow (por si no hay imágenes o ya están cacheadas)
-  tryStart();
-
-  // 2) Observa cambios de tamaño del contenido
-  const ro = new ResizeObserver(() => tryStart());
-  ro.observe(scroller);
-
-  // 3) Cuando cargan imágenes (lazy), vuelve a intentar
-  const imgs = Array.from(scroller.querySelectorAll("img"));
-  imgs.forEach(img => img.addEventListener("load", tryStart, { passive: true }));
-}
-
-/* Flechas + arranque auto cuando aplique */
-function setupCarousel(carouselEl, itemsCount) {
+/* Configura flechas y auto */
+async function setupCarousel(carouselEl, itemsCount) {
   const track   = carouselEl.querySelector(".track");
   const prevBtn = carouselEl.querySelector(".nav-btn.prev");
   const nextBtn = carouselEl.querySelector(".nav-btn.next");
   if (!track) return;
 
-  // Un solo producto: ocultar flechas
+  // Un solo producto: centrar y ocultar flechas
   if (itemsCount <= 1) {
     prevBtn.style.display = "none";
     nextBtn.style.display = "none";
@@ -151,44 +150,49 @@ function setupCarousel(carouselEl, itemsCount) {
     return;
   }
 
-  // Paso de flecha
+  // Paso de flechas
   const step = () => Math.max(track.clientWidth * 0.9, 280);
+  const go = (dx) => track.scrollBy({ left: dx, behavior: "smooth" });
 
-  // >4 => auto-rotación con loop. Esperamos overflow real.
-  if (itemsCount > 4) {
-    ensureAutoWhenOverflow(track, { pxPerSec: 30, pauseAfterClick: 1200 });
+  prevBtn.addEventListener("click", () => {
+    track._pauseAfterClick?.();
+    go(-step());
+  });
+  nextBtn.addEventListener("click", () => {
+    track._pauseAfterClick?.();
+    go(+step());
+  });
 
-    const go = (dx) => {
-      track._pauseAfterClick?.();
-      track.scrollBy({ left: dx, behavior: "smooth" });
-    };
-    prevBtn.addEventListener("click", () => go(-step()));
-    nextBtn.addEventListener("click", () => go(+step()));
-  } else {
-    // Modo clásico con flechas (sin auto)
-    const go = (dx) => track.scrollBy({ left: dx, behavior: "smooth" });
-    prevBtn.addEventListener("click", () => go(-step()));
-    nextBtn.addEventListener("click", () => go(+step()));
+  // Espera a que las imágenes tengan tamaño y verifica overflow real
+  await waitImages(track);
+
+  const hasOverflow = track.scrollWidth > track.clientWidth + 1;
+
+  // Auto-scroll sólo si hay >4 items y realmente hay overflow
+  if (itemsCount > 4 && hasOverflow) {
+    startAutoLoop(track, { pxPerSec: 26, pauseAfterClick: 1200 });
   }
 }
 
-/* Render sección */
-function renderSection(sectionEl, items) {
+/* Render de cada sección */
+async function renderSection(sectionEl, items) {
   const track = sectionEl.querySelector(".track");
   if (!track) return;
+
   track.innerHTML = "";
   items.forEach((p) => track.appendChild(card(p)));
-  setupCarousel(sectionEl.querySelector(".carousel"), items.length);
+
+  await setupCarousel(sectionEl.querySelector(".carousel"), items.length);
 }
 
 /* Arranque */
 (async () => {
   try {
     const data = await loadData();
-    document.querySelectorAll(".catalog-section").forEach((sec) => {
+    document.querySelectorAll(".catalog-section").forEach(async (sec) => {
       const key  = sec.getAttribute("data-category"); // women, men, black, red, lavit
       const list = Array.isArray(data[key]) ? data[key] : [];
-      renderSection(sec, list);
+      await renderSection(sec, list);
     });
   } catch (e) {
     console.error(e);
