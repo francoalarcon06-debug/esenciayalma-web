@@ -52,7 +52,7 @@ function card(product) {
         ${product.price ? `<div class="card__price">${money(product.price)}</div>` : ""}
         <div class="card__actions">
           <a class="btn btn-primary card__btn" target="_blank" href="${href}">
-            <img class="icon-wa" src="assets/images/Logo whatsapp.png" alt="WhatsApp">
+            <span class="icon-wa"></span>
             Consultar por WhatsApp
           </a>
         </div>
