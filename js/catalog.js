@@ -1,8 +1,9 @@
-/* js/catalog.js — Carrusel auto (fluido, infinito) + flechas
-   - Auto-rotación continua (sin pausas)
-   - Cuando llega al “final” vuelve al primero sin salto (contenido clonado)
-   - Flechas siguen funcionando (pausan y luego reanudan)
-   - Sin barra de desplazamiento visible
+/* js/catalog.js — Carrusel auto continuo + bucle + flechas
+   - Detecta el elemento que realmente scrollea (track o su contenedor)
+   - Duplica el contenido para bucle sin saltos
+   - Auto-rotación constante (requestAnimationFrame)
+   - Flechas funcionan (pausa breve y reanuda)
+   - Oculta barras de scroll
 */
 
 // -------- Config WhatsApp ----------
@@ -15,11 +16,11 @@ const money = (v) => {
   return `$${n.toLocaleString("es-CL")}`;
 };
 
-// Ocultar scrollbars globalmente
+// Ocultar scrollbars (Firefox/Chrome/Edge/Safari)
 (() => {
   const css = `
-    .no-scrollbar{ scrollbar-width: none; -ms-overflow-style: none; }
-    .no-scrollbar::-webkit-scrollbar{ display: none; width:0; height:0; }
+    .no-scrollbar{ scrollbar-width:none; -ms-overflow-style:none; }
+    .no-scrollbar::-webkit-scrollbar{ display:none; width:0; height:0; }
   `;
   const s = document.createElement("style");
   s.textContent = css;
@@ -59,31 +60,37 @@ function card(product) {
   return el;
 }
 
-// -------- Carrusel: núcleo ---------
+/** Devuelve el elemento que realmente scrollea (track o su padre). */
+function getScroller(track) {
+  const cand = [track, track.parentElement];
+  for (const el of cand) {
+    if (!el) continue;
+    const sw = el.scrollWidth, cw = el.clientWidth;
+    if (sw - cw > 1) return el; // hay overflow horizontal aquí
+  }
+  // fallback
+  return track;
+}
 
-/**
- * Inicia auto-scroll suave e infinito.
- * Si el contenido es más largo que el contenedor, duplica los ítems
- * y anima con requestAnimationFrame a velocidad constante.
- */
-function startInfiniteAutoScroll(scroller, opts = {}) {
+/** Auto-scroll infinito suave con requestAnimationFrame. */
+function startInfiniteAutoScroll(scroller, track, opts = {}) {
   const {
-    pxPerSec = 24,   // velocidad (px/seg) — sube o baja si quieres
-    pauseMsAfterClick = 1200, // pausa breve tras usar flechas
+    pxPerSec = 26,            // velocidad continua (px/seg)
+    pauseMsAfterClick = 1200, // pausa breve tras flechas
   } = opts;
 
-  // No hay nada que desplazar
+  // Si no hay overflow, no hay nada que animar
   if (scroller.scrollWidth <= scroller.clientWidth + 1) return;
 
-  // Evitar dobles inicios
+  // Evita reinicios
   if (scroller._autoStarted) return;
   scroller._autoStarted = true;
 
-  // Duplicar contenido SOLO una vez para que el bucle sea perfecto
-  if (!scroller.dataset.cloned) {
-    const children = Array.from(scroller.children).map((n) => n.cloneNode(true));
-    scroller.append(...children);
-    scroller.dataset.cloned = "1";
+  // Duplicar el contenido del track SOLO una vez (para bucle perfecto)
+  if (!track.dataset.cloned) {
+    const clones = Array.from(track.children).map((n) => n.cloneNode(true));
+    track.append(...clones);
+    track.dataset.cloned = "1";
   }
 
   scroller.classList.add("no-scrollbar");
@@ -96,18 +103,18 @@ function startInfiniteAutoScroll(scroller, opts = {}) {
   const tick = (ts) => {
     if (!lastTs) lastTs = ts;
 
-    // pausa por interacción manual (flechas/drag)
+    // Pausa por interacción manual (flechas/drag)
     if (clickPauseUntil > ts) {
       raf = requestAnimationFrame(tick);
       return;
     }
 
     if (!paused) {
-      const dt = (ts - lastTs) / 1000; // segundos
-      const deltaPx = pxPerSec * dt;
-      scroller.scrollLeft += deltaPx;
+      const dt = (ts - lastTs) / 1000;
+      const delta = pxPerSec * dt;
+      scroller.scrollLeft += delta;
 
-      // Mitad = largo real (porque duplicamos)
+      // Mitad = ancho real antes de clonar (porque duplicamos el track)
       const half = scroller.scrollWidth / 2;
       if (scroller.scrollLeft >= half) scroller.scrollLeft = 0;
     }
@@ -130,35 +137,38 @@ function startInfiniteAutoScroll(scroller, opts = {}) {
     clickPauseUntil = performance.now() + pauseMsAfterClick;
   };
 
-  // Recalcular al redimensionar
-  let resizeTimer = null;
+  // Ajuste fino en resize (evita pequeños saltos al cambiar el ancho)
+  let t = null;
   const onResize = () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      // si el ancho cambió mucho, reiniciamos a 0 para evitar “micro saltos”
-      scroller.scrollLeft = scroller.scrollLeft % (scroller.scrollWidth / 2);
-    }, 120);
+    clearTimeout(t);
+    t = setTimeout(() => {
+      const half = scroller.scrollWidth / 2;
+      scroller.scrollLeft = scroller.scrollLeft % half;
+    }, 100);
   };
   window.addEventListener("resize", onResize);
 }
 
-// Configurar flechas + auto-scroll
+/** Configura flechas + auto-scroll si aplica. */
 function setupCarousel(carouselEl, itemsCount) {
-  const scroller = carouselEl.querySelector(".track");
-  const prevBtn  = carouselEl.querySelector(".prev");
-  const nextBtn  = carouselEl.querySelector(".next");
+  const track   = carouselEl.querySelector(".track");
+  const prevBtn = carouselEl.querySelector(".prev");
+  const nextBtn = carouselEl.querySelector(".next");
 
-  // Si hay 1 producto: centrar y quitar flechas
+  // El elemento que realmente scrollea (track o su contenedor)
+  const scroller = getScroller(track);
+
+  // Un solo producto: centrar y ocultar flechas
   if (itemsCount <= 1) {
     prevBtn.style.display = "none";
     nextBtn.style.display = "none";
-    scroller.style.justifyContent   = "center";
-    scroller.style.gridAutoColumns  = "minmax(260px, 420px)";
+    track.style.justifyContent  = "center";
+    track.style.gridAutoColumns = "minmax(260px, 420px)";
     scroller.classList.add("no-scrollbar");
     return;
   }
 
-  // Paso de las flechas ~ casi un viewport de carrusel
+  // Paso de flechas: casi un viewport del carrusel
   const step = () => Math.max(scroller.clientWidth * 0.9, 280);
 
   const go = (dx) => {
@@ -169,17 +179,18 @@ function setupCarousel(carouselEl, itemsCount) {
   prevBtn.addEventListener("click", () => go(-step()));
   nextBtn.addEventListener("click", () => go(step()));
 
-  // Auto-scroll infinito si hay más de 4 (tu requisito)
+  // Auto-scroll continuo si hay más de 4 (tu requisito)
   if (itemsCount > 4) {
-    // velocidad ajustable: 20–30 px/s suele verse muy bien
-    startInfiniteAutoScroll(scroller, { pxPerSec: 26, pauseMsAfterClick: 1300 });
+    startInfiniteAutoScroll(scroller, track, {
+      pxPerSec: 26,           // ajusta aquí la velocidad
+      pauseMsAfterClick: 1300 // pausa breve tras click en flechas
+    });
   } else {
-    // sin auto-scroll: igualmente ocultamos la barra
     scroller.classList.add("no-scrollbar");
   }
 }
 
-// Renderizar una sección (mujer/hombre/…)
+// Renderizar una sección
 function renderSection(sectionEl, items) {
   const track = sectionEl.querySelector(".track");
   track.innerHTML = "";
