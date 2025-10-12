@@ -1,4 +1,9 @@
-:root{ --text:#2b2b2b; --muted:#6b6b6b; --primary:#ea4c89; --primary-600:#d63d78; --card:#fff; --bg:#fff; --soft:#fff3f7; --shadow:0 10px 30px rgba(0,0,0,.08); }
+:root{
+  --text:#2b2b2b; --muted:#6b6b6b;
+  --primary:#ea4c89; --primary-600:#d63d78;
+  --card:#fff; --bg:#fff; --soft:#fff3f7;
+  --shadow:0 10px 30px rgba(0,0,0,.08);
+}
 *{box-sizing:border-box}
 html,body{margin:0}
 body{
@@ -98,7 +103,7 @@ a{text-decoration:none;color:inherit}
   grid-auto-flow:column;
   grid-auto-columns:minmax(260px, 1fr);
   gap:16px;
-  overflow:visible; /* dejamos visible; el looper se encarga */
+  overflow:visible;              /* dejamos visible; el looper se encarga */
   padding:10px 4px 16px;
 }
 
@@ -115,7 +120,7 @@ a{text-decoration:none;color:inherit}
 
 /* Cuando el JS lo transforma en “looper” */
 .is-viewport{
-  overflow:hidden !important; /* el viewport enmascara */
+  overflow:hidden !important;    /* el viewport enmascara */
   display:block !important;
   position:relative;
 }
@@ -143,18 +148,8 @@ a{text-decoration:none;color:inherit}
   display:flex;
   align-items:center;
   justify-content:center;
-  overflow:hidden;            /* no cambia dimensiones; solo oculta el exceso */
 }
-.card__img img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  transition:transform .35s ease; /* animación suave */
-  will-change:transform;
-}
-.card__img:hover img{
-  transform:scale(1.04);      /* zoom ligero sin modificar el layout */
-}
+.card__img img{width:100%;height:100%;object-fit:cover}
 .card__body{padding:14px}
 .card__title{margin:0 0 6px;font-weight:700}
 .card__sub{margin:0 0 10px;color:#6a6a6a;font-size:14px}
