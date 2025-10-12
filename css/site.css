@@ -103,24 +103,23 @@ a{text-decoration:none;color:inherit}
   grid-auto-flow:column;
   grid-auto-columns:minmax(260px, 1fr);
   gap:16px;
-  overflow:visible;              /* dejamos visible; el looper se encarga */
+  overflow:visible;
   padding:10px 4px 16px;
 }
 
 /* === NUEVO: modo estático para <= 4 productos === */
 .track.static{
-  /* Centrado y misma escala que Mujer */
-  grid-auto-flow:row;                 /* no forzamos columnas infinitas */
-  grid-auto-columns:unset;            /* anulamos el auto-columns del carrusel */
-  grid-template-columns:repeat(auto-fit, minmax(260px, 260px)); /* ancho fijo */
-  justify-content:center;             /* centrado horizontal */
+  grid-auto-flow:row;
+  grid-auto-columns:unset;
+  grid-template-columns:repeat(auto-fit, minmax(260px, 260px));
+  justify-content:center;
   justify-items:stretch;
   gap:16px;
 }
 
 /* Cuando el JS lo transforma en “looper” */
 .is-viewport{
-  overflow:hidden !important;    /* el viewport enmascara */
+  overflow:hidden !important;
   display:block !important;
   position:relative;
 }
@@ -128,7 +127,7 @@ a{text-decoration:none;color:inherit}
   display:flex;
   gap:16px;
   will-change:transform;
-  transition:transform .18s ease-out; /* por si hay pequeños toques de flecha */
+  transition:transform .18s ease-out;
 }
 
 /* Tarjetas */
@@ -140,7 +139,7 @@ a{text-decoration:none;color:inherit}
   box-shadow:var(--shadow);
   display:flex;
   flex-direction:column;
-  min-width:260px; /* asegura ancho mínimo en fila flex */
+  min-width:260px;
 }
 .card__img{
   aspect-ratio:4/3;
@@ -150,11 +149,12 @@ a{text-decoration:none;color:inherit}
   justify-content:center;
   overflow:hidden;
   position:relative;
+  padding:6px; /* evita que se recorte al hacer zoom */
 }
 .card__img img{
   width:100%;
   height:100%;
-  object-fit:cover;
+  object-fit:contain; /* evita recorte y mantiene proporción */
   transition:transform 0.4s ease;
 }
 .card__img:hover img{
