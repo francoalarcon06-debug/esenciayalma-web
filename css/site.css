@@ -220,5 +220,5 @@ a{text-decoration:none;color:inherit}
   height:26px;
   flex-shrink:0;
   fill:#fff;
-  transform:translateX(-12px); /* ícono más a la izquierda */
+  transform:translateX(-3px); /* ícono más a la izquierda */
 }
