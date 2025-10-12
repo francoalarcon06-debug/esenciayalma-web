@@ -222,3 +222,32 @@ a{text-decoration:none;color:inherit}
   fill:#fff;
   transform:translateX(-4px); /* ícono más a la izquierda */
 }
+
+/* ===== MODO COMPACTO para pantallas de poca altura (laptops 1366×768) ===== */
+@media (max-height: 820px) and (min-width: 900px) {
+  .catalog-section{ padding: 28px 0; }
+
+  .sec-title{
+    font-size: clamp(24px, 2.6vw, 34px);
+    margin: 0 0 6px;
+  }
+  .sec-sub{
+    font-size: 15px;
+    margin: 0 0 12px;
+  }
+
+  .track{ padding: 6px 4px 10px; }
+
+  .card__img{
+    height: 240px;      /* clave para que quepa todo sin zoom */
+    aspect-ratio: auto; /* desactiva el ratio para respetar el height */
+  }
+  .card__body{ padding: 12px; }
+  .card__title{ margin: 0 0 4px; }
+  .card__sub{ margin: 0 0 8px; }
+  .card__price{ margin-bottom: 10px; }
+
+  .card__btn{ padding: 12px 16px; }
+
+  .nav-btn{ top: 46%; }
+}
