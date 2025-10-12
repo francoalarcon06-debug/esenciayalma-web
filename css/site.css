@@ -213,12 +213,12 @@ a{text-decoration:none;color:inherit}
   align-items:center;
   justify-content:center;   /* centra el texto */
   gap:8px;
-  padding-left:35px;        /* deja el ícono un poco a la izquierda */
+  padding-left:45px;        /* ícono más a la izquierda */
 }
 .card__btn .icon-wa{
-  width:18px;
-  height:18px;
+  width:22px;               /* ícono más grande */
+  height:22px;
   flex-shrink:0;
   fill:#fff;
+  transform:translateX(-8px); /* mueve el ícono ligeramente más a la izquierda */
 }
-
