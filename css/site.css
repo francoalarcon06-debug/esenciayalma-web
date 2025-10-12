@@ -164,12 +164,17 @@ a{text-decoration:none;color:inherit}
   min-width:260px;
 }
 .card__img{
-  aspect-ratio:4/3;
+  aspect-ratio:2/3;                 /* ← mismo ratio de la foto vertical */
   background:#f6f6f6;
   display:flex;align-items:center;justify-content:center;
+  padding:6px;                       /* un poco de aire alrededor */
 }
-.card__img img{width:100%;height:100%;object-fit:cover;transition:transform .35s ease;will-change:transform}
-.card__img:hover img{transform:scale(1.04)}
+.card__img img{
+  width:100%;height:100%;
+  object-fit:contain;                /* ← no recorta, muestra completa */
+  transition:transform .35s ease;will-change:transform
+}
+.card__img:hover img{transform:scale(1.02)} /* zoom suave sin parecer recorte */
 .card__body{padding:14px}
 .card__title{margin:0 0 6px;font-weight:700}
 .card__sub{margin:0 0 10px;color:#6a6a6a;font-size:14px}
@@ -240,8 +245,13 @@ a{text-decoration:none;color:inherit}
 
   .card__img{
     height: 240px;      /* clave para que quepa todo sin zoom */
-    aspect-ratio: auto; /* desactiva el ratio para respetar el height */
+    aspect-ratio: auto; /* respeta el alto fijo */
+    padding:6px;
   }
+  .card__img img{
+    object-fit: contain;
+  }
+
   .card__body{ padding: 12px; }
   .card__title{ margin: 0 0 4px; }
   .card__sub{ margin: 0 0 8px; }
