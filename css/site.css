@@ -99,12 +99,24 @@ a{text-decoration:none;color:inherit}
 .sec-sub{color:#6a6a6a;text-align:center;margin:0 0 18px}
 
 /* Puente suave entre el hero (blanco) y la primera sección (—soft) */
-#mujer.catalog-section{position:relative}
+/* Solo esta parte cambia para que NO se vea línea y el fade sea progresivo */
+#mujer.catalog-section{
+  position:relative;
+  margin-top:-120px;          /* se superpone suavemente sobre el hero */
+  padding-top:168px;          /* compensa para mantener el contenido igual */
+}
 #mujer.catalog-section::before{
   content:"";
   position:absolute;
-  left:0; right:0; top:-56px; height:56px;
-  background:linear-gradient(to bottom, #fff 0%, var(--soft) 100%);
+  left:0; right:0; top:-160px; height:160px;
+  /* degradado largo y sin cortes: del blanco del hero al rosado de la sección */
+  background:linear-gradient(
+    to bottom,
+    rgba(255,255,255,1) 0%,
+    rgba(255,255,255,.92) 30%,
+    rgba(255,255,255,.6) 60%,
+    var(--soft) 100%
+  );
   pointer-events:none;
   z-index:0;
 }
