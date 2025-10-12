@@ -211,14 +211,9 @@ a{text-decoration:none;color:inherit}
 .card__btn{display:inline-flex;align-items:center;gap:8px}
 .card__btn .icon-wa{
   width:18px; height:18px; display:block;
-  background:#fff; /* color del icono */
-  /* IMPORTANTE: codificamos el espacio en el nombre del archivo */
-  -webkit-mask-image: url("assets/images/Logo%20whatsapp.png");
-          mask-image: url("assets/images/Logo%20whatsapp.png");
-  -webkit-mask-repeat: no-repeat;
-          mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-          mask-position: center;
-  -webkit-mask-size: 260%;   /* ajusta el “zoom” del logo (200–300%) */
-          mask-size: 260%;
+  /* Usamos el PNG tal cual, como imagen de fondo, centrada y escalada */
+  background-image: url("assets/images/Logo%20whatsapp.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 90% auto; /* ajusta 80–100% según prefieras */
 }
