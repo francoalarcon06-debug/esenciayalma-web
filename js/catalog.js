@@ -19,7 +19,23 @@ async function loadData() {
   return res.json();
 }
 
-/* Cambiado: card() ahora usa un espaciador flexible para alinear precio y botón */
+/* ====== Inyección de CSS (una sola vez) para alinear precio/botón ====== */
+(function injectEqualizeCSS(){
+  if (document.getElementById("card-equalize-css")) return;
+  const css = `
+    /* La card ya es flex-columna en tu CSS, pero aseguramos el alto completo */
+    .card{height:100%}
+    .card__body{display:flex;flex-direction:column;height:100%}
+    .card__content{flex:1 1 auto}
+    .card__footer{margin-top:auto;display:flex;flex-direction:column;gap:12px}
+  `;
+  const s = document.createElement("style");
+  s.id = "card-equalize-css";
+  s.textContent = css;
+  document.head.appendChild(s);
+})();
+
+/* ====== Tarjeta con footer fijo ====== */
 function card(product) {
   const el = document.createElement("article");
   el.className = "card";
@@ -30,20 +46,20 @@ function card(product) {
     <div class="card__img">
       <img src="${product.image}" alt="${product.name}" loading="lazy">
     </div>
-    <div class="card__body" style="display:flex;flex-direction:column;min-height:100%;height:100%">
-      <div class="card__text">
+
+    <div class="card__body">
+      <div class="card__content">
         <h3 class="card__title">${product.name}</h3>
         ${product.description ? `<p class="card__sub">${product.description}</p>` : ""}
       </div>
 
-      <!-- Espaciador flexible para empujar precio y botón al fondo -->
-      <div class="card__flex-spacer" style="flex:1 1 auto;"></div>
-
-      ${product.price ? `<div class="card__price">${money(product.price)}</div>` : ""}
-      <div class="card__actions">
-        <a class="btn btn-primary card__btn" target="_blank" href="${href}">
-          Consultar por WhatsApp
-        </a>
+      <div class="card__footer">
+        ${product.price ? `<div class="card__price">${money(product.price)}</div>` : ""}
+        <div class="card__actions">
+          <a class="btn btn-primary card__btn" target="_blank" href="${href}">
+            Consultar por WhatsApp
+          </a>
+        </div>
       </div>
     </div>
   `;
@@ -186,7 +202,7 @@ function initLoop(track, { speed = 24 } = {}) {
     while (offset < 0) {
       const back = spanLast();
       moveLastToStart();
-      offset += back + (childCount() > 1 ? 0 : 0);
+      offset += back;
     }
     row.style.transform = `translateX(${-offset}px)`;
   };
@@ -226,6 +242,7 @@ function initLoop(track, { speed = 24 } = {}) {
   // API pública para flechas
   track._loopAPI = {
     nudge(deltaDisplayPx) {
+      // deltaDisplayPx > 0 = desplazarse visualmente a la izquierda (PREV)
       startTweenOffset(-deltaDisplayPx, 520);
     },
     nudgeForward(deltaPx)  { startTweenOffset(+deltaPx, 520); }, // NEXT
@@ -233,6 +250,7 @@ function initLoop(track, { speed = 24 } = {}) {
     setSpeed(s) { speed = s; },
     remeasure() { recycleAndRender(); },
 
+    // Exponemos helpers para 3-cards
     _stepForward: forwardThree,
     _stepBackward: backwardThree
   };
@@ -261,7 +279,7 @@ async function setupCarouselSection(sectionEl, items) {
     nextBtn.style.display = "none";
     return;
   }
-  if (items.length === 1) {
+  if (items.length === 1) { // seguirá en loop, pero ocultamos flechas
     prevBtn.style.display = "none";
     nextBtn.style.display = "none";
   }
@@ -294,4 +312,3 @@ async function setupCarouselSection(sectionEl, items) {
     console.error(e);
   }
 })();
-
