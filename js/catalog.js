@@ -66,27 +66,23 @@ function getScroller(track) {
   for (const el of cand) {
     if (!el) continue;
     const sw = el.scrollWidth, cw = el.clientWidth;
-    if (sw - cw > 1) return el; // hay overflow horizontal aquí
+    if (sw - cw > 1) return el;
   }
-  // fallback
   return track;
 }
 
 /** Auto-scroll infinito suave con requestAnimationFrame. */
 function startInfiniteAutoScroll(scroller, track, opts = {}) {
   const {
-    pxPerSec = 26,            // velocidad continua (px/seg)
+    pxPerSec = 20,            // velocidad continua (px/seg)
     pauseMsAfterClick = 1200, // pausa breve tras flechas
   } = opts;
 
-  // Si no hay overflow, no hay nada que animar
   if (scroller.scrollWidth <= scroller.clientWidth + 1) return;
-
-  // Evita reinicios
   if (scroller._autoStarted) return;
   scroller._autoStarted = true;
 
-  // Duplicar el contenido del track SOLO una vez (para bucle perfecto)
+  // Duplica el contenido para bucle infinito
   if (!track.dataset.cloned) {
     const clones = Array.from(track.children).map((n) => n.cloneNode(true));
     track.append(...clones);
@@ -103,7 +99,7 @@ function startInfiniteAutoScroll(scroller, track, opts = {}) {
   const tick = (ts) => {
     if (!lastTs) lastTs = ts;
 
-    // Pausa por interacción manual (flechas/drag)
+    // Pausa tras click en flechas
     if (clickPauseUntil > ts) {
       raf = requestAnimationFrame(tick);
       return;
@@ -114,7 +110,7 @@ function startInfiniteAutoScroll(scroller, track, opts = {}) {
       const delta = pxPerSec * dt;
       scroller.scrollLeft += delta;
 
-      // Mitad = ancho real antes de clonar (porque duplicamos el track)
+      // Bucle infinito (volver al inicio)
       const half = scroller.scrollWidth / 2;
       if (scroller.scrollLeft >= half) scroller.scrollLeft = 0;
     }
@@ -123,21 +119,20 @@ function startInfiniteAutoScroll(scroller, track, opts = {}) {
     raf = requestAnimationFrame(tick);
   };
 
-  // Iniciar animación
   raf = requestAnimationFrame(tick);
 
-  // Pausas por hover/touch
+  // Pausa por hover o touch
   scroller.addEventListener("mouseenter", () => (paused = true));
   scroller.addEventListener("mouseleave", () => (paused = false));
   scroller.addEventListener("touchstart", () => (paused = true), { passive: true });
   scroller.addEventListener("touchend",   () => (paused = false));
 
-  // API para pausar brevemente tras flechas
+  // API: Pausar temporalmente tras click
   scroller._pauseAfterClick = () => {
     clickPauseUntil = performance.now() + pauseMsAfterClick;
   };
 
-  // Ajuste fino en resize (evita pequeños saltos al cambiar el ancho)
+  // Reajuste en resize
   let t = null;
   const onResize = () => {
     clearTimeout(t);
@@ -155,10 +150,8 @@ function setupCarousel(carouselEl, itemsCount) {
   const prevBtn = carouselEl.querySelector(".prev");
   const nextBtn = carouselEl.querySelector(".next");
 
-  // El elemento que realmente scrollea (track o su contenedor)
   const scroller = getScroller(track);
 
-  // Un solo producto: centrar y ocultar flechas
   if (itemsCount <= 1) {
     prevBtn.style.display = "none";
     nextBtn.style.display = "none";
@@ -168,7 +161,6 @@ function setupCarousel(carouselEl, itemsCount) {
     return;
   }
 
-  // Paso de flechas: casi un viewport del carrusel
   const step = () => Math.max(scroller.clientWidth * 0.9, 280);
 
   const go = (dx) => {
@@ -179,11 +171,11 @@ function setupCarousel(carouselEl, itemsCount) {
   prevBtn.addEventListener("click", () => go(-step()));
   nextBtn.addEventListener("click", () => go(step()));
 
-  // Auto-scroll continuo si hay más de 4 (tu requisito)
+  // Auto-scroll continuo si hay más de 4 productos
   if (itemsCount > 4) {
     startInfiniteAutoScroll(scroller, track, {
-      pxPerSec: 26,           // ajusta aquí la velocidad
-      pauseMsAfterClick: 1300 // pausa breve tras click en flechas
+      pxPerSec: 20,           // velocidad (ajustable)
+      pauseMsAfterClick: 1300 // pausa tras flechas
     });
   } else {
     scroller.classList.add("no-scrollbar");
@@ -211,3 +203,4 @@ function renderSection(sectionEl, items) {
     console.error(e);
   }
 })();
+
