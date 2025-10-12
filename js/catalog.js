@@ -272,30 +272,44 @@ async function setupCarouselSection(sectionEl, items) {
 
   // Poblar tarjetas
   track.innerHTML = "";
+  track.classList.remove("static"); // por si se re-renderiza
   items.forEach(p => track.appendChild(card(p)));
 
+  // Si no hay items, ocultamos flechas y salimos
   if (items.length === 0) {
     prevBtn.style.display = "none";
     nextBtn.style.display = "none";
     return;
   }
-  if (items.length === 1) { // seguirá en loop, pero ocultamos flechas
+
+  await waitImages(track);
+
+  // *** NUEVA LÓGICA: solo carrusel si HAY MÁS DE 4 productos ***
+  if (items.length > 4) {
+    // Carrusel activo
+    if (items.length === 1) { // caso extremo, igual ocultamos flechas
+      prevBtn.style.display = "none";
+      nextBtn.style.display = "none";
+    }
+    initLoop(track, { speed: 24 });
+
+    // Flechas: salto suave = 3 perfumes desde el borde
+    prevBtn.style.display = "";
+    nextBtn.style.display = "";
+    prevBtn.addEventListener("click", () => {
+      const step = track._loopAPI?._stepBackward?.() || Math.max(track.clientWidth * 0.9, 280);
+      track._loopAPI?.nudgeBackward(step);
+    });
+    nextBtn.addEventListener("click", () => {
+      const step = track._loopAPI?._stepForward?.() || Math.max(track.clientWidth * 0.9, 280);
+      track._loopAPI?.nudgeForward(step);
+    });
+  } else {
+    // Modo estático (centrado, sin movimiento, misma escala que Mujer)
+    track.classList.add("static");
     prevBtn.style.display = "none";
     nextBtn.style.display = "none";
   }
-
-  await waitImages(track);
-  initLoop(track, { speed: 24 });
-
-  // Flechas: salto suave = 3 perfumes desde el borde
-  prevBtn.addEventListener("click", () => {
-    const step = track._loopAPI?._stepBackward?.() || Math.max(track.clientWidth * 0.9, 280);
-    track._loopAPI?.nudgeBackward(step);
-  });
-  nextBtn.addEventListener("click", () => {
-    const step = track._loopAPI?._stepForward?.() || Math.max(track.clientWidth * 0.9, 280);
-    track._loopAPI?.nudgeForward(step);
-  });
 }
 
 // -------- Arranque --------
