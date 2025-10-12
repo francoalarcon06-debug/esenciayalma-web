@@ -19,18 +19,26 @@ async function loadData() {
   return res.json();
 }
 
+/* Cambiado: card() ahora usa un espaciador flexible para alinear precio y botón */
 function card(product) {
   const el = document.createElement("article");
   el.className = "card";
   el.setAttribute("role", "listitem");
   const href = `https://wa.me/${WA_PHONE}?text=${WA_MSG}%0A${encodeURIComponent(product.name)}`;
+
   el.innerHTML = `
     <div class="card__img">
       <img src="${product.image}" alt="${product.name}" loading="lazy">
     </div>
-    <div class="card__body">
-      <h3 class="card__title">${product.name}</h3>
-      ${product.description ? `<p class="card__sub">${product.description}</p>` : ""}
+    <div class="card__body" style="display:flex;flex-direction:column;min-height:100%;height:100%">
+      <div class="card__text">
+        <h3 class="card__title">${product.name}</h3>
+        ${product.description ? `<p class="card__sub">${product.description}</p>` : ""}
+      </div>
+
+      <!-- Espaciador flexible para empujar precio y botón al fondo -->
+      <div class="card__flex-spacer" style="flex:1 1 auto;"></div>
+
       ${product.price ? `<div class="card__price">${money(product.price)}</div>` : ""}
       <div class="card__actions">
         <a class="btn btn-primary card__btn" target="_blank" href="${href}">
@@ -99,7 +107,7 @@ function initLoop(track, { speed = 24 } = {}) {
     return widthOf(c) + (i < childCount() - 1 ? GAP : 0);
   };
 
-  const spanFirst = () => spanAt(0);
+  const spanFirst  = () => spanAt(0);
   const spanSecond = () => spanAt(1);
   const spanThird  = () => spanAt(2);
 
@@ -113,12 +121,6 @@ function initLoop(track, { speed = 24 } = {}) {
     const i = childCount() - 2;
     if (i < 0) return 0;
     // antes del último SÍ tiene gap a la derecha
-    return widthOf(row.children[i]) + GAP;
-  };
-  const spanThirdLast = () => {
-    const i = childCount() - 3;
-    if (i < 0) return 0;
-    // también con gap a la derecha
     return widthOf(row.children[i]) + GAP;
   };
 
@@ -144,9 +146,7 @@ function initLoop(track, { speed = 24 } = {}) {
   let tweenPrev = 0;     // delta aplicado hasta el frame anterior
 
   const startTweenOffset = (delta, duration = 500) => {
-    // acumulamos sobre un tween en curso (se siente natural)
     if (tweenActive) {
-      // lo que queda por aplicar del tween actual:
       const remaining = tweenTarget - tweenPrev;
       tweenTarget = remaining + delta;
       tweenPrev = 0;
@@ -178,18 +178,15 @@ function initLoop(track, { speed = 24 } = {}) {
 
   // Recicla según offset y pinta
   const recycleAndRender = () => {
-    // Hacia adelante (mostrar nuevos a la derecha)
     let s;
     while (offset >= (s = spanFirst())) {
       offset -= s;
       moveFirstToEnd();
     }
-    // Hacia atrás (mostrar nuevos a la izquierda)
     while (offset < 0) {
-      const back = spanLast() + (childCount() > 1 ? 0 : 0); // seguro
+      const back = spanLast();
       moveLastToStart();
-      offset += back + (childCount() > 1 ? GAP : 0) - (childCount() > 1 ? GAP : 0);
-      // Nota: offset se ajusta por spanLast(); el GAP ya lo maneja spanBeforeLast/At
+      offset += back + (childCount() > 1 ? 0 : 0);
     }
     row.style.transform = `translateX(${-offset}px)`;
   };
@@ -213,33 +210,22 @@ function initLoop(track, { speed = 24 } = {}) {
   requestAnimationFrame(tick);
 
   // ---- Cálculo del “salto de 3 perfumes” desde el borde ----
-  // NEXT (hacia la derecha visual): mover contenido a la izquierda
   const forwardThree = () => {
-    // restante del primero + 2 siguientes completos
     const remFirst = Math.max(spanFirst() - offset, 0);
     const s2 = spanSecond();
     const s3 = spanThird();
     return remFirst + s2 + s3;
   };
 
-  // PREV (hacia la izquierda visual): mover contenido a la derecha
   const backwardThree = () => {
-    // lo ya consumido del primero (offset) + 2 anteriores completos
     const sLast  = spanLast();
     const sPrev  = spanBeforeLast();
-    // si quieres exacto 3 perfumes completos (además del parcial actual),
-    // usa también el tercero previo:
-    // const sPrev2 = spanThirdLast();
-    // return offset + sLast + sPrev + sPrev2;
     return offset + sLast + sPrev;
   };
 
   // API pública para flechas
   track._loopAPI = {
     nudge(deltaDisplayPx) {
-      // deltaDisplayPx > 0 = desplazarse visualmente a la izquierda (PREV)
-      // offset se incrementa cuando el contenido se mueve a la IZQUIERDA.
-      // Por lo tanto: desplazamiento visual (+) => offset -= delta
       startTweenOffset(-deltaDisplayPx, 520);
     },
     nudgeForward(deltaPx)  { startTweenOffset(+deltaPx, 520); }, // NEXT
@@ -247,7 +233,6 @@ function initLoop(track, { speed = 24 } = {}) {
     setSpeed(s) { speed = s; },
     remeasure() { recycleAndRender(); },
 
-    // Exponemos helpers para 3-cards
     _stepForward: forwardThree,
     _stepBackward: backwardThree
   };
@@ -276,7 +261,7 @@ async function setupCarouselSection(sectionEl, items) {
     nextBtn.style.display = "none";
     return;
   }
-  if (items.length === 1) { // seguirá en loop, pero ocultamos flechas
+  if (items.length === 1) {
     prevBtn.style.display = "none";
     nextBtn.style.display = "none";
   }
@@ -309,3 +294,4 @@ async function setupCarouselSection(sectionEl, items) {
     console.error(e);
   }
 })();
+
