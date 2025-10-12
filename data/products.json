@@ -57,6 +57,24 @@
       "description": "Inspirado en las mejores fragancias de nicho.",
       "price": "26000",
       "image": "assets/black/Perfume black prueba.png"
+    },
+    {
+      "name": "Black Parfums 100ml – Elegance",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "price": "26000",
+      "image": "assets/black/Perfume black prueba.png"
+    },
+    {
+      "name": "Black Parfums 100ml – Intense",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "price": "26000",
+      "image": "assets/black/Perfume black prueba.png"
+    },
+    {
+      "name": "Black Parfums 100ml – Supreme",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "price": "26000",
+      "image": "assets/black/Perfume black prueba.png"
     }
   ],
   "red": [
