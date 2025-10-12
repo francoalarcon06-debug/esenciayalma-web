@@ -1,9 +1,4 @@
-:root{
-  --text:#2b2b2b; --muted:#6b6b6b;
-  --primary:#ea4c89; --primary-600:#d63d78;
-  --card:#fff; --bg:#fff; --soft:#fff3f7;
-  --shadow:0 10px 30px rgba(0,0,0,.08);
-}
+:root{ --text:#2b2b2b; --muted:#6b6b6b; --primary:#ea4c89; --primary-600:#d63d78; --card:#fff; --bg:#fff; --soft:#fff3f7; --shadow:0 10px 30px rgba(0,0,0,.08); }
 *{box-sizing:border-box}
 html,body{margin:0}
 body{
@@ -103,23 +98,24 @@ a{text-decoration:none;color:inherit}
   grid-auto-flow:column;
   grid-auto-columns:minmax(260px, 1fr);
   gap:16px;
-  overflow:visible;
+  overflow:visible; /* dejamos visible; el looper se encarga */
   padding:10px 4px 16px;
 }
 
 /* === NUEVO: modo estático para <= 4 productos === */
 .track.static{
-  grid-auto-flow:row;
-  grid-auto-columns:unset;
-  grid-template-columns:repeat(auto-fit, minmax(260px, 260px));
-  justify-content:center;
+  /* Centrado y misma escala que Mujer */
+  grid-auto-flow:row;                 /* no forzamos columnas infinitas */
+  grid-auto-columns:unset;            /* anulamos el auto-columns del carrusel */
+  grid-template-columns:repeat(auto-fit, minmax(260px, 260px)); /* ancho fijo */
+  justify-content:center;             /* centrado horizontal */
   justify-items:stretch;
   gap:16px;
 }
 
 /* Cuando el JS lo transforma en “looper” */
 .is-viewport{
-  overflow:hidden !important;
+  overflow:hidden !important; /* el viewport enmascara */
   display:block !important;
   position:relative;
 }
@@ -127,7 +123,7 @@ a{text-decoration:none;color:inherit}
   display:flex;
   gap:16px;
   will-change:transform;
-  transition:transform .18s ease-out;
+  transition:transform .18s ease-out; /* por si hay pequeños toques de flecha */
 }
 
 /* Tarjetas */
@@ -139,7 +135,7 @@ a{text-decoration:none;color:inherit}
   box-shadow:var(--shadow);
   display:flex;
   flex-direction:column;
-  min-width:260px;
+  min-width:260px; /* asegura ancho mínimo en fila flex */
 }
 .card__img{
   aspect-ratio:4/3;
@@ -147,18 +143,17 @@ a{text-decoration:none;color:inherit}
   display:flex;
   align-items:center;
   justify-content:center;
-  overflow:hidden;
-  position:relative;
-  padding:6px; /* evita que se recorte al hacer zoom */
+  overflow:hidden;            /* no cambia dimensiones; solo oculta el exceso */
 }
 .card__img img{
   width:100%;
   height:100%;
-  object-fit:contain; /* evita recorte y mantiene proporción */
-  transition:transform 0.4s ease;
+  object-fit:cover;
+  transition:transform .35s ease; /* animación suave */
+  will-change:transform;
 }
 .card__img:hover img{
-  transform:scale(1.08);
+  transform:scale(1.04);      /* zoom ligero sin modificar el layout */
 }
 .card__body{padding:14px}
 .card__title{margin:0 0 6px;font-weight:700}
