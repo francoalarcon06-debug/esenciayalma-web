@@ -210,8 +210,14 @@ a{text-decoration:none;color:inherit}
 /* WhatsApp icon dentro del botón del catálogo */
 .card__btn{display:inline-flex;align-items:center;gap:8px}
 .card__btn .icon-wa{
-  width:18px;height:18px;display:block;
+  width:18px; height:18px; display:block;
   background:#fff; /* color del icono */
-  -webkit-mask: url("assets/images/Logo whatsapp.png") center/contain no-repeat;
-          mask: url("assets/images/Logo whatsapp.png") center/contain no-repeat;
+  -webkit-mask-image: url("assets/images/Logo whatsapp.png");
+          mask-image: url("assets/images/Logo whatsapp.png");
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+          mask-position: center;
+  -webkit-mask-size: 220%;   /* ampliado para que se vea correctamente */
+          mask-size: 220%;
 }
