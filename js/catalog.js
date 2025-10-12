@@ -1,144 +1,176 @@
-/* js/catalog.js — Carrusel continuo real (flex + duplicación + bucle perfecto) */
+/* Carrusel FLEX con auto-rotación en bucle + flechas
+   - Auto cuando hay >4 productos (duplica y hace loop)
+   - Flechas desplazan y pausan brevemente el auto
+   - Pausa en hover/touch
+*/
 
-/* ========= Config WhatsApp ========= */
+/* Config WhatsApp */
 const WA_PHONE = "56912345678";
 const WA_MSG   = encodeURIComponent("Hola, me interesa este producto 👇");
 
-/* ========= Utils ========= */
+/* Utils */
 const money = (v) => {
   const n = Number(String(v).replace(/[^\d]/g, "")) || 0;
   return `$${n.toLocaleString("es-CL")}`;
 };
 
-/* Cargar datos del catálogo */
+/* Data */
 async function loadData() {
   const res = await fetch("data/products.json", { cache: "no-store" });
   if (!res.ok) throw new Error("No pude cargar data/products.json");
   return res.json();
 }
 
-/* Crear tarjeta de producto */
-function card(p) {
+/* Tarjeta */
+function card(product) {
   const el = document.createElement("article");
   el.className = "card";
-  const href = `https://wa.me/${WA_PHONE}?text=${WA_MSG}%0A${encodeURIComponent(p.name)}`;
+  el.setAttribute("role", "listitem");
+
+  const href = `https://wa.me/${WA_PHONE}?text=${WA_MSG}%0A${encodeURIComponent(product.name)}`;
+
   el.innerHTML = `
-    <div class="card__img"><img src="${p.image}" alt="${p.name}" loading="lazy"></div>
+    <div class="card__img">
+      <img src="${product.image}" alt="${product.name}" loading="lazy">
+    </div>
     <div class="card__body">
-      <h3 class="card__title">${p.name}</h3>
-      ${p.description ? `<p class="card__sub">${p.description}</p>` : ""}
-      ${p.price ? `<div class="card__price">${money(p.price)}</div>` : ""}
+      <h3 class="card__title">${product.name}</h3>
+      ${product.description ? `<p class="card__sub">${product.description}</p>` : ""}
+      ${product.price ? `<div class="card__price">${money(product.price)}</div>` : ""}
       <div class="card__actions">
-        <a class="btn btn-primary card__btn" target="_blank" href="${href}">Consultar por WhatsApp</a>
+        <a class="btn btn-primary card__btn" target="_blank" href="${href}">
+          Consultar por WhatsApp
+        </a>
       </div>
     </div>
   `;
   return el;
 }
 
-/* Duplica los elementos hasta llenar al menos 2.5× el ancho visible */
-function cloneUntil(track, scroller) {
-  if (track.dataset.cloned) return;
-  const orig = Array.from(track.children);
-  if (orig.length === 0) return;
-  while (track.scrollWidth < scroller.clientWidth * 2.5) {
-    orig.forEach(n => track.appendChild(n.cloneNode(true)));
-  }
-  track.dataset.cloned = "1";
-}
-
-/* Auto-scroll continuo y en bucle */
-function startAuto(scroller, track, { pxPerSec = 26, pauseAfterClick = 1200 } = {}) {
+/* Auto-scroll infinito con loop */
+function startAuto(scroller, { pxPerSec = 28, pauseAfterClick = 1200 } = {}) {
   if (scroller._autoStarted) return;
   scroller._autoStarted = true;
 
-  cloneUntil(track, scroller);
+  // Sólo auto si de verdad hay overflow
+  if (scroller.scrollWidth <= scroller.clientWidth + 1) return;
+
+  // Duplicar contenido para que el loop sea perfecto
+  if (!scroller._cloned) {
+    const originals = Array.from(scroller.children);
+    scroller.append(...originals.map(n => n.cloneNode(true)));
+    scroller._halfWidth = scroller.scrollWidth / 2; // después de clonar
+    scroller._cloned = true;
+  }
 
   let last = 0;
   let paused = false;
-  let until = 0;
+  let pauseUntil = 0;
+  let rafId = 0;
 
   const tick = (ts) => {
     if (!last) last = ts;
 
-    if (until > ts) { requestAnimationFrame(tick); return; }
+    // pausa por clic en flechas
+    if (pauseUntil > ts) {
+      rafId = requestAnimationFrame(tick);
+      return;
+    }
 
     if (!paused) {
       const dt = (ts - last) / 1000;
       scroller.scrollLeft += pxPerSec * dt;
-      const half = track.scrollWidth / 2;
-      if (scroller.scrollLeft >= half) scroller.scrollLeft -= half;
+
+      // loop suave
+      if (scroller.scrollLeft >= scroller._halfWidth) {
+        scroller.scrollLeft -= scroller._halfWidth;
+      }
     }
 
     last = ts;
-    requestAnimationFrame(tick);
+    rafId = requestAnimationFrame(tick);
+  };
+
+  // Iniciar
+  rafId = requestAnimationFrame(tick);
+
+  // Exponer API para flechas
+  scroller._pauseAfterClick = () => {
+    pauseUntil = performance.now() + pauseAfterClick;
   };
 
   // Pausas por hover/touch
-  scroller.addEventListener("mouseenter", () => paused = true);
-  scroller.addEventListener("mouseleave", () => paused = false);
-  scroller.addEventListener("touchstart", () => paused = true, { passive:true });
-  scroller.addEventListener("touchend",   () => paused = false);
+  const setPaused = (v) => { paused = v; };
+  scroller.addEventListener("mouseenter", () => setPaused(true));
+  scroller.addEventListener("mouseleave", () => setPaused(false));
+  scroller.addEventListener("touchstart", () => setPaused(true), { passive: true });
+  scroller.addEventListener("touchend",   () => setPaused(false));
 
-  // API para flechas
-  scroller._pauseShort = () => { until = performance.now() + pauseAfterClick; };
-
-  // Recalcular al redimensionar
+  // Ajuste al redimensionar (recalcular mitad)
   let t;
   window.addEventListener("resize", () => {
     clearTimeout(t);
     t = setTimeout(() => {
-      cloneUntil(track, scroller);
-      const half = track.scrollWidth / 2;
-      scroller.scrollLeft = scroller.scrollLeft % half;
+      scroller._halfWidth = scroller.scrollWidth / 2;
+      // normalizar posición dentro de la mitad
+      scroller.scrollLeft = scroller.scrollLeft % scroller._halfWidth;
     }, 120);
   });
-
-  requestAnimationFrame(tick);
 }
 
-/* Configurar carrusel (auto o clásico) */
-function setupCarousel(carouselEl, count) {
-  const track = carouselEl.querySelector(".track");
-  const prev  = carouselEl.querySelector(".prev");
-  const next  = carouselEl.querySelector(".next");
-  const scroller = track;
+/* Flechas + modo auto si aplica */
+function setupCarousel(carouselEl, itemsCount) {
+  const track   = carouselEl.querySelector(".track");
+  const prevBtn = carouselEl.querySelector(".nav-btn.prev");
+  const nextBtn = carouselEl.querySelector(".nav-btn.next");
+  if (!track) return;
 
-  if (count <= 1) {
-    prev.style.display = "none";
-    next.style.display = "none";
-    scroller.style.justifyContent = "center";
+  // Un solo producto: centrar y ocultar flechas
+  if (itemsCount <= 1) {
+    prevBtn.style.display = "none";
+    nextBtn.style.display = "none";
+    track.style.justifyContent  = "center";
+    track.classList.add("no-scrollbar");
     return;
   }
 
-  const step = () => Math.max(scroller.clientWidth * 0.9, 280);
-  const go = (dx) => {
-    scroller._pauseShort?.();
-    scroller.scrollBy({ left: dx, behavior: "smooth" });
-  };
+  // Paso de flecha: casi un viewport
+  const step = () => Math.max(track.clientWidth * 0.9, 280);
 
-  prev.addEventListener("click", () => go(-step()));
-  next.addEventListener("click", () => go(step()));
+  // Si hay >4, activar auto-rotación (loop)
+  if (itemsCount > 4) {
+    startAuto(track, { pxPerSec: 30, pauseAfterClick: 1200 });
 
-  if (count > 4) {
-    startAuto(scroller, track, { pxPerSec: 26, pauseAfterClick: 1200 });
+    // flechas: desplazan y ponen pausa breve
+    const go = (dx) => {
+      track._pauseAfterClick?.();
+      track.scrollBy({ left: dx, behavior: "smooth" });
+    };
+    prevBtn.addEventListener("click", () => go(-step()));
+    nextBtn.addEventListener("click", () => go(+step()));
+  } else {
+    // Modo clásico con flechas (sin auto)
+    const go = (dx) => track.scrollBy({ left: dx, behavior: "smooth" });
+    prevBtn.addEventListener("click", () => go(-step()));
+    nextBtn.addEventListener("click", () => go(+step()));
   }
 }
 
-/* Renderizar secciones */
-function renderSection(sec, items) {
-  const track = sec.querySelector(".track");
+/* Render sección */
+function renderSection(sectionEl, items) {
+  const track = sectionEl.querySelector(".track");
+  if (!track) return;
   track.innerHTML = "";
-  items.forEach(p => track.appendChild(card(p)));
-  setupCarousel(sec.querySelector(".carousel"), items.length);
+  items.forEach((p) => track.appendChild(card(p)));
+  setupCarousel(sectionEl.querySelector(".carousel"), items.length);
 }
 
-/* Inicio */
+/* Arranque */
 (async () => {
   try {
     const data = await loadData();
-    document.querySelectorAll(".catalog-section").forEach(sec => {
-      const key = sec.getAttribute("data-category");
+    document.querySelectorAll(".catalog-section").forEach((sec) => {
+      const key  = sec.getAttribute("data-category"); // women, men, black, red, lavit
       const list = Array.isArray(data[key]) ? data[key] : [];
       renderSection(sec, list);
     });
@@ -146,5 +178,3 @@ function renderSection(sec, items) {
     console.error(e);
   }
 })();
-
-
