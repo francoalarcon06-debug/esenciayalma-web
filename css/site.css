@@ -98,6 +98,17 @@ a{text-decoration:none;color:inherit}
 }
 .sec-sub{color:#6a6a6a;text-align:center;margin:0 0 18px}
 
+/* Puente suave entre el hero (blanco) y la primera sección (—soft) */
+#mujer.catalog-section{position:relative}
+#mujer.catalog-section::before{
+  content:"";
+  position:absolute;
+  left:0; right:0; top:-56px; height:56px;
+  background:linear-gradient(to bottom, #fff 0%, var(--soft) 100%);
+  pointer-events:none;
+  z-index:0;
+}
+
 /* CARRUSEL (fallback visual para cuando aún no se convierte en looper) */
 .carousel{position:relative}
 .track{
