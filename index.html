@@ -151,7 +151,7 @@
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 
-  <!-- Parallax + fade del hero (ligero, sin tocar otros archivos) -->
+  <!-- Fade del hero (sin parallax: imagen estática) -->
   <script>
     (function(){
       const hero = document.getElementById('inicio');
@@ -170,12 +170,8 @@
           // Progreso del scroll sobre el hero (0 al entrar, 1 al salir)
           const progress = clamp((-rect.top) / (h * 0.9), 0, 1);
 
-          // Opacidad del overlay para desvanecer
+          // Solo fade; SIN mover el background (imagen estática)
           fade.style.opacity = progress;
-
-          // Parallax sutil moviendo el fondo
-          const offsetY = Math.round(progress * -40); // hasta -40px
-          hero.style.backgroundPosition = `center calc(50% + ${offsetY}px)`;
 
           ticking = false;
         });
