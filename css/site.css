@@ -96,7 +96,7 @@ a{text-decoration:none;color:inherit}
 }
 .sec-sub{color:#6a6a6a;text-align:center;margin:0 0 18px}
 
-/* CARRUSEL */
+/* ========== CARRUSEL GENERAL ========== */
 .carousel{position:relative}
 .track{
   display:grid;
@@ -106,11 +106,12 @@ a{text-decoration:none;color:inherit}
   overflow-x:auto;
   scroll-behavior:smooth;
   padding:10px 4px 16px;
-  scrollbar-width:none; /* oculta scroll en Firefox */
+  scrollbar-width:none;
 }
-.track::-webkit-scrollbar{display:none} /* oculta scroll en Chrome/Safari */
+.track::-webkit-scrollbar{display:none}
+
+/* Tarjetas */
 .card{
-  scroll-snap-align:none; /* quitado el snap */
   background:var(--card);
   border:1px solid #00000010;
   border-radius:16px;
@@ -140,7 +141,7 @@ a{text-decoration:none;color:inherit}
   font-weight:700;margin-bottom:10px;
 }
 
-/* FLECHAS */
+/* Flechas */
 .nav-btn{
   position:absolute;top:50%;transform:translateY(-50%);
   width:40px;height:40px;
@@ -149,7 +150,9 @@ a{text-decoration:none;color:inherit}
   box-shadow:var(--shadow);
   font-size:18px;
   display:grid;place-items:center;
+  transition:opacity .2s;
 }
+.nav-btn:hover{opacity:.9}
 .nav-btn:disabled{opacity:.4;cursor:not-allowed}
 .nav-btn.prev{left:-6px}
 .nav-btn.next{right:-6px}
@@ -157,6 +160,34 @@ a{text-decoration:none;color:inherit}
   .track{grid-auto-columns:80%}
   .nav-btn.prev{left:2px}
   .nav-btn.next{right:2px}
+}
+
+/* ========== MODO MARQUEE (auto continuo) ========== */
+/* Estas clases las genera el JS automáticamente */
+.marquee-viewport{
+  overflow:hidden;
+  position:relative;
+  width:100%;
+}
+.marquee-shift{
+  will-change:transform;
+  transform:translateX(var(--shift,0px));
+  transition:transform .4s ease;
+}
+.marquee-row{
+  display:flex;
+  align-items:stretch;
+  gap:var(--gap,16px);
+  will-change:transform;
+  animation-name:marquee-linear;
+  animation-timing-function:linear;
+  animation-iteration-count:infinite;
+  animation-play-state:running;
+  animation-duration:var(--dur,30s);
+}
+@keyframes marquee-linear{
+  from{transform:translateX(0)}
+  to{transform:translateX(var(--dist))}
 }
 
 /* FOOTER */
@@ -171,3 +202,4 @@ a{text-decoration:none;color:inherit}
   justify-content:space-between;
   gap:16px;
 }
+
