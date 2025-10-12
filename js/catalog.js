@@ -1,15 +1,26 @@
-// js/catalog.js  (REEMPLAZAR TODO EL ARCHIVO)
+// js/catalog.js  (REEMPLAZAR TODO)
 
-// === WhatsApp ===
+// ——— Ajustes WhatsApp ———
 const WA_PHONE = "56912345678"; // cámbialo si quieres
 const WA_MSG = encodeURIComponent("Hola, me interesa este producto 👇");
 
-// === Utilidades ===
+// ——— Utilidades ———
 const money = (v) => {
-  // acepta "16000", "$16.000", "16.000", etc.
   const n = Number(String(v).replace(/[^\d]/g, "")) || 0;
   return `$${n.toLocaleString("es-CL")}`;
 };
+
+// Inyecta estilos para ocultar scrollbar (Firefox + WebKit)
+(() => {
+  const css = `
+    .no-scrollbar{ scrollbar-width: none; }
+    .no-scrollbar::-webkit-scrollbar{ display: none; }
+  `;
+  const style = document.createElement("style");
+  style.id = "catalog-no-scrollbar-style";
+  style.textContent = css;
+  if (!document.getElementById(style.id)) document.head.appendChild(style);
+})();
 
 async function loadData() {
   const res = await fetch("data/products.json", { cache: "no-store" });
@@ -44,35 +55,18 @@ function card(product) {
   return a;
 }
 
-// Actualiza estado de flechas en carrusel NO-infinito
-function updateArrows(track, prevBtn, nextBtn) {
-  const max = track.scrollWidth - track.clientWidth - 1;
-  prevBtn.disabled = track.scrollLeft <= 0;
-  nextBtn.disabled = track.scrollLeft >= max;
-}
+// ——— Carrusel ———
 
-// Configura un carrusel (con auto-scroll infinito si hay > 4 ítems)
-function setupCarousel(carouselEl) {
-  const track = carouselEl.querySelector(".track");
+function setupCarousel(carouselEl, { itemsCount }) {
+  const track   = carouselEl.querySelector(".track");
   const prevBtn = carouselEl.querySelector(".prev");
   const nextBtn = carouselEl.querySelector(".next");
 
-  const items = Array.from(track.children);
-  const total = items.length;
+  // Paso “gran” para las flechas (≈ una vista)
+  const step = () => Math.max(track.clientWidth * 0.9, 280);
 
-  // Helpers para medidas
-  const getGap = () => {
-    const s = getComputedStyle(track);
-    return parseFloat(s.columnGap || s.gap || "0");
-  };
-  const getCardWidth = () => {
-    const first = track.querySelector(".card");
-    return first ? first.getBoundingClientRect().width : 0;
-  };
-  const stepPx = () => Math.max(getCardWidth() + getGap(), 280);
-
-  // --- Caso 1: un solo producto (centrado y sin flechas) ---
-  if (total <= 1) {
+  // Si solo hay 1 ítem, centramos y ocultamos flechas
+  if (itemsCount <= 1) {
     prevBtn.style.display = "none";
     nextBtn.style.display = "none";
     track.style.justifyContent = "center";
@@ -80,99 +74,124 @@ function setupCarousel(carouselEl) {
     return;
   }
 
-  // --- Caso 2: auto-scroll infinito si hay más de 4 productos ---
-  if (total > 4) {
-    // Clonamos las primeras 4 tarjetas para transición suave de bucle
-    const clones = items.slice(0, 4).map((n) => n.cloneNode(true));
-    clones.forEach((c) => track.appendChild(c));
+  // — Auto-scroll continuo —
+  // Para un bucle suave duplicamos los ítems y desplazamos de manera constante.
+  const LOOP_ENABLED = itemsCount > 4; // activa auto-scroll si hay más de 4
 
-    let index = 0;         // índice dentro de los "originales"
-    let timerId = null;
-    const intervalMs = 3500; // velocidad de auto-scroll
+  let rafId = null;
+  let lastTs = 0;
+  let paused = false;
 
-    function step(dir = 1) {
-      const delta = dir * stepPx();
-      track.style.scrollBehavior = "smooth";
-      track.scrollBy({ left: delta, behavior: "smooth" });
-      index += dir;
+  const speedPxPerSec = 18; // velocidad (px/seg). Baja este número para más lento.
 
-      // Reseteo silencioso cuando pasamos el último original
-      if (index >= total) {
-        const after = 450; // esperar a que termine el scroll suave
-        setTimeout(() => {
-          track.style.scrollBehavior = "auto";
-          track.scrollLeft = 0;
-          index = 0;
-        }, after);
-      }
-
-      if (index < 0) {
-        // Si retrocedemos antes de 0, saltamos al final de los originales
-        track.style.scrollBehavior = "auto";
-        track.scrollLeft = total * (getCardWidth() + getGap());
-        index = total - 1;
-      }
-    }
-
-    function startAuto() {
-      stopAuto();
-      timerId = setInterval(() => step(1), intervalMs);
-    }
-    function stopAuto() {
-      if (timerId) clearInterval(timerId), (timerId = null);
-    }
-
-    // Flechas (mantienen el bucle y reinician temporizador)
-    prevBtn.addEventListener("click", () => { stopAuto(); step(-1); startAuto(); });
-    nextBtn.addEventListener("click", () => { stopAuto(); step(1);  startAuto(); });
-
-    // Pausa al pasar el mouse por la sección
-    const section = carouselEl.closest("section");
-    section?.addEventListener("mouseenter", stopAuto);
-    section?.addEventListener("mouseleave", startAuto);
-
-    // Recalcula posición tras un resize
-    window.addEventListener("resize", () => {
-      track.style.scrollBehavior = "auto";
-      track.scrollLeft = index * (getCardWidth() + getGap());
-    });
-
-    // En carrusel infinito las flechas no se deshabilitan
-    prevBtn.disabled = false;
-    nextBtn.disabled = false;
-
-    startAuto();
-    return;
+  // Duplicamos contenido solo una vez si hay loop
+  if (LOOP_ENABLED && !track.dataset.loopCloned) {
+    const original = Array.from(track.children);
+    const clones = original.map((n) => n.cloneNode(true));
+    track.append(...clones);
+    track.dataset.loopCloned = "1";
+    track.classList.add("no-scrollbar"); // ocultar barra
   }
 
-  // --- Caso 3: 2 a 4 productos (sin bucle; flechas con límites) ---
-  const boundedStep = () => Math.max(track.clientWidth * 0.9, 280);
-  prevBtn.addEventListener("click", () =>
-    track.scrollBy({ left: -boundedStep(), behavior: "smooth" })
-  );
-  nextBtn.addEventListener("click", () =>
-    track.scrollBy({ left: boundedStep(), behavior: "smooth" })
-  );
-  const onScroll = () => updateArrows(track, prevBtn, nextBtn);
-  track.addEventListener("scroll", onScroll, { passive: true });
-  window.addEventListener("resize", onScroll);
-  onScroll();
+  // Función para envolver el scroll (sin “saltos” visibles)
+  const wrapIfNeeded = () => {
+    if (!LOOP_ENABLED) return;
+    const half = track.scrollWidth / 2; // porque duplicamos
+    if (track.scrollLeft >= half) {
+      track.scrollLeft -= half;
+    } else if (track.scrollLeft < 0) {
+      track.scrollLeft += half;
+    }
+  };
+
+  const animate = (ts) => {
+    if (paused) { // si está pausado, seguimos pidiendo frames pero sin mover
+      lastTs = ts;
+      rafId = requestAnimationFrame(animate);
+      return;
+    }
+    if (!lastTs) lastTs = ts;
+    const dt = (ts - lastTs) / 1000; // segundos desde el frame anterior
+    lastTs = ts;
+
+    // Avanza suavemente
+    track.scrollLeft += speedPxPerSec * dt;
+    wrapIfNeeded();
+
+    rafId = requestAnimationFrame(animate);
+  };
+
+  const start = () => {
+    if (rafId == null && LOOP_ENABLED) {
+      rafId = requestAnimationFrame(animate);
+    }
+  };
+  const stop = () => {
+    if (rafId != null) cancelAnimationFrame(rafId);
+    rafId = null;
+  };
+
+  // Pausas controladas
+  const pause = (ms) => {
+    paused = true;
+    if (ms) setTimeout(() => (paused = false), ms);
+  };
+
+  // Controles con flechas (mantienen el loop; pausan y reanudan)
+  prevBtn.addEventListener("click", () => {
+    pause(1200);
+    track.scrollBy({ left: -step(), behavior: "smooth" });
+    // pequeño wrap por si cruzamos límites
+    setTimeout(wrapIfNeeded, 700);
+  });
+
+  nextBtn.addEventListener("click", () => {
+    pause(1200);
+    track.scrollBy({ left: step(), behavior: "smooth" });
+    setTimeout(wrapIfNeeded, 700);
+  });
+
+  // Pausar mientras el usuario interactúa (hover, focus, touch)
+  track.addEventListener("mouseenter", () => (paused = true));
+  track.addEventListener("mouseleave", () => (paused = false));
+  track.addEventListener("touchstart", () => (paused = true), { passive: true });
+  track.addEventListener("touchend",   () => (paused = false));
+
+  // Si NO hay loop (≤4 items), mostramos/ocultamos flechas según posición.
+  if (!LOOP_ENABLED) {
+    const updateArrows = () => {
+      const max = track.scrollWidth - track.clientWidth - 1;
+      prevBtn.disabled = track.scrollLeft <= 0;
+      nextBtn.disabled = track.scrollLeft >= max;
+    };
+    track.addEventListener("scroll", updateArrows, { passive: true });
+    window.addEventListener("resize", updateArrows);
+    updateArrows();
+  } else {
+    // Con loop no hay principio/fin: flechas siempre habilitadas
+    prevBtn.disabled = false;
+    nextBtn.disabled = false;
+    // Arrancamos el auto-scroll
+    start();
+    // Reajusta si cambia el tamaño y puede “romper” el medio
+    window.addEventListener("resize", wrapIfNeeded);
+  }
 }
 
+// Render de cada sección
 function renderSection(sectionEl, items) {
   const track = sectionEl.querySelector(".track");
   track.innerHTML = "";
   items.forEach((p) => track.appendChild(card(p)));
-  setupCarousel(sectionEl.querySelector(".carousel"));
+  setupCarousel(sectionEl.querySelector(".carousel"), { itemsCount: items.length });
 }
 
-// === Bootstrap ===
+// ——— Inicio ———
 (async () => {
   try {
     const data = await loadData();
-    // Las keys deben coincidir con data-category del index: women, men, black, red, lavit
     document.querySelectorAll(".catalog-section").forEach((sec) => {
-      const key = sec.getAttribute("data-category");
+      const key = sec.getAttribute("data-category"); // women, men, black, red, lavit
       const list = Array.isArray(data[key]) ? data[key] : [];
       renderSection(sec, list);
     });
