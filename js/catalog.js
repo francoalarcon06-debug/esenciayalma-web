@@ -1,44 +1,68 @@
-/* js/catalog.js — Auto carrusel continuo garantizado (sobre .track)
-   - scrollLeft en .track (no en el contenedor)
-   - fuerza overflow-x:auto y quita smooth de CSS durante la animación
-   - clona items para bucle perfecto
-   - flechas funcionan, con pausa breve y reanudación
-*/
+/* js/catalog.js — Carrusel continuo (CSS animado) + flechas + bucle perfecto */
 
-// -------- WhatsApp ----------
+/* ========== Config WhatsApp ========== */
 const WA_PHONE = "56912345678";
 const WA_MSG   = encodeURIComponent("Hola, me interesa este producto 👇");
 
-// -------- Utilidades ----------
+/* ========== Utils ========== */
 const money = (v) => {
   const n = Number(String(v).replace(/[^\d]/g, "")) || 0;
   return `$${n.toLocaleString("es-CL")}`;
 };
 
-// Ocultar scrollbars
+/* Ocultar scrollbars (por si quedan rastros en algún modo no-marquee) */
 (() => {
   const css = `
     .no-scrollbar{ scrollbar-width:none; -ms-overflow-style:none; }
     .no-scrollbar::-webkit-scrollbar{ display:none; width:0; height:0; }
+
+    /* Vista tipo cinta: track como "viewport" que enmascara */
+    .marquee-viewport{ position:relative; overflow:hidden; }
+
+    /* Capa de desplazamiento manual (flechas) */
+    .marquee-shift{ will-change: transform; transform: translateX(var(--shift, 0px)); }
+
+    /* Fila animada en bucle (dos copias) */
+    .marquee-row{
+      display:flex; align-items:stretch; gap:var(--gap,16px);
+      will-change: transform;
+      animation-name: marquee-linear;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      animation-play-state: running;
+      /* La distancia (negativa) y la duración se fijan por elemento:
+         --dist: -<px>;
+         --dur: <s>;
+      */
+      animation-duration: var(--dur, 30s);
+    }
+
+    /* Animación genérica: usa variable --dist */
+    @keyframes marquee-linear {
+      from { transform: translateX(0); }
+      to   { transform: translateX(var(--dist)); }
+    }
   `;
   const s = document.createElement("style");
   s.textContent = css;
   document.head.appendChild(s);
 })();
 
-// Cargar datos
+/* ========== Data ========== */
 async function loadData() {
   const res = await fetch("data/products.json", { cache: "no-store" });
   if (!res.ok) throw new Error("No pude cargar data/products.json");
   return res.json();
 }
 
-// Tarjeta
+/* ========== UI: Tarjeta ========== */
 function card(product) {
   const el = document.createElement("article");
   el.className = "card";
   el.setAttribute("role", "listitem");
+
   const href = `https://wa.me/${WA_PHONE}?text=${WA_MSG}%0A${encodeURIComponent(product.name)}`;
+
   el.innerHTML = `
     <div class="card__img">
       <img src="${product.image}" alt="${product.name}" loading="lazy">
@@ -57,67 +81,103 @@ function card(product) {
   return el;
 }
 
-/* ========== Auto-scroll continuo en .track ========== */
-function startContinuous(track, { pxPerSec = 28, pauseAfterClickMs = 1200 } = {}) {
-  // Asegurar que .track sea scrolleable y sin smooth (el smooth frena el rAF)
-  track.style.overflowX = "auto";
-  track.style.scrollBehavior = "auto";
-  track.classList.add("no-scrollbar");
+/* ========== Carrusel continuo basado en CSS (marquee) ========== */
+/* Convierte .track en un "viewport" y crea:
+   .track.marquee-viewport
+     > .marquee-shift (mueve con flechas mediante --shift)
+         > .marquee-row (ANIMADA: se traduce -dist px, en 'dur' seg, en bucle)
+            [items ...] + [clones ...]
+*/
+function makeMarquee(track, { pxPerSec = 20 } = {}) {
+  if (track._marquee) return; // ya configurado
+  track._marquee = true;
 
-  // Sin overflow: nada que animar
-  if (track.scrollWidth <= track.clientWidth + 1) return;
-  if (track._autoStarted) return;
-  track._autoStarted = true;
+  // El track original hace de viewport (enmascara)
+  track.classList.add("marquee-viewport", "no-scrollbar");
+  track.style.overflowX = "hidden";          // evitamos scroll manual
+  track.style.scrollBehavior = "auto";       // que nada frene la animación
+  // Conservamos el gap original si existe en tu CSS (site.css usa gap:16px)
+  const computed = getComputedStyle(track);
+  const gapPx = parseFloat(computed.gap || computed.columnGap || "16") || 16;
 
-  // Clonar hijos para bucle perfecto
-  if (!track.dataset.cloned) {
-    const clones = Array.from(track.children).map(n => n.cloneNode(true));
-    track.append(...clones);
-    track.dataset.cloned = "1";
-  }
+  // Crear contenedores
+  const shift = document.createElement("div");
+  shift.className = "marquee-shift";
+  const row = document.createElement("div");
+  row.className = "marquee-row";
+  row.style.setProperty("--gap", `${gapPx}px`);
 
-  let lastTs = 0;
-  let paused = false;
-  let pauseUntil = 0;
+  // Mover hijos actuales a la fila
+  const items = Array.from(track.children);
+  items.forEach((ch) => row.appendChild(ch));
 
-  const step = (ts) => {
-    if (!lastTs) lastTs = ts;
+  // Duplicar para bucle perfecto
+  const clones = items.map((n) => n.cloneNode(true));
+  clones.forEach((c) => row.appendChild(c));
 
-    // Pausa breve tras flechas
-    if (pauseUntil > ts) {
-      requestAnimationFrame(step);
-      return;
+  // Inyectar estructura
+  shift.appendChild(row);
+  track.appendChild(shift);
+
+  // Calcular ancho de la copia original (items.length)
+  const calcDistance = () => {
+    // sumatoria de anchos + gaps entre items (solo de la primera mitad)
+    let width = 0;
+    for (let i = 0; i < items.length; i++) {
+      width += items[i].getBoundingClientRect().width;
     }
+    const totalGaps = Math.max(items.length - 1, 0) * gapPx;
+    const dist = width + totalGaps;
 
-    if (!paused) {
-      const dt = (ts - lastTs) / 1000;
-      // mover en píxeles por segundo
-      track.scrollLeft += pxPerSec * dt;
+    // distancia negativa hasta donde debe moverse la fila animada
+    row.style.setProperty("--dist", `${-dist}px`);
 
-      // mitad = ancho real previo al clonado
-      const half = track.scrollWidth / 2;
-      if (track.scrollLeft >= half) track.scrollLeft = 0;
-    }
-
-    lastTs = ts;
-    requestAnimationFrame(step);
+    // duración = distancia / velocidad
+    const dur = Math.max(dist / pxPerSec, 8); // mínimo para suavidad
+    row.style.setProperty("--dur", `${dur}s`);
   };
 
-  // Pausar al interactuar
-  track.addEventListener("mouseenter", () => (paused = true));
-  track.addEventListener("mouseleave", () => (paused = false));
-  track.addEventListener("touchstart", () => (paused = true), { passive: true });
-  track.addEventListener("touchend",   () => (paused = false));
+  // Necesitamos esperar al frame de layout para medir
+  requestAnimationFrame(calcDistance);
 
-  // API: pausa tras click de flechas
-  track._pauseAfterClick = () => {
-    pauseUntil = performance.now() + pauseAfterClickMs;
+  // Pausa/Resume on hover/touch
+  const section = track.closest("section") || track;
+  section.addEventListener("mouseenter", () => (row.style.animationPlayState = "paused"));
+  section.addEventListener("mouseleave", () => (row.style.animationPlayState = "running"));
+  section.addEventListener("touchstart", () => (row.style.animationPlayState = "paused"), { passive: true });
+  section.addEventListener("touchend",   () => (row.style.animationPlayState = "running"));
+
+  // Recalcular en resize (por cambios responsivos)
+  let resizeT;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeT);
+    resizeT = setTimeout(() => {
+      // Reiniciar la animación para aplicar nueva distancia/duración
+      row.style.animation = "none";
+      calcDistance();
+      // forzar reflujo y reactivar
+      row.offsetHeight; // eslint-disable-line no-unused-expressions
+      row.style.animationName = "marquee-linear";
+    }, 120);
+  });
+
+  // Exponer control de desplazamiento por flechas: variable --shift en .marquee-shift
+  track._marqueeApi = {
+    nudge(dx) {
+      const current = parseFloat(getComputedStyle(shift).getPropertyValue("--shift")) || 0;
+      shift.style.setProperty("--shift", `${current + dx}px`);
+    },
+    pause(ms = 1000) {
+      row.style.animationPlayState = "paused";
+      if (ms) setTimeout(() => (row.style.animationPlayState = "running"), ms);
+    },
   };
-
-  requestAnimationFrame(step);
 }
 
-/* ========== Carrusel (flechas + auto si > 4) ========== */
+/* ========== Carrusel con flechas ==========
+   - Si hay >4 items => modo marquee (auto continuo)
+   - Si hay <=4 => comportamiento scroll normal con flechas
+*/
 function setupCarousel(carouselEl, itemsCount) {
   const track   = carouselEl.querySelector(".track");
   const prevBtn = carouselEl.querySelector(".nav-btn.prev");
@@ -134,30 +194,35 @@ function setupCarousel(carouselEl, itemsCount) {
     return;
   }
 
-  // Paso de flechas (~un viewport)
+  // Paso de flechas (~ casi un viewport)
   const step = () => Math.max(track.clientWidth * 0.9, 280);
-  const go = (dx) => {
-    // pausa breve el auto mientras se usa flecha
-    track._pauseAfterClick?.();
-    // usar smooth SOLO para el click manual
-    track.style.scrollBehavior = "smooth";
-    track.scrollBy({ left: dx, behavior: "smooth" });
-    // y tras un ratito volver a "auto" para el rAF
-    setTimeout(() => { track.style.scrollBehavior = "auto"; }, 400);
-  };
 
-  prevBtn.addEventListener("click", () => go(-step()));
-  nextBtn.addEventListener("click", () => go(step()));
-
-  // Activar auto-scroll continuo si hay más de 4 productos
   if (itemsCount > 4) {
-    startContinuous(track, { pxPerSec: 28, pauseAfterClickMs: 1200 });
+    // === MODO MARQUEE (auto continuo) ===
+    makeMarquee(track, { pxPerSec: 20 }); // ajusta velocidad aquí (px/seg)
+
+    // Flechas: empujan la capa "shift" sin romper la animación
+    prevBtn.addEventListener("click", () => {
+      track._marqueeApi?.pause(800);
+      track._marqueeApi?.nudge(+step());
+    });
+    nextBtn.addEventListener("click", () => {
+      track._marqueeApi?.pause(800);
+      track._marqueeApi?.nudge(-step());
+    });
   } else {
+    // === MODO CLÁSICO (scroll con flechas) ===
     track.classList.add("no-scrollbar");
+    track.style.overflowX = "auto";
+    track.style.scrollBehavior = "smooth";
+
+    const go = (dx) => track.scrollBy({ left: dx, behavior: "smooth" });
+    prevBtn.addEventListener("click", () => go(-step()));
+    nextBtn.addEventListener("click", () => go(+step()));
   }
 }
 
-/* ========== Renderizado por sección ========== */
+/* ========== Render por sección ========== */
 function renderSection(sectionEl, items) {
   const track = sectionEl.querySelector(".track");
   if (!track) return;
@@ -179,3 +244,4 @@ function renderSection(sectionEl, items) {
     console.error(e);
   }
 })();
+
