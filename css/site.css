@@ -164,7 +164,7 @@ a{text-decoration:none;color:inherit}
   min-width:260px;
 }
 .card__img{
-  aspect-ratio:3/4; /* ← proporción vertical para cubrir todo el marco */
+  aspect-ratio:3/4; /* proporción vertical */
   background:#f6f6f6;
   display:flex;align-items:center;justify-content:center;
 }
@@ -256,4 +256,32 @@ a{text-decoration:none;color:inherit}
   .card__btn{ padding: 12px 16px; }
 
   .nav-btn{ top: 46%; }
+}
+
+/* ===== Fondo desenfocado detrás de la imagen ===== */
+.card__img{
+  position: relative;
+  overflow: hidden;
+}
+
+.card__img::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--img);
+  background-size: cover;
+  background-position: center;
+  filter: blur(16px);
+  transform: scale(1.12);
+  opacity: .85;
+  z-index: 0;
+}
+
+.card__img img{
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: transparent;
 }
