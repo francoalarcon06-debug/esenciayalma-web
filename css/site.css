@@ -118,7 +118,7 @@ a{text-decoration:none;color:inherit}
   z-index:0;
 }
 
-/* CARRUSEL (fallback antes de convertir a looper) */
+/* CARRUSEL */
 .carousel{position:relative}
 .track{
   display:grid;
@@ -129,7 +129,7 @@ a{text-decoration:none;color:inherit}
   padding:10px 4px 16px;
 }
 
-/* Modo estático para <= 4 productos */
+/* Modo estático */
 .track.static{
   grid-auto-flow:row;
   grid-auto-columns:unset;
@@ -139,7 +139,7 @@ a{text-decoration:none;color:inherit}
   gap:16px;
 }
 
-/* Posibles clases si alguna vez se usan para looper */
+/* Flechas y looper */
 .is-viewport{
   overflow:hidden !important;
   display:block !important;
@@ -211,9 +211,9 @@ a{text-decoration:none;color:inherit}
 .card__btn{
   display:inline-flex;
   align-items:center;
-  justify-content:flex-start;   /* texto un poco a la derecha */
+  justify-content:center;   /* centra el texto */
   gap:8px;
-  padding-left:20px;            /* empuja todo un poco a la derecha */
+  padding-left:35px;        /* deja el ícono un poco a la izquierda */
 }
 .card__btn .icon-wa{
   width:18px;
@@ -221,3 +221,4 @@ a{text-decoration:none;color:inherit}
   flex-shrink:0;
   fill:#fff;
 }
+
