@@ -1,14 +1,13 @@
-/* Carrusel continuo SIN duplicar items (reciclaje de nodos)
-   - Anima con transform + requestAnimationFrame (suave, sin pegues)
-   - Bucle perfecto: cuando el 1º sale por izquierda, se mueve al final; y viceversa
-   - Flechas empujan la cinta sin romper la animación
-   - No depende del layout previo: crea una fila interna (row) y mueve ahí las cards
+/* Carrusel continuo SIN duplicar tarjetas (reciclaje de nodos)
+   - Siempre en movimiento (rAF + transform)
+   - Bucle perfecto: cuando el 1º sale por la izquierda se mueve al final (y viceversa)
+   - Flechas empujan sin pausar el auto ni provocar “rebotes”
 */
 
 const WA_PHONE = "56912345678";
 const WA_MSG   = encodeURIComponent("Hola, me interesa este producto 👇");
 
-/* ---------- Utils ---------- */
+// -------- Utils --------
 const money = (v) => {
   const n = Number(String(v).replace(/[^\d]/g, "")) || 0;
   return `$${n.toLocaleString("es-CL")}`;
@@ -34,9 +33,7 @@ function card(product) {
       ${product.description ? `<p class="card__sub">${product.description}</p>` : ""}
       ${product.price ? `<div class="card__price">${money(product.price)}</div>` : ""}
       <div class="card__actions">
-        <a class="btn btn-primary card__btn" target="_blank" href="${href}">
-          Consultar por WhatsApp
-        </a>
+        <a class="btn btn-primary card__btn" target="_blank" href="${href}">Consultar por WhatsApp</a>
       </div>
     </div>
   `;
@@ -57,73 +54,61 @@ function waitImages(container) {
   });
 }
 
-/* ---------- Motor del carrusel (reciclaje) ---------- */
-function initLooper(track, { speed = 24 } = {}) {
-  if (track._looperInited) return;
-  track._looperInited = true;
+// ========= Motor de cinta (reciclaje, sin clones) =========
+function initLoop(track, { speed = 24 } = {}) {
+  if (track._loopInited) return;
+  track._loopInited = true;
 
   // 1) Crear una fila interna (row) y mover las cards ahí
-  const originalItems = [...track.children];
-  if (originalItems.length === 0) return;
+  const originals = [...track.children];
+  if (originals.length === 0) return;
 
-  // El track actuará como viewport; la animación se aplica a row
   track.style.overflow = "hidden";
   track.style.position = "relative";
-  track.style.transform = ""; // nos aseguramos de no animar el track
 
   const row = document.createElement("div");
   row.style.display = "flex";
   row.style.alignItems = "stretch";
   row.style.gap = getComputedStyle(track).gap || "16px";
   row.style.willChange = "transform";
-  row.style.transform = "translateX(0px)"; // animaremos esto
-  row.style.transition = "none"; // SIN transiciones, todo por rAF
+  row.style.transform = "translateX(0px)";
+  row.style.transition = "none"; // toda la suavidad la da rAF
 
-  // Mover hijos existentes al row
-  originalItems.forEach(n => row.appendChild(n));
+  originals.forEach(n => row.appendChild(n));
   track.innerHTML = "";
   track.appendChild(row);
 
-  // Medición: ancho de item + gap a la derecha
   const GAP = parseFloat(row.style.gap) || 16;
-  const itemOuterWidth = (el, includeGap = true) => {
-    const w = el.getBoundingClientRect().width;
-    return includeGap ? (w + GAP) : w;
-  };
+  const itemOuterWidth = (el) => el.getBoundingClientRect().width + GAP;
 
-  // Estado de animación
+  // Estado
   let lastTs = 0;
-  let offset = 0; // px de avance acumulado hacia la izquierda (positivos)
+  let offset = 0; // avance acumulado hacia la izquierda (px)
   let rafId  = 0;
 
-  // Render
-  const render = () => {
-    row.style.transform = `translateX(${-offset}px)`;
-  };
+  const render = () => { row.style.transform = `translateX(${-offset}px)`; };
 
-  // Reciclaje hacia delante (cuando el 1º salió entero por la izquierda)
+  // Mueve 1º→final cuando salió por completo (bucle hacia la izq)
   const recycleForward = () => {
     let guard = 0;
     while (row.children.length && guard++ < 100) {
       const first = row.children[0];
-      const need  = itemOuterWidth(first); // ancho completo + gap
+      const need  = itemOuterWidth(first);
       if (offset >= need) {
-        offset -= need;        // compensamos lo que “salió”
-        row.appendChild(first); // movemos al final
-      } else {
-        break;
-      }
+        offset -= need;        // compensar lo que “se fue”
+        row.appendChild(first); // enviar al final
+      } else break;
     }
   };
 
-  // Reciclaje hacia atrás (cuando offset < 0 por empuje de flecha hacia derecha)
+  // Mueve último→inicio cuando empujamos hacia la dcha (offset < 0)
   const recycleBackward = () => {
     let guard = 0;
     while (offset < 0 && row.children.length && guard++ < 100) {
       const last = row.children[row.children.length - 1];
-      const need = itemOuterWidth(last);  // ancho + gap
-      row.insertBefore(last, row.children[0]); // lo traemos delante
-      offset += need;                     // compensamos para mantener continuidad
+      const need = itemOuterWidth(last);
+      row.insertBefore(last, row.children[0]); // traer delante
+      offset += need;                          // compensar
     }
   };
 
@@ -132,10 +117,8 @@ function initLooper(track, { speed = 24 } = {}) {
     const dt = (ts - lastTs) / 1000;
     lastTs = ts;
 
-    // Avance continuo SIEMPRE
-    offset += speed * dt;
-
-    recycleForward();   // mueve nodos si cruzamos un umbral
+    offset += speed * dt;   // SIEMPRE avanza
+    recycleForward();
     render();
     rafId = requestAnimationFrame(tick);
   };
@@ -143,69 +126,56 @@ function initLooper(track, { speed = 24 } = {}) {
   render();
   rafId = requestAnimationFrame(tick);
 
-  // API pública para flechas
+  // API para flechas (empujan sin pausar ni provocar “rebote”)
   track._loopAPI = {
     nudge(dx) {
-      // dx positivo = empujar la cinta visualmente a la derecha -> offset disminuye
-      // dx negativo = empujar a la izquierda -> offset aumenta
+      // dx positivo = ver todo desplazarse a la derecha → offset disminuye
       offset -= dx;
-      recycleBackward(); // si offset < 0, traemos items del final al principio
-      recycleForward();  // por si el empuje cruzó varios elementos hacia la izquierda
-      render();
-    },
-    setSpeed(s) { speed = s; }
-  };
-
-  // Re-medir y corregir en Resize (layouts responsivos)
-  let rto;
-  window.addEventListener("resize", () => {
-    clearTimeout(rto);
-    rto = setTimeout(() => {
-      // No necesitamos caches de anchos; reciclamos con medidas en vivo
-      // Forzamos un render para evitar micro desalineaciones perceptibles
       recycleBackward();
       recycleForward();
       render();
-    }, 120);
+    },
+    setSpeed(s) { speed = s; },
+    remeasure() { recycleBackward(); recycleForward(); render(); }
+  };
+
+  // Reajuste en resize
+  let t;
+  window.addEventListener("resize", () => {
+    clearTimeout(t);
+    t = setTimeout(() => track._loopAPI.remeasure(), 120);
   });
 }
 
-/* ---------- Setup por sección ---------- */
+// ========= Setup por sección =========
 async function setupCarouselSection(sectionEl, items) {
   const carousel = sectionEl.querySelector(".carousel");
   const track    = carousel.querySelector(".track");
   const prevBtn  = carousel.querySelector(".nav-btn.prev");
   const nextBtn  = carousel.querySelector(".nav-btn.next");
 
-  // Rellenar tarjetas
   track.innerHTML = "";
   items.forEach(p => track.appendChild(card(p)));
 
-  // Sin items → ocultar flechas
   if (items.length === 0) {
     prevBtn.style.display = "none";
     nextBtn.style.display = "none";
     return;
   }
-  // 1 item → flechas no aportan
   if (items.length === 1) {
     prevBtn.style.display = "none";
     nextBtn.style.display = "none";
   }
 
-  // Espera a que las imágenes tengan tamaño para medir bien
   await waitImages(track);
+  initLoop(track, { speed: 24 });
 
-  // Arrancar carrusel siempre
-  initLooper(track, { speed: 24 });
-
-  // Flechas: empujan sin romper el bucle (no hay pausa)
   const step = () => Math.max(track.clientWidth * 0.9, 280);
-  prevBtn.addEventListener("click", () => track._loopAPI?.nudge(+step())); // derecha
-  nextBtn.addEventListener("click", () => track._loopAPI?.nudge(-step())); // izquierda
+  prevBtn.addEventListener("click", () => track._loopAPI?.nudge(+step()));
+  nextBtn.addEventListener("click", () => track._loopAPI?.nudge(-step()));
 }
 
-/* ---------- Bootstrap ---------- */
+// -------- Arranque --------
 (async () => {
   try {
     const data = await loadData();
