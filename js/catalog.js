@@ -1,42 +1,47 @@
-// js/catalog.js  — versión con rotación continua infinita
+/* js/catalog.js — Carrusel auto (fluido, infinito) + flechas
+   - Auto-rotación continua (sin pausas)
+   - Cuando llega al “final” vuelve al primero sin salto (contenido clonado)
+   - Flechas siguen funcionando (pausan y luego reanudan)
+   - Sin barra de desplazamiento visible
+*/
 
-// — Configuración de WhatsApp —
+// -------- Config WhatsApp ----------
 const WA_PHONE = "56912345678";
-const WA_MSG = encodeURIComponent("Hola, me interesa este producto 👇");
+const WA_MSG   = encodeURIComponent("Hola, me interesa este producto 👇");
 
-// — Función para formatear precios —
+// -------- Utilidades ---------------
 const money = (v) => {
   const n = Number(String(v).replace(/[^\d]/g, "")) || 0;
   return `$${n.toLocaleString("es-CL")}`;
 };
 
-// — Ocultar scrollbars globalmente —
+// Ocultar scrollbars globalmente
 (() => {
   const css = `
-    .no-scrollbar { scrollbar-width: none; }
-    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar{ scrollbar-width: none; -ms-overflow-style: none; }
+    .no-scrollbar::-webkit-scrollbar{ display: none; width:0; height:0; }
   `;
   const s = document.createElement("style");
   s.textContent = css;
   document.head.appendChild(s);
 })();
 
-// — Cargar datos —
+// Cargar datos del catálogo
 async function loadData() {
   const res = await fetch("data/products.json", { cache: "no-store" });
   if (!res.ok) throw new Error("No pude cargar data/products.json");
   return res.json();
 }
 
-// — Crear una tarjeta de producto —
+// Tarjeta de producto
 function card(product) {
-  const a = document.createElement("article");
-  a.className = "card";
-  a.setAttribute("role", "listitem");
+  const el = document.createElement("article");
+  el.className = "card";
+  el.setAttribute("role", "listitem");
 
   const href = `https://wa.me/${WA_PHONE}?text=${WA_MSG}%0A${encodeURIComponent(product.name)}`;
 
-  a.innerHTML = `
+  el.innerHTML = `
     <div class="card__img">
       <img src="${product.image}" alt="${product.name}" loading="lazy">
     </div>
@@ -51,93 +56,147 @@ function card(product) {
       </div>
     </div>
   `;
-  return a;
+  return el;
 }
 
-// — Configurar carrusel —
-function setupCarousel(carouselEl, { itemsCount }) {
-  const track   = carouselEl.querySelector(".track");
-  const prevBtn = carouselEl.querySelector(".prev");
-  const nextBtn = carouselEl.querySelector(".next");
+// -------- Carrusel: núcleo ---------
 
-  // Paso (usado por las flechas)
-  const step = () => Math.max(track.clientWidth * 0.9, 280);
+/**
+ * Inicia auto-scroll suave e infinito.
+ * Si el contenido es más largo que el contenedor, duplica los ítems
+ * y anima con requestAnimationFrame a velocidad constante.
+ */
+function startInfiniteAutoScroll(scroller, opts = {}) {
+  const {
+    pxPerSec = 24,   // velocidad (px/seg) — sube o baja si quieres
+    pauseMsAfterClick = 1200, // pausa breve tras usar flechas
+  } = opts;
 
-  // Si hay un solo producto: centramos
+  // No hay nada que desplazar
+  if (scroller.scrollWidth <= scroller.clientWidth + 1) return;
+
+  // Evitar dobles inicios
+  if (scroller._autoStarted) return;
+  scroller._autoStarted = true;
+
+  // Duplicar contenido SOLO una vez para que el bucle sea perfecto
+  if (!scroller.dataset.cloned) {
+    const children = Array.from(scroller.children).map((n) => n.cloneNode(true));
+    scroller.append(...children);
+    scroller.dataset.cloned = "1";
+  }
+
+  scroller.classList.add("no-scrollbar");
+
+  let raf = null;
+  let lastTs = 0;
+  let paused = false;
+  let clickPauseUntil = 0;
+
+  const tick = (ts) => {
+    if (!lastTs) lastTs = ts;
+
+    // pausa por interacción manual (flechas/drag)
+    if (clickPauseUntil > ts) {
+      raf = requestAnimationFrame(tick);
+      return;
+    }
+
+    if (!paused) {
+      const dt = (ts - lastTs) / 1000; // segundos
+      const deltaPx = pxPerSec * dt;
+      scroller.scrollLeft += deltaPx;
+
+      // Mitad = largo real (porque duplicamos)
+      const half = scroller.scrollWidth / 2;
+      if (scroller.scrollLeft >= half) scroller.scrollLeft = 0;
+    }
+
+    lastTs = ts;
+    raf = requestAnimationFrame(tick);
+  };
+
+  // Iniciar animación
+  raf = requestAnimationFrame(tick);
+
+  // Pausas por hover/touch
+  scroller.addEventListener("mouseenter", () => (paused = true));
+  scroller.addEventListener("mouseleave", () => (paused = false));
+  scroller.addEventListener("touchstart", () => (paused = true), { passive: true });
+  scroller.addEventListener("touchend",   () => (paused = false));
+
+  // API para pausar brevemente tras flechas
+  scroller._pauseAfterClick = () => {
+    clickPauseUntil = performance.now() + pauseMsAfterClick;
+  };
+
+  // Recalcular al redimensionar
+  let resizeTimer = null;
+  const onResize = () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      // si el ancho cambió mucho, reiniciamos a 0 para evitar “micro saltos”
+      scroller.scrollLeft = scroller.scrollLeft % (scroller.scrollWidth / 2);
+    }, 120);
+  };
+  window.addEventListener("resize", onResize);
+}
+
+// Configurar flechas + auto-scroll
+function setupCarousel(carouselEl, itemsCount) {
+  const scroller = carouselEl.querySelector(".track");
+  const prevBtn  = carouselEl.querySelector(".prev");
+  const nextBtn  = carouselEl.querySelector(".next");
+
+  // Si hay 1 producto: centrar y quitar flechas
   if (itemsCount <= 1) {
     prevBtn.style.display = "none";
     nextBtn.style.display = "none";
-    track.style.justifyContent = "center";
-    track.style.gridAutoColumns = "minmax(260px, 420px)";
+    scroller.style.justifyContent   = "center";
+    scroller.style.gridAutoColumns  = "minmax(260px, 420px)";
+    scroller.classList.add("no-scrollbar");
     return;
   }
 
-  // — Activar auto-scroll solo si hay más de 4 productos —
-  const LOOP = itemsCount > 4;
-  const speed = 0.25; // velocidad del desplazamiento (px por frame aprox)
-  let rafId = null;
-  let paused = false;
+  // Paso de las flechas ~ casi un viewport de carrusel
+  const step = () => Math.max(scroller.clientWidth * 0.9, 280);
 
-  // Duplicamos el contenido del carrusel para permitir un bucle sin saltos
-  if (LOOP && !track.dataset.loopCloned) {
-    const clones = Array.from(track.children).map((c) => c.cloneNode(true));
-    track.append(...clones);
-    track.dataset.loopCloned = "1";
-    track.classList.add("no-scrollbar");
-  }
-
-  // — Movimiento continuo —
-  const loopScroll = () => {
-    if (!paused && LOOP) {
-      track.scrollLeft += speed;
-      const max = track.scrollWidth / 2;
-      if (track.scrollLeft >= max) {
-        track.scrollLeft = 0; // reinicio perfecto, sin salto
-      }
-    }
-    rafId = requestAnimationFrame(loopScroll);
+  const go = (dx) => {
+    scroller._pauseAfterClick?.();
+    scroller.scrollBy({ left: dx, behavior: "smooth" });
   };
-  loopScroll();
 
-  // — Controles manuales —
-  prevBtn.addEventListener("click", () => {
-    paused = true;
-    track.scrollBy({ left: -step(), behavior: "smooth" });
-    setTimeout(() => (paused = false), 1200);
-  });
+  prevBtn.addEventListener("click", () => go(-step()));
+  nextBtn.addEventListener("click", () => go(step()));
 
-  nextBtn.addEventListener("click", () => {
-    paused = true;
-    track.scrollBy({ left: step(), behavior: "smooth" });
-    setTimeout(() => (paused = false), 1200);
-  });
-
-  // — Pausar mientras el usuario interactúa —
-  track.addEventListener("mouseenter", () => (paused = true));
-  track.addEventListener("mouseleave", () => (paused = false));
-  track.addEventListener("touchstart", () => (paused = true), { passive: true });
-  track.addEventListener("touchend", () => (paused = false));
+  // Auto-scroll infinito si hay más de 4 (tu requisito)
+  if (itemsCount > 4) {
+    // velocidad ajustable: 20–30 px/s suele verse muy bien
+    startInfiniteAutoScroll(scroller, { pxPerSec: 26, pauseMsAfterClick: 1300 });
+  } else {
+    // sin auto-scroll: igualmente ocultamos la barra
+    scroller.classList.add("no-scrollbar");
+  }
 }
 
-// — Renderizar cada sección —
+// Renderizar una sección (mujer/hombre/…)
 function renderSection(sectionEl, items) {
   const track = sectionEl.querySelector(".track");
   track.innerHTML = "";
   items.forEach((p) => track.appendChild(card(p)));
-  setupCarousel(sectionEl.querySelector(".carousel"), { itemsCount: items.length });
+  setupCarousel(sectionEl.querySelector(".carousel"), items.length);
 }
 
-// — Iniciar todo —
+// -------- Arranque ----------
 (async () => {
   try {
     const data = await loadData();
     document.querySelectorAll(".catalog-section").forEach((sec) => {
-      const key = sec.getAttribute("data-category");
+      const key  = sec.getAttribute("data-category"); // women, men, black, red, lavit
       const list = Array.isArray(data[key]) ? data[key] : [];
       renderSection(sec, list);
     });
-  } catch (err) {
-    console.error(err);
+  } catch (e) {
+    console.error(e);
   }
 })();
-
