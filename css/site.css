@@ -45,6 +45,8 @@ a{text-decoration:none;color:inherit}
     radial-gradient(ellipse at 20% 0%,#fde8f1 0%,transparent 40%),
     radial-gradient(ellipse at 80% 10%,#fdeef6 0%,transparent 40%),
     linear-gradient(#fff,#fff);
+  /* Necesario para el efecto de fade del hero (no altera el layout) */
+  overflow:hidden;
 }
 .badge{
   display:inline-flex;align-items:center;gap:10px;
