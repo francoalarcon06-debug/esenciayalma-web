@@ -49,6 +49,30 @@
       "description": "Aroma intenso y masculino.",
       "price": "16000",
       "image": "assets/men/Perfume men prueba.png"
+    },
+    {
+      "name": "Perfume de Hombre 100ml – Classic",
+      "description": "Aroma intenso y masculino.",
+      "price": "16000",
+      "image": "assets/men/Perfume men prueba.png"
+    },
+    {
+      "name": "Perfume de Hombre 100ml – Intense",
+      "description": "Aroma intenso y masculino.",
+      "price": "16000",
+      "image": "assets/men/Perfume men prueba.png"
+    },
+    {
+      "name": "Perfume de Hombre 100ml – Fresh",
+      "description": "Aroma intenso y masculino.",
+      "price": "16000",
+      "image": "assets/men/Perfume men prueba.png"
+    },
+    {
+      "name": "Perfume de Hombre 100ml – Night",
+      "description": "Aroma intenso y masculino.",
+      "price": "16000",
+      "image": "assets/men/Perfume men prueba.png"
     }
   ],
   "black": [
