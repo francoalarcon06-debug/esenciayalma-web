@@ -185,5 +185,37 @@
 
   <!-- Script principal -->
   <script src="js/catalog.js"></script>
+
+  <!-- Forzar scroll arriba en recarga y al volver a #inicio -->
+  <script>
+    (function () {
+      // Evita que el navegador recuerde la posición de scroll tras recargar
+      try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (e) {}
+
+      // Al cargar la página, siempre ir al tope
+      window.addEventListener('load', function () {
+        window.scrollTo(0, 0);
+      });
+
+      // Al hacer clic en el logo o en enlaces que apunten a #inicio, forzar scroll arriba
+      function goTop(e) {
+        const href = (e.currentTarget.getAttribute('href') || '').trim();
+        if (href === '#inicio' || href.endsWith('#inicio')) {
+          e.preventDefault();
+          window.scrollTo(0, 0);
+          if (location.hash !== '#inicio') {
+            history.replaceState(null, '', '#inicio');
+          }
+        }
+      }
+
+      const brand = document.querySelector('a.brand');
+      if (brand) brand.addEventListener('click', goTop);
+
+      document.querySelectorAll('a[href="#inicio"]').forEach(a => {
+        a.addEventListener('click', goTop);
+      });
+    })();
+  </script>
 </body>
 </html>
