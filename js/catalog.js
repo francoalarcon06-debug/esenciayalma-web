@@ -1,21 +1,21 @@
-/* js/catalog.js — Carrusel auto continuo + bucle + flechas (versión simplificada)
-   - Mueve directamente el scroll de .track
-   - Animación suave y continua con requestAnimationFrame
-   - Flechas funcionales
-   - Oculta barras de scroll
+/* js/catalog.js — Auto carrusel continuo garantizado (sobre .track)
+   - scrollLeft en .track (no en el contenedor)
+   - fuerza overflow-x:auto y quita smooth de CSS durante la animación
+   - clona items para bucle perfecto
+   - flechas funcionan, con pausa breve y reanudación
 */
 
-// -------- Config WhatsApp ----------
+// -------- WhatsApp ----------
 const WA_PHONE = "56912345678";
 const WA_MSG   = encodeURIComponent("Hola, me interesa este producto 👇");
 
-// -------- Utilidades ---------------
+// -------- Utilidades ----------
 const money = (v) => {
   const n = Number(String(v).replace(/[^\d]/g, "")) || 0;
   return `$${n.toLocaleString("es-CL")}`;
 };
 
-// Ocultar scrollbars (Firefox/Chrome/Edge/Safari)
+// Ocultar scrollbars
 (() => {
   const css = `
     .no-scrollbar{ scrollbar-width:none; -ms-overflow-style:none; }
@@ -26,21 +26,19 @@ const money = (v) => {
   document.head.appendChild(s);
 })();
 
-// Cargar datos del catálogo
+// Cargar datos
 async function loadData() {
   const res = await fetch("data/products.json", { cache: "no-store" });
   if (!res.ok) throw new Error("No pude cargar data/products.json");
   return res.json();
 }
 
-// Tarjeta de producto
+// Tarjeta
 function card(product) {
   const el = document.createElement("article");
   el.className = "card";
   el.setAttribute("role", "listitem");
-
   const href = `https://wa.me/${WA_PHONE}?text=${WA_MSG}%0A${encodeURIComponent(product.name)}`;
-
   el.innerHTML = `
     <div class="card__img">
       <img src="${product.image}" alt="${product.name}" loading="lazy">
@@ -59,80 +57,74 @@ function card(product) {
   return el;
 }
 
-// El que realmente scrollea es .track (simplificado)
-function getScroller(track) {
-  return track;
-}
+/* ========== Auto-scroll continuo en .track ========== */
+function startContinuous(track, { pxPerSec = 28, pauseAfterClickMs = 1200 } = {}) {
+  // Asegurar que .track sea scrolleable y sin smooth (el smooth frena el rAF)
+  track.style.overflowX = "auto";
+  track.style.scrollBehavior = "auto";
+  track.classList.add("no-scrollbar");
 
-/** Auto-scroll infinito suave con requestAnimationFrame. */
-function startInfiniteAutoScroll(track, opts = {}) {
-  const {
-    pxPerSec = 20,            // velocidad continua (px/seg)
-    pauseMsAfterClick = 1200, // pausa breve tras flechas
-  } = opts;
-
+  // Sin overflow: nada que animar
   if (track.scrollWidth <= track.clientWidth + 1) return;
   if (track._autoStarted) return;
   track._autoStarted = true;
 
-  // Duplica el contenido para bucle infinito
+  // Clonar hijos para bucle perfecto
   if (!track.dataset.cloned) {
-    const clones = Array.from(track.children).map((n) => n.cloneNode(true));
+    const clones = Array.from(track.children).map(n => n.cloneNode(true));
     track.append(...clones);
     track.dataset.cloned = "1";
   }
 
-  track.classList.add("no-scrollbar");
-
-  let raf = null;
   let lastTs = 0;
   let paused = false;
-  let clickPauseUntil = 0;
+  let pauseUntil = 0;
 
-  const tick = (ts) => {
+  const step = (ts) => {
     if (!lastTs) lastTs = ts;
 
-    // Pausa tras click en flechas
-    if (clickPauseUntil > ts) {
-      raf = requestAnimationFrame(tick);
+    // Pausa breve tras flechas
+    if (pauseUntil > ts) {
+      requestAnimationFrame(step);
       return;
     }
 
     if (!paused) {
       const dt = (ts - lastTs) / 1000;
-      const delta = pxPerSec * dt;
-      track.scrollLeft += delta;
+      // mover en píxeles por segundo
+      track.scrollLeft += pxPerSec * dt;
 
+      // mitad = ancho real previo al clonado
       const half = track.scrollWidth / 2;
       if (track.scrollLeft >= half) track.scrollLeft = 0;
     }
 
     lastTs = ts;
-    raf = requestAnimationFrame(tick);
+    requestAnimationFrame(step);
   };
 
-  raf = requestAnimationFrame(tick);
-
-  // Pausa por hover o touch
+  // Pausar al interactuar
   track.addEventListener("mouseenter", () => (paused = true));
   track.addEventListener("mouseleave", () => (paused = false));
   track.addEventListener("touchstart", () => (paused = true), { passive: true });
-  track.addEventListener("touchend", () => (paused = false));
+  track.addEventListener("touchend",   () => (paused = false));
 
-  // API: pausa temporal tras click
+  // API: pausa tras click de flechas
   track._pauseAfterClick = () => {
-    clickPauseUntil = performance.now() + pauseMsAfterClick;
+    pauseUntil = performance.now() + pauseAfterClickMs;
   };
+
+  requestAnimationFrame(step);
 }
 
-/** Configura flechas + auto-scroll si aplica. */
+/* ========== Carrusel (flechas + auto si > 4) ========== */
 function setupCarousel(carouselEl, itemsCount) {
   const track   = carouselEl.querySelector(".track");
-  const prevBtn = carouselEl.querySelector(".prev");
-  const nextBtn = carouselEl.querySelector(".next");
-
+  const prevBtn = carouselEl.querySelector(".nav-btn.prev");
+  const nextBtn = carouselEl.querySelector(".nav-btn.next");
   if (!track) return;
 
+  // Un solo producto: centrar y ocultar flechas
   if (itemsCount <= 1) {
     prevBtn.style.display = "none";
     nextBtn.style.display = "none";
@@ -142,28 +134,30 @@ function setupCarousel(carouselEl, itemsCount) {
     return;
   }
 
+  // Paso de flechas (~un viewport)
   const step = () => Math.max(track.clientWidth * 0.9, 280);
-
   const go = (dx) => {
+    // pausa breve el auto mientras se usa flecha
     track._pauseAfterClick?.();
+    // usar smooth SOLO para el click manual
+    track.style.scrollBehavior = "smooth";
     track.scrollBy({ left: dx, behavior: "smooth" });
+    // y tras un ratito volver a "auto" para el rAF
+    setTimeout(() => { track.style.scrollBehavior = "auto"; }, 400);
   };
 
   prevBtn.addEventListener("click", () => go(-step()));
   nextBtn.addEventListener("click", () => go(step()));
 
-  // Auto-scroll continuo si hay más de 4 productos
+  // Activar auto-scroll continuo si hay más de 4 productos
   if (itemsCount > 4) {
-    startInfiniteAutoScroll(track, {
-      pxPerSec: 20,           // velocidad (ajustá aquí si querés)
-      pauseMsAfterClick: 1300
-    });
+    startContinuous(track, { pxPerSec: 28, pauseAfterClickMs: 1200 });
   } else {
     track.classList.add("no-scrollbar");
   }
 }
 
-// Renderizar una sección
+/* ========== Renderizado por sección ========== */
 function renderSection(sectionEl, items) {
   const track = sectionEl.querySelector(".track");
   if (!track) return;
@@ -172,7 +166,7 @@ function renderSection(sectionEl, items) {
   setupCarousel(sectionEl.querySelector(".carousel"), items.length);
 }
 
-// -------- Arranque ----------
+/* ========== Bootstrap ========== */
 (async () => {
   try {
     const data = await loadData();
