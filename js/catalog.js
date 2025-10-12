@@ -1,7 +1,7 @@
 /* Carrusel continuo con transform + rAF (siempre en movimiento)
-   - Bucle perfecto: [originales][clones] + módulo del ancho del bloque
-   - Flechas empujan (manualOffset) sin pausar el auto
-   - SIN pausas por hover/touch (siempre se mueve)
+   - Bucle real SIN duplicar DOM: reciclamos items (primero→final / último→inicio)
+   - Flechas empujan el offset sin pausar el auto
+   - Sin pausas por hover/touch
 */
 
 const WA_PHONE = "56912345678";
@@ -51,95 +51,111 @@ function waitImages(container) {
     let left = pend.length;
     const done = () => { if (--left === 0) resolve(); };
     pend.forEach(i => {
-      i.addEventListener("load", done, { once:true });
+      i.addEventListener("load", done,  { once:true });
       i.addEventListener("error", done, { once:true });
     });
   });
 }
 
-// ========= Motor de cinta (transform) =========
+// ========= Motor de cinta (transform + reciclaje) =========
 function initLoop(track, { speed = 24 } = {}) {
   if (track._loopInited) return;
   track._loopInited = true;
 
-  // Guardamos los nodos originales (cards)
+  // Tomamos los hijos actuales (tarjetas)
   const originals = [...track.children];
   if (originals.length === 0) return;
 
-  // Creamos una fila interna (row) y pasamos los hijos
+  // Contenedor interno en fila
   const row = document.createElement("div");
-  row.style.display = "flex";
-  row.style.gap = getComputedStyle(track).gap || "16px";
+  const gapCss = getComputedStyle(track).gap || "16px";
+  const GAP = parseFloat(gapCss) || 16;
+
+  row.style.display    = "flex";
+  row.style.gap        = `${GAP}px`;
   row.style.willChange = "transform";
-  row.style.transform = "translateX(0px)";
-  // pequeña transición para que el empuje de flechas se sienta agradable
-  row.style.transition = "transform .14s ease-out";
+  row.style.transform  = "translateX(0px)";
+  row.style.transition = "none";            // sin transición: rAF controla todo
 
   // El track actúa como viewport
   track.style.overflow = "hidden";
   track.style.position = "relative";
 
   originals.forEach(n => row.appendChild(n));
-  // Clonamos el mismo bloque para bucle perfecto
-  originals.forEach(n => row.appendChild(n.cloneNode(true)));
-
   track.appendChild(row);
 
-  // Medir ancho del primer bloque (originals)
-  const gap = parseFloat(row.style.gap) || 16;
-  const measureBlockWidth = () => {
-    let w = 0;
-    for (let i = 0; i < originals.length; i++) {
-      const r = row.children[i].getBoundingClientRect();
-      w += r.width;
-    }
-    w += gap * Math.max(originals.length - 1, 0);
-    track._blockW = Math.max(w, 1);
+  // Helpers para medir spans (ancho del primer/último ítem + gap a su vecino)
+  const spanFirst = () => {
+    if (row.children.length === 0) return 1;
+    const first = row.children[0];
+    const w = first.getBoundingClientRect().width;
+    // gap solo aplica entre items; si hay 1, gap=0
+    return w + (row.children.length > 1 ? GAP : 0);
   };
-  measureBlockWidth();
+  const spanLast = () => {
+    if (row.children.length === 0) return 1;
+    const last = row.children[row.children.length - 1];
+    const w = last.getBoundingClientRect().width;
+    return w + (row.children.length > 1 ? GAP : 0);
+  };
 
-  // Estado de animación
-  let last = 0;
-  let autoOffset = 0;    // avance automático acumulado
-  let manualOffset = 0;  // empuje manual (flechas)
-  let rafId = 0;
+  // Reciclaje
+  const moveFirstToEnd = () => {
+    const first = row.children[0];
+    if (first) row.appendChild(first);
+  };
+  const moveLastToStart = () => {
+    const last = row.children[row.children.length - 1];
+    if (last) row.insertBefore(last, row.firstChild);
+  };
 
-  const mod = (x, m) => ((x % m) + m) % m; // módulo positivo
-  const render = () => {
-    const x = -mod(autoOffset + manualOffset, track._blockW);
-    row.style.transform = `translateX(${x}px)`;
+  // Estado
+  let lastTs = 0;
+  let offset = 0;  // avance acumulado en px (siempre >=0 y < span del primero tras reciclar)
+
+  const recycleAndRender = () => {
+    // Hacia adelante
+    let s;
+    while (offset >= (s = spanFirst())) {
+      offset -= s;
+      moveFirstToEnd();
+    }
+    // Hacia atrás (por si flechas suman negativo)
+    while (offset < 0) {
+      const back = spanLast();
+      moveLastToStart();
+      offset += back;
+    }
+    row.style.transform = `translateX(${-offset}px)`;
   };
 
   const tick = (ts) => {
-    if (!last) last = ts;
-    const dt = (ts - last) / 1000;
-    last = ts;
+    if (!lastTs) lastTs = ts;
+    const dt = (ts - lastTs) / 1000;
+    lastTs = ts;
 
-    // SIEMPRE AVANZA (no hay pausa por hover/touch)
-    autoOffset += speed * dt;
-    render();
+    offset += speed * dt;          // avance continuo
+    recycleAndRender();
 
-    rafId = requestAnimationFrame(tick);
+    requestAnimationFrame(tick);
   };
 
-  render();
-  rafId = requestAnimationFrame(tick);
+  // primer render
+  recycleAndRender();
+  requestAnimationFrame(tick);
 
-  // API pública para flechas y control externo
+  // API pública para flechas
   track._loopAPI = {
-    nudge(dx) {
-      manualOffset += dx;
-      render(); // no pausamos el auto; sigue corriendo
-    },
+    nudge(dx) { offset += (dx * -1); recycleAndRender(); }, // dx>0 = mover a la derecha visual
     setSpeed(s) { speed = s; },
-    remesure() { measureBlockWidth(); render(); }
+    remeasure() { recycleAndRender(); } // por si necesitas forzar un ajuste
   };
 
-  // Recalcular al cambiar el tamaño
-  let t;
+  // Ajuste ante resize
+  let rt;
   window.addEventListener("resize", () => {
-    clearTimeout(t);
-    t = setTimeout(() => track._loopAPI.remesure(), 120);
+    clearTimeout(rt);
+    rt = setTimeout(() => track._loopAPI.remeasure(), 120);
   });
 }
 
@@ -154,27 +170,23 @@ async function setupCarouselSection(sectionEl, items) {
   track.innerHTML = "";
   items.forEach(p => track.appendChild(card(p)));
 
-  // Siempre auto (aunque haya pocos); si hay 0, no hacemos nada
   if (items.length === 0) {
     prevBtn.style.display = "none";
     nextBtn.style.display = "none";
     return;
   }
-
-  // Si hay 1, ocultar flechas pero el loop igual corre (con el clon)
-  if (items.length === 1) {
+  if (items.length === 1) { // seguirá en loop, pero ocultamos flechas
     prevBtn.style.display = "none";
     nextBtn.style.display = "none";
   }
 
-  // Espera a que imágenes tengan tamaño y arranca
   await waitImages(track);
   initLoop(track, { speed: 24 });
 
-  // Flechas: empujan la cinta (sin pausar la animación)
+  // Flechas empujan offset (no pausan el auto)
   const step = () => Math.max(track.clientWidth * 0.9, 280);
-  prevBtn.addEventListener("click", () => track._loopAPI?.nudge(+step()));
-  nextBtn.addEventListener("click", () => track._loopAPI?.nudge(-step()));
+  prevBtn.addEventListener("click", () => track._loopAPI?.nudge(+step())); // ver a la izquierda
+  nextBtn.addEventListener("click", () => track._loopAPI?.nudge(-step())); // ver a la derecha
 }
 
 // -------- Arranque --------
@@ -191,3 +203,4 @@ async function setupCarouselSection(sectionEl, items) {
     console.error(e);
   }
 })();
+
