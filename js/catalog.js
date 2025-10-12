@@ -1,7 +1,5 @@
 /* Carrusel FLEX con auto-rotación en bucle + flechas
-   - Auto cuando hay >4 productos (duplica y hace loop)
-   - Flechas desplazan y pausan brevemente el auto
-   - Pausa en hover/touch
+   Arranca el auto SOLO cuando hay overflow real (tras cargar imágenes)
 */
 
 /* Config WhatsApp */
@@ -47,15 +45,12 @@ function card(product) {
   return el;
 }
 
-/* Auto-scroll infinito con loop */
-function startAuto(scroller, { pxPerSec = 28, pauseAfterClick = 1200 } = {}) {
+/* -------- Auto-scroll infinito -------- */
+function reallyStartAuto(scroller, { pxPerSec = 28, pauseAfterClick = 1200 } = {}) {
   if (scroller._autoStarted) return;
   scroller._autoStarted = true;
 
-  // Sólo auto si de verdad hay overflow
-  if (scroller.scrollWidth <= scroller.clientWidth + 1) return;
-
-  // Duplicar contenido para que el loop sea perfecto
+  // Duplicar contenido para bucle perfecto una sola vez
   if (!scroller._cloned) {
     const originals = Array.from(scroller.children);
     scroller.append(...originals.map(n => n.cloneNode(true)));
@@ -71,7 +66,7 @@ function startAuto(scroller, { pxPerSec = 28, pauseAfterClick = 1200 } = {}) {
   const tick = (ts) => {
     if (!last) last = ts;
 
-    // pausa por clic en flechas
+    // pausa por click en flechas
     if (pauseUntil > ts) {
       rafId = requestAnimationFrame(tick);
       return;
@@ -91,10 +86,9 @@ function startAuto(scroller, { pxPerSec = 28, pauseAfterClick = 1200 } = {}) {
     rafId = requestAnimationFrame(tick);
   };
 
-  // Iniciar
   rafId = requestAnimationFrame(tick);
 
-  // Exponer API para flechas
+  // API para flechas
   scroller._pauseAfterClick = () => {
     pauseUntil = performance.now() + pauseAfterClick;
   };
@@ -106,26 +100,49 @@ function startAuto(scroller, { pxPerSec = 28, pauseAfterClick = 1200 } = {}) {
   scroller.addEventListener("touchstart", () => setPaused(true), { passive: true });
   scroller.addEventListener("touchend",   () => setPaused(false));
 
-  // Ajuste al redimensionar (recalcular mitad)
+  // Recalcular mitad si cambia el layout
   let t;
-  window.addEventListener("resize", () => {
+  const onResize = () => {
     clearTimeout(t);
     t = setTimeout(() => {
       scroller._halfWidth = scroller.scrollWidth / 2;
-      // normalizar posición dentro de la mitad
       scroller.scrollLeft = scroller.scrollLeft % scroller._halfWidth;
     }, 120);
-  });
+  };
+  window.addEventListener("resize", onResize);
 }
 
-/* Flechas + modo auto si aplica */
+/* Espera a que haya overflow real y entonces inicia el auto */
+function ensureAutoWhenOverflow(scroller, opts) {
+  const tryStart = () => {
+    const hasOverflow = scroller.scrollWidth > scroller.clientWidth + 1;
+    if (hasOverflow) {
+      reallyStartAuto(scroller, opts);
+      if (ro) ro.disconnect();
+      imgs.forEach(img => img.removeEventListener("load", tryStart));
+    }
+  };
+
+  // 1) Reintento por si ya hay overflow (por si no hay imágenes o ya están cacheadas)
+  tryStart();
+
+  // 2) Observa cambios de tamaño del contenido
+  const ro = new ResizeObserver(() => tryStart());
+  ro.observe(scroller);
+
+  // 3) Cuando cargan imágenes (lazy), vuelve a intentar
+  const imgs = Array.from(scroller.querySelectorAll("img"));
+  imgs.forEach(img => img.addEventListener("load", tryStart, { passive: true }));
+}
+
+/* Flechas + arranque auto cuando aplique */
 function setupCarousel(carouselEl, itemsCount) {
   const track   = carouselEl.querySelector(".track");
   const prevBtn = carouselEl.querySelector(".nav-btn.prev");
   const nextBtn = carouselEl.querySelector(".nav-btn.next");
   if (!track) return;
 
-  // Un solo producto: centrar y ocultar flechas
+  // Un solo producto: ocultar flechas
   if (itemsCount <= 1) {
     prevBtn.style.display = "none";
     nextBtn.style.display = "none";
@@ -134,14 +151,13 @@ function setupCarousel(carouselEl, itemsCount) {
     return;
   }
 
-  // Paso de flecha: casi un viewport
+  // Paso de flecha
   const step = () => Math.max(track.clientWidth * 0.9, 280);
 
-  // Si hay >4, activar auto-rotación (loop)
+  // >4 => auto-rotación con loop. Esperamos overflow real.
   if (itemsCount > 4) {
-    startAuto(track, { pxPerSec: 30, pauseAfterClick: 1200 });
+    ensureAutoWhenOverflow(track, { pxPerSec: 30, pauseAfterClick: 1200 });
 
-    // flechas: desplazan y ponen pausa breve
     const go = (dx) => {
       track._pauseAfterClick?.();
       track.scrollBy({ left: dx, behavior: "smooth" });
