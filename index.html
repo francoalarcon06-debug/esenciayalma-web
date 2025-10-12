@@ -170,10 +170,10 @@
           // Progreso del scroll sobre el hero (0 al entrar, 1 al salir)
           const progress = clamp((-rect.top) / (h * 0.9), 0, 1);
 
-          // Opacidad del overlay para desvanecer hacia blanco
+          // Opacidad del overlay para desvanecer
           fade.style.opacity = progress;
 
-          // Parallax sutil moviendo el fondo (unos px)
+          // Parallax sutil moviendo el fondo
           const offsetY = Math.round(progress * -40); // hasta -40px
           hero.style.backgroundPosition = `center calc(50% + ${offsetY}px)`;
 
