@@ -211,14 +211,14 @@ a{text-decoration:none;color:inherit}
 .card__btn{
   display:inline-flex;
   align-items:center;
-  justify-content:center;   /* centra el texto */
+  justify-content:center;   /* mantiene texto centrado */
   gap:8px;
-  padding-left:45px;        /* ícono más a la izquierda */
+  padding-left:20px;        /* vuelve al centrado original */
 }
 .card__btn .icon-wa{
-  width:22px;               /* ícono más grande */
-  height:22px;
+  width:26px;               /* ícono más grande */
+  height:26px;
   flex-shrink:0;
   fill:#fff;
-  transform:translateX(-8px); /* mueve el ícono ligeramente más a la izquierda */
+  transform:translateX(-14px); /* ícono más a la izquierda */
 }
