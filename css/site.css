@@ -163,34 +163,13 @@ a{text-decoration:none;color:inherit}
   flex-direction:column;
   min-width:260px;
 }
-
-/* === Imagen con fondo desenfocado y producto completo === */
 .card__img{
-  position:relative;
-  aspect-ratio:3/4;                /* alto fijo relativo para evitar cortes */
-  overflow:hidden;
+  aspect-ratio:4/3;
   background:#f6f6f6;
   display:flex;align-items:center;justify-content:center;
 }
-.card__img::before{
-  content:"";
-  position:absolute; inset:0;
-  background-image:var(--img);
-  background-position:center;
-  background-size:cover;
-  filter:blur(18px) saturate(110%);
-  transform:scale(1.12);           /* evita bordes del blur */
-}
-.card__img img{
-  position:relative;               /* sobre el blur */
-  z-index:1;
-  width:100%; height:100%;
-  object-fit:contain;              /* frasco completo */
-  transition:transform .35s ease;
-  will-change:transform;
-}
+.card__img img{width:100%;height:100%;object-fit:cover;transition:transform .35s ease;will-change:transform}
 .card__img:hover img{transform:scale(1.04)}
-
 .card__body{padding:14px}
 .card__title{margin:0 0 6px;font-weight:700}
 .card__sub{margin:0 0 10px;color:#6a6a6a;font-size:14px}
@@ -260,10 +239,9 @@ a{text-decoration:none;color:inherit}
   .track{ padding: 6px 4px 10px; }
 
   .card__img{
-    height: 240px;               /* altura compacta */
-    aspect-ratio: 3/4;
+    height: 240px;      /* clave para que quepa todo sin zoom */
+    aspect-ratio: auto; /* desactiva el ratio para respetar el height */
   }
-
   .card__body{ padding: 12px; }
   .card__title{ margin: 0 0 4px; }
   .card__sub{ margin: 0 0 8px; }
