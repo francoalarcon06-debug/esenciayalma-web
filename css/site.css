@@ -210,10 +210,6 @@ a{text-decoration:none;color:inherit}
 /* WhatsApp icon dentro del botón del catálogo */
 .card__btn{display:inline-flex;align-items:center;gap:8px}
 .card__btn .icon-wa{
-  width:18px; height:18px; display:block;
-  /* Usamos el PNG tal cual, como imagen de fondo, centrada y escalada */
-  background-image: url("assets/images/Logo%20whatsapp.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 90% auto; /* ajusta 80–100% según prefieras */
+  width:18px;height:18px;display:block;flex:0 0 18px;
+  fill:#fff; /* el SVG hereda color; forzamos blanco del botón */
 }
