@@ -1,13 +1,14 @@
-/* Carrusel continuo estable (sin scrollLeft):
-   - Convierte .track en viewport y crea una fila .row (flex)
-   - Duplica las tarjetas para bucle perfecto
-   - Anima con requestAnimationFrame usando transform: translateX()
-   - Flechas: empujan suavemente (pausa breve y reanuda)
+/* Carrusel continuo con transform + rAF
+   - No depende de scrollLeft (suave y sin “pegues”)
+   - Bucle perfecto: [originales][clones] + módulo del ancho del bloque
+   - Flechas empujan (manualOffset) y NO “rebota”
+   - Pausa en hover/touch y tras usar flechas
 */
 
 const WA_PHONE = "56912345678";
 const WA_MSG   = encodeURIComponent("Hola, me interesa este producto 👇");
 
+// -------- Utils --------
 const money = (v) => {
   const n = Number(String(v).replace(/[^\d]/g, "")) || 0;
   return `$${n.toLocaleString("es-CL")}`;
@@ -23,9 +24,7 @@ function card(product) {
   const el = document.createElement("article");
   el.className = "card";
   el.setAttribute("role", "listitem");
-
   const href = `https://wa.me/${WA_PHONE}?text=${WA_MSG}%0A${encodeURIComponent(product.name)}`;
-
   el.innerHTML = `
     <div class="card__img">
       <img src="${product.image}" alt="${product.name}" loading="lazy">
@@ -44,70 +43,70 @@ function card(product) {
   return el;
 }
 
-/* Espera a que las <img> dentro de container tengan tamaño */
+// Espera a que las imágenes tengan tamaño (para medir bien)
 function waitImages(container) {
   const imgs = [...container.querySelectorAll("img")];
   const pend = imgs.filter(i => !i.complete);
   if (pend.length === 0) return Promise.resolve();
   return new Promise((resolve) => {
     let left = pend.length;
-    const done = () => (--left === 0 && resolve());
+    const done = () => { if (--left === 0) resolve(); };
     pend.forEach(i => {
-      i.addEventListener("load", done, { once: true });
-      i.addEventListener("error", done, { once: true });
+      i.addEventListener("load", done, { once:true });
+      i.addEventListener("error", done, { once:true });
     });
   });
 }
 
-/* ----- Motor de carrusel con transform ----- */
-function makeLooper(track, { pxPerSec = 26, enableAuto = true } = {}) {
-  if (track._looper) return;
-  track._looper = true;
+// ========= Motor de cinta (transform) =========
+function initLoop(track, { speed = 24, auto = true } = {}) {
+  if (track._loopInited) return;
+  track._loopInited = true;
 
-  // Guardar tarjetas originales
-  const firstSet = [...track.children];
-  if (firstSet.length === 0) return;
+  // Guardamos los nodos originales (cards)
+  const originals = [...track.children];
+  if (originals.length === 0) return;
 
-  // Crear estructura viewport/row
-  track.classList.add("is-viewport");      // overflow hidden
+  // Creamos una fila interna (row) y pasamos los hijos
   const row = document.createElement("div");
-  row.className = "loop-row";              // flex horizontal
+  row.style.display = "flex";
+  row.style.gap = getComputedStyle(track).gap || "16px";
+  row.style.willChange = "transform";
+  row.style.transform = "translateX(0px)";
+  row.style.transition = "transform .16s ease-out"; // hace agradable el empuje de flechas
+  // El track actúa como viewport
+  track.style.overflow = "hidden";
+  track.style.position = "relative";
+
+  originals.forEach(n => row.appendChild(n));
+  // Clonamos el mismo bloque para bucle perfecto
+  originals.forEach(n => row.appendChild(n.cloneNode(true)));
+
   track.appendChild(row);
 
-  // Mover originales
-  firstSet.forEach(n => row.appendChild(n));
-  // Clonar para bucle perfecto
-  firstSet.forEach(n => row.appendChild(n.cloneNode(true)));
-
-  // Medir ancho del primer bloque
+  // Medir ancho del primer bloque (originals)
+  const gap = parseFloat(row.style.gap) || 16;
   const measureBlockWidth = () => {
-    const n = firstSet.length;
     let w = 0;
-    for (let i = 0; i < n; i++) w += row.children[i].getBoundingClientRect().width;
-    // sumar gaps (se leen del estilo computado del row)
-    const gap = parseFloat(getComputedStyle(row).gap || "16") || 16;
-    w += gap * Math.max(n - 1, 0);
-    track._blockW = w;
+    for (let i = 0; i < originals.length; i++) {
+      const r = row.children[i].getBoundingClientRect();
+      w += r.width;
+    }
+    w += gap * Math.max(originals.length - 1, 0);
+    track._blockW = Math.max(w, 1);
   };
-
   measureBlockWidth();
 
   // Estado de animación
   let last = 0;
-  let offset = 0;          // avance acumulado automático (px)
-  let manual = 0;          // empuje manual con flechas (px)
-  let paused = !enableAuto;
+  let autoOffset = 0;    // avance automático acumulado
+  let manualOffset = 0;  // empuje manual (flechas)
+  let paused = !auto;
+  let rafId = 0;
 
-  const normalize = (x, m) => {
-    // módulo positivo en [0, m)
-    return ((x % m) + m) % m;
-    // render aplica signo negativo para desplazar a la izquierda
-  };
-
+  const mod = (x, m) => ((x % m) + m) % m; // módulo positivo
   const render = () => {
-    const total = track._blockW || 1;
-    // desplazamiento a la izquierda
-    const x = -normalize(offset + manual, total);
+    const x = -mod(autoOffset + manualOffset, track._blockW);
     row.style.transform = `translateX(${x}px)`;
   };
 
@@ -117,98 +116,89 @@ function makeLooper(track, { pxPerSec = 26, enableAuto = true } = {}) {
     last = ts;
 
     if (!paused) {
-      offset += pxPerSec * dt;
+      autoOffset += speed * dt;
       render();
     }
-    track._raf = requestAnimationFrame(tick);
+    rafId = requestAnimationFrame(tick);
   };
 
-  // Arrancar
   render();
-  track._raf = requestAnimationFrame(tick);
+  rafId = requestAnimationFrame(tick);
 
-  // API pública
-  track._looperAPI = {
-    nudge(dx) {                   // flechas
-      manual += dx;
-      paused = true;
+  // API pública para flechas y control
+  track._loopAPI = {
+    nudge(dx) {
+      manualOffset += dx;
+      paused = true;      // pausa breve para sentir el empuje
       render();
       clearTimeout(track._resumeT);
-      track._resumeT = setTimeout(() => { paused = !enableAuto ? true : false; }, 1000);
+      track._resumeT = setTimeout(() => {
+        paused = !auto ? true : false;
+      }, 900);
     },
-    pause(v) { paused = v; },
-    setSpeed(s) { pxPerSec = s; },
+    setSpeed(s) { speed = s; },
+    setAuto(v) { paused = !v; },
     remesure() { measureBlockWidth(); render(); }
   };
 
-  // Hover/touch pausa
-  const section = track.closest(".catalog-section") || track;
-  section.addEventListener("mouseenter", () => track._looperAPI.pause(true));
-  section.addEventListener("mouseleave", () => track._looperAPI.pause(!enableAuto ? true : false));
-  section.addEventListener("touchstart", () => track._looperAPI.pause(true), { passive: true });
-  section.addEventListener("touchend",   () => track._looperAPI.pause(!enableAuto ? true : false));
+  // Pausa en hover/touch
+  const setPaused = (v) => { paused = v; };
+  const container = track.closest(".catalog-section") || track;
+  container.addEventListener("mouseenter", () => setPaused(true));
+  container.addEventListener("mouseleave", () => setPaused(!auto ? true : false));
+  container.addEventListener("touchstart", () => setPaused(true), { passive:true });
+  container.addEventListener("touchend",   () => setPaused(!auto ? true : false));
 
-  // Resize recalcula bloque
+  // Recalcular al cambiar el tamaño
   let t;
   window.addEventListener("resize", () => {
     clearTimeout(t);
-    t = setTimeout(() => track._looperAPI.remesure(), 120);
+    t = setTimeout(() => track._loopAPI.remesure(), 120);
   });
 }
 
-/* Configurar flechas y animación (si aplica) */
-async function setupCarousel(carouselEl, itemsCount) {
-  const track   = carouselEl.querySelector(".track");
-  const prevBtn = carouselEl.querySelector(".nav-btn.prev");
-  const nextBtn = carouselEl.querySelector(".nav-btn.next");
-  if (!track) return;
+// Configura una sección: crea tarjetas, espera imágenes y arma el loop
+async function setupCarouselSection(sectionEl, items) {
+  const carousel = sectionEl.querySelector(".carousel");
+  const track    = carousel.querySelector(".track");
+  const prevBtn  = carousel.querySelector(".nav-btn.prev");
+  const nextBtn  = carousel.querySelector(".nav-btn.next");
 
-  // Espera imágenes para medir correctamente
-  await waitImages(track);
+  // Poblar tarjetas
+  track.innerHTML = "";
+  items.forEach(p => track.appendChild(card(p)));
 
-  // Si sólo hay 1 item, centrar y ocultar flechas
-  if (itemsCount <= 1) {
+  // Si hay 0/1, centramos y ocultamos flechas
+  if (items.length <= 1) {
     prevBtn.style.display = "none";
     nextBtn.style.display = "none";
-    track.style.justifyContent  = "center";
+    track.style.display   = "flex";
+    track.style.justifyContent = "center";
     return;
   }
 
-  // Para más de 4 items activamos auto; con 4 o menos, queda sin auto pero con flechas
-  const enableAuto = itemsCount > 4;
-  makeLooper(track, { pxPerSec: 22, enableAuto });
+  // Espera a que se midan bien
+  await waitImages(track);
 
-  // Flechas: empujan la fila, siempre disponibles
+  // Activamos loop automático si hay más de 4 productos (ajustable)
+  const auto = items.length > 4;
+  initLoop(track, { speed: 24, auto });
+
+  // Flechas: empujan la cinta (no “vuelve atrás”)
   const step = () => Math.max(track.clientWidth * 0.9, 280);
-  prevBtn.addEventListener("click", () => track._looperAPI?.nudge(+step()));
-  nextBtn.addEventListener("click", () => track._looperAPI?.nudge(-step()));
+  prevBtn.addEventListener("click", () => track._loopAPI?.nudge(+step()));
+  nextBtn.addEventListener("click", () => track._loopAPI?.nudge(-step()));
 }
 
-/* Render por sección */
-async function renderSection(sectionEl, items) {
-  const track = sectionEl.querySelector(".track");
-  if (!track) return;
-
-  // Limpiar (deja track vacío y sin clases previas)
-  track.innerHTML = "";
-  track.classList.remove("is-viewport");
-  track.style.transform = "";
-  if (track._raf) cancelAnimationFrame(track._raf);
-  track._looper = false;
-  track._looperAPI = null;
-
-  items.forEach((p) => track.appendChild(card(p)));
-  await setupCarousel(sectionEl.querySelector(".carousel"), items.length);
-}
-
-/* Bootstrap */
+// -------- Arranque --------
 (async () => {
   try {
     const data = await loadData();
-    for (const sec of document.querySelectorAll(".catalog-section")) {
+    const sections = document.querySelectorAll(".catalog-section");
+    for (const sec of sections) {
       const key  = sec.getAttribute("data-category"); // women, men, black, red, lavit
       const list = Array.isArray(data[key]) ? data[key] : [];
-      await renderSection(sec, list);
+      await setupCarouselSection(sec, list);
     }
   } catch (e) {
     console.error(e);
