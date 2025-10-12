@@ -107,6 +107,17 @@ a{text-decoration:none;color:inherit}
   padding:10px 4px 16px;
 }
 
+/* === NUEVO: modo estático para <= 4 productos === */
+.track.static{
+  /* Centrado y misma escala que Mujer */
+  grid-auto-flow:row;                 /* no forzamos columnas infinitas */
+  grid-auto-columns:unset;            /* anulamos el auto-columns del carrusel */
+  grid-template-columns:repeat(auto-fit, minmax(260px, 260px)); /* ancho fijo */
+  justify-content:center;             /* centrado horizontal */
+  justify-items:stretch;
+  gap:16px;
+}
+
 /* Cuando el JS lo transforma en “looper” */
 .is-viewport{
   overflow:hidden !important;    /* el viewport enmascara */
