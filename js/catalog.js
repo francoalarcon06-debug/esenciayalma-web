@@ -1,8 +1,7 @@
-/* Carrusel continuo con transform + rAF
-   - No depende de scrollLeft (suave y sin “pegues”)
+/* Carrusel continuo con transform + rAF (siempre en movimiento)
    - Bucle perfecto: [originales][clones] + módulo del ancho del bloque
-   - Flechas empujan (manualOffset) y NO “rebota”
-   - Pausa en hover/touch y tras usar flechas
+   - Flechas empujan (manualOffset) sin pausar el auto
+   - SIN pausas por hover/touch (siempre se mueve)
 */
 
 const WA_PHONE = "56912345678";
@@ -59,7 +58,7 @@ function waitImages(container) {
 }
 
 // ========= Motor de cinta (transform) =========
-function initLoop(track, { speed = 24, auto = true } = {}) {
+function initLoop(track, { speed = 24 } = {}) {
   if (track._loopInited) return;
   track._loopInited = true;
 
@@ -73,7 +72,9 @@ function initLoop(track, { speed = 24, auto = true } = {}) {
   row.style.gap = getComputedStyle(track).gap || "16px";
   row.style.willChange = "transform";
   row.style.transform = "translateX(0px)";
-  row.style.transition = "transform .16s ease-out"; // hace agradable el empuje de flechas
+  // pequeña transición para que el empuje de flechas se sienta agradable
+  row.style.transition = "transform .14s ease-out";
+
   // El track actúa como viewport
   track.style.overflow = "hidden";
   track.style.position = "relative";
@@ -101,7 +102,6 @@ function initLoop(track, { speed = 24, auto = true } = {}) {
   let last = 0;
   let autoOffset = 0;    // avance automático acumulado
   let manualOffset = 0;  // empuje manual (flechas)
-  let paused = !auto;
   let rafId = 0;
 
   const mod = (x, m) => ((x % m) + m) % m; // módulo positivo
@@ -115,39 +115,25 @@ function initLoop(track, { speed = 24, auto = true } = {}) {
     const dt = (ts - last) / 1000;
     last = ts;
 
-    if (!paused) {
-      autoOffset += speed * dt;
-      render();
-    }
+    // SIEMPRE AVANZA (no hay pausa por hover/touch)
+    autoOffset += speed * dt;
+    render();
+
     rafId = requestAnimationFrame(tick);
   };
 
   render();
   rafId = requestAnimationFrame(tick);
 
-  // API pública para flechas y control
+  // API pública para flechas y control externo
   track._loopAPI = {
     nudge(dx) {
       manualOffset += dx;
-      paused = true;      // pausa breve para sentir el empuje
-      render();
-      clearTimeout(track._resumeT);
-      track._resumeT = setTimeout(() => {
-        paused = !auto ? true : false;
-      }, 900);
+      render(); // no pausamos el auto; sigue corriendo
     },
     setSpeed(s) { speed = s; },
-    setAuto(v) { paused = !v; },
     remesure() { measureBlockWidth(); render(); }
   };
-
-  // Pausa en hover/touch
-  const setPaused = (v) => { paused = v; };
-  const container = track.closest(".catalog-section") || track;
-  container.addEventListener("mouseenter", () => setPaused(true));
-  container.addEventListener("mouseleave", () => setPaused(!auto ? true : false));
-  container.addEventListener("touchstart", () => setPaused(true), { passive:true });
-  container.addEventListener("touchend",   () => setPaused(!auto ? true : false));
 
   // Recalcular al cambiar el tamaño
   let t;
@@ -168,23 +154,24 @@ async function setupCarouselSection(sectionEl, items) {
   track.innerHTML = "";
   items.forEach(p => track.appendChild(card(p)));
 
-  // Si hay 0/1, centramos y ocultamos flechas
-  if (items.length <= 1) {
+  // Siempre auto (aunque haya pocos); si hay 0, no hacemos nada
+  if (items.length === 0) {
     prevBtn.style.display = "none";
     nextBtn.style.display = "none";
-    track.style.display   = "flex";
-    track.style.justifyContent = "center";
     return;
   }
 
-  // Espera a que se midan bien
+  // Si hay 1, ocultar flechas pero el loop igual corre (con el clon)
+  if (items.length === 1) {
+    prevBtn.style.display = "none";
+    nextBtn.style.display = "none";
+  }
+
+  // Espera a que imágenes tengan tamaño y arranca
   await waitImages(track);
+  initLoop(track, { speed: 24 });
 
-  // Activamos loop automático si hay más de 4 productos (ajustable)
-  const auto = items.length > 4;
-  initLoop(track, { speed: 24, auto });
-
-  // Flechas: empujan la cinta (no “vuelve atrás”)
+  // Flechas: empujan la cinta (sin pausar la animación)
   const step = () => Math.max(track.clientWidth * 0.9, 280);
   prevBtn.addEventListener("click", () => track._loopAPI?.nudge(+step()));
   nextBtn.addEventListener("click", () => track._loopAPI?.nudge(-step()));
