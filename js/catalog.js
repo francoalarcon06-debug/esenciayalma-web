@@ -38,7 +38,7 @@ function card(product) {
   const href = `https://wa.me/${WA_PHONE}?text=${WA_MSG}%0A${encodeURIComponent(product.name)}`;
 
   el.innerHTML = `
-    <div class="card__img" style="--img: url('${product.image}');">
+    <div class="card__img">
       <img src="${product.image}" alt="${product.name}" loading="lazy">
     </div>
 
