@@ -215,3 +215,15 @@ a{text-decoration:none;color:inherit}
   justify-content:space-between;
   gap:16px;
 }
+
+/* WhatsApp icon dentro del botón del catálogo */
+.card__btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+.card__btn .icon-wa{
+  width:18px;
+  height:18px;
+  display:block;
+}
