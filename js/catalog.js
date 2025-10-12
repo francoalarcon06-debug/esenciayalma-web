@@ -4,7 +4,7 @@
    - Sin pausas por hover/touch
 */
 
-const WA_PHONE = "56985387749";
+const WA_PHONE = "56912345678";
 const WA_MSG   = encodeURIComponent("Hola, me interesa este producto 👇");
 
 // -------- Utils --------
