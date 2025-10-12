@@ -1,6 +1,6 @@
 /* Carrusel continuo con transform + rAF (siempre en movimiento)
-   - Bucle real SIN duplicar DOM: reciclamos items (primero→final / último→inicio)
-   - Flechas: desplazamiento SUAVE con easing y salto = 3 tarjetas desde el borde
+   - Bucle real SIN duplicar DOM (reciclaje de items)
+   - Flechas con easing y salto = 3 tarjetas desde el borde
    - Sin pausas por hover/touch
 */
 
@@ -8,10 +8,7 @@ const WA_PHONE = "56912345678";
 const WA_MSG   = encodeURIComponent("Hola, me interesa este producto 👇");
 
 // -------- Utils --------
-const money = (v) => {
-  const n = Number(String(v).replace(/[^\d]/g, "")) || 0;
-  return `$${n.toLocaleString("es-CL")}`;
-};
+const money = (v) => `$${(Number(String(v).replace(/[^\d]/g, "")) || 0).toLocaleString("es-CL")}`;
 
 async function loadData() {
   const res = await fetch("data/products.json", { cache: "no-store" });
@@ -20,18 +17,16 @@ async function loadData() {
 }
 
 /* ====== Inyección de CSS (una sola vez) para alinear precio/botón ====== */
-(function injectEqualizeCSS(){
+(() => {
   if (document.getElementById("card-equalize-css")) return;
-  const css = `
-    /* La card ya es flex-columna en tu CSS, pero aseguramos el alto completo */
+  const s = document.createElement("style");
+  s.id = "card-equalize-css";
+  s.textContent = `
     .card{height:100%}
     .card__body{display:flex;flex-direction:column;height:100%}
     .card__content{flex:1 1 auto}
     .card__footer{margin-top:auto;display:flex;flex-direction:column;gap:12px}
   `;
-  const s = document.createElement("style");
-  s.id = "card-equalize-css";
-  s.textContent = css;
   document.head.appendChild(s);
 })();
 
@@ -57,10 +52,7 @@ function card(product) {
         ${product.price ? `<div class="card__price">${money(product.price)}</div>` : ""}
         <div class="card__actions">
           <a class="btn btn-primary card__btn" target="_blank" href="${href}">
-            <!-- Ícono WhatsApp (SVG inline). Usa currentColor para heredar el blanco del botón -->
-            <svg class="icon-wa" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" aria-hidden="true" focusable="false">
-              <path fill="currentColor" d="M380.9 97.1C339-14.7 213.5-41.6 124.4 32.8 63.8 83.2 41.4 161.9 67.3 233L32 480l245.6-35.6c71 26.5 149.7 4.1 200.2-56.4 74.5-89.1 47.6-214.6-64.4-255.5zM223.5 398.1c-44.5 0-87.3-13.5-123.6-38.9l-8.8-5.9-72.4 10.5 10.8-70.7-5.7-8.9c-25.3-36.2-38.9-79-38.9-123.4C-15.1 87.2 87.2-15 223.6-15S462.2 87.2 462.2 223.6c0 136.4-102.3 238.5-238.7 238.5z"/>
-            </svg>
+            <img class="icon-wa" src="assets/images/Logo whatsapp.png" alt="WhatsApp">
             Consultar por WhatsApp
           </a>
         </div>
@@ -72,8 +64,7 @@ function card(product) {
 
 // Espera a que las imágenes tengan tamaño (para medir bien)
 function waitImages(container) {
-  const imgs = [...container.querySelectorAll("img")];
-  const pend = imgs.filter(i => !i.complete);
+  const pend = [...container.querySelectorAll("img")].filter(i => !i.complete);
   if (pend.length === 0) return Promise.resolve();
   return new Promise((resolve) => {
     let left = pend.length;
@@ -93,135 +84,76 @@ function initLoop(track, { speed = 24 } = {}) {
   if (track._loopInited) return;
   track._loopInited = true;
 
-  // Tomamos los hijos actuales (tarjetas)
   const originals = [...track.children];
   if (originals.length === 0) return;
 
   // Contenedor interno en fila
   const row = document.createElement("div");
-  const gapCss = getComputedStyle(track).gap || "16px";
-  const GAP = parseFloat(gapCss) || 16;
+  const GAP = parseFloat(getComputedStyle(track).gap || "16") || 16;
 
-  row.style.display    = "flex";
-  row.style.gap        = `${GAP}px`;
-  row.style.willChange = "transform";
-  row.style.transform  = "translateX(0px)";
-  row.style.transition = "none";
+  Object.assign(row.style, {
+    display: "flex",
+    gap: `${GAP}px`,
+    willChange: "transform",
+    transform: "translateX(0px)",
+    transition: "none"
+  });
 
   // El track actúa como viewport
-  track.style.overflow = "hidden";
-  track.style.position = "relative";
+  Object.assign(track.style, { overflow: "hidden", position: "relative" });
 
   originals.forEach(n => row.appendChild(n));
   track.appendChild(row);
 
-  // Helpers de medida
-  const childCount = () => row.children.length;
-
   const widthOf = (el) => el.getBoundingClientRect().width;
-
-  // ancho del i-ésimo hijo + gap a su vecino derecho (si lo hay)
+  const childCount = () => row.children.length;
   const spanAt = (i) => {
     const c = row.children[i];
-    if (!c) return 0;
-    return widthOf(c) + (i < childCount() - 1 ? GAP : 0);
+    return c ? widthOf(c) + (i < childCount() - 1 ? GAP : 0) : 0;
   };
-
   const spanFirst  = () => spanAt(0);
   const spanSecond = () => spanAt(1);
   const spanThird  = () => spanAt(2);
+  const spanLast   = () => (childCount() ? widthOf(row.children[childCount()-1]) : 0);
+  const spanPrevLast = () => (childCount() > 1 ? widthOf(row.children[childCount()-2]) + GAP : 0);
 
-  const spanLast = () => {
-    const i = childCount() - 1;
-    if (i < 0) return 0;
-    // último no tiene gap a la derecha
-    return widthOf(row.children[i]);
-  };
-  const spanBeforeLast = () => {
-    const i = childCount() - 2;
-    if (i < 0) return 0;
-    // antes del último SÍ tiene gap a la derecha
-    return widthOf(row.children[i]) + GAP;
-  };
+  const moveFirstToEnd  = () => row.appendChild(row.children[0]);
+  const moveLastToStart = () => row.insertBefore(row.children[childCount()-1], row.firstChild);
 
-  // Reciclaje
-  const moveFirstToEnd = () => {
-    const first = row.children[0];
-    if (first) row.appendChild(first);
-  };
-  const moveLastToStart = () => {
-    const last = row.children[childCount() - 1];
-    if (last) row.insertBefore(last, row.firstChild);
-  };
-
-  // Estado
-  let lastTs = 0;
-  let offset = 0; // avance acumulado en px
-
-  // Tween del nudge (suave)
-  let tweenActive = false;
-  let tweenStart = 0;
-  let tweenDur = 0;
-  let tweenTarget = 0;   // delta de offset a aplicar en total
-  let tweenPrev = 0;     // delta aplicado hasta el frame anterior
+  let lastTs = 0, offset = 0;
+  let tweenActive = false, tweenStart = 0, tweenDur = 0, tweenTarget = 0, tweenPrev = 0;
 
   const startTweenOffset = (delta, duration = 500) => {
     if (tweenActive) {
-      const remaining = tweenTarget - tweenPrev;
-      tweenTarget = remaining + delta;
-      tweenPrev = 0;
-      tweenStart = performance.now();
-      tweenDur = duration;
+      tweenTarget = (tweenTarget - tweenPrev) + delta;
+      tweenPrev = 0; tweenStart = performance.now(); tweenDur = duration;
       return;
     }
-    tweenActive = true;
-    tweenTarget = delta;
-    tweenPrev   = 0;
-    tweenStart  = performance.now();
-    tweenDur    = duration;
+    tweenActive = true; tweenTarget = delta; tweenPrev = 0;
+    tweenStart = performance.now(); tweenDur = duration;
   };
 
   const applyTweenStep = (now) => {
     if (!tweenActive) return;
     const t = Math.min(1, (now - tweenStart) / tweenDur);
     const cur = easeOutCubic(t) * tweenTarget;
-    const inc = cur - tweenPrev;
+    offset += (cur - tweenPrev);
     tweenPrev = cur;
-    offset += inc;
-
-    if (t >= 1) {
-      tweenActive = false;
-      tweenPrev = 0;
-      tweenTarget = 0;
-    }
+    if (t >= 1) tweenActive = tweenPrev = tweenTarget = 0;
   };
 
-  // Recicla según offset y pinta
   const recycleAndRender = () => {
     let s;
-    while (offset >= (s = spanFirst())) {
-      offset -= s;
-      moveFirstToEnd();
-    }
-    while (offset < 0) {
-      const back = spanLast();
-      moveLastToStart();
-      offset += back;
-    }
+    while (offset >= (s = spanFirst())) { offset -= s; moveFirstToEnd(); }
+    while (offset < 0) { const back = spanLast(); moveLastToStart(); offset += back; }
     row.style.transform = `translateX(${-offset}px)`;
   };
 
   const tick = (ts) => {
     if (!lastTs) lastTs = ts;
-    const dt = (ts - lastTs) / 1000;
-    lastTs = ts;
-
-    // auto avance continuo
+    const dt = (ts - lastTs) / 1000; lastTs = ts;
     offset += speed * dt;
-
-    // aplicar tween suave de flechas
     applyTweenStep(ts);
-
     recycleAndRender();
     requestAnimationFrame(tick);
   };
@@ -229,41 +161,24 @@ function initLoop(track, { speed = 24 } = {}) {
   recycleAndRender();
   requestAnimationFrame(tick);
 
-  // ---- Cálculo del “salto de 3 perfumes” desde el borde ----
-  const forwardThree = () => {
-    const remFirst = Math.max(spanFirst() - offset, 0);
-    const s2 = spanSecond();
-    const s3 = spanThird();
-    return remFirst + s2 + s3;
-  };
-
-  const backwardThree = () => {
-    const sLast  = spanLast();
-    const sPrev  = spanBeforeLast();
-    return offset + sLast + sPrev;
-  };
+  // Saltos de 3 tarjetas
+  const forwardThree  = () => Math.max(spanFirst() - offset, 0) + spanSecond() + spanThird();
+  const backwardThree = () => offset + spanLast() + spanPrevLast();
 
   // API pública para flechas
   track._loopAPI = {
-    nudge(deltaDisplayPx) {
-      // deltaDisplayPx > 0 = desplazarse visualmente a la izquierda (PREV)
-      startTweenOffset(-deltaDisplayPx, 520);
-    },
-    nudgeForward(deltaPx)  { startTweenOffset(+deltaPx, 520); }, // NEXT
-    nudgeBackward(deltaPx) { startTweenOffset(-deltaPx, 520); }, // PREV
-    setSpeed(s) { speed = s; },
-    remeasure() { recycleAndRender(); },
-
-    // Exponemos helpers para 3-cards
-    _stepForward: forwardThree,
+    nudgeForward : (px) => startTweenOffset(+px, 520),
+    nudgeBackward: (px) => startTweenOffset(-px, 520),
+    remeasure    : recycleAndRender,
+    _stepForward : forwardThree,
     _stepBackward: backwardThree
   };
 
-  // Ajuste ante resize
+  // Ajuste ante resize (debounce simple)
   let rt;
-  window.addEventListener("resize", () => {
+  addEventListener("resize", () => {
     clearTimeout(rt);
-    rt = setTimeout(() => track._loopAPI.remeasure(), 120);
+    rt = setTimeout(recycleAndRender, 120);
   });
 }
 
@@ -274,12 +189,10 @@ async function setupCarouselSection(sectionEl, items) {
   const prevBtn  = carousel.querySelector(".nav-btn.prev");
   const nextBtn  = carousel.querySelector(".nav-btn.next");
 
-  // Poblar tarjetas
   track.innerHTML = "";
-  track.classList.remove("static"); // por si se re-renderiza
+  track.classList.remove("static");
   items.forEach(p => track.appendChild(card(p)));
 
-  // Si no hay items, ocultamos flechas y salimos
   if (items.length === 0) {
     prevBtn.style.display = "none";
     nextBtn.style.display = "none";
@@ -288,16 +201,10 @@ async function setupCarouselSection(sectionEl, items) {
 
   await waitImages(track);
 
-  // *** NUEVA LÓGICA: solo carrusel si HAY MÁS DE 4 productos ***
+  // Modo carrusel solo si hay > 4 productos; si no, modo estático centrado
   if (items.length > 4) {
-    // Carrusel activo
-    if (items.length === 1) { // caso extremo, igual ocultamos flechas
-      prevBtn.style.display = "none";
-      nextBtn.style.display = "none";
-    }
     initLoop(track, { speed: 24 });
 
-    // Flechas: salto suave = 3 perfumes desde el borde
     prevBtn.style.display = "";
     nextBtn.style.display = "";
     prevBtn.addEventListener("click", () => {
@@ -309,7 +216,6 @@ async function setupCarouselSection(sectionEl, items) {
       track._loopAPI?.nudgeForward(step);
     });
   } else {
-    // Modo estático (centrado, sin movimiento, misma escala que Mujer)
     track.classList.add("static");
     prevBtn.style.display = "none";
     nextBtn.style.display = "none";
@@ -320,8 +226,7 @@ async function setupCarouselSection(sectionEl, items) {
 (async () => {
   try {
     const data = await loadData();
-    const sections = document.querySelectorAll(".catalog-section");
-    for (const sec of sections) {
+    for (const sec of document.querySelectorAll(".catalog-section")) {
       const key  = sec.getAttribute("data-category"); // women, men, black, red, lavit
       const list = Array.isArray(data[key]) ? data[key] : [];
       await setupCarouselSection(sec, list);
