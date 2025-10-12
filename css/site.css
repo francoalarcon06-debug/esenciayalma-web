@@ -239,9 +239,15 @@ a{text-decoration:none;color:inherit}
   .track{ padding: 6px 4px 10px; }
 
   .card__img{
-    height: 240px;      /* clave para que quepa todo sin zoom */
-    aspect-ratio: auto; /* desactiva el ratio para respetar el height */
+    height: 240px;      /* contenedor más bajo para que entre todo */
+    aspect-ratio: auto; /* desactiva ratio para respetar el height */
+    background:#f6f6f6;
   }
+  .card__img img{
+    object-fit: contain; /* ← mostrar la imagen COMPLETA, sin recortes */
+    padding: 4px;        /* pequeño respiro visual */
+  }
+
   .card__body{ padding: 12px; }
   .card__title{ margin: 0 0 4px; }
   .card__sub{ margin: 0 0 8px; }
