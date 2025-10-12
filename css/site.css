@@ -45,7 +45,6 @@ a{text-decoration:none;color:inherit}
     radial-gradient(ellipse at 20% 0%,#fde8f1 0%,transparent 40%),
     radial-gradient(ellipse at 80% 10%,#fdeef6 0%,transparent 40%),
     linear-gradient(#fff,#fff);
-  /* Necesario para el efecto de fade del hero (no altera el layout) */
   overflow:hidden;
 }
 .badge{
@@ -98,42 +97,46 @@ a{text-decoration:none;color:inherit}
 }
 .sec-sub{color:#6a6a6a;text-align:center;margin:0 0 18px}
 
-/* Puente suave entre el hero (blanco) y la primera sección (—soft) */
-#mujer.catalog-section{position:relative}
+/* --- Transición más suave entre hero (blanco) y "Perfumes de Mujer" --- */
+#mujer.catalog-section{
+  position:relative;
+  margin-top:-120px;           /* se superpone un poco con el hero */
+  padding-top:160px;           /* compensa el desplazamiento visual */
+  z-index:1;
+}
 #mujer.catalog-section::before{
   content:"";
   position:absolute;
-  left:0; right:0; top:-56px; height:56px;
-  background:linear-gradient(to bottom, #fff 0%, var(--soft) 100%);
+  left:0; right:0; top:-160px; height:160px;
+  background:linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0.6) 40%, var(--soft) 100%);
   pointer-events:none;
-  z-index:0;
+  z-index:-1;
 }
 
-/* CARRUSEL (fallback visual para cuando aún no se convierte en looper) */
+/* CARRUSEL */
 .carousel{position:relative}
 .track{
   display:grid;
   grid-auto-flow:column;
   grid-auto-columns:minmax(260px, 1fr);
   gap:16px;
-  overflow:visible;              /* dejamos visible; el looper se encarga */
+  overflow:visible;
   padding:10px 4px 16px;
 }
 
 /* === NUEVO: modo estático para <= 4 productos === */
 .track.static{
-  /* Centrado y misma escala que Mujer */
-  grid-auto-flow:row;                 /* no forzamos columnas infinitas */
-  grid-auto-columns:unset;            /* anulamos el auto-columns del carrusel */
-  grid-template-columns:repeat(auto-fit, minmax(260px, 260px)); /* ancho fijo */
-  justify-content:center;             /* centrado horizontal */
+  grid-auto-flow:row;
+  grid-auto-columns:unset;
+  grid-template-columns:repeat(auto-fit, minmax(260px, 260px));
+  justify-content:center;
   justify-items:stretch;
   gap:16px;
 }
 
 /* Cuando el JS lo transforma en “looper” */
 .is-viewport{
-  overflow:hidden !important;    /* el viewport enmascara */
+  overflow:hidden !important;
   display:block !important;
   position:relative;
 }
@@ -141,7 +144,7 @@ a{text-decoration:none;color:inherit}
   display:flex;
   gap:16px;
   will-change:transform;
-  transition:transform .18s ease-out; /* por si hay pequeños toques de flecha */
+  transition:transform .18s ease-out;
 }
 
 /* Tarjetas */
@@ -153,7 +156,7 @@ a{text-decoration:none;color:inherit}
   box-shadow:var(--shadow);
   display:flex;
   flex-direction:column;
-  min-width:260px; /* asegura ancho mínimo en fila flex */
+  min-width:260px;
 }
 .card__img{
   aspect-ratio:4/3;
