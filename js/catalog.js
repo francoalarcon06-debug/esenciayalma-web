@@ -1,8 +1,7 @@
-/* js/catalog.js — Carrusel auto continuo + bucle + flechas
-   - Detecta el elemento que realmente scrollea (track o su contenedor)
-   - Duplica el contenido para bucle sin saltos
-   - Auto-rotación constante (requestAnimationFrame)
-   - Flechas funcionan (pausa breve y reanuda)
+/* js/catalog.js — Carrusel auto continuo + bucle + flechas (versión simplificada)
+   - Mueve directamente el scroll de .track
+   - Animación suave y continua con requestAnimationFrame
+   - Flechas funcionales
    - Oculta barras de scroll
 */
 
@@ -60,27 +59,21 @@ function card(product) {
   return el;
 }
 
-/** Devuelve el elemento que realmente scrollea (track o su padre). */
+// El que realmente scrollea es .track (simplificado)
 function getScroller(track) {
-  const cand = [track, track.parentElement];
-  for (const el of cand) {
-    if (!el) continue;
-    const sw = el.scrollWidth, cw = el.clientWidth;
-    if (sw - cw > 1) return el;
-  }
   return track;
 }
 
 /** Auto-scroll infinito suave con requestAnimationFrame. */
-function startInfiniteAutoScroll(scroller, track, opts = {}) {
+function startInfiniteAutoScroll(track, opts = {}) {
   const {
     pxPerSec = 20,            // velocidad continua (px/seg)
     pauseMsAfterClick = 1200, // pausa breve tras flechas
   } = opts;
 
-  if (scroller.scrollWidth <= scroller.clientWidth + 1) return;
-  if (scroller._autoStarted) return;
-  scroller._autoStarted = true;
+  if (track.scrollWidth <= track.clientWidth + 1) return;
+  if (track._autoStarted) return;
+  track._autoStarted = true;
 
   // Duplica el contenido para bucle infinito
   if (!track.dataset.cloned) {
@@ -89,7 +82,7 @@ function startInfiniteAutoScroll(scroller, track, opts = {}) {
     track.dataset.cloned = "1";
   }
 
-  scroller.classList.add("no-scrollbar");
+  track.classList.add("no-scrollbar");
 
   let raf = null;
   let lastTs = 0;
@@ -108,11 +101,10 @@ function startInfiniteAutoScroll(scroller, track, opts = {}) {
     if (!paused) {
       const dt = (ts - lastTs) / 1000;
       const delta = pxPerSec * dt;
-      scroller.scrollLeft += delta;
+      track.scrollLeft += delta;
 
-      // Bucle infinito (volver al inicio)
-      const half = scroller.scrollWidth / 2;
-      if (scroller.scrollLeft >= half) scroller.scrollLeft = 0;
+      const half = track.scrollWidth / 2;
+      if (track.scrollLeft >= half) track.scrollLeft = 0;
     }
 
     lastTs = ts;
@@ -122,26 +114,15 @@ function startInfiniteAutoScroll(scroller, track, opts = {}) {
   raf = requestAnimationFrame(tick);
 
   // Pausa por hover o touch
-  scroller.addEventListener("mouseenter", () => (paused = true));
-  scroller.addEventListener("mouseleave", () => (paused = false));
-  scroller.addEventListener("touchstart", () => (paused = true), { passive: true });
-  scroller.addEventListener("touchend",   () => (paused = false));
+  track.addEventListener("mouseenter", () => (paused = true));
+  track.addEventListener("mouseleave", () => (paused = false));
+  track.addEventListener("touchstart", () => (paused = true), { passive: true });
+  track.addEventListener("touchend", () => (paused = false));
 
-  // API: Pausar temporalmente tras click
-  scroller._pauseAfterClick = () => {
+  // API: pausa temporal tras click
+  track._pauseAfterClick = () => {
     clickPauseUntil = performance.now() + pauseMsAfterClick;
   };
-
-  // Reajuste en resize
-  let t = null;
-  const onResize = () => {
-    clearTimeout(t);
-    t = setTimeout(() => {
-      const half = scroller.scrollWidth / 2;
-      scroller.scrollLeft = scroller.scrollLeft % half;
-    }, 100);
-  };
-  window.addEventListener("resize", onResize);
 }
 
 /** Configura flechas + auto-scroll si aplica. */
@@ -150,22 +131,22 @@ function setupCarousel(carouselEl, itemsCount) {
   const prevBtn = carouselEl.querySelector(".prev");
   const nextBtn = carouselEl.querySelector(".next");
 
-  const scroller = getScroller(track);
+  if (!track) return;
 
   if (itemsCount <= 1) {
     prevBtn.style.display = "none";
     nextBtn.style.display = "none";
     track.style.justifyContent  = "center";
     track.style.gridAutoColumns = "minmax(260px, 420px)";
-    scroller.classList.add("no-scrollbar");
+    track.classList.add("no-scrollbar");
     return;
   }
 
-  const step = () => Math.max(scroller.clientWidth * 0.9, 280);
+  const step = () => Math.max(track.clientWidth * 0.9, 280);
 
   const go = (dx) => {
-    scroller._pauseAfterClick?.();
-    scroller.scrollBy({ left: dx, behavior: "smooth" });
+    track._pauseAfterClick?.();
+    track.scrollBy({ left: dx, behavior: "smooth" });
   };
 
   prevBtn.addEventListener("click", () => go(-step()));
@@ -173,18 +154,19 @@ function setupCarousel(carouselEl, itemsCount) {
 
   // Auto-scroll continuo si hay más de 4 productos
   if (itemsCount > 4) {
-    startInfiniteAutoScroll(scroller, track, {
-      pxPerSec: 20,           // velocidad (ajustable)
-      pauseMsAfterClick: 1300 // pausa tras flechas
+    startInfiniteAutoScroll(track, {
+      pxPerSec: 20,           // velocidad (ajustá aquí si querés)
+      pauseMsAfterClick: 1300
     });
   } else {
-    scroller.classList.add("no-scrollbar");
+    track.classList.add("no-scrollbar");
   }
 }
 
 // Renderizar una sección
 function renderSection(sectionEl, items) {
   const track = sectionEl.querySelector(".track");
+  if (!track) return;
   track.innerHTML = "";
   items.forEach((p) => track.appendChild(card(p)));
   setupCarousel(sectionEl.querySelector(".carousel"), items.length);
@@ -203,4 +185,3 @@ function renderSection(sectionEl, items) {
     console.error(e);
   }
 })();
-
