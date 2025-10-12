@@ -1,6 +1,6 @@
 /* Carrusel continuo con transform + rAF (siempre en movimiento)
    - Bucle real SIN duplicar DOM: reciclamos items (primero→final / último→inicio)
-   - Flechas empujan el offset sin pausar el auto
+   - Flechas: desplazamiento SUAVE con easing y salto = 3 tarjetas desde el borde
    - Sin pausas por hover/touch
 */
 
@@ -57,6 +57,9 @@ function waitImages(container) {
   });
 }
 
+// Easing para el nudge suave
+const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+
 // ========= Motor de cinta (transform + reciclaje) =========
 function initLoop(track, { speed = 24 } = {}) {
   if (track._loopInited) return;
@@ -75,7 +78,7 @@ function initLoop(track, { speed = 24 } = {}) {
   row.style.gap        = `${GAP}px`;
   row.style.willChange = "transform";
   row.style.transform  = "translateX(0px)";
-  row.style.transition = "none";            // sin transición: rAF controla todo
+  row.style.transition = "none";
 
   // El track actúa como viewport
   track.style.overflow = "hidden";
@@ -84,19 +87,39 @@ function initLoop(track, { speed = 24 } = {}) {
   originals.forEach(n => row.appendChild(n));
   track.appendChild(row);
 
-  // Helpers para medir spans (ancho del primer/último ítem + gap a su vecino)
-  const spanFirst = () => {
-    if (row.children.length === 0) return 1;
-    const first = row.children[0];
-    const w = first.getBoundingClientRect().width;
-    // gap solo aplica entre items; si hay 1, gap=0
-    return w + (row.children.length > 1 ? GAP : 0);
+  // Helpers de medida
+  const childCount = () => row.children.length;
+
+  const widthOf = (el) => el.getBoundingClientRect().width;
+
+  // ancho del i-ésimo hijo + gap a su vecino derecho (si lo hay)
+  const spanAt = (i) => {
+    const c = row.children[i];
+    if (!c) return 0;
+    return widthOf(c) + (i < childCount() - 1 ? GAP : 0);
   };
+
+  const spanFirst = () => spanAt(0);
+  const spanSecond = () => spanAt(1);
+  const spanThird  = () => spanAt(2);
+
   const spanLast = () => {
-    if (row.children.length === 0) return 1;
-    const last = row.children[row.children.length - 1];
-    const w = last.getBoundingClientRect().width;
-    return w + (row.children.length > 1 ? GAP : 0);
+    const i = childCount() - 1;
+    if (i < 0) return 0;
+    // último no tiene gap a la derecha
+    return widthOf(row.children[i]);
+  };
+  const spanBeforeLast = () => {
+    const i = childCount() - 2;
+    if (i < 0) return 0;
+    // antes del último SÍ tiene gap a la derecha
+    return widthOf(row.children[i]) + GAP;
+  };
+  const spanThirdLast = () => {
+    const i = childCount() - 3;
+    if (i < 0) return 0;
+    // también con gap a la derecha
+    return widthOf(row.children[i]) + GAP;
   };
 
   // Reciclaje
@@ -105,26 +128,68 @@ function initLoop(track, { speed = 24 } = {}) {
     if (first) row.appendChild(first);
   };
   const moveLastToStart = () => {
-    const last = row.children[row.children.length - 1];
+    const last = row.children[childCount() - 1];
     if (last) row.insertBefore(last, row.firstChild);
   };
 
   // Estado
   let lastTs = 0;
-  let offset = 0;  // avance acumulado en px (siempre >=0 y < span del primero tras reciclar)
+  let offset = 0; // avance acumulado en px
 
+  // Tween del nudge (suave)
+  let tweenActive = false;
+  let tweenStart = 0;
+  let tweenDur = 0;
+  let tweenTarget = 0;   // delta de offset a aplicar en total
+  let tweenPrev = 0;     // delta aplicado hasta el frame anterior
+
+  const startTweenOffset = (delta, duration = 500) => {
+    // acumulamos sobre un tween en curso (se siente natural)
+    if (tweenActive) {
+      // lo que queda por aplicar del tween actual:
+      const remaining = tweenTarget - tweenPrev;
+      tweenTarget = remaining + delta;
+      tweenPrev = 0;
+      tweenStart = performance.now();
+      tweenDur = duration;
+      return;
+    }
+    tweenActive = true;
+    tweenTarget = delta;
+    tweenPrev   = 0;
+    tweenStart  = performance.now();
+    tweenDur    = duration;
+  };
+
+  const applyTweenStep = (now) => {
+    if (!tweenActive) return;
+    const t = Math.min(1, (now - tweenStart) / tweenDur);
+    const cur = easeOutCubic(t) * tweenTarget;
+    const inc = cur - tweenPrev;
+    tweenPrev = cur;
+    offset += inc;
+
+    if (t >= 1) {
+      tweenActive = false;
+      tweenPrev = 0;
+      tweenTarget = 0;
+    }
+  };
+
+  // Recicla según offset y pinta
   const recycleAndRender = () => {
-    // Hacia adelante
+    // Hacia adelante (mostrar nuevos a la derecha)
     let s;
     while (offset >= (s = spanFirst())) {
       offset -= s;
       moveFirstToEnd();
     }
-    // Hacia atrás (por si flechas suman negativo)
+    // Hacia atrás (mostrar nuevos a la izquierda)
     while (offset < 0) {
-      const back = spanLast();
+      const back = spanLast() + (childCount() > 1 ? 0 : 0); // seguro
       moveLastToStart();
-      offset += back;
+      offset += back + (childCount() > 1 ? GAP : 0) - (childCount() > 1 ? GAP : 0);
+      // Nota: offset se ajusta por spanLast(); el GAP ya lo maneja spanBeforeLast/At
     }
     row.style.transform = `translateX(${-offset}px)`;
   };
@@ -134,21 +199,57 @@ function initLoop(track, { speed = 24 } = {}) {
     const dt = (ts - lastTs) / 1000;
     lastTs = ts;
 
-    offset += speed * dt;          // avance continuo
-    recycleAndRender();
+    // auto avance continuo
+    offset += speed * dt;
 
+    // aplicar tween suave de flechas
+    applyTweenStep(ts);
+
+    recycleAndRender();
     requestAnimationFrame(tick);
   };
 
-  // primer render
   recycleAndRender();
   requestAnimationFrame(tick);
 
+  // ---- Cálculo del “salto de 3 perfumes” desde el borde ----
+  // NEXT (hacia la derecha visual): mover contenido a la izquierda
+  const forwardThree = () => {
+    // restante del primero + 2 siguientes completos
+    const remFirst = Math.max(spanFirst() - offset, 0);
+    const s2 = spanSecond();
+    const s3 = spanThird();
+    return remFirst + s2 + s3;
+  };
+
+  // PREV (hacia la izquierda visual): mover contenido a la derecha
+  const backwardThree = () => {
+    // lo ya consumido del primero (offset) + 2 anteriores completos
+    const sLast  = spanLast();
+    const sPrev  = spanBeforeLast();
+    // si quieres exacto 3 perfumes completos (además del parcial actual),
+    // usa también el tercero previo:
+    // const sPrev2 = spanThirdLast();
+    // return offset + sLast + sPrev + sPrev2;
+    return offset + sLast + sPrev;
+  };
+
   // API pública para flechas
   track._loopAPI = {
-    nudge(dx) { offset += (dx * -1); recycleAndRender(); }, // dx>0 = mover a la derecha visual
+    nudge(deltaDisplayPx) {
+      // deltaDisplayPx > 0 = desplazarse visualmente a la izquierda (PREV)
+      // offset se incrementa cuando el contenido se mueve a la IZQUIERDA.
+      // Por lo tanto: desplazamiento visual (+) => offset -= delta
+      startTweenOffset(-deltaDisplayPx, 520);
+    },
+    nudgeForward(deltaPx)  { startTweenOffset(+deltaPx, 520); }, // NEXT
+    nudgeBackward(deltaPx) { startTweenOffset(-deltaPx, 520); }, // PREV
     setSpeed(s) { speed = s; },
-    remeasure() { recycleAndRender(); } // por si necesitas forzar un ajuste
+    remeasure() { recycleAndRender(); },
+
+    // Exponemos helpers para 3-cards
+    _stepForward: forwardThree,
+    _stepBackward: backwardThree
   };
 
   // Ajuste ante resize
@@ -183,10 +284,15 @@ async function setupCarouselSection(sectionEl, items) {
   await waitImages(track);
   initLoop(track, { speed: 24 });
 
-  // Flechas empujan offset (no pausan el auto)
-  const step = () => Math.max(track.clientWidth * 0.9, 280);
-  prevBtn.addEventListener("click", () => track._loopAPI?.nudge(+step())); // ver a la izquierda
-  nextBtn.addEventListener("click", () => track._loopAPI?.nudge(-step())); // ver a la derecha
+  // Flechas: salto suave = 3 perfumes desde el borde
+  prevBtn.addEventListener("click", () => {
+    const step = track._loopAPI?._stepBackward?.() || Math.max(track.clientWidth * 0.9, 280);
+    track._loopAPI?.nudgeBackward(step);
+  });
+  nextBtn.addEventListener("click", () => {
+    const step = track._loopAPI?._stepForward?.() || Math.max(track.clientWidth * 0.9, 280);
+    track._loopAPI?.nudgeForward(step);
+  });
 }
 
 // -------- Arranque --------
@@ -203,4 +309,3 @@ async function setupCarouselSection(sectionEl, items) {
     console.error(e);
   }
 })();
-
