@@ -179,10 +179,11 @@ a{text-decoration:none;color:inherit}
   padding:0;
   margin:0 auto;          /* centrado dentro de la tarjeta */
   aspect-ratio:auto;      /* evita que cambie por proporción */
+  overflow:hidden;        /* recorta sobrante cuando la imagen cubre */
 }
 .card__img img{
   width:100%;height:100%;
-  object-fit:contain;
+  object-fit:cover;        /* ← cubrir todo el marco */
   transition:transform .35s ease;
   will-change:transform;
 }
@@ -261,9 +262,10 @@ a{text-decoration:none;color:inherit}
     padding:0;
     width:220px;         /* mantiene el ancho fijo también */
     margin:0 auto;
+    overflow:hidden;     /* recorte también en compacto */
   }
   .card__img img{
-    object-fit: contain;
+    object-fit:cover;    /* cubrir en compacto */
   }
 
   .card__body{ padding: 12px; }
