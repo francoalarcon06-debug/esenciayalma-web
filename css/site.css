@@ -90,7 +90,7 @@ a{text-decoration:none;color:inherit}
 .btn-ghost:hover{box-shadow:var(--shadow)}
 
 /* SECCIONES */
-.catalog-section{padding:48px 0;background:var(--soft)}
+.catalog-section{padding:36px 0;background:var(--soft)} /* ↓ antes 48px */
 .catalog-section:nth-of-type(odd){background:#fff}
 .sec-title{
   font-family:"DM Serif Display",serif;
@@ -101,7 +101,7 @@ a{text-decoration:none;color:inherit}
 .sec-sub{
   color:#6a6a6a;
   text-align:center;
-  margin:0 0 18px;
+  margin:0 0 10px; /* ↓ antes 18px */
 }
 
 /* Puente suave hero → primera sección (sin línea) */
