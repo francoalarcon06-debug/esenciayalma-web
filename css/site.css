@@ -108,12 +108,13 @@ a{text-decoration:none;color:inherit}
 #mujer.catalog-section{
   position:relative;
   margin-top:-48px;
-  padding-top:96px;
+  padding-top:48px;              /* ← antes 96px */
 }
 #mujer.catalog-section::before{
   content:"";
   position:absolute;
-  left:0; right:0; top:-96px; height:96px;
+  left:0; right:0; top:-48px;    /* ← antes -96px */
+  height:48px;                   /* ← antes 96px */
   background:linear-gradient(
     to bottom,
     rgba(255,255,255,0) 0%,
@@ -186,7 +187,7 @@ a{text-decoration:none;color:inherit}
   transition:transform .35s ease;
   will-change:transform;
 }
-/* CAMBIO: el zoom se activa al hover de toda la tarjeta */
+/* CAMBIO previo: zoom al hover de toda la tarjeta */
 .card:hover .card__img img{transform:scale(1.1)}
 
 /* CUERPO: grid + footer fijo al fondo y espacio reservado */
