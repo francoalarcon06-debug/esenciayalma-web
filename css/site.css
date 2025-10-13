@@ -260,25 +260,27 @@ a{text-decoration:none;color:inherit}
 .nav-btn.next{right:0; transform:translate(6px,-50%);}
 
 @media (max-width:640px){
-  /* En móvil, las acercamos 2px hacia adentro y centramos vertical igual */
+  /* Flechas en móvil */
   .nav-btn.prev{left:2px; transform:translateY(-50%);}
   .nav-btn.next{right:2px; transform:translateY(-50%);}
 
-  /* ===== Footer responsive para que no se corte el botón ===== */
+  /* ===== Footer en UNA sola fila (botón a la derecha) ===== */
   .footer__inner{
-    flex-wrap:wrap;            /* permite que baje a segunda línea */
+    flex-wrap:nowrap;         /* misma fila */
     align-items:flex-start;
-    gap:14px;
+    gap:16px;
   }
   .footer__brand{
-    flex:1 1 100%;             /* ocupa el ancho completo arriba */
+    flex:1 1 auto;            /* ocupa todo el espacio disponible a la izquierda */
+    min-width:0;              /* permite que el texto se encoja sin empujar al botón */
   }
   .footer__contact{
-    flex:0 0 auto;             /* no se encoje */
-    margin-top:4px;            /* pequeño respiro */
+    flex:0 0 auto;            /* botón de ancho natural */
+    margin-top:0;
   }
   .footer-wa{
-    max-width:100%;            /* evita desborde horizontal */
+    max-width:100%;
+    white-space:nowrap;       /* evita salto de línea dentro del botón */
   }
 }
 
