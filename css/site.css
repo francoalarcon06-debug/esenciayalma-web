@@ -186,7 +186,8 @@ a{text-decoration:none;color:inherit}
   transition:transform .35s ease;
   will-change:transform;
 }
-.card__img:hover img{transform:scale(1.1)}
+/* CAMBIO: el zoom se activa al hover de toda la tarjeta */
+.card:hover .card__img img{transform:scale(1.1)}
 
 /* CUERPO: grid + footer fijo al fondo y espacio reservado */
 .card__body{
