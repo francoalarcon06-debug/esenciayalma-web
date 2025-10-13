@@ -188,11 +188,11 @@ a{text-decoration:none;color:inherit}
 }
 .card__img:hover img{transform:scale(1.02)}
 
-/* CUERPO: grid + footer fijo al fondo y espacio reservado a 2 líneas */
+/* CUERPO: grid + footer fijo al fondo y espacio reservado */
 .card__body{
   padding:14px;
   display:grid !important;               /* anula el flex inyectado */
-  grid-template-rows:auto 1fr auto;      /* content | estira | footer */
+  grid-template-rows:auto 1fr auto;      /* title+desc | estira | footer */
   row-gap:6px !important;
   height:auto !important;
 }
@@ -203,17 +203,28 @@ a{text-decoration:none;color:inherit}
   gap:0 !important;
 }
 
-/* Título + descripción (reservamos 2 líneas de desc) */
-.card__title{margin:0;font-weight:700; line-height:1.2;}
+/* Título: forzamos ALTO de 2 líneas y truncamos si hay más */
+.card__title{
+  margin:0;
+  font-weight:700;
+  line-height:1.25;
+  min-height:2.5em;                      /* 2 líneas reservadas */
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  overflow:hidden;
+}
+
+/* Descripción: 2 líneas reservadas y truncadas si excede */
 .card__sub{
   margin:0;
   color:#6a6a6a;
   font-size:14px;
   line-height:1.4;
-  min-height:2.8em;                      /* = 2 líneas */
+  min-height:2.8em;                      /* 2 líneas */
   display:-webkit-box;
   -webkit-box-orient:vertical;
-  -webkit-line-clamp:2;                   /* recorte visual a 2 */
+  -webkit-line-clamp:2;
   overflow:hidden;
 }
 
@@ -294,7 +305,11 @@ a{text-decoration:none;color:inherit}
     height:auto !important;
   }
   .card__footer{ margin-top:0 !important; display:block !important; gap:0 !important; }
-  .card__title{ margin:0; line-height:1.2; }
+
+  .card__title{
+    margin:0; line-height:1.25; min-height:2.5em;
+    display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; overflow:hidden;
+  }
   .card__sub{
     margin:0; line-height:1.4; min-height:2.8em;
     display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; overflow:hidden;
