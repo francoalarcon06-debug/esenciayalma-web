@@ -263,6 +263,23 @@ a{text-decoration:none;color:inherit}
   /* En móvil, las acercamos 2px hacia adentro y centramos vertical igual */
   .nav-btn.prev{left:2px; transform:translateY(-50%);}
   .nav-btn.next{right:2px; transform:translateY(-50%);}
+
+  /* ===== Footer responsive para que no se corte el botón ===== */
+  .footer__inner{
+    flex-wrap:wrap;            /* permite que baje a segunda línea */
+    align-items:flex-start;
+    gap:14px;
+  }
+  .footer__brand{
+    flex:1 1 100%;             /* ocupa el ancho completo arriba */
+  }
+  .footer__contact{
+    flex:0 0 auto;             /* no se encoje */
+    margin-top:4px;            /* pequeño respiro */
+  }
+  .footer-wa{
+    max-width:100%;            /* evita desborde horizontal */
+  }
 }
 
 /* FOOTER */
@@ -355,4 +372,3 @@ a{text-decoration:none;color:inherit}
 
   .nav-btn{ top: 46%; }
 }
-
