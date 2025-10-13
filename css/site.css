@@ -108,24 +108,27 @@ a{text-decoration:none;color:inherit}
 .sec-link--bottom{
   display:block;
   text-align:right;
-  color:var(--primary);
+  color:#000;                /* texto negro */
   font-weight:600;
-  margin-top:10px;   /* altura uniforme tras el carrusel o listado */
-  transition:color .2s;
+  font-size:17px;            /* más grande */
+  margin-top:18px;           /* más separación */
+  text-decoration:none;      /* sin subrayado */
 }
-.sec-link--bottom:hover{ color:var(--primary-600); }
+.sec-link--bottom:hover{
+  color:#000;                /* se mantiene negro al pasar el mouse */
+}
 
 /* Puente suave hero → primera sección (sin línea) */
 #mujer.catalog-section{
   position:relative;
   margin-top:-48px;
-  padding-top:48px;              /* ← antes 96px */
+  padding-top:48px;
 }
 #mujer.catalog-section::before{
   content:"";
   position:absolute;
-  left:0; right:0; top:-48px;    /* ← antes -96px */
-  height:48px;                   /* ← antes 96px */
+  left:0; right:0; top:-48px;
+  height:48px;
   background:linear-gradient(
     to bottom,
     rgba(255,255,255,0) 0%,
@@ -183,7 +186,7 @@ a{text-decoration:none;color:inherit}
   min-width:260px;
 }
 
-/* Recuadro imagen (llena y hace zoom si falta) */
+/* Recuadro imagen */
 .card__img{
   width:100%;
   height:360px;
@@ -198,14 +201,12 @@ a{text-decoration:none;color:inherit}
   transition:transform .35s ease;
   will-change:transform;
 }
-/* CAMBIO previo: zoom al hover de toda la tarjeta */
 .card:hover .card__img img{transform:scale(1.1)}
 
-/* CUERPO: grid + footer fijo al fondo y espacio reservado */
 .card__body{
   padding:14px;
-  display:grid !important;               /* anula el flex inyectado */
-  grid-template-rows:auto 1fr auto;      /* title+desc | estira | footer */
+  display:grid !important;
+  grid-template-rows:auto 1fr auto;
   row-gap:6px !important;
   height:auto !important;
 }
@@ -216,25 +217,22 @@ a{text-decoration:none;color:inherit}
   gap:0 !important;
 }
 
-/* Título: forzamos ALTO de 2 líneas y truncamos si hay más */
 .card__title{
   margin:0;
   font-weight:700;
   line-height:1.25;
-  min-height:2.5em;                      /* 2 líneas reservadas */
+  min-height:2.5em;
   display:-webkit-box;
   -webkit-box-orient:vertical;
   -webkit-line-clamp:2;
   overflow:hidden;
 }
-
-/* Descripción: 2 líneas reservadas y truncadas si excede */
 .card__sub{
   margin:0;
   color:#6a6a6a;
   font-size:14px;
   line-height:1.4;
-  min-height:2.8em;                      /* 2 líneas */
+  min-height:2.8em;
   display:-webkit-box;
   -webkit-box-orient:vertical;
   -webkit-line-clamp:2;
