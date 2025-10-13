@@ -170,23 +170,27 @@ a{text-decoration:none;color:inherit}
   flex-direction:column;
   min-width:260px;
 }
+
+/* === RECUADRO DE IMAGEN: LLENA ANCHO + ZOOM AUTOMÁTICO === */
 .card__img{
-  /* ← MARCO FIJO, MÁS ANGOSTO */
-  width:220px;
-  height:340px;
+  width:100%;           /* llena el ancho de la tarjeta */
+  height:330px;         /* altura fija del recuadro */
   background:#f6f6f6;
   display:flex;align-items:center;justify-content:center;
   padding:0;
-  margin:0 auto;          /* centrado dentro de la tarjeta */
-  aspect-ratio:auto;      /* evita que cambie por proporción */
+  margin:0;
+  overflow:hidden;       /* oculta lo que sobrepase (recorte) */
 }
 .card__img img{
-  width:100%;height:100%;
-  object-fit:contain;
+  width:100%; height:100%;
+  object-fit:cover;      /* zoom automático para cubrir sin bordes */
+  object-position:center;
   transition:transform .35s ease;
   will-change:transform;
 }
 .card__img:hover img{transform:scale(1.02)}
+/* === /RECUADRO DE IMAGEN === */
+
 .card__body{padding:14px}
 .card__title{margin:0 0 6px;font-weight:700}
 .card__sub{margin:0 0 10px;color:#6a6a6a;font-size:14px}
@@ -255,15 +259,17 @@ a{text-decoration:none;color:inherit}
 
   .track{ padding: 6px 4px 10px; }
 
+  /* misma idea en modo compacto: ancho completo + altura fija */
   .card__img{
-    height: 240px;
-    aspect-ratio: auto;
+    width:100%;
+    height:240px;
     padding:0;
-    width:220px;         /* mantiene el ancho fijo también */
-    margin:0 auto;
+    margin:0;
+    overflow:hidden;
   }
   .card__img img{
-    object-fit: contain;
+    object-fit:cover;
+    object-position:center;
   }
 
   .card__body{ padding: 12px; }
