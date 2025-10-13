@@ -174,25 +174,25 @@ a{text-decoration:none;color:inherit}
 /* Recuadro imagen (llena y hace zoom si falta) */
 .card__img{
   width:100%;
-  height:360px;
+  height:360px;                 /* más alto para reducir el hueco */
   background:#f6f6f6;
   display:flex;align-items:center;justify-content:center;
   padding:0;margin:0;overflow:hidden;
 }
 .card__img img{
   width:100%;height:100%;
-  object-fit:cover;          /* <- llena y recorta si es necesario */
+  object-fit:cover;             /* llena y recorta si es necesario */
   object-position:center;
   transition:transform .35s ease;
   will-change:transform;
 }
 .card__img:hover img{transform:scale(1.02)}
 
-/* CUERPO: compactamos con grid y reseteamos márgenes */
+/* CUERPO: compactamos el espacio */
 .card__body{
   padding:14px;
-  display:grid;              /* <- controla el espaciado interno */
-  row-gap:6px;               /* <- espaciado compacto entre filas */
+  display:grid;
+  row-gap:6px;                  /* espaciado interno compacto */
 }
 .card__title{margin:0;font-weight:700}
 .card__sub{margin:0;color:#6a6a6a;font-size:14px}
