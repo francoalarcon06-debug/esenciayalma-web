@@ -104,6 +104,17 @@ a{text-decoration:none;color:inherit}
   margin:0 0 18px;
 }
 
+/* ENLACE “VER TODO” (debajo del carrusel, a la derecha) */
+.sec-link--bottom{
+  display:block;
+  text-align:right;
+  color:var(--primary);
+  font-weight:600;
+  margin-top:10px;   /* altura uniforme tras el carrusel o listado */
+  transition:color .2s;
+}
+.sec-link--bottom:hover{ color:var(--primary-600); }
+
 /* Puente suave hero → primera sección (sin línea) */
 #mujer.catalog-section{
   position:relative;
