@@ -18,7 +18,7 @@ a{text-decoration:none;color:inherit}
 
 /* NAV */
 .nav{
-  position:sticky;top:0;z-index:40;
+  position:static; /* ← antes: sticky; ahora se desplaza con la página */
   background:#ffffffcc;
   backdrop-filter:blur(8px);
   border-bottom:1px solid #0001;
