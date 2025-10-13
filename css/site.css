@@ -173,17 +173,17 @@ a{text-decoration:none;color:inherit}
 
 /* === RECUADRO DE IMAGEN: LLENA ANCHO + ZOOM AUTOMÁTICO === */
 .card__img{
-  width:100%;           /* llena el ancho de la tarjeta */
-  height:330px;         /* altura fija del recuadro */
+  width:100%;
+  height:360px;          /* ↑ antes 330px */
   background:#f6f6f6;
   display:flex;align-items:center;justify-content:center;
   padding:0;
   margin:0;
-  overflow:hidden;       /* oculta lo que sobrepase (recorte) */
+  overflow:hidden;
 }
 .card__img img{
   width:100%; height:100%;
-  object-fit:cover;      /* zoom automático para cubrir sin bordes */
+  object-fit:cover;
   object-position:center;
   transition:transform .35s ease;
   will-change:transform;
@@ -259,10 +259,9 @@ a{text-decoration:none;color:inherit}
 
   .track{ padding: 6px 4px 10px; }
 
-  /* misma idea en modo compacto: ancho completo + altura fija */
   .card__img{
     width:100%;
-    height:240px;
+    height:260px;        /* ↑ antes 240px */
     padding:0;
     margin:0;
     overflow:hidden;
