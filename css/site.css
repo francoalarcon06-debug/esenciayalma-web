@@ -90,18 +90,18 @@ a{text-decoration:none;color:inherit}
 .btn-ghost:hover{box-shadow:var(--shadow)}
 
 /* SECCIONES */
-.catalog-section{padding:36px 0;background:var(--soft)} /* ↓ antes 48px */
+.catalog-section{padding:26px 0 22px;background:var(--soft)} /* compactado */
 .catalog-section:nth-of-type(odd){background:#fff}
 .sec-title{
   font-family:"DM Serif Display",serif;
   text-align:center;
   font-size:clamp(26px,3vw,36px);
-  margin:0 0 8px;
+  margin:0 0 4px; /* compactado */
 }
 .sec-sub{
   color:#6a6a6a;
   text-align:center;
-  margin:0 0 10px; /* ↓ antes 18px */
+  margin:0 0 6px; /* compactado */
 }
 
 /* Puente suave hero → primera sección (sin línea) */
@@ -133,7 +133,7 @@ a{text-decoration:none;color:inherit}
   grid-auto-columns:240px; /* ancho fijo, más delgado */
   gap:16px;
   overflow:visible;
-  padding:10px 4px 16px;
+  padding:2px 4px 12px; /* compactado arriba/abajo */
 }
 
 /* Modo estático */
@@ -242,27 +242,19 @@ a{text-decoration:none;color:inherit}
 
 /* ===== MODO COMPACTO ===== */
 @media (max-height: 820px) and (min-width: 900px) {
-  .catalog-section{ padding: 28px 0; }
+  .catalog-section{ padding: 24px 0 20px; } /* compactado en modo compacto */
 
-  .sec-title{
-    font-size: clamp(24px, 2.6vw, 34px);
-    margin: 0 0 6px;
-  }
-  .sec-sub{
-    font-size: 15px;
-    margin: 0 0 12px;
-  }
+  .sec-title{ margin: 0 0 4px; }
+  .sec-sub{ margin: 0 0 6px; }
 
-  .track{ padding: 6px 4px 10px; }
+  .track{ padding: 2px 4px 10px; }
 
   .card__img{
-    height:300px; /* mantiene el mismo alto fijo */
+    height:300px;
     aspect-ratio:auto;
     padding:0;
   }
-  .card__img img{
-    object-fit:contain;
-  }
+  .card__img img{ object-fit:contain; }
 
   .card__body{ padding: 12px; }
   .card__title{ margin: 0 0 4px; }
