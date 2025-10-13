@@ -274,6 +274,26 @@ a{text-decoration:none;color:inherit}
   gap:16px;
 }
 
+/* Botón WhatsApp del footer (nuevo estilo) */
+.footer-wa{
+  appearance:none;
+  background:#fff;
+  color:var(--text);
+  border:1px solid #00000020;
+  border-radius:12px;
+  padding:10px 14px;
+  font-weight:600;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+  transition:box-shadow .2s, border-color .2s, transform .06s;
+}
+.footer-wa:hover{
+  box-shadow:var(--shadow);
+  border-color:#00000030;
+}
+
 /* WhatsApp icon dentro del botón del catálogo */
 .card__btn{
   display:inline-flex;
