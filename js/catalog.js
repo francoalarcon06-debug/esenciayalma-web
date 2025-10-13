@@ -26,6 +26,10 @@ async function loadData() {
     .card__body{display:flex;flex-direction:column;height:100%}
     .card__content{flex:1 1 auto}
     .card__footer{margin-top:auto;display:flex;flex-direction:column;gap:12px}
+
+    /* Forzar que cualquier imagen LLENE el marco fijo sin dejar bordes */
+    .card__img{overflow:hidden}
+    .card__img img{width:100%;height:100%;object-fit:cover;object-position:center center}
   `;
   document.head.appendChild(s);
 })();
