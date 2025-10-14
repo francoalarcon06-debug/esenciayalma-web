@@ -16,7 +16,7 @@ async function loadData() {
   return res.json();
 }
 
-/* ====== Inyección de CSS (una sola vez) para alinear precio/botón ====== */
+/* ====== Inyección de CSS (una sola vez) ====== */
 (() => {
   if (document.getElementById("card-equalize-css")) return;
   const s = document.createElement("style");
@@ -35,6 +35,11 @@ async function loadData() {
     .is-viewport, .carousel .track{ touch-action: pan-y; }
     .is-viewport{ cursor: grab; }
     .is-viewport.dragging{ cursor: grabbing; }
+
+    /* Evitar selección de texto durante el drag horizontal */
+    .is-viewport.dragging, .is-viewport.dragging *{
+      user-select:none; -webkit-user-select:none; -webkit-touch-callout:none;
+    }
   `;
   document.head.appendChild(s);
 })();
@@ -48,7 +53,7 @@ function card(product) {
 
   el.innerHTML = `
     <div class="card__img">
-      <img src="${product.image}" alt="${product.name}" loading="lazy">
+      <img src="${product.image}" alt="${product.name}" loading="lazy" draggable="false">
     </div>
 
     <div class="card__body">
@@ -63,7 +68,7 @@ function card(product) {
           <a class="btn btn-primary card__btn" target="_blank" href="${href}">
             <!-- WhatsApp (Bootstrap Icons, MIT). Hereda color con currentColor -->
             <svg class="icon-wa" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-              <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+              <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.49-.084-.182-.133-.38-.232"/>
             </svg>
             Consultar por WhatsApp
           </a>
@@ -137,7 +142,7 @@ function initLoop(track, { speed = 24 } = {}) {
   let lastTs = 0, offset = 0;
   let tweenActive = false, tweenStart = 0, tweenDur = 0, tweenTarget = 0, tweenPrev = 0;
 
-  // ===== Auto-scroll y “fling” =====
+  // ===== Auto-scroll e inercia =====
   const BASE_SPEED = speed;
   let autoSpeed = speed;      // velocidad actual del auto-scroll (se mezcla suavemente)
   let targetAuto = speed;     // objetivo al que queremos volver
@@ -218,12 +223,16 @@ function initLoop(track, { speed = 24 } = {}) {
   let startX = 0, startY = 0;
   let startOffset = 0;
   let lastX = 0, lastT = 0;
+  let dragMoved = false;  // para cancelar clics fantasma
+  let cancelNextClick = false;
 
-  const DRAG_THRESHOLD = 8; // px de movimiento mínimo para tomar una decisión
+  const DRAG_THRESHOLD = 8;  // px para decidir dirección
+  const CLICK_CANCEL_THRESHOLD = 6; // px para anular click
 
   const onPointerDown = (e) => {
     deciding = true;
     dragging = false;
+    dragMoved = false;
     track.classList.remove("dragging");
 
     startX = lastX = e.clientX;
@@ -238,45 +247,44 @@ function initLoop(track, { speed = 24 } = {}) {
   };
 
   const onPointerMove = (e) => {
-    // mientras decidimos, evaluamos la dirección del gesto
     if (deciding) {
       const dx = e.clientX - startX;
       const dy = e.clientY - startY;
       if (Math.abs(dx) > DRAG_THRESHOLD || Math.abs(dy) > DRAG_THRESHOLD) {
         if (Math.abs(dx) > Math.abs(dy)) {
-          // gesto horizontal -> activamos drag, capturamos puntero
           dragging = true;
           deciding = false;
           track.classList.add("dragging");
           try { track.setPointerCapture(e.pointerId); } catch(_) {}
+          e.preventDefault(); // bloquear selección/scroll nativo horizontal
         } else {
-          // gesto vertical -> NO arrastramos, dejamos que la página scrollee
           deciding = false;
           dragging = false;
-          // no capturamos el puntero; no hacemos nada más
+          // gesto vertical: permitir scroll del documento
         }
       }
-      return; // hasta decidir, no movemos nada
+      return;
     }
 
     if (!dragging) return;
 
-    // arrastre horizontal activo
+    e.preventDefault(); // necesario para que no seleccione texto ni haga scroll lateral
     const nowX = e.clientX;
     const dx = nowX - startX;
+    if (Math.abs(dx) > CLICK_CANCEL_THRESHOLD) dragMoved = true;
+
     offset = startOffset - dx; // arrastre directo
     recycleAndRender();
 
-    // guardar para calcular velocidad del fling
     lastX = nowX;
     lastT = performance.now();
   };
 
   const onPointerUp = (e) => {
-    // si estábamos decidiendo y el usuario soltó sin superar umbral, simplemente reanudar
+    // si se soltó antes de decidir, simplemente reanudar
     if (deciding && !dragging) {
       deciding = false;
-      targetAuto = BASE_SPEED;   // volver al auto-scroll
+      targetAuto = BASE_SPEED;
       return;
     }
 
@@ -285,20 +293,33 @@ function initLoop(track, { speed = 24 } = {}) {
     track.classList.remove("dragging");
     try { track.releasePointerCapture(e.pointerId); } catch (_) {}
 
+    // anular click si realmente hubo arrastre
+    if (dragMoved) {
+      cancelNextClick = true;
+      setTimeout(() => (cancelNextClick = false), 120);
+    }
+
     // velocidad horizontal en px/s basada en el último tramo
     const dtMs = Math.max(16, performance.now() - lastT);
     const vx = (e.clientX - lastX) / dtMs * 1000; // px/s
-    // inercia proporcional a la velocidad del gesto (factor ajustable)
-    momentumVel = -vx * 0.8;
+    momentumVel = -vx * 0.8; // inercia proporcional
 
-    // reanudar auto-scroll objetivo (volver suavemente)
-    targetAuto = BASE_SPEED;
+    targetAuto = BASE_SPEED; // volver suave al auto-scroll
   };
 
-  track.addEventListener("pointerdown", onPointerDown, { passive: true });
-  track.addEventListener("pointermove", onPointerMove, { passive: true });
-  track.addEventListener("pointerup", onPointerUp, { passive: true });
-  track.addEventListener("pointercancel", onPointerUp, { passive: true });
+  // Cancelar clicks fantasma tras un drag
+  const onClickCapture = (ev) => {
+    if (cancelNextClick) {
+      ev.preventDefault();
+      ev.stopPropagation();
+    }
+  };
+
+  track.addEventListener("click", onClickCapture, true);
+  track.addEventListener("pointerdown", onPointerDown, { passive: false });
+  track.addEventListener("pointermove", onPointerMove, { passive: false });
+  track.addEventListener("pointerup", onPointerUp, { passive: false });
+  track.addEventListener("pointercancel", onPointerUp, { passive: false });
 
   // Ajuste ante resize (debounce simple)
   let rt;
@@ -313,11 +334,9 @@ function destroyLoop(track) {
   if (!track._loopInited) return;
   const row = track._row;
   if (row) {
-    // mover los hijos otra vez al track
     while (row.firstChild) track.insertBefore(row.firstChild, row);
     row.remove();
   }
-  // limpiar flags y estilos inlines
   track._loopInited = false;
   track._loopAPI = undefined;
   track._row = undefined;
@@ -367,17 +386,14 @@ async function setupCarouselSection(sectionEl, items) {
     const shouldCarousel = items.length > visibleCards;
 
     if (shouldCarousel) {
-      // activar carrusel
       track.classList.remove("static");
       if (!track._loopInited) {
         initLoop(track, { speed: 24 });
       } else {
-        // re-medimos por si cambió el ancho
         track._loopAPI?.remeasure?.();
       }
       prevBtn.style.display = "";
       nextBtn.style.display = "";
-      // evitar listeners duplicados
       prevBtn.onclick = () => {
         const step = track._loopAPI?._stepBackward?.() || Math.max(track.clientWidth * 0.9, 280);
         track._loopAPI?.nudgeBackward(step);
@@ -387,7 +403,6 @@ async function setupCarouselSection(sectionEl, items) {
         track._loopAPI?.nudgeForward(step);
       };
     } else {
-      // modo estático
       prevBtn.style.display = "none";
       nextBtn.style.display = "none";
       prevBtn.onclick = nextBtn.onclick = null;
@@ -411,7 +426,6 @@ async function setupCarouselSection(sectionEl, items) {
     };
     addEventListener("resize", onResize, { passive: true });
 
-    // por si cambian métricas del layout (fuentes, etc.)
     const ro = new ResizeObserver(() => applyMode());
     ro.observe(track);
     sectionEl._ro = ro;
