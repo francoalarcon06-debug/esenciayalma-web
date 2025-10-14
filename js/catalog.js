@@ -104,6 +104,14 @@ function initLoop(track, { speed = 24 } = {}) {
   const originals = [...track.children];
   if (originals.length === 0) return;
 
+  // --- CONGELAR ancho real de cada tarjeta para evitar reflow y cambios de clamping ---
+  originals.forEach(cardEl => {
+    const w = Math.round(cardEl.getBoundingClientRect().width);
+    cardEl.style.flex = `0 0 ${w}px`;
+    cardEl.style.width = `${w}px`;
+    cardEl.dataset._frozenW = String(w);
+  });
+
   // Contenedor interno en fila
   const row = document.createElement("div");
   const GAP = parseFloat(getComputedStyle(track).gap || "16") || 16;
@@ -112,7 +120,7 @@ function initLoop(track, { speed = 24 } = {}) {
     display: "flex",
     gap: `${GAP}px`,
     willChange: "transform",
-    transform: "translateX(0px)",
+    transform: "translate3d(0,0,0)",
     transition: "none"
   });
 
@@ -124,7 +132,10 @@ function initLoop(track, { speed = 24 } = {}) {
   track.appendChild(row);
   track._row = row; // guardamos referencia para poder desmontar
 
-  const widthOf = (el) => el.getBoundingClientRect().width;
+  const widthOf = (el) => {
+    const fw = parseFloat(el.dataset._frozenW || "");
+    return Number.isFinite(fw) && fw > 0 ? fw : el.getBoundingClientRect().width;
+  };
   const childCount = () => row.children.length;
   const spanAt = (i) => {
     const c = row.children[i];
@@ -176,7 +187,7 @@ function initLoop(track, { speed = 24 } = {}) {
     let s;
     while (offset >= (s = spanFirst())) { offset -= s; moveFirstToEnd(); }
     while (offset < 0) { const back = spanLast(); moveLastToStart(); offset += back; }
-    row.style.transform = `translateX(${-offset}px)`;
+    row.style.transform = `translate3d(${-offset}px,0,0)`;
   };
 
   const tick = (ts) => {
@@ -260,7 +271,6 @@ function initLoop(track, { speed = 24 } = {}) {
         } else {
           deciding = false;
           dragging = false;
-          // gesto vertical: permitir scroll del documento
         }
       }
       return;
@@ -333,10 +343,19 @@ function initLoop(track, { speed = 24 } = {}) {
 function destroyLoop(track) {
   if (!track._loopInited) return;
   const row = track._row;
+
+  // mover hijos al track y limpiar widths "congelados"
   if (row) {
+    const cards = [...row.children];
     while (row.firstChild) track.insertBefore(row.firstChild, row);
     row.remove();
+    cards.forEach(el => {
+      el.style.flex = "";
+      el.style.width = "";
+      delete el.dataset._frozenW;
+    });
   }
+
   track._loopInited = false;
   track._loopAPI = undefined;
   track._row = undefined;
