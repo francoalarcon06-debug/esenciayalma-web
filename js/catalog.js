@@ -137,8 +137,12 @@ function initLoop(track, { speed = 24 } = {}) {
   let lastTs = 0, offset = 0;
   let tweenActive = false, tweenStart = 0, tweenDur = 0, tweenTarget = 0, tweenPrev = 0;
 
-  // Velocidad de auto-scroll controlable (para pausar durante drag)
+  // Auto-scroll SIEMPRE activo
+  const BASE_SPEED = speed;
   let autoSpeed = speed;
+
+  // Desplazamiento extra por dedo (solo cuando hay drag horizontal)
+  let dragDelta = 0;
 
   const startTweenOffset = (delta, duration = 500) => {
     if (tweenActive) {
@@ -163,13 +167,16 @@ function initLoop(track, { speed = 24 } = {}) {
     let s;
     while (offset >= (s = spanFirst())) { offset -= s; moveFirstToEnd(); }
     while (offset < 0) { const back = spanLast(); moveLastToStart(); offset += back; }
-    row.style.transform = `translateX(${-offset}px)`;
+    row.style.transform = `translateX(${- (offset + dragDelta)}px)`;
   };
 
   const tick = (ts) => {
     if (!lastTs) lastTs = ts;
     const dt = (ts - lastTs) / 1000; lastTs = ts;
-    offset += autoSpeed * dt;       // usar autoSpeed (pausable)
+
+    // avanzar offset por auto-scroll
+    offset += autoSpeed * dt;
+
     applyTweenStep(ts);
     recycleAndRender();
     requestAnimationFrame(tick);
@@ -191,60 +198,138 @@ function initLoop(track, { speed = 24 } = {}) {
     _stepBackward: backwardThree
   };
 
-  // ====== GESTOS (drag/touch) ======
-  let dragging = false;
-  let startX = 0;
-  let startOffset = 0;
-  let lastX = 0;
-  let lastT = 0;
+  // ====== GESTOS (bloqueo de dirección + solo dentro de .card + sin pausar auto-scroll) ======
+  let deciding = false;   // estamos decidiendo si el gesto es H o V
+  let dragging = false;   // arrastre horizontal activo
+  let startX = 0, startY = 0;
+  let lastX = 0, lastT = 0;
+  let dragMoved = false;  // para cancelar clics fantasma
+  let cancelNextClick = false;
+
+  const DRAG_THRESHOLD = 10;            // px para “ganar” horizontal
+  const CLICK_CANCEL_THRESHOLD = 6;     // px para anular click
+
+  const isFromCard = (target) => !!(target && target.closest(".card"));
 
   const onPointerDown = (e) => {
-    dragging = true;
-    track.classList.add("dragging");
-    startX = e.clientX;
-    lastX = startX;
-    lastT = performance.now();
-    startOffset = offset;
-    autoSpeed = 0;                // pausar auto-scroll
-    tweenActive = false;          // cancelar tween en curso
-    tweenTarget = tweenPrev = 0;
+    // solo consideramos gestos que parten dentro de una tarjeta
+    if (!isFromCard(e.target)) {
+      deciding = dragging = false;
+      return;
+    }
+    deciding = true;
+    dragging = false;
+    dragMoved = false;
 
-    try { track.setPointerCapture(e.pointerId); } catch (_) {}
+    startX = lastX = e.clientX;
+    startY = e.clientY;
+    lastT  = performance.now();
   };
 
   const onPointerMove = (e) => {
+    // si no estamos considerando este gesto, salir
+    if (!deciding && !dragging) return;
+
+    if (deciding) {
+      const dx = e.clientX - startX;
+      const dy = e.clientY - startY;
+      if (Math.abs(dx) > DRAG_THRESHOLD || Math.abs(dy) > DRAG_THRESHOLD) {
+        if (Math.abs(dx) > Math.abs(dy)) {
+          // Confirmamos horizontal: activar drag sin pausar auto-scroll
+          dragging = true;
+          deciding = false;
+          track.classList.add("dragging");
+          try { track.setPointerCapture(e.pointerId); } catch(_) {}
+          e.preventDefault(); // bloquear selección/scroll lateral
+        } else {
+          // gesto vertical: no drag, dejamos que la página scrollee
+          deciding = false;
+          dragging = false;
+        }
+      }
+      return;
+    }
+
     if (!dragging) return;
+
+    e.preventDefault(); // necesario para evitar selección/scroll lateral
     const nowX = e.clientX;
-    const dx = nowX - startX;
-    offset = startOffset - dx;    // arrastrar contenido
+    const dxMove = nowX - lastX;     // delta desde el último frame
+    if (Math.abs(nowX - startX) > CLICK_CANCEL_THRESHOLD) dragMoved = true;
+
+    // sumamos desplazamiento del dedo SIN tocar el auto-scroll
+    dragDelta -= dxMove;
     recycleAndRender();
 
-    // guardar para inercia
     lastX = nowX;
     lastT = performance.now();
   };
 
   const onPointerUp = (e) => {
+    // si soltó antes de decidir, no pasó nada
+    if (deciding && !dragging) {
+      deciding = false;
+      return;
+    }
     if (!dragging) return;
+
     dragging = false;
+    deciding = false;
     track.classList.remove("dragging");
     try { track.releasePointerCapture(e.pointerId); } catch (_) {}
 
-    // Inercia simple basada en velocidad horizontal
-    const dt = Math.max(16, performance.now() - lastT);
-    const vx = (e.clientX - lastX) / dt; // px/ms
-    const inertia = -vx * 260 * 0.9;     // escala aprox al ancho de una tarjeta
-    if (Math.abs(inertia) > 12) {
-      startTweenOffset(inertia, 420);
+    // anular click si realmente hubo arrastre
+    if (dragMoved) {
+      cancelNextClick = true;
+      setTimeout(() => (cancelNextClick = false), 120);
     }
 
-    autoSpeed = speed;            // reanudar auto-scroll
+    // Inercia: convertir velocidad del dedo en un tween sobre dragDelta
+    const dtMs = Math.max(16, performance.now() - lastT);
+    const vx = (e.clientX - lastX) / dtMs; // px/ms
+    const inertia = -vx * 260 * 0.9;       // proporcional (~ancho tarjeta)
+
+    if (Math.abs(inertia) > 12) {
+      // animamos dragDelta hacia dragDelta + inertia y luego vuelve a 0 con el auto-scroll base activo
+      let start = performance.now();
+      const from = dragDelta;
+      const to = dragDelta + inertia;
+      const dur = 420;
+      const step = (ts) => {
+        const t = Math.min(1, (ts - start) / dur);
+        const cur = from + easeOutCubic(t) * (to - from);
+        dragDelta = cur;
+        recycleAndRender();
+        if (t < 1) requestAnimationFrame(step);
+        else {
+          // al final, absorbemos ese delta en el offset para “resetear” dragDelta a 0
+          offset += dragDelta;
+          dragDelta = 0;
+          recycleAndRender();
+        }
+      };
+      requestAnimationFrame(step);
+    } else {
+      // sin inercia: absorbemos inmediatamente el delta
+      offset += dragDelta;
+      dragDelta = 0;
+      recycleAndRender();
+    }
   };
 
-  track.addEventListener("pointerdown", onPointerDown);
-  track.addEventListener("pointermove", onPointerMove);
-  track.addEventListener("pointerup", onPointerUp);
-  track.addEventListener("pointercancel", onPointerUp);
+  // Cancelar clicks fantasma tras un drag
+  const onClickCapture = (ev) => {
+    if (cancelNextClick) {
+      ev.preventDefault();
+      ev.stopPropagation();
+    }
+  };
+
+  track.addEventListener("click", onClickCapture, true);
+  track.addEventListener("pointerdown", onPointerDown, { passive: true });
+  track.addEventListener("pointermove", onPointerMove, { passive: false });
+  track.addEventListener("pointerup", onPointerUp, { passive: false });
+  track.addEventListener("pointercancel", onPointerUp, { passive: false });
 
   // Ajuste ante resize (debounce simple)
   let rt;
