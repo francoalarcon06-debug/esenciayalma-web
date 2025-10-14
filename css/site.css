@@ -108,13 +108,15 @@ a{text-decoration:none;color:inherit}
 .sec-link--bottom{
   display:block;
   text-align:right;
-  color:#000;
+  color:#000;                /* texto negro */
   font-weight:600;
-  font-size:17px;
-  margin-top:18px;
-  text-decoration:none;
+  font-size:17px;            /* más grande */
+  margin-top:18px;           /* más separación */
+  text-decoration:none;      /* sin subrayado */
 }
-.sec-link--bottom:hover{ color:#000; }
+.sec-link--bottom:hover{
+  color:#000;                /* se mantiene negro al pasar el mouse */
+}
 
 /* Puente suave hero → primera sección (sin línea) */
 #mujer.catalog-section{
@@ -329,7 +331,3 @@ a{text-decoration:none;color:inherit}
 
   .nav-btn{ top: 46%; }
 }
-
-/* === FIX BORDE BLANCO EN MÓVIL SIN ROMPER NADA === */
-.carousel{ overflow:hidden; }
-html,body{ overflow-x:hidden; }
