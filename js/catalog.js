@@ -137,8 +137,16 @@ function initLoop(track, { speed = 24 } = {}) {
   let lastTs = 0, offset = 0;
   let tweenActive = false, tweenStart = 0, tweenDur = 0, tweenTarget = 0, tweenPrev = 0;
 
-  // Velocidad de auto-scroll controlable (para pausar durante drag)
-  let autoSpeed = speed;
+  // ===== Auto-scroll y “fling” =====
+  const BASE_SPEED = speed;
+  let autoSpeed = speed;      // velocidad actual del auto-scroll (se mezcla suavemente)
+  let targetAuto = speed;     // objetivo al que queremos volver
+  const AUTO_BLEND_SEC = 0.45;// tiempo aprox para volver a la velocidad base
+
+  // Fling con inercia: velocidad adicional que decae con el tiempo (px/s)
+  let momentumVel = 0;                 // px/s
+  const MOMENTUM_DECAY = 0.90;         // fricción por frame (~60fps)
+  const MOMENTUM_EPS = 2;              // umbral para detener
 
   const startTweenOffset = (delta, duration = 500) => {
     if (tweenActive) {
@@ -169,7 +177,20 @@ function initLoop(track, { speed = 24 } = {}) {
   const tick = (ts) => {
     if (!lastTs) lastTs = ts;
     const dt = (ts - lastTs) / 1000; lastTs = ts;
-    offset += autoSpeed * dt;       // usar autoSpeed (pausable)
+
+    // aplicar mezcla suave para recuperar autoSpeed -> targetAuto
+    const k = 1 - Math.pow(0.001, dt / AUTO_BLEND_SEC); // independencia del framerate
+    autoSpeed += (targetAuto - autoSpeed) * k;
+
+    // decaimiento de la inercia
+    if (Math.abs(momentumVel) > MOMENTUM_EPS) {
+      momentumVel *= Math.pow(MOMENTUM_DECAY, dt * 60);
+      if (Math.abs(momentumVel) <= MOMENTUM_EPS) momentumVel = 0;
+    }
+
+    // avance total
+    offset += (autoSpeed + momentumVel) * dt;
+
     applyTweenStep(ts);
     recycleAndRender();
     requestAnimationFrame(tick);
@@ -191,60 +212,93 @@ function initLoop(track, { speed = 24 } = {}) {
     _stepBackward: backwardThree
   };
 
-  // ====== GESTOS (drag/touch) ======
-  let dragging = false;
-  let startX = 0;
+  // ====== GESTOS (drag/touch con bloqueo de dirección + fling) ======
+  let deciding = false;   // estamos decidiendo si es horizontal o vertical
+  let dragging = false;   // arrastre horizontal activo
+  let startX = 0, startY = 0;
   let startOffset = 0;
-  let lastX = 0;
-  let lastT = 0;
+  let lastX = 0, lastT = 0;
+
+  const DRAG_THRESHOLD = 8; // px de movimiento mínimo para tomar una decisión
 
   const onPointerDown = (e) => {
-    dragging = true;
-    track.classList.add("dragging");
-    startX = e.clientX;
-    lastX = startX;
-    lastT = performance.now();
-    startOffset = offset;
-    autoSpeed = 0;                // pausar auto-scroll
-    tweenActive = false;          // cancelar tween en curso
-    tweenTarget = tweenPrev = 0;
+    deciding = true;
+    dragging = false;
+    track.classList.remove("dragging");
 
-    try { track.setPointerCapture(e.pointerId); } catch (_) {}
+    startX = lastX = e.clientX;
+    startY = e.clientY;
+    lastT  = performance.now();
+    startOffset = offset;
+
+    // Pausar auto-scroll suavemente hacia 0
+    targetAuto = 0;
+    momentumVel = 0;       // cortar cualquier inercia activa
+    tweenActive = false; tweenTarget = tweenPrev = 0;
   };
 
   const onPointerMove = (e) => {
+    // mientras decidimos, evaluamos la dirección del gesto
+    if (deciding) {
+      const dx = e.clientX - startX;
+      const dy = e.clientY - startY;
+      if (Math.abs(dx) > DRAG_THRESHOLD || Math.abs(dy) > DRAG_THRESHOLD) {
+        if (Math.abs(dx) > Math.abs(dy)) {
+          // gesto horizontal -> activamos drag, capturamos puntero
+          dragging = true;
+          deciding = false;
+          track.classList.add("dragging");
+          try { track.setPointerCapture(e.pointerId); } catch(_) {}
+        } else {
+          // gesto vertical -> NO arrastramos, dejamos que la página scrollee
+          deciding = false;
+          dragging = false;
+          // no capturamos el puntero; no hacemos nada más
+        }
+      }
+      return; // hasta decidir, no movemos nada
+    }
+
     if (!dragging) return;
+
+    // arrastre horizontal activo
     const nowX = e.clientX;
     const dx = nowX - startX;
-    offset = startOffset - dx;    // arrastrar contenido
+    offset = startOffset - dx; // arrastre directo
     recycleAndRender();
 
-    // guardar para inercia
+    // guardar para calcular velocidad del fling
     lastX = nowX;
     lastT = performance.now();
   };
 
   const onPointerUp = (e) => {
+    // si estábamos decidiendo y el usuario soltó sin superar umbral, simplemente reanudar
+    if (deciding && !dragging) {
+      deciding = false;
+      targetAuto = BASE_SPEED;   // volver al auto-scroll
+      return;
+    }
+
     if (!dragging) return;
     dragging = false;
     track.classList.remove("dragging");
     try { track.releasePointerCapture(e.pointerId); } catch (_) {}
 
-    // Inercia simple basada en velocidad horizontal
-    const dt = Math.max(16, performance.now() - lastT);
-    const vx = (e.clientX - lastX) / dt; // px/ms
-    const inertia = -vx * 260 * 0.9;     // escala aprox al ancho de una tarjeta
-    if (Math.abs(inertia) > 12) {
-      startTweenOffset(inertia, 420);
-    }
+    // velocidad horizontal en px/s basada en el último tramo
+    const dtMs = Math.max(16, performance.now() - lastT);
+    const vx = (e.clientX - lastX) / dtMs * 1000; // px/s
+    // inercia proporcional a la velocidad del gesto (factor ajustable)
+    momentumVel = -vx * 0.8;
 
-    autoSpeed = speed;            // reanudar auto-scroll
+    // reanudar auto-scroll objetivo (volver suavemente)
+    targetAuto = BASE_SPEED;
   };
 
-  track.addEventListener("pointerdown", onPointerDown);
-  track.addEventListener("pointermove", onPointerMove);
-  track.addEventListener("pointerup", onPointerUp);
-  track.addEventListener("pointercancel", onPointerUp);
+  track.addEventListener("pointerdown", onPointerDown, { passive: true });
+  track.addEventListener("pointermove", onPointerMove, { passive: true });
+  track.addEventListener("pointerup", onPointerUp, { passive: true });
+  track.addEventListener("pointercancel", onPointerUp, { passive: true });
 
   // Ajuste ante resize (debounce simple)
   let rt;
