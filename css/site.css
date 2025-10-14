@@ -18,7 +18,7 @@ a{text-decoration:none;color:inherit}
 
 /* NAV */
 .nav{
-  position:static; /* ← antes: sticky; ahora se desplaza con la página */
+  position:sticky;top:0;z-index:40;
   background:#ffffffcc;
   backdrop-filter:blur(8px);
   border-bottom:1px solid #0001;
@@ -260,28 +260,9 @@ a{text-decoration:none;color:inherit}
 .nav-btn.next{right:0; transform:translate(6px,-50%);}
 
 @media (max-width:640px){
-  /* Flechas en móvil */
+  /* En móvil, las acercamos 2px hacia adentro y centramos vertical igual */
   .nav-btn.prev{left:2px; transform:translateY(-50%);}
   .nav-btn.next{right:2px; transform:translateY(-50%);}
-
-  /* ===== Footer en UNA sola fila (botón a la derecha) ===== */
-  .footer__inner{
-    flex-wrap:nowrap;         /* misma fila */
-    align-items:flex-start;
-    gap:16px;
-  }
-  .footer__brand{
-    flex:1 1 auto;            /* ocupa todo el espacio disponible a la izquierda */
-    min-width:0;              /* permite que el texto se encoja sin empujar al botón */
-  }
-  .footer__contact{
-    flex:0 0 auto;            /* botón de ancho natural */
-    margin-top:0;
-  }
-  .footer-wa{
-    max-width:100%;
-    white-space:nowrap;       /* evita salto de línea dentro del botón */
-  }
 }
 
 /* FOOTER */
