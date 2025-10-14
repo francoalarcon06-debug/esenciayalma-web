@@ -333,3 +333,8 @@ a{text-decoration:none;color:inherit}
 
   .nav-btn{ top: 46%; }
 }
+/* Forzar que el header NO sea sticky/fixed, pase lo que pase */
+.nav{
+  position: static !important;
+  top: auto !important;
+}
