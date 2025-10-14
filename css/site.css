@@ -365,3 +365,49 @@ a{text-decoration:none;color:inherit}
     margin-top: 6px;
   }
 }
+/* ===== MODO COMPACTO PARA CELULARES (solo móvil) ===== */
+@media (max-width: 768px){
+
+  /* Menos aire vertical para que quepa todo */
+  .catalog-section{
+    padding: 28px 0 32px;
+  }
+
+  /* Título y subtítulo más compactos */
+  .sec-title{
+    font-size: clamp(22px, 5.4vw, 28px);
+    margin: 0 0 6px;
+  }
+  .sec-sub{
+    font-size: 15px;
+    margin: 0 0 14px;
+    line-height: 1.45;
+  }
+
+  /* Carrusel: menos padding y separación */
+  .track{
+    gap: 12px;
+    padding: 6px 2px 10px;
+  }
+
+  /* Imagen de la tarjeta: altura fluida según alto de pantalla */
+  .card__img{
+    height: clamp(180px, 36vh, 250px);
+  }
+
+  /* Contenido de la tarjeta: un pelín más compacto */
+  .card__body{
+    padding: 12px;
+  }
+
+  /* Botón dentro de la tarjeta */
+  .card__btn{
+    padding: 12px 14px;
+  }
+
+  /* Flechas: ligerísimo ajuste para no robar espacio visual */
+  .nav-btn{
+    top: 46%;
+  }
+}
+
