@@ -339,3 +339,29 @@ a{text-decoration:none;color:inherit}
     html, body { overflow-x: hidden; }
   }
 }
+
+/* ===== Footer en móvil: botón debajo y texto a ancho completo ===== */
+@media (max-width: 768px){
+  .footer__inner{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  /* El bloque de texto puede usar todo el ancho */
+  .footer__brand{
+    max-width: none !important;
+    width: 100%;
+  }
+  .footer__brand p{
+    max-width: none;
+  }
+  /* Botón WhatsApp a la línea de abajo y ancho completo */
+  .footer__contact{
+    width: 100%;
+  }
+  .footer__contact .btn{
+    width: 100%;
+    justify-content: center;
+    margin-top: 6px;
+  }
+}
