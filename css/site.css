@@ -5,7 +5,7 @@
   --shadow:0 10px 30px rgba(0,0,0,.08);
 }
 *{box-sizing:border-box}
-html,body{margin:0; overflow-x:hidden}
+html,body{margin:0}
 body{
   font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
   color:var(--text);
@@ -108,15 +108,13 @@ a{text-decoration:none;color:inherit}
 .sec-link--bottom{
   display:block;
   text-align:right;
-  color:#000;                /* texto negro */
+  color:#000;
   font-weight:600;
-  font-size:17px;            /* más grande */
-  margin-top:18px;           /* más separación */
-  text-decoration:none;      /* sin subrayado */
+  font-size:17px;
+  margin-top:18px;
+  text-decoration:none;
 }
-.sec-link--bottom:hover{
-  color:#000;                /* se mantiene negro al pasar el mouse */
-}
+.sec-link--bottom:hover{ color:#000; }
 
 /* Puente suave hero → primera sección (sin línea) */
 #mujer.catalog-section{
@@ -254,12 +252,11 @@ a{text-decoration:none;color:inherit}
 }
 .nav-btn:hover{opacity:.9}
 .nav-btn:disabled{opacity:.4;cursor:not-allowed}
-/* sin offsets negativos: misma posición visual */
-.nav-btn.prev{left:0;  transform:translate(-6px,-50%);}
-.nav-btn.next{right:0; transform:translate( 6px,-50%);}
+.nav-btn.prev{left:-6px}
+.nav-btn.next{right:-6px}
 @media (max-width:640px){
-  .nav-btn.prev{left:2px; transform:translateY(-50%);}
-  .nav-btn.next{right:2px; transform:translateY(-50%);}
+  .nav-btn.prev{left:2px}
+  .nav-btn.next{right:2px}
 }
 
 /* FOOTER */
@@ -332,3 +329,7 @@ a{text-decoration:none;color:inherit}
 
   .nav-btn{ top: 46%; }
 }
+
+/* === FIX BORDE BLANCO EN MÓVIL SIN ROMPER NADA === */
+.carousel{ overflow:hidden; }
+html,body{ overflow-x:hidden; }
