@@ -334,3 +334,8 @@ a{text-decoration:none;color:inherit}
 
   .nav-btn{ top: 46%; }
 }
+
+/* Fondo extendido para eliminar la franja blanca en móvil */
+html, body {
+  background-color: var(--soft);
+}
