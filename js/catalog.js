@@ -30,6 +30,11 @@ async function loadData() {
     /* Forzar que cualquier imagen LLENE el marco fijo sin dejar bordes */
     .card__img{overflow:hidden}
     .card__img img{width:100%;height:100%;object-fit:cover;object-position:center center}
+
+    /* Gestos: permitir scroll vertical del documento y drag horizontal del carrusel */
+    .is-viewport, .carousel .track{ touch-action: pan-y; }
+    .is-viewport{ cursor: grab; }
+    .is-viewport.dragging{ cursor: grabbing; }
   `;
   document.head.appendChild(s);
 })();
@@ -108,6 +113,7 @@ function initLoop(track, { speed = 24 } = {}) {
 
   // El track actúa como viewport
   Object.assign(track.style, { overflow: "hidden", position: "relative" });
+  track.classList.add("is-viewport");
 
   originals.forEach(n => row.appendChild(n));
   track.appendChild(row);
@@ -130,6 +136,9 @@ function initLoop(track, { speed = 24 } = {}) {
 
   let lastTs = 0, offset = 0;
   let tweenActive = false, tweenStart = 0, tweenDur = 0, tweenTarget = 0, tweenPrev = 0;
+
+  // Velocidad de auto-scroll controlable (para pausar durante drag)
+  let autoSpeed = speed;
 
   const startTweenOffset = (delta, duration = 500) => {
     if (tweenActive) {
@@ -160,7 +169,7 @@ function initLoop(track, { speed = 24 } = {}) {
   const tick = (ts) => {
     if (!lastTs) lastTs = ts;
     const dt = (ts - lastTs) / 1000; lastTs = ts;
-    offset += speed * dt;
+    offset += autoSpeed * dt;       // usar autoSpeed (pausable)
     applyTweenStep(ts);
     recycleAndRender();
     requestAnimationFrame(tick);
@@ -181,6 +190,61 @@ function initLoop(track, { speed = 24 } = {}) {
     _stepForward : forwardThree,
     _stepBackward: backwardThree
   };
+
+  // ====== GESTOS (drag/touch) ======
+  let dragging = false;
+  let startX = 0;
+  let startOffset = 0;
+  let lastX = 0;
+  let lastT = 0;
+
+  const onPointerDown = (e) => {
+    dragging = true;
+    track.classList.add("dragging");
+    startX = e.clientX;
+    lastX = startX;
+    lastT = performance.now();
+    startOffset = offset;
+    autoSpeed = 0;                // pausar auto-scroll
+    tweenActive = false;          // cancelar tween en curso
+    tweenTarget = tweenPrev = 0;
+
+    try { track.setPointerCapture(e.pointerId); } catch (_) {}
+  };
+
+  const onPointerMove = (e) => {
+    if (!dragging) return;
+    const nowX = e.clientX;
+    const dx = nowX - startX;
+    offset = startOffset - dx;    // arrastrar contenido
+    recycleAndRender();
+
+    // guardar para inercia
+    lastX = nowX;
+    lastT = performance.now();
+  };
+
+  const onPointerUp = (e) => {
+    if (!dragging) return;
+    dragging = false;
+    track.classList.remove("dragging");
+    try { track.releasePointerCapture(e.pointerId); } catch (_) {}
+
+    // Inercia simple basada en velocidad horizontal
+    const dt = Math.max(16, performance.now() - lastT);
+    const vx = (e.clientX - lastX) / dt; // px/ms
+    const inertia = -vx * 260 * 0.9;     // escala aprox al ancho de una tarjeta
+    if (Math.abs(inertia) > 12) {
+      startTweenOffset(inertia, 420);
+    }
+
+    autoSpeed = speed;            // reanudar auto-scroll
+  };
+
+  track.addEventListener("pointerdown", onPointerDown);
+  track.addEventListener("pointermove", onPointerMove);
+  track.addEventListener("pointerup", onPointerUp);
+  track.addEventListener("pointercancel", onPointerUp);
 
   // Ajuste ante resize (debounce simple)
   let rt;
@@ -205,6 +269,7 @@ function destroyLoop(track) {
   track._row = undefined;
   track.style.overflow = "";
   track.style.position = "";
+  track.classList.remove("is-viewport","dragging");
 }
 
 /* ===== helpers de medición ===== */
