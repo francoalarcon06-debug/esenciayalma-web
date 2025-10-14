@@ -254,8 +254,11 @@ a{text-decoration:none;color:inherit}
 }
 .nav-btn:hover{opacity:.9}
 .nav-btn:disabled{opacity:.4;cursor:not-allowed}
-.nav-btn.prev{left:-6px}
-.nav-btn.next{right:-6px}
+
+/* ← ÚNICO CAMBIO para eliminar el desbordamiento en móvil */
+.nav-btn.prev{left:0; transform:translateX(-6px) translateY(-50%);}
+.nav-btn.next{right:0; transform:translateX(6px) translateY(-50%);}
+
 @media (max-width:640px){
   .nav-btn.prev{left:2px}
   .nav-btn.next{right:2px}
