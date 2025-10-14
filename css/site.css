@@ -140,13 +140,13 @@ a{text-decoration:none;color:inherit}
 }
 
 /* CARRUSEL */
-.carousel{position:relative}
+.carousel{position:relative; overflow:hidden}
 .track{
   display:grid;
   grid-auto-flow:column;
   grid-auto-columns:minmax(260px, 1fr);
   gap:16px;
-  overflow:visible;
+  overflow:hidden; /* ← evita desbordes laterales */
   padding:10px 4px 16px;
 }
 
@@ -254,7 +254,7 @@ a{text-decoration:none;color:inherit}
 .nav-btn:hover{opacity:.9}
 .nav-btn:disabled{opacity:.4;cursor:not-allowed}
 
-/* QUITAMOS offsets negativos (misma posición visual, sin desbordar) */
+/* Sin offsets negativos: misma posición visual, sin desbordar */
 .nav-btn.prev{left:0;  transform:translate(-6px,-50%);}
 .nav-btn.next{right:0; transform:translate( 6px,-50%);}
 
