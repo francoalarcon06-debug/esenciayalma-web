@@ -18,7 +18,7 @@ a{text-decoration:none;color:inherit}
 
 /* NAV */
 .nav{
-  position:sticky;top:0;z-index:40;
+  position:static; /* se desplaza con la página */
   background:#ffffffcc;
   backdrop-filter:blur(8px);
   border-bottom:1px solid #0001;
@@ -108,15 +108,13 @@ a{text-decoration:none;color:inherit}
 .sec-link--bottom{
   display:block;
   text-align:right;
-  color:#000;                /* texto negro */
+  color:#000;
   font-weight:600;
-  font-size:17px;            /* más grande */
-  margin-top:18px;           /* más separación */
-  text-decoration:none;      /* sin subrayado */
+  font-size:17px;
+  margin-top:18px;
+  text-decoration:none;
 }
-.sec-link--bottom:hover{
-  color:#000;                /* se mantiene negro al pasar el mouse */
-}
+.sec-link--bottom:hover{ color:#000; }
 
 /* Puente suave hero → primera sección (sin línea) */
 #mujer.catalog-section{
