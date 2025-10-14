@@ -163,11 +163,18 @@ function initLoop(track, { speed = 24 } = {}) {
     if (t >= 1) tweenActive = tweenPrev = tweenTarget = 0;
   };
 
+  // ====== CORRECCIÓN: reciclar con offset+dragDelta y reconciliar ======
   const recycleAndRender = () => {
+    let effective = offset + dragDelta;  // usar el desplazamiento “visible”
     let s;
-    while (offset >= (s = spanFirst())) { offset -= s; moveFirstToEnd(); }
-    while (offset < 0) { const back = spanLast(); moveLastToStart(); offset += back; }
-    row.style.transform = `translateX(${- (offset + dragDelta)}px)`;
+
+    while (effective >= (s = spanFirst())) { effective -= s; moveFirstToEnd(); }
+    while (effective < 0) { const back = spanLast(); moveLastToStart(); effective += back; }
+
+    // reconciliar: mantener dragDelta como delta temporal
+    offset = effective - dragDelta;
+
+    row.style.transform = `translateX(${-effective}px)`;
   };
 
   const tick = (ts) => {
