@@ -111,6 +111,7 @@ function initLoop(track, { speed = 24 } = {}) {
 
   originals.forEach(n => row.appendChild(n));
   track.appendChild(row);
+  track._row = row; // guardamos referencia para poder desmontar
 
   const widthOf = (el) => el.getBoundingClientRect().width;
   const childCount = () => row.children.length;
@@ -189,7 +190,39 @@ function initLoop(track, { speed = 24 } = {}) {
   });
 }
 
-// Configura una sección: crea tarjetas, espera imágenes y arma el loop
+// Desmontar el loop y dejar el DOM como estaba (para volver a modo estático)
+function destroyLoop(track) {
+  if (!track._loopInited) return;
+  const row = track._row;
+  if (row) {
+    // mover los hijos otra vez al track
+    while (row.firstChild) track.insertBefore(row.firstChild, row);
+    row.remove();
+  }
+  // limpiar flags y estilos inlines
+  track._loopInited = false;
+  track._loopAPI = undefined;
+  track._row = undefined;
+  track.style.overflow = "";
+  track.style.position = "";
+}
+
+/* ===== helpers de medición ===== */
+function getGap(track) {
+  return parseFloat(getComputedStyle(track).gap || "16") || 16;
+}
+function computeVisibleCards(track) {
+  // La tarjeta tiene min-width: 260px en CSS
+  const MIN_CARD = 260;
+  const gap = getGap(track);
+  const w = track.clientWidth || 0;
+  // fórmula: cuántas caben completas
+  const per = MIN_CARD + gap;
+  const visible = Math.max(1, Math.floor((w + gap) / per));
+  return visible;
+}
+
+/* ====== Configura una sección ====== */
 async function setupCarouselSection(sectionEl, items) {
   const carousel = sectionEl.querySelector(".carousel");
   const track    = carousel.querySelector(".track");
@@ -201,6 +234,7 @@ async function setupCarouselSection(sectionEl, items) {
   items.forEach(p => track.appendChild(card(p)));
 
   if (items.length === 0) {
+    destroyLoop(track);
     prevBtn.style.display = "none";
     nextBtn.style.display = "none";
     return;
@@ -208,24 +242,60 @@ async function setupCarouselSection(sectionEl, items) {
 
   await waitImages(track);
 
-  // Modo carrusel solo si hay > 4 productos; si no, modo estático centrado
-  if (items.length > 4) {
-    initLoop(track, { speed: 24 });
+  // función que decide y aplica el modo según el ancho real
+  const applyMode = () => {
+    const visibleCards = computeVisibleCards(track);
+    const shouldCarousel = items.length > visibleCards;
 
-    prevBtn.style.display = "";
-    nextBtn.style.display = "";
-    prevBtn.addEventListener("click", () => {
-      const step = track._loopAPI?._stepBackward?.() || Math.max(track.clientWidth * 0.9, 280);
-      track._loopAPI?.nudgeBackward(step);
-    });
-    nextBtn.addEventListener("click", () => {
-      const step = track._loopAPI?._stepForward?.() || Math.max(track.clientWidth * 0.9, 280);
-      track._loopAPI?.nudgeForward(step);
-    });
-  } else {
-    track.classList.add("static");
-    prevBtn.style.display = "none";
-    nextBtn.style.display = "none";
+    if (shouldCarousel) {
+      // activar carrusel
+      track.classList.remove("static");
+      if (!track._loopInited) {
+        initLoop(track, { speed: 24 });
+      } else {
+        // re-medimos por si cambió el ancho
+        track._loopAPI?.remeasure?.();
+      }
+      prevBtn.style.display = "";
+      nextBtn.style.display = "";
+      // evitar listeners duplicados
+      prevBtn.onclick = () => {
+        const step = track._loopAPI?._stepBackward?.() || Math.max(track.clientWidth * 0.9, 280);
+        track._loopAPI?.nudgeBackward(step);
+      };
+      nextBtn.onclick = () => {
+        const step = track._loopAPI?._stepForward?.() || Math.max(track.clientWidth * 0.9, 280);
+        track._loopAPI?.nudgeForward(step);
+      };
+    } else {
+      // modo estático
+      prevBtn.style.display = "none";
+      nextBtn.style.display = "none";
+      prevBtn.onclick = nextBtn.onclick = null;
+      destroyLoop(track);
+      track.classList.add("static");
+    }
+  };
+
+  // aplicar ahora
+  applyMode();
+
+  // actualizar automáticamente en rotación/cambio de tamaño
+  if (!sectionEl._responsiveInited) {
+    sectionEl._responsiveInited = true;
+    let t;
+    const onResize = () => {
+      clearTimeout(t);
+      t = setTimeout(() => {
+        applyMode();
+      }, 120);
+    };
+    addEventListener("resize", onResize, { passive: true });
+
+    // por si cambian métricas del layout (fuentes, etc.)
+    const ro = new ResizeObserver(() => applyMode());
+    ro.observe(track);
+    sectionEl._ro = ro;
   }
 }
 
@@ -234,7 +304,7 @@ async function setupCarouselSection(sectionEl, items) {
   try {
     const data = await loadData();
     for (const sec of document.querySelectorAll(".catalog-section")) {
-      const key  = sec.getAttribute("data-category"); // women, men, black, red, lavit
+      const key  = sec.getAttribute("data-category"); // women, men, black, red, lavit, hogar
       const list = Array.isArray(data[key]) ? data[key] : [];
       await setupCarouselSection(sec, list);
     }
