@@ -5,7 +5,7 @@
   --shadow:0 10px 30px rgba(0,0,0,.08);
 }
 *{box-sizing:border-box}
-html,body{margin:0; overflow-x:hidden;} /* ← evita cualquier desborde horizontal */
+html,body{margin:0}
 body{
   font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
   color:var(--text);
@@ -141,13 +141,13 @@ a{text-decoration:none;color:inherit}
 }
 
 /* CARRUSEL */
-.carousel{position:relative; overflow:hidden;} /* ← oculta cualquier fuga lateral */
+.carousel{position:relative}
 .track{
   display:grid;
   grid-auto-flow:column;
   grid-auto-columns:minmax(260px, 1fr);
   gap:16px;
-  overflow:hidden;           /* ← antes: visible */
+  overflow:visible;
   padding:10px 4px 16px;
 }
 
@@ -254,15 +254,11 @@ a{text-decoration:none;color:inherit}
 }
 .nav-btn:hover{opacity:.9}
 .nav-btn:disabled{opacity:.4;cursor:not-allowed}
-
-/* ← sin offsets negativos para evitar overflow; ajustamos ópticamente con translateX */
-.nav-btn.prev{left:0; transform:translate(-6px,-50%);}
-.nav-btn.next{right:0; transform:translate(6px,-50%);}
-
+.nav-btn.prev{left:-6px}
+.nav-btn.next{right:-6px}
 @media (max-width:640px){
-  /* En móvil, las acercamos 2px hacia adentro y centramos vertical igual */
-  .nav-btn.prev{left:2px; transform:translateY(-50%);}
-  .nav-btn.next{right:2px; transform:translateY(-50%);}
+  .nav-btn.prev{left:2px}
+  .nav-btn.next{right:2px}
 }
 
 /* FOOTER */
@@ -276,26 +272,6 @@ a{text-decoration:none;color:inherit}
   align-items:center;
   justify-content:space-between;
   gap:16px;
-}
-
-/* Botón WhatsApp del footer (nuevo estilo) */
-.footer-wa{
-  appearance:none;
-  background:#fff;
-  color:var(--text);
-  border:1px solid #00000020;
-  border-radius:12px;
-  padding:10px 14px;
-  font-weight:600;
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  text-decoration:none;
-  transition:box-shadow .2s, border-color .2s, transform .06s;
-}
-.footer-wa:hover{
-  box-shadow:var(--shadow);
-  border-color:#00000030;
 }
 
 /* WhatsApp icon dentro del botón del catálogo */
