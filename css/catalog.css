@@ -1,0 +1,87 @@
+/* ====== HERO Catálogo ====== */
+.catalog-hero{
+  background: linear-gradient(180deg,#fff7fa, #fff);
+  padding: 48px 0 20px;
+  text-align: center;
+}
+.catalog-title{
+  margin:0;
+  font-family:"DM Serif Display",serif;
+  font-size: clamp(28px, 4vw, 42px);
+}
+.catalog-sub{
+  color:#6b6b6b;
+  margin: 8px 0 0;
+}
+
+/* ====== FILTROS ====== */
+.filters-wrap{
+  margin: 18px auto 6px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  gap: 12px;
+  background: #fff;
+  padding: 14px;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+.filters-wrap label{
+  display:block; margin-bottom:6px; font-size:.9rem; color:var(--muted);
+}
+.filters-wrap input,
+.filters-wrap select{
+  width:100%;
+  padding:12px 12px;
+  border:1px solid #f4c1d6;
+  border-radius:12px;
+  outline:none;
+  background:#fff;
+}
+.f-actions{
+  display:flex; gap:8px; align-items:end;
+}
+
+/* Responsive filtros */
+@media (max-width: 900px){
+  .filters-wrap{ grid-template-columns: 1fr 1fr; }
+  .f-actions{ grid-column: 1 / -1; justify-content:flex-start; }
+}
+@media (max-width: 600px){
+  .filters-wrap{ grid-template-columns: 1fr; }
+}
+
+/* ====== TOOLBAR ====== */
+.toolbar{
+  display:flex; align-items:center; justify-content:space-between;
+  gap: 10px; color:#6b6b6b; margin: 8px auto 0;
+}
+.sort-group{ display:flex; align-items:center; gap:8px; }
+.sort-group select{
+  padding:10px 12px; border:1px solid #eee; border-radius:10px; background:#fff;
+}
+
+/* ====== GRID ====== */
+.grid{
+  margin: 16px auto 60px;
+  display:grid;
+  gap:16px;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+}
+@media (max-width: 1100px){ .grid{ grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 760px){ .grid{ grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 460px){ .grid{ grid-template-columns: 1fr; } }
+
+/* Estado vacío */
+.empty{
+  grid-column: 1 / -1;
+  background:#fff;
+  border:1px solid #00000010;
+  border-radius:16px;
+  padding:24px;
+  text-align:center;
+  box-shadow:var(--shadow);
+}
+
+/* Ajuste visual de tarjetas dentro del grid (reutiliza estilos existentes) */
+.card__img{ height: 320px; }
+@media (max-width: 760px){ .card__img{ height: clamp(180px, 36vh, 260px); } }
