@@ -14,11 +14,27 @@
   margin: 8px 0 0;
 }
 
-/* ====== FILTROS ====== */
-.filters-wrap{
-  margin: 18px auto 6px;
+/* ====== LAYOUT 2 COLUMNAS (filtros + resultados) ====== */
+.catalog-shell{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr auto;
+  grid-template-columns: 300px 1fr;
+  gap: 22px;
+  align-items: start;
+  margin: 12px auto 0;
+}
+.filters-aside{
+  position: sticky;
+  top: 74px;            /* altura aprox. del header para que no lo tape */
+}
+.results-main{
+  min-width: 0;         /* evita overflow en grids internos */
+}
+
+/* ====== PANEL DE FILTROS (en columna) ====== */
+.filters-wrap{
+  margin: 0;
+  display: flex;
+  flex-direction: column;
   gap: 12px;
   background: #fff;
   padding: 14px;
@@ -38,22 +54,13 @@
   background:#fff;
 }
 .f-actions{
-  display:flex; gap:8px; align-items:end;
-}
-
-/* Responsive filtros */
-@media (max-width: 900px){
-  .filters-wrap{ grid-template-columns: 1fr 1fr; }
-  .f-actions{ grid-column: 1 / -1; justify-content:flex-start; }
-}
-@media (max-width: 600px){
-  .filters-wrap{ grid-template-columns: 1fr; }
+  display:flex; gap:8px; align-items:center; justify-content:space-between;
 }
 
 /* ====== TOOLBAR ====== */
 .toolbar{
   display:flex; align-items:center; justify-content:space-between;
-  gap: 10px; color:#6b6b6b; margin: 8px auto 0;
+  gap: 10px; color:#6b6b6b; margin: 0 0 8px;
 }
 .sort-group{ display:flex; align-items:center; gap:8px; }
 .sort-group select{
@@ -62,7 +69,7 @@
 
 /* ====== GRID ====== */
 .grid{
-  margin: 16px auto 60px;
+  margin: 8px 0 60px;
   display:grid;
   gap:16px;
   grid-template-columns: repeat(4, minmax(0,1fr));
@@ -85,3 +92,20 @@
 /* Ajuste visual de tarjetas dentro del grid (reutiliza estilos existentes) */
 .card__img{ height: 320px; }
 @media (max-width: 760px){ .card__img{ height: clamp(180px, 36vh, 260px); } }
+
+/* ====== RESPONSIVE: en móvil, filtros arriba y NO sticky ====== */
+@media (max-width: 980px){
+  .catalog-shell{
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .filters-aside{
+    position: static;
+  }
+  .filters-wrap{
+    margin: 0;
+  }
+  .toolbar{
+    margin-top: -4px;
+  }
+}
