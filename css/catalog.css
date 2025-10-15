@@ -77,12 +77,15 @@
   margin: 8px 0 60px;
   display:grid;
   gap:16px;
-  /* grid fluido que se adapta al ancho real de la columna (4 tarjetas cuando cabe) */
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  /* 4 tarjetas por fila en desktop */
+  grid-template-columns: repeat(4, 1fr);
 }
-/* Mantener breakpoints sin cambiar el comportamiento fluido */
-@media (max-width: 1100px){ .grid{ grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); } }
-@media (max-width: 760px){ .grid{ grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); } }
+/* Importante: anular min-width de .card que viene desde site.css */
+.grid .card{ min-width: 0; }
+
+/* Breakpoints */
+@media (max-width: 1100px){ .grid{ grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 760px){ .grid{ grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 460px){ .grid{ grid-template-columns: 1fr; } }
 
 /* Estado vacío */
@@ -97,7 +100,7 @@
 }
 
 /* Ajuste visual de tarjetas dentro del grid (reutiliza estilos existentes) */
-.card__img{ height: 320px; }
+.card__img{ height: 280px; }
 @media (max-width: 760px){ .card__img{ height: clamp(180px, 36vh, 260px); } }
 
 /* ====== RESPONSIVE: en móvil, filtros arriba y NO sticky ====== */
@@ -116,3 +119,4 @@
     margin-top: -4px;
   }
 }
+
