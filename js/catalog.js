@@ -464,6 +464,14 @@ async function setupCarouselSection(sectionEl, items) {
       const key  = sec.getAttribute("data-category"); // women, men, black, red, lavit, hogar
       const list = Array.isArray(data[key]) ? data[key] : [];
       await setupCarouselSection(sec, list);
+
+      // ===== ÚNICO CAMBIO: setear automáticamente el enlace "Ver todo" =====
+      const link = sec.querySelector(".sec-link--bottom");
+      if (link) {
+        const k = (key || "").trim();
+        link.href = k ? `catalogo.html?category=${encodeURIComponent(k)}` : `catalogo.html`;
+      }
+      // =====================================================================
     }
   } catch (e) {
     console.error(e);
