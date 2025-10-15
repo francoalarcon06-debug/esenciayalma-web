@@ -33,47 +33,53 @@
     </div>
   </section>
 
-  <!-- FILTROS -->
-  <form id="filtersForm" class="filters-wrap container" autocomplete="off">
-    <div class="f-item">
-      <label for="fCategory">Tipo de producto</label>
-      <select id="fCategory">
-        <!-- opciones se llenan dinámicamente desde products.json -->
-      </select>
-    </div>
+  <!-- LAYOUT de 2 columnas: filtros a la izquierda + resultados a la derecha -->
+  <div class="container catalog-shell">
+    <!-- ASIDE: Filtros (mismos ids/estructura) -->
+    <aside class="filters-aside">
+      <form id="filtersForm" class="filters-wrap" autocomplete="off">
+        <div class="f-item">
+          <label for="fCategory">Tipo de producto</label>
+          <select id="fCategory">
+            <!-- opciones se llenan dinámicamente desde products.json -->
+          </select>
+        </div>
 
-    <div class="f-item">
-      <label for="fMin">Precio mínimo</label>
-      <input id="fMin" type="text" inputmode="numeric" placeholder="Ej: $2.000">
-    </div>
+        <div class="f-item">
+          <label for="fMin">Precio mínimo</label>
+          <input id="fMin" type="text" inputmode="numeric" placeholder="Ej: $2.000">
+        </div>
 
-    <div class="f-item">
-      <label for="fMax">Precio máximo</label>
-      <input id="fMax" type="text" inputmode="numeric" placeholder="Ej: $30.000">
-    </div>
+        <div class="f-item">
+          <label for="fMax">Precio máximo</label>
+          <input id="fMax" type="text" inputmode="numeric" placeholder="Ej: $30.000">
+        </div>
 
-    <div class="f-actions">
-      <button type="submit" class="btn btn-primary">Aplicar filtros</button>
-      <button type="button" id="clearBtn" class="btn btn-ghost">Eliminar filtros</button>
-    </div>
-  </form>
+        <div class="f-actions">
+          <button type="submit" class="btn btn-primary">Aplicar filtros</button>
+          <button type="button" id="clearBtn" class="btn btn-ghost">Eliminar filtros</button>
+        </div>
+      </form>
+    </aside>
 
-  <!-- TOOLBAR -->
-  <div class="toolbar container">
-    <div id="count">0 resultados</div>
-    <div class="sort-group">
-      <label for="fSort">Ordenar por</label>
-      <select id="fSort">
-        <option value="relevance">Relevancia</option>
-        <option value="priceAsc">Precio: menor a mayor</option>
-        <option value="priceDesc">Precio: mayor a menor</option>
-        <option value="nameAsc">Nombre: A–Z</option>
-      </select>
-    </div>
+    <!-- MAIN: Toolbar arriba + grid abajo -->
+    <main class="results-main">
+      <div class="toolbar">
+        <div id="count">0 resultados</div>
+        <div class="sort-group">
+          <label for="fSort">Ordenar por</label>
+          <select id="fSort">
+            <option value="relevance">Relevancia</option>
+            <option value="priceAsc">Precio: menor a mayor</option>
+            <option value="priceDesc">Precio: mayor a menor</option>
+            <option value="nameAsc">Nombre: A–Z</option>
+          </select>
+        </div>
+      </div>
+
+      <section class="grid" id="grid" aria-live="polite"></section>
+    </main>
   </div>
-
-  <!-- GRID -->
-  <section class="grid container" id="grid" aria-live="polite"></section>
 
   <!-- Estado vacío -->
   <template id="emptyTpl">
