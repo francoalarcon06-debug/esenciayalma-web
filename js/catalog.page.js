@@ -25,14 +25,25 @@ const parsePesos = (s) => Number(String(s).replace(/[^\d]/g, "")) || 0;
 const qs = (sel) => document.querySelector(sel);
 const qsa = (sel) => Array.from(document.querySelectorAll(sel));
 
-const urlParams = new URLSearchParams(location.search);
+const PERFUMERIA_KEYS = ["women","men","black","red","lavit"];
 
+// Notar: leemos SIEMPRE desde location.search para preservar `scope` al reemplazar la URL
+function currentParams() {
+  return new URLSearchParams(location.search);
+}
 function setParams(obj) {
+  const cur = currentParams();
   const p = new URLSearchParams();
+
+  // preservar 'scope' si existe
+  const scope = cur.get("scope");
+  if (scope) p.set("scope", scope);
+
   for (const [k, v] of Object.entries(obj)) {
     if (v !== undefined && v !== null && String(v).trim() !== "") p.set(k, v);
   }
-  const newUrl = `${location.pathname}?${p.toString()}`;
+  const query = p.toString();
+  const newUrl = query ? `${location.pathname}?${query}` : `${location.pathname}${scope ? `?scope=${scope}` : ""}`;
   history.replaceState(null, "", newUrl);
 }
 
@@ -76,12 +87,17 @@ function renderCard(p) {
 // ------- Estado y render -------
 let ALL = [];       // [{...product, categoryKey}]
 let CATS = [];      // [{key,label,count}]
+let SCOPE = "";     // "", "perfumeria"
 
 function buildFromJSON(json) {
   ALL = [];
   CATS = [];
 
+  const allowed = SCOPE === "perfumeria" ? new Set(PERFUMERIA_KEYS) : null;
+
   for (const [key, arr] of Object.entries(json)) {
+    if (allowed && !allowed.has(key)) continue; // excluir fuera de scope
+
     const list = Array.isArray(arr) ? arr : [];
     const count = list.length;
     if (count === 0) continue; // no mostrar categorías vacías
@@ -153,19 +169,42 @@ function renderGrid(items) {
   qs("#count").textContent = `${items.length} resultado${items.length===1?"":"s"}`;
 }
 
+// Limpia controles pero conserva el `scope`
 function clearFilters() {
   qs("#fCategory").value = "";
   qs("#fMin").value = "";
   qs("#fMax").value = "";
   qs("#fSort").value = "relevance";
-  setParams({}); // limpia URL
-  const items = applyFilters({ });
+  setParams({}); // mantiene 'scope' gracias a setParams
+  const items = applyFilters({});
   renderGrid(items);
+}
+
+function injectScopeBadge() {
+  if (SCOPE !== "perfumeria") return;
+  const host = document.querySelector(".catalog-hero .container") || document.querySelector(".toolbar.container");
+  if (!host) return;
+  const badge = document.createElement("div");
+  badge.textContent = "Vista: Perfumería";
+  Object.assign(badge.style, {
+    display: "inline-block",
+    marginTop: "6px",
+    padding: "6px 10px",
+    borderRadius: "999px",
+    fontWeight: "700",
+    fontSize: "13px",
+    color: "#c43c73",
+    background: "#ffe3ef",
+  });
+  host.appendChild(badge);
 }
 
 // ------- Arranque -------
 (async () => {
   try {
+    const params = currentParams();
+    SCOPE = (params.get("scope") || "").toLowerCase();
+
     const data = await loadData();
     buildFromJSON(data);
 
@@ -175,11 +214,16 @@ function clearFilters() {
 
     // Cargar estado inicial desde URL (si viene ?category=women, etc.)
     const initState = {
-      category: urlParams.get("category") || "",
-      min: urlParams.get("min") || "",
-      max: urlParams.get("max") || "",
-      sort: urlParams.get("sort") || "relevance",
+      category: params.get("category") || "",
+      min: params.get("min") || "",
+      max: params.get("max") || "",
+      sort: params.get("sort") || "relevance",
     };
+
+    // Si está en scope=perfumeria y por URL llega 'hogar', lo ignoramos
+    if (SCOPE === "perfumeria" && initState.category === "hogar") {
+      initState.category = "";
+    }
 
     // Prellenar controles
     $cat.value = initState.category || "";
@@ -190,6 +234,9 @@ function clearFilters() {
     // Render inicial
     renderGrid(applyFilters(initState));
 
+    // Badge informativo de scope
+    injectScopeBadge();
+
     // Eventos
     qs("#filtersForm").addEventListener("submit", (e) => {
       e.preventDefault();
@@ -199,11 +246,12 @@ function clearFilters() {
         max: qs("#fMax").value,
         sort: qs("#fSort").value,
       };
-      setParams(state);
+      setParams(state); // conserva 'scope'
       renderGrid(applyFilters(state));
     });
 
     qs("#clearBtn").addEventListener("click", clearFilters);
+
     qs("#fSort").addEventListener("change", () => {
       const state = {
         category: $cat.value,
@@ -211,7 +259,7 @@ function clearFilters() {
         max: qs("#fMax").value,
         sort: qs("#fSort").value,
       };
-      setParams(state);
+      setParams(state); // conserva 'scope'
       renderGrid(applyFilters(state));
     });
 
