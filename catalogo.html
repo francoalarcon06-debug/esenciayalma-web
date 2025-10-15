@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Catálogo – Esencia y Alma</title>
+  <meta name="description" content="Catálogo de productos de Esencia y Alma. Filtra por categoría y precio.">
+  <link rel="icon" type="image/png" href="assets/images/Favicon.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/images/Favicon.png" sizes="180x180">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/catalog.css">
+</head>
+<body>
+
+  <!-- NAV (reutiliza estilos de site.css) -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="index.html#inicio">Esencia y Alma</a>
+      <nav class="menu">
+        <a href="index.html#perfumeria">Perfumería</a>
+        <a href="index.html#hogar">Hogar</a>
+        <a href="index.html#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO del catálogo -->
+  <section class="catalog-hero">
+    <div class="container">
+      <h1 class="catalog-title">Catálogo</h1>
+      <p class="catalog-sub">Explorá toda la colección y aplicá filtros cuando quieras.</p>
+    </div>
+  </section>
+
+  <!-- FILTROS -->
+  <form id="filtersForm" class="filters-wrap container" autocomplete="off">
+    <div class="f-item">
+      <label for="fCategory">Tipo de producto</label>
+      <select id="fCategory">
+        <!-- opciones se llenan dinámicamente desde products.json -->
+      </select>
+    </div>
+
+    <div class="f-item">
+      <label for="fMin">Precio mínimo</label>
+      <input id="fMin" type="text" inputmode="numeric" placeholder="Ej: $2.000">
+    </div>
+
+    <div class="f-item">
+      <label for="fMax">Precio máximo</label>
+      <input id="fMax" type="text" inputmode="numeric" placeholder="Ej: $30.000">
+    </div>
+
+    <div class="f-actions">
+      <button type="submit" class="btn btn-primary">Aplicar filtros</button>
+      <button type="button" id="clearBtn" class="btn btn-ghost">Eliminar filtros</button>
+    </div>
+  </form>
+
+  <!-- TOOLBAR -->
+  <div class="toolbar container">
+    <div id="count">0 resultados</div>
+    <div class="sort-group">
+      <label for="fSort">Ordenar por</label>
+      <select id="fSort">
+        <option value="relevance">Relevancia</option>
+        <option value="priceAsc">Precio: menor a mayor</option>
+        <option value="priceDesc">Precio: mayor a menor</option>
+        <option value="nameAsc">Nombre: A–Z</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- GRID -->
+  <section class="grid container" id="grid" aria-live="polite"></section>
+
+  <!-- Estado vacío -->
+  <template id="emptyTpl">
+    <div class="empty">
+      <p>No encontramos productos con esos filtros.</p>
+      <button type="button" id="emptyClear" class="btn btn-ghost">Limpiar filtros</button>
+    </div>
+  </template>
+
+  <script src="js/catalog.page.js"></script>
+</body>
+</html>
