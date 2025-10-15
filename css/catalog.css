@@ -17,8 +17,8 @@
 /* ====== LAYOUT 2 COLUMNAS (filtros + resultados) ====== */
 .catalog-shell{
   display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: 22px;
+  grid-template-columns: 260px 1fr; /* más estrecho para dar espacio al grid */
+  gap: 16px;                        /* un poco menos de separación */
   align-items: start;
   margin: 12px auto 0;
 }
@@ -72,10 +72,12 @@
   margin: 8px 0 60px;
   display:grid;
   gap:16px;
-  grid-template-columns: repeat(4, minmax(0,1fr));
+  /* grid fluido que se adapta al ancho real de la columna (4 tarjetas cuando cabe) */
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
 }
-@media (max-width: 1100px){ .grid{ grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 760px){ .grid{ grid-template-columns: repeat(2, 1fr); } }
+/* Mantener breakpoints sin cambiar el comportamiento fluido */
+@media (max-width: 1100px){ .grid{ grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); } }
+@media (max-width: 760px){ .grid{ grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); } }
 @media (max-width: 460px){ .grid{ grid-template-columns: 1fr; } }
 
 /* Estado vacío */
