@@ -22,6 +22,11 @@
   align-items: start;
   margin: 12px auto 0;
 }
+/* Solo en esta página ampliamos el ancho del contenedor para “correr” los filtros a la izquierda
+   y que quepan 4 tarjetas sin apretar */
+.container.catalog-shell{
+  width: min(1320px, 96%);
+}
 .filters-aside{
   position: sticky;
   top: 74px;            /* altura aprox. del header para que no lo tape */
