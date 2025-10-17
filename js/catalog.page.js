@@ -319,6 +319,36 @@ function injectScopeBadge() {
       renderGrid(applyFilters(state));
     });
 
+    // === NUEVO: máscara para precios (solo números, 5 dígitos máx, y con puntos) ===
+    function attachMoneyMask(input) {
+      if (!input) return;
+      const format = (raw) => {
+        // Solo dígitos y máximo 5
+        const digits = String(raw).replace(/\D/g, "").slice(0, 5);
+        if (!digits) return "";
+        // Formatear con miles (es-CL -> puntos)
+        return Number(digits).toLocaleString("es-CL");
+      };
+      // Normaliza en cada cambio (tecleo/pegar/borrar)
+      input.addEventListener("input", () => {
+        const posEnd = input.selectionEnd; // caret fallback (lo enviaremos al final)
+        const val = input.value;
+        const next = format(val);
+        if (val !== next) input.value = next;
+        // mover cursor al final (comportamiento simple y estable)
+        input.setSelectionRange(input.value.length, input.value.length);
+      });
+      // Extra por si el navegador autocompleta: normalizar al entrar/salir
+      ["blur", "change"].forEach(evt =>
+        input.addEventListener(evt, () => (input.value = format(input.value)))
+      );
+      // Preformatear si trae valor de la URL
+      input.value = format(input.value);
+    }
+
+    attachMoneyMask(qs("#fMin"));
+    attachMoneyMask(qs("#fMax"));
+
   } catch (err) {
     console.error(err);
     qs("#grid").innerHTML = `<p style="padding:24px">No fue posible cargar el catálogo.</p>`;
