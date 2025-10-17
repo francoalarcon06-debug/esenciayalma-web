@@ -69,8 +69,17 @@
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'%3E%3Cpath fill='%23888888' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
 }
 
+/* === BOTONES de acciones: en una sola línea y del mismo ancho === */
 .f-actions{
-  display:flex; gap:8px; align-items:center; justify-content:space-between;
+  display: flex;
+  flex-direction: row;   /* ambos botones en una sola línea */
+  gap: 8px;              /* separación entre ellos */
+  justify-content: space-between;
+}
+.f-actions .btn{
+  flex: 1;               /* ocupan el mismo ancho */
+  text-align: center;
+  white-space: nowrap;   /* evita que el texto salte de línea */
 }
 
 /* ====== TOOLBAR ====== */
