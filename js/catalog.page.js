@@ -180,7 +180,7 @@ function clearFilters() {
   renderGrid(items);
 }
 
-// === Badge dentro del panel de filtros con botón para quitar el scope (AHORA ARRIBA DEL SELECT) ===
+// === Badge dentro del panel de filtros con botón para quitar el scope (ARRIBA DEL SELECT) ===
 function injectScopeBadge() {
   if (SCOPE !== "perfumeria") return;
 
@@ -194,10 +194,13 @@ function injectScopeBadge() {
     <button type="button" aria-label="Quitar vista Perfumería" title="Quitar vista Perfumería">×</button>
   `;
   Object.assign(badge.style, {
-    display: "flex",
+    // 👇 Hacemos el chip del ancho del contenido (texto + X)
+    display: "inline-flex",
     alignItems: "center",
-    justifyContent: "space-between",
     gap: "8px",
+    alignSelf: "flex-start",
+    width: "auto",
+    maxWidth: "100%",
     marginBottom: "8px",
     padding: "6px 10px",
     borderRadius: "12px",
@@ -265,7 +268,7 @@ function injectScopeBadge() {
     // Render inicial
     renderGrid(applyFilters(initState));
 
-    // Badge informativo de scope dentro del panel de filtros (con X) — ahora arriba del select
+    // Badge informativo de scope dentro del panel de filtros (con X) — arriba del select
     injectScopeBadge();
 
     // Eventos
