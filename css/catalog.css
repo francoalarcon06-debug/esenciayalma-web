@@ -1,312 +1,140 @@
-// =======================
-// Catálogo – Esencia y Alma
-// =======================
-
-const WA_PHONE = "56912345678";
-const WA_MSG   = encodeURIComponent("Hola, me interesa este producto 👇");
-
-// Mapeo legible para nombres de categorías
-const CATEGORY_LABELS = {
-  women: "Perfumes de Mujer",
-  men: "Perfumes de Hombre",
-  black: "Línea Black Parfums",
-  red: "Línea Red Parfums",
-  lavit: "Línea LAVIT Body Splash",
-  hogar: "Artículos para el hogar",
-};
-
-// -------- Utils --------
-const money = (v) => {
-  const n = Number(String(v).replace(/[^\d]/g, "")) || 0;
-  return `$${n.toLocaleString("es-CL")}`;
-};
-const parsePesos = (s) => Number(String(s).replace(/[^\d]/g, "")) || 0;
-
-const qs = (sel) => document.querySelector(sel);
-const qsa = (sel) => Array.from(document.querySelectorAll(sel));
-
-const PERFUMERIA_KEYS = ["women","men","black","red","lavit"];
-
-// Notar: leemos SIEMPRE desde location.search para preservar `scope` al reemplazar la URL
-function currentParams() {
-  return new URLSearchParams(location.search);
+/* ====== HERO Catálogo ====== */
+.catalog-hero{
+  background: linear-gradient(180deg,#fff7fa, #fff);
+  padding: 48px 0 20px;
+  text-align: center;
+}
+.catalog-title{
+  margin:0;
+  font-family:"DM Serif Display",serif;
+  font-size: clamp(28px, 4vw, 42px);
+}
+.catalog-sub{
+  color:#6b6b6b;
+  margin: 8px 0 0;
 }
 
-// setParams con opción para preservar o no el scope actual
-function setParams(obj, { preserveScope = true } = {}) {
-  const cur = currentParams();
-  const p = new URLSearchParams();
+/* ====== LAYOUT 2 COLUMNAS (filtros + resultados) ====== */
+.catalog-shell{
+  display: grid;
+  grid-template-columns: 260px 1fr; /* más estrecho para dar espacio al grid */
+  gap: 16px;                        /* un poco menos de separación */
+  align-items: start;
+  margin: 12px auto 0;
+}
+/* Solo en esta página ampliamos el ancho del contenedor para “correr” los filtros a la izquierda
+   y que quepan 4 tarjetas sin apretar */
+.container.catalog-shell{
+  width: min(1320px, 96%);
+}
+.filters-aside{
+  position: sticky;
+  top: 74px;            /* altura aprox. del header para que no lo tape */
+}
+.results-main{
+  min-width: 0;         /* evita overflow en grids internos */
+}
 
-  const scope = cur.get("scope");
-  if (preserveScope && scope) p.set("scope", scope);
+/* ====== PANEL DE FILTROS (en columna) ====== */
+.filters-wrap{
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #fff;
+  padding: 14px;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+.filters-wrap label{
+  display:block; margin-bottom:6px; font-size:.9rem; color:var(--muted);
+}
+.filters-wrap input,
+.filters-wrap select{
+  width:100%;
+  padding:12px 12px;
+  border:1px solid #f4c1d6;
+  border-radius:12px;
+  outline:none;
+  background:#fff;
+}
+.f-actions{
+  display:flex; gap:8px; align-items:center; justify-content:space-between;
+}
 
-  for (const [k, v] of Object.entries(obj)) {
-    if (v !== undefined && v !== null && String(v).trim() !== "") p.set(k, v);
+/* ---- Badge "Vista: Perfumería" dentro de filtros (debajo de Tipo de producto) ---- */
+.filters-wrap [data-scope-badge]{ margin-top:6px; }
+.filters-wrap [data-scope-badge] span{
+  display:inline-flex; align-items:center; gap:8px;
+  background:#ffe3ef; color:#c43c73;
+  border-radius:999px; padding:6px 10px;
+  font-weight:700; font-size:13px;
+}
+.filters-wrap [data-scope-badge] button{
+  appearance:none; border:none; background:transparent;
+  color:#c43c73; font-weight:900; cursor:pointer;
+  line-height:1; padding:0 2px; font-size:14px;
+}
+
+/* ====== TOOLBAR ====== */
+.toolbar{
+  display:flex; align-items:center; justify-content:space-between;
+  gap: 10px; color:#6b6b6b; margin: 0 0 8px;
+}
+.sort-group{ display:flex; align-items:center; gap:8px; }
+.sort-group select{
+  padding:10px 12px; border:1px solid #eee; border-radius:10px; background:#fff;
+}
+
+/* ====== GRID ====== */
+.grid{
+  margin: 8px 0 60px;
+  display:grid;
+  gap:16px;
+  /* 4 tarjetas por fila en desktop */
+  grid-template-columns: repeat(4, 1fr);
+}
+/* Importante: anular min-width de .card que viene desde site.css */
+.grid .card{ min-width: 0; }
+
+/* Breakpoints */
+@media (max-width: 1100px){ .grid{ grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 760px){ .grid{ grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 460px){ .grid{ grid-template-columns: 1fr; } }
+
+/* Estado vacío */
+.empty{
+  grid-column: 1 / -1;
+  background:#fff;
+  border:1px solid #00000010;
+  border-radius:16px;
+  padding:24px;
+  text-align:center;
+  box-shadow:var(--shadow);
+}
+
+/* Ajuste visual de tarjetas dentro del grid (reutiliza estilos existentes) */
+.card__img{ height: 280px; }
+@media (max-width: 760px){ .card__img{ height: clamp(180px, 36vh, 260px); } }
+
+/* ====== FONDO GENERAL DEL CATÁLOGO ====== */
+body{
+  background: #fff2f6; /* rosado suave tipo cabecera */
+}
+
+/* ====== RESPONSIVE: en móvil, filtros arriba y NO sticky ====== */
+@media (max-width: 980px){
+  .catalog-shell{
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
-
-  const query = p.toString();
-  const newUrl = query ? `${location.pathname}?${query}` : `${location.pathname}`;
-  history.replaceState(null, "", newUrl);
-}
-
-async function loadData() {
-  const res = await fetch("data/products.json", { cache: "no-store" });
-  if (!res.ok) throw new Error("No pude cargar data/products.json");
-  return res.json();
-}
-
-// ------- Render tarjeta (reutiliza estilos del sitio) -------
-function renderCard(p) {
-  const href = `https://wa.me/${WA_PHONE}?text=${WA_MSG}%0A${encodeURIComponent(p.name)}`;
-
-  const el = document.createElement("article");
-  el.className = "card";
-  el.innerHTML = `
-    <div class="card__img">
-      <img loading="lazy" src="${p.image}" alt="${p.name}">
-    </div>
-    <div class="card__body">
-      <div class="card__content">
-        <h3 class="card__title">${p.name}</h3>
-        ${p.description ? `<p class="card__sub">${p.description}</p>` : ""}
-      </div>
-      <div class="card__footer">
-        ${p.price ? `<div class="card__price">${money(p.price)}</div>` : ""}
-        <div class="card__actions">
-          <a class="btn btn-primary card__btn" target="_blank" href="${href}">
-            <svg class="icon-wa" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-              <path fill="currentColor" d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
-            </svg>
-            Consultar por WhatsApp
-          </a>
-        </div>
-      </div>
-    </div>
-  `;
-  return el;
-}
-
-// ------- Estado y render -------
-let ALL = [];       // [{...product, categoryKey}]
-let CATS = [];      // [{key,label,count}]
-let SCOPE = "";     // "", "perfumeria"
-let RAW_DATA = null;
-
-function buildFromJSON(json) {
-  ALL = [];
-  CATS = [];
-
-  const allowed = SCOPE === "perfumeria" ? new Set(PERFUMERIA_KEYS) : null;
-
-  for (const [key, arr] of Object.entries(json)) {
-    if (allowed && !allowed.has(key)) continue; // excluir fuera de scope
-
-    const list = Array.isArray(arr) ? arr : [];
-    const count = list.length;
-    if (count === 0) continue; // no mostrar categorías vacías
-
-    CATS.push({
-      key,
-      label: CATEGORY_LABELS[key] || key,
-      count,
-    });
-
-    list.forEach(p => ALL.push({ ...p, categoryKey: key }));
+  .filters-aside{
+    position: static;
+  }
+  .filters-wrap{
+    margin: 0;
+  }
+  .toolbar{
+    margin-top: -4px;
   }
 }
-
-function populateCategorySelect(select) {
-  select.innerHTML = ""; // limpio
-  const optAll = document.createElement("option");
-  optAll.value = "";
-  optAll.textContent = "Todas las categorías";
-  select.appendChild(optAll);
-
-  CATS.forEach(c => {
-    const o = document.createElement("option");
-    o.value = c.key;
-    o.textContent = c.label;
-    select.appendChild(o);
-  });
-}
-
-function applyFilters({ category, min, max, sort }) {
-  let list = ALL.slice();
-
-  if (category) list = list.filter(p => p.categoryKey === category);
-
-  const minN = parsePesos(min);
-  const maxN = parsePesos(max);
-  if (minN) list = list.filter(p => parsePesos(p.price) >= minN);
-  if (maxN) list = list.filter(p => parsePesos(p.price) <= maxN);
-
-  switch (sort) {
-    case "priceAsc":
-      list.sort((a,b) => parsePesos(a.price) - parsePesos(b.price));
-      break;
-    case "priceDesc":
-      list.sort((a,b) => parsePesos(b.price) - parsePesos(a.price));
-      break;
-    case "nameAsc":
-      list.sort((a,b) => a.name.localeCompare(b.name, "es"));
-      break;
-    // relevance: deja el orden natural
-  }
-
-  return list;
-}
-
-function renderGrid(items) {
-  const grid = qs("#grid");
-  grid.innerHTML = "";
-
-  if (items.length === 0) {
-    const tpl = qs("#emptyTpl").content.cloneNode(true);
-    grid.appendChild(tpl);
-    const btn = grid.querySelector("#emptyClear");
-    if (btn) btn.addEventListener("click", clearFilters);
-    return;
-  }
-
-  items.forEach(p => grid.appendChild(renderCard(p)));
-  qs("#count").textContent = `${items.length} resultado${items.length===1?"":"s"}`;
-}
-
-// Limpia controles pero conserva el `scope`
-function clearFilters() {
-  qs("#fCategory").value = "";
-  qs("#fMin").value = "";
-  qs("#fMax").value = "";
-  qs("#fSort").value = "relevance";
-  setParams({}, { preserveScope: true }); // mantiene 'scope'
-  const items = applyFilters({});
-  renderGrid(items);
-}
-
-// ----- Badge de "Vista: Perfumería" dentro del panel de filtros con ✕ -----
-function injectScopeBadgeInFilters(onClearScope) {
-  if (SCOPE !== "perfumeria") return;
-
-  const form = qs("#filtersForm");
-  const selectWrap = form?.querySelector(".f-item"); // el primer bloque ("Tipo de producto")
-  if (!form || !selectWrap) return;
-
-  // Crear/insertar badge debajo del select
-  const holder = document.createElement("div");
-  holder.setAttribute("data-scope-badge", "true");
-  Object.assign(holder.style, { marginTop: "4px" });
-
-  holder.innerHTML = `
-    <span style="
-      display:inline-flex;align-items:center;gap:8px;
-      background:#ffe3ef;color:#c43c73;
-      border-radius:999px;padding:6px 10px;font-weight:700;font-size:13px;
-    ">
-      Vista: Perfumería
-      <button type="button" aria-label="Quitar vista perfumería" style="
-        appearance:none;border:none;background:transparent;
-        color:#c43c73;font-weight:900;cursor:pointer;line-height:1;
-        padding:0 2px;font-size:14px;
-      ">✕</button>
-    </span>
-  `;
-
-  selectWrap.insertAdjacentElement("afterend", holder);
-  const btn = holder.querySelector("button");
-  btn.addEventListener("click", () => {
-    // Quitar el scope y notificar
-    holder.remove();
-    typeof onClearScope === "function" && onClearScope();
-  });
-}
-
-// ------- Arranque -------
-(async () => {
-  try {
-    const params = currentParams();
-    SCOPE = (params.get("scope") || "").toLowerCase();
-
-    RAW_DATA = await loadData();
-    buildFromJSON(RAW_DATA);
-
-    // Llenar select categoría dinámicamente (solo categorías existentes y no vacías)
-    const $cat = qs("#fCategory");
-    populateCategorySelect($cat);
-
-    // Cargar estado inicial desde URL (si viene ?category=women, etc.)
-    const initState = {
-      category: params.get("category") || "",
-      min: params.get("min") || "",
-      max: params.get("max") || "",
-      sort: params.get("sort") || "relevance",
-    };
-
-    // Si está en scope=perfumeria y por URL llega 'hogar', lo ignoramos
-    if (SCOPE === "perfumeria" && initState.category === "hogar") {
-      initState.category = "";
-    }
-
-    // Prellenar controles
-    $cat.value = initState.category || "";
-    qs("#fMin").value = initState.min || "";
-    qs("#fMax").value = initState.max || "";
-    qs("#fSort").value = initState.sort;
-
-    // Render inicial
-    renderGrid(applyFilters(initState));
-
-    // Badge informativo DENTRO de filtros con ✕ para quitar scope
-    injectScopeBadgeInFilters(() => {
-      // 1) Quitar scope
-      SCOPE = "";
-      // 2) Reconstruir dataset completo y repoblar categorías
-      buildFromJSON(RAW_DATA);
-      const prev = {
-        category: $cat.value,
-        min: qs("#fMin").value,
-        max: qs("#fMax").value,
-        sort: qs("#fSort").value,
-      };
-      populateCategorySelect($cat);
-      // Si la categoría elegida sigue existiendo la dejamos; si no, vaciamos
-      if (!CATS.some(c => c.key === prev.category)) prev.category = "";
-      $cat.value = prev.category;
-
-      // 3) Actualizar URL SIN scope y mantener el resto
-      setParams(prev, { preserveScope: false });
-
-      // 4) Re-render
-      renderGrid(applyFilters(prev));
-    });
-
-    // Eventos
-    qs("#filtersForm").addEventListener("submit", (e) => {
-      e.preventDefault();
-      const state = {
-        category: $cat.value,
-        min: qs("#fMin").value,
-        max: qs("#fMax").value,
-        sort: qs("#fSort").value,
-      };
-      setParams(state, { preserveScope: true }); // conserva 'scope' si está activo
-      renderGrid(applyFilters(state));
-    });
-
-    qs("#clearBtn").addEventListener("click", clearFilters);
-
-    qs("#fSort").addEventListener("change", () => {
-      const state = {
-        category: $cat.value,
-        min: qs("#fMin").value,
-        max: qs("#fMax").value,
-        sort: qs("#fSort").value,
-      };
-      setParams(state, { preserveScope: true }); // conserva 'scope'
-      renderGrid(applyFilters(state));
-    });
-
-  } catch (err) {
-    console.error(err);
-    qs("#grid").innerHTML = `<p style="padding:24px">No fue posible cargar el catálogo.</p>`;
-  }
-})();
