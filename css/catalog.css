@@ -73,13 +73,14 @@
 .f-actions{
   display: flex;
   flex-direction: row;   /* ambos botones en una sola línea */
-  gap: 6px;              /* ↓ un poquito menos para que no se corra */
+  gap: 4px;              /* reducido para que no se salga del recuadro */
   justify-content: space-between;
 }
 .f-actions .btn{
   flex: 1;               /* ocupan el mismo ancho */
   text-align: center;
   white-space: nowrap;   /* evita que el texto salte de línea */
+  min-width: 0;          /* permite que los botones se encojan sin romper el layout */
 }
 
 /* ====== TOOLBAR ====== */
