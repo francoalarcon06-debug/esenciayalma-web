@@ -103,7 +103,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: 18px;                /* ← más separación */
   color: #6b6b6b;
   margin: 0 0 8px;
   flex-wrap: nowrap;         /* ← evita salto de línea */
@@ -148,7 +148,7 @@
 }
 @media (max-width: 760px) {
   .grid {
-    grid-template-columns: repeat(2, 1fr); /* ← ahora 2 productos por fila en móvil */
+    grid-template-columns: repeat(2, 1fr); /* ← 2 productos por fila en móvil */
   }
 }
 @media (max-width: 460px) {
@@ -197,7 +197,18 @@ body {
   }
   .toolbar {
     margin-top: -4px;
-    flex-wrap: nowrap;      /* ← evita salto de línea */
-    white-space: nowrap;    /* ← mantiene una sola línea */
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    gap: 18px;              /* ← más separación en móvil también */
   }
+}
+
+/* ====== BOTÓN WHATSAPP en dos líneas ====== */
+.card__btn {
+  flex-direction: column;   /* texto en dos líneas */
+  line-height: 1.1;
+  text-align: center;
+}
+.card__btn .icon-wa {
+  margin-bottom: 2px;
 }
