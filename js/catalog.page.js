@@ -190,7 +190,7 @@ function injectScopeBadge() {
   const badge = document.createElement("div");
   badge.setAttribute("id", "scopeBadge");
   badge.innerHTML = `
-    <span style="font-weight:700;">Vista: Perfumería</span>
+    <span style="font-weight:700;">Perfumería</span>
     <button type="button" aria-label="Quitar vista Perfumería" title="Quitar vista Perfumería">×</button>
   `;
   Object.assign(badge.style, {
