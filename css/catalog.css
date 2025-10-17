@@ -73,7 +73,7 @@
 .f-actions{
   display: flex;
   flex-direction: row;   /* ambos botones en una sola línea */
-  gap: 8px;              /* separación entre ellos */
+  gap: 6px;              /* ↓ un poquito menos para que no se corra */
   justify-content: space-between;
 }
 .f-actions .btn{
