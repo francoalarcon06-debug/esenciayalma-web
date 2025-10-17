@@ -106,8 +106,8 @@
   gap: 10px;
   color: #6b6b6b;
   margin: 0 0 8px;
-  flex-wrap: nowrap;
-  white-space: nowrap;
+  flex-wrap: nowrap;         /* evita salto de línea */
+  white-space: nowrap;       /* mantiene texto en una sola línea */
 }
 .sort-group {
   display: flex;
@@ -148,12 +148,12 @@
 }
 @media (max-width: 760px) {
   .grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* 2 productos por fila en móvil */
   }
 }
 @media (max-width: 460px) {
   .grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* mantiene 2 también en pantallas pequeñas */
   }
 }
 
@@ -199,26 +199,24 @@ body {
     margin-top: -4px;
     flex-wrap: nowrap;
     white-space: nowrap;
-    gap: 18px;
+    gap: 18px;               /* separa “25 resultados” de “Ordenar por” */
   }
 
-  /* ===== Botón WhatsApp adaptado ===== */
-  .card__btn {
-    flex-direction: row;              /* ícono a la izquierda */
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    text-align: left;
+  /* ===== Botón WhatsApp en dos líneas ===== */
+  .card__btn{
+    display:flex;            /* ya lo es, pero aseguramos en móvil */
+    flex-direction: row;     /* ícono a la izquierda */
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    white-space: normal;     /* permite salto de línea */
+    text-align:left;
+    line-height:1.15;
+    font-size: 14px;         /* un poco más pequeño para que encaje en 2 líneas */
   }
-  .card__btn span {
-    display: flex;
-    flex-direction: column;          /* texto en dos líneas */
-    line-height: 1.1;
-    text-align: left;
-  }
-  .card__btn .icon-wa {
-    margin-bottom: 0;
-    width: 26px;
-    height: 26px;
+  .card__btn .icon-wa{
+    width:26px;
+    height:26px;
+    transform:none;          /* anulamos cualquier desplazamiento */
   }
 }
