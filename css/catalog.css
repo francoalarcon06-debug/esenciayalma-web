@@ -62,20 +62,6 @@
   display:flex; gap:8px; align-items:center; justify-content:space-between;
 }
 
-/* ---- Badge "Vista: Perfumería" dentro de filtros (debajo de Tipo de producto) ---- */
-.filters-wrap [data-scope-badge]{ margin-top:6px; }
-.filters-wrap [data-scope-badge] span{
-  display:inline-flex; align-items:center; gap:8px;
-  background:#ffe3ef; color:#c43c73;
-  border-radius:999px; padding:6px 10px;
-  font-weight:700; font-size:13px;
-}
-.filters-wrap [data-scope-badge] button{
-  appearance:none; border:none; background:transparent;
-  color:#c43c73; font-weight:900; cursor:pointer;
-  line-height:1; padding:0 2px; font-size:14px;
-}
-
 /* ====== TOOLBAR ====== */
 .toolbar{
   display:flex; align-items:center; justify-content:space-between;
