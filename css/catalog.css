@@ -106,6 +106,8 @@
   gap: 10px;
   color: #6b6b6b;
   margin: 0 0 8px;
+  flex-wrap: nowrap;         /* ← evita salto de línea */
+  white-space: nowrap;       /* ← mantiene texto en una sola línea */
 }
 .sort-group {
   display: flex;
@@ -146,12 +148,12 @@
 }
 @media (max-width: 760px) {
   .grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* ← ahora 2 productos por fila en móvil */
   }
 }
 @media (max-width: 460px) {
   .grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr); /* ← mantiene 2 también en pantallas pequeñas */
   }
 }
 
@@ -195,5 +197,7 @@ body {
   }
   .toolbar {
     margin-top: -4px;
+    flex-wrap: nowrap;      /* ← evita salto de línea */
+    white-space: nowrap;    /* ← mantiene una sola línea */
   }
 }
