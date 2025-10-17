@@ -59,23 +59,14 @@
   background:#fff;
 }
 
-/* === Flechas personalizadas de los SELECTs (más a la izquierda) === */
-.filters-wrap .f-item{ position: relative; }
+/* === Flechas personalizadas de los SELECTs (centradas y más grandes) === */
 .filters-wrap select{
   appearance:none; -webkit-appearance:none; -moz-appearance:none;
-  padding-right:34px; /* espacio para la flecha */
-}
-.filters-wrap .f-item:has(> select)::after{
-  content:"";
-  position:absolute;
-  right:12px;                 /* ⇦ mueve aquí “un poquito a la izquierda” */
-  top:50%;
-  width:12px; height:12px;
-  transform:translateY(-50%);
-  pointer-events:none;
+  padding-right:42px; /* espacio para la flecha grande */
   background-repeat:no-repeat;
-  background-size:12px 12px;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%23888888' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-position: right 12px center;   /* centrada verticalmente */
+  background-size:16px 16px;                /* más grande */
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24'%3E%3Cpath fill='%23888888' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
 }
 
 .f-actions{
@@ -91,19 +82,11 @@
 .sort-group select{
   padding:10px 12px; border:1px solid #eee; border-radius:10px; background:#fff;
   appearance:none; -webkit-appearance:none; -moz-appearance:none;
-  padding-right:34px; /* espacio para la flecha */
-}
-.sort-group::after{
-  content:"";
-  position:absolute;
-  right:12px;               /* ⇦ misma separación en “Ordenar por” */
-  top:50%;
-  width:12px; height:12px;
-  transform:translateY(-50%);
-  pointer-events:none;
+  padding-right:42px;                        /* espacio para flecha */
   background-repeat:no-repeat;
-  background-size:12px 12px;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%23888888' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-position: right 12px center;    /* centrada verticalmente */
+  background-size:16px 16px;                 /* más grande */
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24'%3E%3Cpath fill='%23888888' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
 }
 
 /* ====== GRID ====== */
