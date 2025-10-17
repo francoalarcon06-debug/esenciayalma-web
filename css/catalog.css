@@ -57,16 +57,27 @@
   border-radius:12px;
   outline:none;
   background:#fff;
+}
 
-  /* === Flecha más a la izquierda en los <select> de filtros === */
+/* === Flechas personalizadas de los SELECTs (más a la izquierda) === */
+.filters-wrap .f-item{ position: relative; }
+.filters-wrap select{
   appearance:none; -webkit-appearance:none; -moz-appearance:none;
   padding-right:34px; /* espacio para la flecha */
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24'><path fill='%230000' d='M7 10l5 5 5-5z'/></svg>");
-  background-repeat:no-repeat;
-  background-position:right 8px center; /* mover flecha a la izquierda (ajusta 8px si quieres) */
-  background-size:14px 14px;
-  background-position-x:calc(100% - 8px);
 }
+.filters-wrap .f-item:has(> select)::after{
+  content:"";
+  position:absolute;
+  right:12px;                 /* ⇦ mueve aquí “un poquito a la izquierda” */
+  top:50%;
+  width:12px; height:12px;
+  transform:translateY(-50%);
+  pointer-events:none;
+  background-repeat:no-repeat;
+  background-size:12px 12px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%23888888' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+}
+
 .f-actions{
   display:flex; gap:8px; align-items:center; justify-content:space-between;
 }
@@ -76,18 +87,23 @@
   display:flex; align-items:center; justify-content:space-between;
   gap: 10px; color:#6b6b6b; margin: 0 0 8px;
 }
-.sort-group{ display:flex; align-items:center; gap:8px; }
+.sort-group{ display:flex; align-items:center; gap:8px; position:relative; }
 .sort-group select{
   padding:10px 12px; border:1px solid #eee; border-radius:10px; background:#fff;
-
-  /* === Flecha más a la izquierda en el select de “Ordenar por” === */
   appearance:none; -webkit-appearance:none; -moz-appearance:none;
-  padding-right:34px;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24'><path fill='%230000' d='M7 10l5 5 5-5z'/></svg>");
+  padding-right:34px; /* espacio para la flecha */
+}
+.sort-group::after{
+  content:"";
+  position:absolute;
+  right:12px;               /* ⇦ misma separación en “Ordenar por” */
+  top:50%;
+  width:12px; height:12px;
+  transform:translateY(-50%);
+  pointer-events:none;
   background-repeat:no-repeat;
-  background-position:right 8px center;
-  background-size:14px 14px;
-  background-position-x:calc(100% - 8px);
+  background-size:12px 12px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%23888888' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
 }
 
 /* ====== GRID ====== */
