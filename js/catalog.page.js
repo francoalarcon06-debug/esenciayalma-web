@@ -180,13 +180,12 @@ function clearFilters() {
   renderGrid(items);
 }
 
-// === NUEVO: badge dentro del panel de filtros con botón para quitar el scope ===
+// === Badge dentro del panel de filtros con botón para quitar el scope (AHORA ARRIBA DEL SELECT) ===
 function injectScopeBadge() {
   if (SCOPE !== "perfumeria") return;
 
-  // insertarlo justo debajo del select de categoría en el panel de filtros
-  const catSelect = document.getElementById("fCategory");
-  if (!catSelect) return;
+  const form = document.getElementById("filtersForm");
+  if (!form) return;
 
   const badge = document.createElement("div");
   badge.setAttribute("id", "scopeBadge");
@@ -199,7 +198,7 @@ function injectScopeBadge() {
     alignItems: "center",
     justifyContent: "space-between",
     gap: "8px",
-    marginTop: "8px",
+    marginBottom: "8px",
     padding: "6px 10px",
     borderRadius: "12px",
     fontSize: "13px",
@@ -218,17 +217,16 @@ function injectScopeBadge() {
     padding: "2px 4px",
   });
 
-  // Insertar después del select
-  catSelect.parentElement.appendChild(badge);
+  // Insertar el badge como PRIMER elemento del formulario de filtros (arriba de "Tipo de producto")
+  form.insertBefore(badge, form.firstElementChild);
 
   // Al hacer click en la X, quitamos el scope de la URL y recargamos mostrando todas las categorías
   btn.addEventListener("click", () => {
     const params = currentParams();
-    params.delete("scope");      // quitar scope
-    // dejamos el resto de filtros/orden si existen
+    params.delete("scope");
     const query = params.toString();
     const url = query ? `${location.pathname}?${query}` : location.pathname;
-    location.href = url;         // recarga para reconstruir dataset sin scope
+    location.href = url;
   });
 }
 
@@ -267,7 +265,7 @@ function injectScopeBadge() {
     // Render inicial
     renderGrid(applyFilters(initState));
 
-    // Badge informativo de scope dentro del panel de filtros (con X)
+    // Badge informativo de scope dentro del panel de filtros (con X) — ahora arriba del select
     injectScopeBadge();
 
     // Eventos
