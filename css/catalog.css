@@ -62,6 +62,32 @@
   display:flex; gap:8px; align-items:center; justify-content:space-between;
 }
 
+/* --- NUEVO: badge de scope dentro del panel (debajo del select) --- */
+.filters-wrap [data-scope-badge]{ margin-top: -2px; }
+.filters-wrap [data-scope-badge] span{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:6px 10px;
+  border-radius:999px;
+  background:#ffe3ef;
+  color:#c43c73;
+  font-weight:700;
+  font-size:12px;
+}
+.filters-wrap [data-scope-badge] button{
+  all: unset;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 6px;
+  border-radius: 999px;
+  color:#c43c73;
+  font-weight:700;
+}
+.filters-wrap [data-scope-badge] button:hover{
+  background:#ffd4e6;
+}
+
 /* ====== TOOLBAR ====== */
 .toolbar{
   display:flex; align-items:center; justify-content:space-between;
