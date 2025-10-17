@@ -17,22 +17,20 @@
 /* ====== LAYOUT 2 COLUMNAS (filtros + resultados) ====== */
 .catalog-shell{
   display: grid;
-  grid-template-columns: 260px 1fr; /* más estrecho para dar espacio al grid */
-  gap: 16px;                        /* un poco menos de separación */
+  grid-template-columns: 260px 1fr;
+  gap: 16px;
   align-items: start;
   margin: 12px auto 0;
 }
-/* Solo en esta página ampliamos el ancho del contenedor para “correr” los filtros a la izquierda
-   y que quepan 4 tarjetas sin apretar */
 .container.catalog-shell{
   width: min(1320px, 96%);
 }
 .filters-aside{
   position: sticky;
-  top: 74px;            /* altura aprox. del header para que no lo tape */
+  top: 74px;
 }
 .results-main{
-  min-width: 0;         /* evita overflow en grids internos */
+  min-width: 0;
 }
 
 /* ====== PANEL DE FILTROS (en columna) ====== */
@@ -47,7 +45,10 @@
   box-shadow: var(--shadow);
 }
 .filters-wrap label{
-  display:block; margin-bottom:6px; font-size:.9rem; color:var(--muted);
+  display:block;
+  margin-bottom:6px;
+  font-size:.9rem;
+  color:var(--muted);
 }
 .filters-wrap input,
 .filters-wrap select{
@@ -62,40 +63,57 @@
 /* === Flechas personalizadas de los SELECTs (centradas y más grandes) === */
 .filters-wrap select{
   appearance:none; -webkit-appearance:none; -moz-appearance:none;
-  padding-right:48px; /* espacio para la flecha grande */
+  padding-right:48px;
   background-repeat:no-repeat;
-  background-position: right 14px center;   /* centrada verticalmente */
-  background-size:20px 20px;                /* más grande */
+  background-position: right 14px center;
+  background-size:20px 20px;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'%3E%3Cpath fill='%23888888' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
 }
 
 /* === BOTONES de acciones: en una sola línea y del mismo ancho === */
 .f-actions{
   display: flex;
-  flex-direction: row;   /* ambos botones en una sola línea */
-  gap: 4px;              /* reducido para que no se salga del recuadro */
+  flex-direction: row;
+  gap: 4px;
   justify-content: space-between;
 }
 .f-actions .btn{
-  flex: 1;               /* ocupan el mismo ancho */
+  flex: 1;
+  display: flex;              /* ← centrado preciso del texto */
+  align-items: center;        /* centra verticalmente */
+  justify-content: center;    /* centra horizontalmente */
   text-align: center;
-  white-space: nowrap;   /* evita que el texto salte de línea */
-  min-width: 0;          /* permite que los botones se encojan sin romper el layout */
+  white-space: nowrap;
+  min-width: 0;
 }
 
 /* ====== TOOLBAR ====== */
 .toolbar{
-  display:flex; align-items:center; justify-content:space-between;
-  gap: 10px; color:#6b6b6b; margin: 0 0 8px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 10px;
+  color:#6b6b6b;
+  margin: 0 0 8px;
 }
-.sort-group{ display:flex; align-items:center; gap:8px; position:relative; }
+.sort-group{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  position:relative;
+}
 .sort-group select{
-  padding:10px 12px; border:1px solid #eee; border-radius:10px; background:#fff;
-  appearance:none; -webkit-appearance:none; -moz-appearance:none;
-  padding-right:48px;                        /* espacio para flecha */
+  padding:10px 12px;
+  border:1px solid #eee;
+  border-radius:10px;
+  background:#fff;
+  appearance:none;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  padding-right:48px;
   background-repeat:no-repeat;
-  background-position: right 14px center;    /* centrada verticalmente */
-  background-size:20px 20px;                 /* más grande */
+  background-position: right 14px center;
+  background-size:20px 20px;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24'%3E%3Cpath fill='%23888888' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
 }
 
@@ -104,13 +122,10 @@
   margin: 8px 0 60px;
   display:grid;
   gap:16px;
-  /* 4 tarjetas por fila en desktop */
   grid-template-columns: repeat(4, 1fr);
 }
-/* Importante: anular min-width de .card que viene desde site.css */
 .grid .card{ min-width: 0; }
 
-/* Breakpoints */
 @media (max-width: 1100px){ .grid{ grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 760px){ .grid{ grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 460px){ .grid{ grid-template-columns: 1fr; } }
@@ -126,16 +141,18 @@
   box-shadow:var(--shadow);
 }
 
-/* Ajuste visual de tarjetas dentro del grid (reutiliza estilos existentes) */
+/* Ajuste visual de tarjetas dentro del grid */
 .card__img{ height: 280px; }
-@media (max-width: 760px){ .card__img{ height: clamp(180px, 36vh, 260px); } }
+@media (max-width: 760px){
+  .card__img{ height: clamp(180px, 36vh, 260px); }
+}
 
 /* ====== FONDO GENERAL DEL CATÁLOGO ====== */
 body{
-  background: #fff2f6; /* rosado suave tipo cabecera */
+  background: #fff2f6;
 }
 
-/* ====== RESPONSIVE: en móvil, filtros arriba y NO sticky ====== */
+/* ====== RESPONSIVE ====== */
 @media (max-width: 980px){
   .catalog-shell{
     grid-template-columns: 1fr;
