@@ -180,23 +180,56 @@ function clearFilters() {
   renderGrid(items);
 }
 
+// === NUEVO: badge dentro del panel de filtros con botón para quitar el scope ===
 function injectScopeBadge() {
   if (SCOPE !== "perfumeria") return;
-  const host = document.querySelector(".catalog-hero .container") || document.querySelector(".toolbar.container");
-  if (!host) return;
+
+  // insertarlo justo debajo del select de categoría en el panel de filtros
+  const catSelect = document.getElementById("fCategory");
+  if (!catSelect) return;
+
   const badge = document.createElement("div");
-  badge.textContent = "Vista: Perfumería";
+  badge.setAttribute("id", "scopeBadge");
+  badge.innerHTML = `
+    <span style="font-weight:700;">Vista: Perfumería</span>
+    <button type="button" aria-label="Quitar vista Perfumería" title="Quitar vista Perfumería">×</button>
+  `;
   Object.assign(badge.style, {
-    display: "inline-block",
-    marginTop: "6px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    gap: "8px",
+    marginTop: "8px",
     padding: "6px 10px",
-    borderRadius: "999px",
-    fontWeight: "700",
+    borderRadius: "12px",
     fontSize: "13px",
     color: "#c43c73",
     background: "#ffe3ef",
   });
-  host.appendChild(badge);
+  const btn = badge.querySelector("button");
+  Object.assign(btn.style, {
+    appearance: "none",
+    border: "none",
+    background: "transparent",
+    fontSize: "18px",
+    lineHeight: "1",
+    cursor: "pointer",
+    color: "#c43c73",
+    padding: "2px 4px",
+  });
+
+  // Insertar después del select
+  catSelect.parentElement.appendChild(badge);
+
+  // Al hacer click en la X, quitamos el scope de la URL y recargamos mostrando todas las categorías
+  btn.addEventListener("click", () => {
+    const params = currentParams();
+    params.delete("scope");      // quitar scope
+    // dejamos el resto de filtros/orden si existen
+    const query = params.toString();
+    const url = query ? `${location.pathname}?${query}` : location.pathname;
+    location.href = url;         // recarga para reconstruir dataset sin scope
+  });
 }
 
 // ------- Arranque -------
@@ -234,7 +267,7 @@ function injectScopeBadge() {
     // Render inicial
     renderGrid(applyFilters(initState));
 
-    // Badge informativo de scope
+    // Badge informativo de scope dentro del panel de filtros (con X)
     injectScopeBadge();
 
     // Eventos
