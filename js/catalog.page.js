@@ -307,6 +307,18 @@ function injectScopeBadge() {
       renderGrid(applyFilters(state));
     });
 
+    // === NUEVO: aplicar filtros al instante al cambiar "Tipo de producto" ===
+    $cat.addEventListener("change", () => {
+      const state = {
+        category: $cat.value,
+        min: qs("#fMin").value,
+        max: qs("#fMax").value,
+        sort: qs("#fSort").value,
+      };
+      setParams(state); // conserva 'scope'
+      renderGrid(applyFilters(state));
+    });
+
   } catch (err) {
     console.error(err);
     qs("#grid").innerHTML = `<p style="padding:24px">No fue posible cargar el catálogo.</p>`;
