@@ -44,7 +44,21 @@ function card(product) {
   const el = document.createElement("article");
   el.className = "card";
   el.setAttribute("role", "listitem");
-  const href = `https://wa.me/${WA_PHONE}?text=${WA_MSG}%0A${encodeURIComponent(product.name)}`;
+
+  // URL absoluta al detalle del producto (para vista previa en WhatsApp)
+  const c = product._c || product.categoryKey || "";
+  const i = typeof product._i === "number" ? product._i : (typeof product.idx === "number" ? product.idx : 0);
+  const detailUrl = new URL(`producto.html?c=${encodeURIComponent(c)}&i=${encodeURIComponent(i)}`, location.href).href;
+
+  // Mensaje con link primero -> genera preview en WhatsApp
+  const msg = [
+    detailUrl,
+    "",
+    "Hola, me interesa este producto 👇",
+    product.name
+  ].join("\n");
+
+  const href = `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(msg)}`;
 
   el.innerHTML = `
     <div class="card__img">
