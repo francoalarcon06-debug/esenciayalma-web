@@ -22,9 +22,8 @@
   box-shadow: var(--shadow);
   display: grid;
   grid-template-columns: 380px 1fr 260px; /* imagen / specs / compra */
-  grid-template-rows: auto;               /* una sola fila centrada */
   gap: 32px;
-  align-items: center; /* ✅ centra verticalmente los tres bloques */
+  align-items: start;
   padding: 36px 42px;
   max-width: 1200px;
   margin: 0 auto;
@@ -32,8 +31,6 @@
 
 /* ====== COLUMNA IZQUIERDA: IMAGEN ====== */
 .p-gallery {
-  grid-column: 1;
-  grid-row: 1;
   border-radius: 14px;
   overflow: hidden;
   background: #f8f8f8;
@@ -49,15 +46,18 @@
   object-position: center;
 }
 
-/* ====== COLUMNA CENTRAL: ESPECIFICACIONES Y DESPACHO ====== */
+/* ====== COLUMNA CENTRAL ====== */
+/* Cambios para centrar el bloque rosa y el chip dentro de la tarjeta blanca */
 .p-info {
-  grid-column: 2;
-  grid-row: 1;
   display: flex;
   flex-direction: column;
-  align-items: center; /* centra los hijos horizontalmente */
-  justify-content: center; /* ✅ centra verticalmente respecto a la imagen y el bloque derecho */
   gap: 14px;
+
+  /* NUEVO: centramos el bloque completo en la tarjeta y le damos un ancho cómodo */
+  justify-self: center;          /* centra el grid-item respecto del contenedor blanco */
+  width: 100%;
+  max-width: 620px;              /* ancho visual del bloque central */
+  align-items: center;           /* centra los hijos dentro del bloque */
 }
 
 /* Especificaciones principales */
@@ -68,9 +68,10 @@
   padding: 16px 18px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.04);
 
+  /* aseguran centrado del card */
   width: 100%;
-  max-width: 620px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 .p-specs h2 {
   margin: 0 0 10px;
@@ -87,65 +88,66 @@
 }
 .p-specs li { margin-bottom: 6px; }
 
-/* Franja de confianza (Despacho a todo Chile) */
-.p-trust {
-  display: grid;
+/* Franja de confianza (Despacho a todo Chile), debajo de specs y centrada */
+.p-trust{
+  display:grid;
   grid-template-columns: 1fr;
-  gap: 10px;
+  gap:10px;
   margin-top: 12px;
+
   width: 100%;
-  max-width: 620px;
   margin-left: auto;
   margin-right: auto;
 }
-.p-trust--single .p-trust__item { justify-content: center; }
-.p-trust__item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
-  border: 1px solid #f4c1d6;
-  border-radius: 10px;
-  background: #fff;
-  box-shadow: 0 2px 6px rgba(0,0,0,.04);
-  font-size: 14.5px;
-  color: #333;
+.p-trust--single .p-trust__item{ justify-content:center; }
+.p-trust__item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 12px;
+  border:1px solid #f4c1d6;
+  border-radius:10px;
+  background:#fff;
+  box-shadow:0 2px 6px rgba(0,0,0,.04);
+  font-size:14.5px;
+  color:#333;
 }
-.p-trust__item svg {
-  width: 20px;
-  height: 20px;
-  fill: #c43c73;
+.p-trust__item svg{
+  width:20px;
+  height:20px;
+  fill:#c43c73;
 }
 
 /* ====== COLUMNA DERECHA: TÍTULO + SUBTÍTULO + PRECIO + CTA ====== */
 .p-buy {
-  --buy-width: 340px;
-  grid-column: 3;
-  grid-row: 1;
+  --buy-width: 340px;                     /* ancho visual del bloque derecho */
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center;                     /* bloque centrado */
   justify-content: flex-start;
   gap: 16px;
   margin-top: 8px;
-  text-align: left;
+  text-align: left;                        /* contenido alineado a la izquierda */
 }
 .p-title,
 .p-sub,
 .p-price,
-.p-actions { width: var(--buy-width); max-width: 100%; }
-.p-title {
+.p-actions {
+  width: var(--buy-width);
+  max-width: 100%;
+}
+.p-title{
   margin: 0;
   font-family: "DM Serif Display", serif;
   font-size: clamp(26px, 3vw, 34px);
 }
-.p-sub {
-  color: #5c5c5c;
+.p-sub{
+  color:#5c5c5c;
   font-size: 15px;
   line-height: 1.5;
   margin: 0;
 }
-.p-sub strong { color: #2b2b2b; }
+.p-sub strong { color:#2b2b2b; }
 .p-price { font-size: 24px; font-weight: 800; }
 .p-actions .btn-primary {
   display: inline-flex;
@@ -159,44 +161,40 @@
 .p-actions .icon-wa { width: 22px; height: 22px; }
 
 /* ====== COMPARTIR (solo ícono) ====== */
-.share-float {
-  position: absolute;
+.share-float{
+  position:absolute;
   top: 14px;
   right: 14px;
-  display: inline-grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 999px;
-  padding: 0;
+  display:inline-grid;
+  place-items:center;
+  width:40px;
+  height:40px;
+  border-radius:999px;
+  padding:0;
 }
-.icon-share { width: 20px; height: 20px; fill: currentColor; }
-.share-float.copied::after {
-  content: "copiado";
-  position: absolute;
-  top: -10px; right: 44px;
-  background: #000;
-  color: #fff;
-  font-size: 12px;
-  padding: 3px 6px;
-  border-radius: 6px;
-  opacity: .9;
+.icon-share{ width:20px; height:20px; fill:currentColor; }
+.share-float.copied::after{
+  content:"copiado";
+  position:absolute;
+  top:-10px; right:44px;
+  background:#000;
+  color:#fff;
+  font-size:12px;
+  padding:3px 6px;
+  border-radius:6px;
+  opacity:.9;
 }
 
 /* ====== RESPONSIVE ====== */
 @media (max-width: 980px) {
   .product {
     grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
     padding: 24px;
     gap: 24px;
-    align-items: start;
   }
-
-  .p-gallery { grid-column: 1; grid-row: 1; }
-  .p-buy     { grid-column: 1; grid-row: 1; }
-  .p-info    { grid-column: 1; grid-row: 2; }
-
-  .p-buy { --buy-width: 100%; align-items: center; text-align: left; }
-  .p-specs, .p-trust { max-width: 100%; }
+  .p-buy {
+    --buy-width: 100%;
+    align-items: center;
+    text-align: left;
+  }
 }
