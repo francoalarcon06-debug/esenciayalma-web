@@ -1,35 +1,93 @@
-.product-main{ padding:28px 0 48px; background:var(--soft); }
+.product-main {
+  padding: 40px 0 60px;
+  background: var(--soft);
+}
 
-/* Botón de volver arriba (antes era solo un link) */
-.crumb-btn{
-  margin:8px 0 16px;
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  font-weight:600;
+/* Botón de volver arriba */
+.crumb-btn {
+  margin: 12px 0 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
 }
 
 /* Tarjeta del producto */
-.product{
-  background:#fff; border:1px solid #00000010; border-radius:16px; box-shadow:var(--shadow);
-  display:grid; gap:24px; grid-template-columns: 480px 1fr; align-items:start; padding:18px;
-}
-@media (max-width: 980px){
-  .product{ grid-template-columns:1fr; }
+.product {
+  background: #fff;
+  border: 1px solid #00000010;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  display: grid;
+  gap: 36px;
+  grid-template-columns: 400px 1fr; /* más compacta */
+  align-items: start;
+  padding: 32px 40px; /* más aire interno */
+  max-width: 980px;   /* centrada */
+  margin: 0 auto;     /* centra horizontalmente */
 }
 
-.p-gallery{
-  border-radius:14px; overflow:hidden; background:#f7f7f7; height:560px; display:flex; align-items:center; justify-content:center;
+@media (max-width: 980px) {
+  .product {
+    grid-template-columns: 1fr;
+    padding: 22px;
+    gap: 24px;
+  }
 }
-.p-gallery img{ width:100%; height:100%; object-fit:cover; object-position:center; }
 
-.p-info h1{
-  margin:4px 0 8px; font-family:"DM Serif Display",serif; font-size:clamp(26px,3.6vw,36px);
+.p-gallery {
+  border-radius: 14px;
+  overflow: hidden;
+  background: #f7f7f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1; /* cuadrado perfecto */
+  max-height: 480px;   /* altura controlada */
 }
-.p-desc{ color:#6a6a6a; margin:0 0 14px; }
-.p-price{ font-size:22px; font-weight:800; margin:8px 0 16px; }
 
-.p-actions{ display:flex; gap:10px; flex-wrap:wrap; }
-.p-actions .btn{ padding:14px 18px; }
-.p-actions .btn-primary{ display:inline-flex; align-items:center; gap:8px; }
-.p-actions .icon-wa{ width:24px; height:24px; }
+.p-gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.p-info h1 {
+  margin: 0 0 10px;
+  font-family: "DM Serif Display", serif;
+  font-size: clamp(26px, 3vw, 34px);
+}
+
+.p-desc {
+  color: #6a6a6a;
+  margin: 0 0 16px;
+  line-height: 1.5;
+}
+
+.p-price {
+  font-size: 22px;
+  font-weight: 800;
+  margin: 8px 0 20px;
+}
+
+.p-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.p-actions .btn {
+  padding: 14px 18px;
+}
+
+.p-actions .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.p-actions .icon-wa {
+  width: 24px;
+  height: 24px;
+}
