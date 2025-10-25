@@ -22,6 +22,7 @@
   box-shadow: var(--shadow);
   display: grid;
   grid-template-columns: 380px 1fr 260px; /* imagen / specs / compra */
+  grid-template-rows: auto auto;          /* fila 1 (imagen+buy) + fila 2 (p-info a lo ancho) */
   gap: 32px;
   align-items: start;
   padding: 36px 42px;
@@ -31,6 +32,8 @@
 
 /* ====== COLUMNA IZQUIERDA: IMAGEN ====== */
 .p-gallery {
+  grid-column: 1;   /* fila 1, col 1 */
+  grid-row: 1;
   border-radius: 14px;
   overflow: hidden;
   background: #f8f8f8;
@@ -46,21 +49,61 @@
   object-position: center;
 }
 
-/* ====== COLUMNA CENTRAL ====== */
-/* Cambios para centrar el bloque rosa y el chip dentro de la tarjeta blanca */
-.p-info {
+/* ====== COLUMNA DERECHA: TÍTULO + SUBTÍTULO + PRECIO + CTA ====== */
+.p-buy {
+  --buy-width: 340px;
+  grid-column: 3;   /* fila 1, col 3 */
+  grid-row: 1;
+
   display: flex;
   flex-direction: column;
-  gap: 14px;
-
-  /* NUEVO: centramos el bloque completo en la tarjeta y le damos un ancho cómodo */
-  justify-self: center;          /* centra el grid-item respecto del contenedor blanco */
+  align-items: center;       /* bloque centrado */
+  justify-content: flex-start;
+  gap: 16px;
+  margin-top: 8px;
+  text-align: left;
+}
+.p-title,
+.p-sub,
+.p-price,
+.p-actions { width: var(--buy-width); max-width: 100%; }
+.p-title{
+  margin: 0;
+  font-family: "DM Serif Display", serif;
+  font-size: clamp(26px, 3vw, 34px);
+}
+.p-sub{
+  color:#5c5c5c;
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 0;
+}
+.p-sub strong { color:#2b2b2b; }
+.p-price { font-size: 24px; font-weight: 800; }
+.p-actions .btn-primary{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 18px;
+  white-space: nowrap;
   width: 100%;
-  max-width: 620px;              /* ancho visual del bloque central */
-  align-items: center;           /* centra los hijos dentro del bloque */
+  justify-content: center;
+}
+.p-actions .icon-wa { width: 22px; height: 22px; }
+
+/* ====== FILA INFERIOR A LO ANCHO: ESPECIFICACIONES + DESPACHO ====== */
+/* Hacemos que .p-info ocupe la fila 2 de la tarjeta completa y centramos su contenido */
+.p-info {
+  grid-column: 1 / -1;   /* ocupa TODO el ancho de la tarjeta */
+  grid-row: 2;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;    /* centra hijos */
+  gap: 14px;
 }
 
-/* Especificaciones principales */
+/* Especificaciones principales (card rosa) centrada y con ancho cómodo */
 .p-specs {
   background: #fff7fa;
   border: 1px solid #f4c1d6;
@@ -68,10 +111,9 @@
   padding: 16px 18px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.04);
 
-  /* aseguran centrado del card */
   width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 620px;       /* controla el ancho visual */
+  margin: 0 auto;         /* centrada */
 }
 .p-specs h2 {
   margin: 0 0 10px;
@@ -88,7 +130,7 @@
 }
 .p-specs li { margin-bottom: 6px; }
 
-/* Franja de confianza (Despacho a todo Chile), debajo de specs y centrada */
+/* Franja de confianza (Despacho a todo Chile) centrada debajo */
 .p-trust{
   display:grid;
   grid-template-columns: 1fr;
@@ -96,6 +138,7 @@
   margin-top: 12px;
 
   width: 100%;
+  max-width: 620px;       /* mismo ancho que specs */
   margin-left: auto;
   margin-right: auto;
 }
@@ -117,48 +160,6 @@
   height:20px;
   fill:#c43c73;
 }
-
-/* ====== COLUMNA DERECHA: TÍTULO + SUBTÍTULO + PRECIO + CTA ====== */
-.p-buy {
-  --buy-width: 340px;                     /* ancho visual del bloque derecho */
-  display: flex;
-  flex-direction: column;
-  align-items: center;                     /* bloque centrado */
-  justify-content: flex-start;
-  gap: 16px;
-  margin-top: 8px;
-  text-align: left;                        /* contenido alineado a la izquierda */
-}
-.p-title,
-.p-sub,
-.p-price,
-.p-actions {
-  width: var(--buy-width);
-  max-width: 100%;
-}
-.p-title{
-  margin: 0;
-  font-family: "DM Serif Display", serif;
-  font-size: clamp(26px, 3vw, 34px);
-}
-.p-sub{
-  color:#5c5c5c;
-  font-size: 15px;
-  line-height: 1.5;
-  margin: 0;
-}
-.p-sub strong { color:#2b2b2b; }
-.p-price { font-size: 24px; font-weight: 800; }
-.p-actions .btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 14px 18px;
-  white-space: nowrap;
-  width: 100%;
-  justify-content: center;
-}
-.p-actions .icon-wa { width: 22px; height: 22px; }
 
 /* ====== COMPARTIR (solo ícono) ====== */
 .share-float{
@@ -189,12 +190,14 @@
 @media (max-width: 980px) {
   .product {
     grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
     padding: 24px;
     gap: 24px;
   }
-  .p-buy {
-    --buy-width: 100%;
-    align-items: center;
-    text-align: left;
-  }
+  .p-gallery { grid-column: 1; grid-row: 1; }
+  .p-buy     { grid-column: 1; grid-row: 1; }
+  .p-info    { grid-column: 1; grid-row: 2; }
+
+  .p-buy { --buy-width: 100%; align-items: center; text-align: left; }
+  .p-specs, .p-trust { max-width: 100%; }
 }
