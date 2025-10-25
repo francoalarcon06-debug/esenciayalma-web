@@ -1,7 +1,7 @@
 // Página de detalle con layout 2 columnas (Imagen | Detalle)
 
 const PHONE = "56961114225";
-const BASE_WA_MSG = "Hola, me interesa este producto 👇";
+const BASE_WA_GREET = "Hola, me interesa este producto";
 
 const money = (v) =>
   `$${(Number(String(v).replace(/[^\d]/g, "")) || 0).toLocaleString("es-CL")}`;
@@ -70,9 +70,10 @@ function renderProduct(p, categoryKey) {
     return;
   }
 
-  const wa = `https://wa.me/${PHONE}?text=${encodeURIComponent(
-    BASE_WA_MSG
-  )}%0A${encodeURIComponent(p.name)}%0A${encodeURIComponent(location.href)}`;
+  // Mensaje WA en el orden solicitado (saludo -> nombre -> link)
+  const productUrl = location.href; // absoluto
+  const waText = `${BASE_WA_GREET}\n"${p.name}"\n${productUrl}`;
+  const wa = `https://wa.me/${PHONE}?text=${encodeURIComponent(waText)}`;
 
   const backHref = catalogUrlForCategory();
 
