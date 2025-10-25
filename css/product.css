@@ -30,7 +30,7 @@
   grid-template-columns:520px 1fr;
   gap:36px;
   align-items:start;
-  padding:44px 42px 36px; /* un poco más arriba */
+  padding:76px 42px 36px; /* un poco más arriba */
   max-width:1200px;
   margin:0 auto;
 }
