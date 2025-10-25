@@ -71,6 +71,16 @@ function card(product) {
       </div>
     </div>
   `;
+
+  // --- NUEVO: hacer clickeable toda la tarjeta (excepto el botón de WhatsApp) ---
+  el.style.cursor = "pointer";
+  el.addEventListener("click", (ev) => {
+    if (ev.target.closest(".card__btn")) return; // no interceptar el botón
+    const c = product._c || product.categoryKey || "";
+    const i = typeof product._i === "number" ? product._i : (typeof product.idx === "number" ? product.idx : 0);
+    location.href = `producto.html?c=${encodeURIComponent(c)}&i=${encodeURIComponent(i)}`;
+  });
+
   return el;
 }
 
@@ -385,12 +395,16 @@ async function setupCarouselSection(sectionEl, items) {
   const track    = carousel.querySelector(".track");
   const prevBtn  = carousel.querySelector(".nav-btn.prev");
   const nextBtn  = carousel.querySelector(".nav-btn.next");
+  const key      = sectionEl.getAttribute("data-category") || "";
 
   track.innerHTML = "";
   track.classList.remove("static");
-  items.forEach(p => track.appendChild(card(p)));
 
-  if (items.length === 0) {
+  // --- NUEVO: agregamos metadatos de categoría+índice a cada producto para el click ---
+  const withMeta = (Array.isArray(items) ? items : []).map((p, i) => ({ ...p, _c: key, _i: i }));
+  withMeta.forEach(p => track.appendChild(card(p)));
+
+  if (withMeta.length === 0) {
     destroyLoop(track);
     prevBtn.style.display = "none";
     nextBtn.style.display = "none";
@@ -402,7 +416,7 @@ async function setupCarouselSection(sectionEl, items) {
   // función que decide y aplica el modo según el ancho real
   const applyMode = () => {
     const visibleCards = computeVisibleCards(track);
-    const shouldCarousel = items.length > visibleCards;
+    const shouldCarousel = withMeta.length > visibleCards;
 
     if (shouldCarousel) {
       // activar carrusel
