@@ -3,7 +3,7 @@
 // =======================
 
 const WA_PHONE = "56961114225";
-const WA_MSG   = encodeURIComponent("Hola, me interesa este producto 👇");
+const WA_GREET = "Hola, me interesa este producto";
 
 // Mapeo legible para nombres de categorías
 const CATEGORY_LABELS = {
@@ -55,7 +55,11 @@ async function loadData() {
 
 // ------- Render tarjeta (reutiliza estilos del sitio) -------
 function renderCard(p) {
-  const href = `https://wa.me/${WA_PHONE}?text=${WA_MSG}%0A${encodeURIComponent(p.name)}`;
+  // URL pública del detalle (para incluirla en el mensaje)
+  const detailUrl = `${location.origin}/producto.html?c=${encodeURIComponent(p.categoryKey || "")}&i=${encodeURIComponent(typeof p.idx === "number" ? p.idx : 0)}`;
+  // Mensaje WA en el orden solicitado
+  const waText = `${WA_GREET}\n"${p.name}"\n${detailUrl}`;
+  const href = `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(waText)}`;
 
   const el = document.createElement("article");
   el.className = "card";
