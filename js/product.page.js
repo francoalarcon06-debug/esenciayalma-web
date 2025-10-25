@@ -41,8 +41,6 @@ function renderProduct(p) {
           </svg>
           Consultar por WhatsApp
         </a>
-
-        <a class="btn btn-ghost" href="catalogo.html">Volver al catálogo</a>
       </div>
     </div>
   `;
