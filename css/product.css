@@ -14,6 +14,7 @@
 
 /* ====== Tarjeta general ====== */
 .product {
+  position: relative; /* para botón compartir flotante */
   background: #fff;
   border: 1px solid #00000010;
   border-radius: 16px;
@@ -45,7 +46,7 @@
   object-position: center;
 }
 
-/* ====== Info principal (nombre + descripción + especificaciones) ====== */
+/* ====== Info principal (nombre + especificaciones) ====== */
 .p-info {
   display: flex;
   flex-direction: column;
@@ -58,18 +59,15 @@
   font-size: clamp(26px, 3vw, 34px);
 }
 
-.p-desc {
-  color: #6a6a6a;
-  margin: 0;
-  line-height: 1.5;
-}
-
-/* Franja de confianza (envíos, retiro, etc.) */
+/* Franja de confianza */
 .p-trust{
   display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  grid-template-columns: 1fr;
   gap:10px;
-  margin:4px 0 10px;
+  margin:4px 0 0;
+}
+.p-trust--single .p-trust__item{ /* variante de un solo ítem */
+  justify-content:center;
 }
 .p-trust__item{
   display:flex;
@@ -118,10 +116,11 @@
 .p-buy {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;       /* CENTRADO */
   justify-content: flex-start;
-  gap: 18px;
+  gap: 16px;
   margin-top: 8px;
+  text-align: center;        /* CENTRADO */
 }
 
 .p-price {
@@ -142,16 +141,33 @@
   height: 22px;
 }
 
-/* Botón Compartir */
-.share-btn{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
+/* Botón Compartir (solo ícono) */
+.share-float{
+  position:absolute;
+  top: 14px;
+  right: 14px;
+  display:inline-grid;
+  place-items:center;
+  width:40px;
+  height:40px;
+  border-radius:999px;
+  padding:0;
 }
 .icon-share{
   width:20px;
   height:20px;
   fill:currentColor;
+}
+.share-float.copied::after{
+  content:"copiado";
+  position:absolute;
+  top:-10px; right:44px;
+  background:#000;
+  color:#fff;
+  font-size:12px;
+  padding:3px 6px;
+  border-radius:6px;
+  opacity:.9;
 }
 
 /* ====== Responsive ====== */
@@ -163,12 +179,7 @@
   }
 
   .p-buy {
-    flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-  }
-
-  .p-specs {
-    order: 3;
+    text-align: center;
   }
 }
