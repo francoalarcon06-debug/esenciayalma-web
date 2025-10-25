@@ -17,49 +17,30 @@ async function loadData() {
   return res.json();
 }
 
-/* ====== Especificaciones ====== */
-function buildSpecs(categoryKey, p) {
-  const specs = [];
+/* ====== Caja de Descripción ====== */
+function descriptionBoxHTML(p) {
+  const raw =
+    (typeof p.longDescription === "string" && p.longDescription.trim()) ||
+    (typeof p.description === "string" && p.description.trim()) ||
+    "";
 
-  if (p.family) specs.push({ label: "Familia", value: p.family });
-  if (Array.isArray(p.notes) && p.notes.length)
-    specs.push({ label: "Notas", value: p.notes.join(", ") });
-  if (p.description)
-    specs.push({ label: "Descripción breve", value: p.description });
+  if (!raw) return "";
 
-  if (specs.length === 0) {
-    const mapTipo = {
-      women: "Perfume",
-      men: "Perfume",
-      black: "Perfume",
-      red: "Perfume",
-      lavit: "Body Splash",
-      hogar: "Artículo para el hogar",
-    };
-    const mapGenero = { women: "Mujer", men: "Hombre" };
-    if (mapGenero[categoryKey])
-      specs.push({ label: "Género", value: mapGenero[categoryKey] });
-    specs.push({ label: "Tipo", value: mapTipo[categoryKey] || "Producto" });
-    if (p.description)
-      specs.push({ label: "Descripción breve", value: p.description });
-  }
+  // Permite párrafos separados por líneas en blanco
+  const paragraphs = raw
+    .split(/\n\s*\n/)
+    .map((t) => t.trim())
+    .filter(Boolean);
 
-  return specs;
-}
+  const body =
+    paragraphs.length > 1
+      ? paragraphs.map((t) => `<p>${t}</p>`).join("")
+      : `<p>${raw}</p>`;
 
-function specsToHTML(specs) {
-  if (!specs || specs.length === 0) return "";
   return `
-    <div class="p-specs">
-      <h2>Especificaciones principales</h2>
-      <ul>
-        ${specs
-          .map(
-            (s) =>
-              `<li><strong>${s.label}:</strong> <span>${s.value}</span></li>`
-          )
-          .join("")}
-      </ul>
+    <div class="p-descbox">
+      <h2>Descripción</h2>
+      <div class="p-descbody">${body}</div>
     </div>
   `;
 }
@@ -95,30 +76,29 @@ function renderProduct(p, categoryKey) {
     BASE_WA_MSG
   )}%0A${encodeURIComponent(p.name)}%0A${encodeURIComponent(location.href)}`;
 
-  const specsHTML = specsToHTML(buildSpecs(categoryKey, p));
   const backHref = catalogUrlForCategory();
 
   container.innerHTML = `
-    <!-- Botón “Volver al catálogo” dentro del recuadro blanco -->
+    <!-- Volver dentro del recuadro -->
     <a href="${backHref}" class="btn btn-ghost crumb-btn inside">Volver al catálogo</a>
 
-    <!-- Botón de compartir flotante -->
+    <!-- Compartir -->
     <button id="shareBtn" type="button" class="btn btn-ghost share-float" aria-label="Compartir">
       <svg class="icon-share" viewBox="0 0 24 24" aria-hidden="true">
         <path d="M15 8.5V6l6 6-6 6v-2.5h-8a4.5 4.5 0 0 1 0-9h8Z"/>
       </svg>
     </button>
 
-    <!-- Columna izquierda: imagen -->
+    <!-- Columna izquierda -->
     <div class="p-gallery">
       <img src="${p.image}" alt="${p.name}" loading="eager">
     </div>
 
-    <!-- Columna derecha: contenido -->
+    <!-- Columna derecha -->
     <div class="p-right">
       <h1 class="p-title">${p.name}</h1>
 
-      <!-- Sección superior: Despacho + Precio + Botón -->
+      <!-- Arriba: despacho + precio + CTA -->
       ${shippingBadgeHTML()}
       ${p.price ? `<div class="p-price">${money(p.price)}</div>` : ""}
 
@@ -131,12 +111,12 @@ function renderProduct(p, categoryKey) {
         </a>
       </div>
 
-      <!-- Finalmente las especificaciones -->
-      ${specsHTML}
+      <!-- Descripción (nuevo) -->
+      ${descriptionBoxHTML(p)}
     </div>
   `;
 
-  // ====== Botón compartir ======
+  // Compartir
   const shareBtn = container.querySelector("#shareBtn");
   if (shareBtn) {
     shareBtn.addEventListener("click", async () => {
