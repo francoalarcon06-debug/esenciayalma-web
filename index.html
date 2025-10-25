@@ -6,7 +6,7 @@
   <title>Esencia y Alma</title>
   <meta name="description" content="Perfumes inspirados en marcas de lujo. Mujer, Hombre, líneas Black, Red y LAVIT.">
 
-  <!-- Metadatos para que se vea “EsenciayAlma.cl” en redes/buscadores -->
+  <!-- Metadatos para redes -->
   <meta property="og:title" content="EsenciayAlma.cl – Perfumes inspirados en marcas de lujo" />
   <meta property="og:description" content="Descubre nuestra exclusiva colección de perfumes inspirados en las mejores fragancias del mundo." />
   <meta property="og:url" content="https://EsenciayAlma.cl/" />
@@ -20,7 +20,6 @@
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/images/Favicon.png" sizes="32x32">
-  <link rel="icon" type="image/png" href="assets/images/Favicon.png" sizes="192x192">
   <link rel="apple-touch-icon" href="assets/images/Favicon.png" sizes="180x180">
 
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -29,15 +28,15 @@
   <!-- Limitar área clickeable de “Ver todo” solo al texto -->
   <style>
     .sec-bottom{
-      pointer-events:none;   /* bloquea clicks fuera del enlace */
+      pointer-events:none;
       display:block;
       width:100%;
-      text-align:right;      /* alinea el enlace a la derecha */
-      margin-top:16px;       /* separa del carrusel */
-      padding-right:4px;     /* pequeño respiro del borde */
+      text-align:right;
+      margin-top:16px;
+      padding-right:4px;
     }
     .sec-bottom .sec-link--bottom{
-      pointer-events:auto;   /* vuelve a permitir clicks solo en el texto */
+      pointer-events:auto;
       display:inline;
       position:static;
       width:auto;
@@ -73,11 +72,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* IMPORTANTE: imagen estática (sin parallax) -> quitamos background-attachment */
     text-align: center;
-    position: relative; /* para overlay */
+    position: relative;
   ">
-    <!-- Overlay para el fade-out al hacer scroll (no afecta layout) -->
     <div id="heroFade" style="
       position:absolute; inset:0;
       background:linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 85%);
@@ -85,7 +82,6 @@
     "></div>
 
     <div class="container center">
-      <!-- (Eliminado el badge) -->
       <h1 class="hero-title">Esencia y Alma</h1>
       <p class="hero-sub">Descubre nuestra exclusiva colección de perfumes inspirados en las mejores fragancias del mundo.</p>
       <div class="cta">
@@ -95,7 +91,7 @@
     </div>
   </section>
 
-  <!-- SECCIONES (rellenadas desde products.json) -->
+  <!-- SECCIONES DINÁMICAS -->
   <section id="mujer" class="catalog-section" data-category="women">
     <div class="container">
       <h2 class="sec-title">Perfumes de Mujer</h2>
@@ -114,9 +110,9 @@
       <h2 class="sec-title">Perfumes de Hombre</h2>
       <p class="sec-sub">Aromas masculinos intensos y elegantes.</p>
       <div class="carousel">
-        <button class="nav-btn prev" aria-label="Anterior">❮</button>
+        <button class="nav-btn prev">❮</button>
         <div class="track no-scrollbar" role="list"></div>
-        <button class="nav-btn next" aria-label="Siguiente">❯</button>
+        <button class="nav-btn next">❯</button>
       </div>
       <div class="sec-bottom"><a href="catalogo.html?category=men" class="sec-link--bottom">Ver todo</a></div>
     </div>
@@ -127,9 +123,9 @@
       <h2 class="sec-title">Línea Black Parfums</h2>
       <p class="sec-sub">Fragancias profundas, sofisticadas y magnéticas.</p>
       <div class="carousel">
-        <button class="nav-btn prev" aria-label="Anterior">❮</button>
-        <div class="track no-scrollbar" role="list"></div>
-        <button class="nav-btn next" aria-label="Siguiente">❯</button>
+        <button class="nav-btn prev">❮</button>
+        <div class="track no-scrollbar"></div>
+        <button class="nav-btn next">❯</button>
       </div>
       <div class="sec-bottom"><a href="catalogo.html?category=black" class="sec-link--bottom">Ver todo</a></div>
     </div>
@@ -140,9 +136,9 @@
       <h2 class="sec-title">Línea Red Parfums</h2>
       <p class="sec-sub">Audaces, envolventes y memorables.</p>
       <div class="carousel">
-        <button class="nav-btn prev" aria-label="Anterior">❮</button>
-        <div class="track no-scrollbar" role="list"></div>
-        <button class="nav-btn next" aria-label="Siguiente">❯</button>
+        <button class="nav-btn prev">❮</button>
+        <div class="track no-scrollbar"></div>
+        <button class="nav-btn next">❯</button>
       </div>
       <div class="sec-bottom"><a href="catalogo.html?category=red" class="sec-link--bottom">Ver todo</a></div>
     </div>
@@ -153,33 +149,31 @@
       <h2 class="sec-title">Línea LAVIT Body Splash</h2>
       <p class="sec-sub">Inspirados en Victoria's Secret, Bath & Body Works, Escada.</p>
       <div class="carousel">
-        <button class="nav-btn prev" aria-label="Anterior">❮</button>
-        <div class="track no-scrollbar" role="list"></div>
-        <button class="nav-btn next" aria-label="Siguiente">❯</button>
+        <button class="nav-btn prev">❮</button>
+        <div class="track no-scrollbar"></div>
+        <button class="nav-btn next">❯</button>
       </div>
       <div class="sec-bottom"><a href="catalogo.html?category=lavit" class="sec-link--bottom">Ver todo</a></div>
     </div>
   </section>
 
-  <!-- NUEVA SECCIÓN: Artículos para el hogar -->
   <section id="hogar" class="catalog-section" data-category="hogar">
     <div class="container">
       <h2 class="sec-title">Artículos para el hogar</h2>
       <p class="sec-sub">Crea ambientes únicos con nuestra colección para el hogar.</p>
       <div class="carousel">
-        <button class="nav-btn prev" aria-label="Anterior">❮</button>
-        <div class="track no-scrollbar" role="list"></div>
-        <button class="nav-btn next" aria-label="Siguiente">❯</button>
+        <button class="nav-btn prev">❮</button>
+        <div class="track no-scrollbar"></div>
+        <button class="nav-btn next">❯</button>
       </div>
       <div class="sec-bottom"><a href="catalogo.html?category=hogar" class="sec-link--bottom">Ver todo</a></div>
     </div>
   </section>
 
-  <!-- FOOTER (actualizado) -->
+  <!-- FOOTER corregido -->
   <footer id="contacto" class="footer">
     <div class="container">
       <div class="footer__inner" style="align-items:flex-start;">
-        <!-- Bloque marca -->
         <div class="footer__brand" style="max-width:640px;">
           <div style="
             width:260px;height:26px;border-radius:8px;margin:0 0 14px 0;
@@ -193,36 +187,32 @@
           </p>
         </div>
 
-        <!-- Bloque contacto (solo WhatsApp) -->
         <div class="footer__contact">
           <a class="btn btn-ghost" id="whatsapp-cta" target="_blank" href="#" style="display:inline-flex;align-items:center;gap:10px;">
-            <!-- Ícono WhatsApp (color hereda del botón) -->
             <svg width="22" height="22" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-              <path fill="currentColor" d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.65-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+              <path fill="currentColor" d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
             </svg>
             WhatsApp
           </a>
         </div>
       </div>
 
-      <!-- Copyright fijo -->
       <p class="center" style="margin-top:16px;">
         © 2025 Esencia y Alma. Todos los derechos reservados.
       </p>
     </div>
   </footer>
 
-  <!-- SCRIPT para WhatsApp -->
+  <!-- WhatsApp link -->
   <script>
     const PHONE = "56961114225";
     const MSG   = encodeURIComponent("¡Hola! Me interesa el catálogo de Esencia y Alma.");
-    const wa    = `https://wa.me/${PHONE}?text=${MSG}`;
+    const wa = `https://wa.me/${PHONE}?text=${MSG}`;
     document.getElementById("btn-whatsapp").href = wa;
     document.getElementById("whatsapp-cta").href = wa;
-    // (Se elimina la línea que llenaba #year; ahora el texto es fijo)
   </script>
 
-  <!-- Fade del hero (sin parallax: imagen estática) -->
+  <!-- Fade hero -->
   <script>
     (function(){
       const hero = document.getElementById('inicio');
@@ -237,13 +227,8 @@
         requestAnimationFrame(() => {
           const rect = hero.getBoundingClientRect();
           const h = rect.height || hero.offsetHeight || 1;
-
-          // Progreso del scroll sobre el hero (0 al entrar, 1 al salir)
           const progress = clamp((-rect.top) / (h * 0.9), 0, 1);
-
-          // Solo fade; SIN mover el background (imagen estática)
           fade.style.opacity = progress;
-
           ticking = false;
         });
       }
@@ -254,38 +239,24 @@
     })();
   </script>
 
-  <!-- Script principal -->
   <script src="js/catalog.js"></script>
 
-  <!-- Forzar scroll arriba en recarga y al volver a #inicio -->
+  <!-- Forzar scroll arriba -->
   <script>
     (function () {
-      // Evita que el navegador recuerde la posición de scroll tras recargar
-      try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (e) {}
-
-      // Al cargar la página, siempre ir al tope
-      window.addEventListener('load', function () {
-        window.scrollTo(0, 0);
-      });
-
-      // Al hacer clic en el logo o en enlaces que apunten a #inicio, forzar scroll arriba
-      function goTop(e) {
+      try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch(e){}
+      window.addEventListener('load', () => window.scrollTo(0, 0));
+      const brand = document.querySelector('a.brand');
+      function goTop(e){
         const href = (e.currentTarget.getAttribute('href') || '').trim();
-        if (href === '#inicio' || href.endsWith('#inicio')) {
+        if(href==='#inicio'||href.endsWith('#inicio')){
           e.preventDefault();
-          window.scrollTo(0, 0);
-          if (location.hash !== '#inicio') {
-            history.replaceState(null, '', '#inicio');
-          }
+          window.scrollTo(0,0);
+          if(location.hash!=='#inicio'){history.replaceState(null,'','#inicio');}
         }
       }
-
-      const brand = document.querySelector('a.brand');
-      if (brand) brand.addEventListener('click', goTop);
-
-      document.querySelectorAll('a[href="#inicio"]').forEach(a => {
-        a.addEventListener('click', goTop);
-      });
+      if(brand) brand.addEventListener('click',goTop);
+      document.querySelectorAll('a[href="#inicio"]').forEach(a=>a.addEventListener('click',goTop));
     })();
   </script>
 </body>
