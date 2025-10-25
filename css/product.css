@@ -14,8 +14,7 @@
 .product .crumb-btn.inside{
   position:absolute;
   top:14px;
-  /* Alinear con el inicio del contenido (padding-left de .product en desktop) */
-  left:45px;
+  left:14px; /* valor base (fallback) */
   margin:0;
   z-index:3;
 }
@@ -181,6 +180,12 @@
 }
 .icon-wa{ width:22px; height:22px; }
 
+/* ====== Alineación fina del botón “Volver al catálogo” (desktop) ====== */
+/* Forzamos la posición para que empiece donde arranca la imagen */
+.product > a.crumb-btn.inside{
+  left:58px !important; /* ajusta si quieres 56/60 segun tu ojo */
+}
+
 /* ====== RESPONSIVE ====== */
 @media (max-width:980px){
   .product{
@@ -195,6 +200,10 @@
     /* Un toque extra por si acaso, se puede quitar si no hace falta */
     margin-top:6px;
   }
-  /* Alinear con padding-left de .product en móvil (24px) */
-  .product .crumb-btn.inside{ top:12px; left:24px; }
+
+  /* Alineación fina en móvil */
+  .product > a.crumb-btn.inside{
+    top:12px;
+    left:34px !important; /* mueve el botón para que alinee con la imagen en mobile */
+  }
 }
