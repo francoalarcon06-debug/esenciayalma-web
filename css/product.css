@@ -64,6 +64,31 @@
   line-height: 1.5;
 }
 
+/* Franja de confianza (envíos, retiro, etc.) */
+.p-trust{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap:10px;
+  margin:4px 0 10px;
+}
+.p-trust__item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 12px;
+  border:1px solid #f4c1d6;
+  border-radius:10px;
+  background:#fff;
+  box-shadow:0 2px 6px rgba(0,0,0,.04);
+  font-size:14.5px;
+  color:#333;
+}
+.p-trust__item svg{
+  width:20px;
+  height:20px;
+  fill:#c43c73;
+}
+
 /* Sección de especificaciones principales */
 .p-specs {
   background: #fff7fa;
@@ -89,7 +114,7 @@
   margin-bottom: 6px;
 }
 
-/* ====== Lado derecho (precio + botón) ====== */
+/* ====== Lado derecho (precio + botones) ====== */
 .p-buy {
   display: flex;
   flex-direction: column;
@@ -115,6 +140,18 @@
 .p-actions .icon-wa {
   width: 22px;
   height: 22px;
+}
+
+/* Botón Compartir */
+.share-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+.icon-share{
+  width:20px;
+  height:20px;
+  fill:currentColor;
 }
 
 /* ====== Responsive ====== */
