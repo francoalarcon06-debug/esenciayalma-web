@@ -186,7 +186,7 @@
     grid-template-columns:1fr;
     gap:24px;
     /* Más espacio arriba para despegar la imagen de los botones */
-    padding:88px 24px 24px;
+    padding:82px 24px 24px;
   }
   .p-right{ order:2 }
   .p-gallery{
