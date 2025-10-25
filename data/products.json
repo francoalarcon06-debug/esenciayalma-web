@@ -3,230 +3,187 @@
     {
       "name": "Perfume de Mujer 100ml",
       "description": "Fragancia elegante y sofisticada.",
+      "longDescription": "Una composición equilibrada que combina flores luminosas con fondo cálido y ligeramente avainillado. Proyección media y excelente fijación para acompañarte todo el día.",
       "price": "16000",
-      "image": "assets/women/Perfume women prueba.png",
-      "subtitle": "Elegancia clásica para todos los días.",
-      "family": "Floral – oriental",
-      "notes": ["Jazmín", "Vainilla", "Ámbar"]
+      "image": "assets/women/Perfume women prueba.png"
     },
     {
       "name": "La Rêve",
-      "description": "Fragancia femenina y elegante 50ml",
+      "description": "Fragancia femenina y elegante 50ml.",
+      "longDescription": "Un perfume delicado y seguro de sí mismo: abre dulce y cremoso, evoluciona a un corazón floral limpio y deja un rastro suave que se siente cómodo y chic. Perfecto para quienes buscan un aroma elegante sin ser abrumador.",
       "price": "7400",
-      "image": "assets/women/Perfume women prueba.png",
-      "subtitle": "Un susurro dulce con presencia.",
-      "family": "Floral – dulce",
-      "notes": ["Pera", "Jazmín", "Musk"]
+      "image": "assets/women/Perfume women prueba.png"
     },
     {
       "name": "Belle Vie",
-      "description": "Aroma floral y dulce 50ml",
+      "description": "Aroma floral y dulce 50ml.",
+      "longDescription": "Una mezcla gourmand sutil con flores cremosas y vainilla ligera. Ideal para uso diario si te gustan los aromas femeninos, envolventes y brillantes. Su duración es prolongada y deja una estela suave y luminosa.",
       "price": "7400",
-      "image": "assets/women/Perfume women prueba.png",
-      "subtitle": "Dulzura luminosa que acompaña tu día.",
-      "family": "Floral – gourmand",
-      "notes": ["Vainilla", "Praliné", "Flor de azahar"]
+      "image": "assets/women/Perfume women prueba.png"
     },
     {
       "name": "Chérie Amour",
-      "description": "Notas románticas y suaves 50ml",
+      "description": "Notas románticas y suaves 50ml.",
+      "longDescription": "Ramo de rosas y peonías con un velo limpio de almizcle blanco. Romántico y sutil, perfecto para momentos especiales o para elevar un look diario. Su aroma perdura de forma delicada en la piel.",
       "price": "7400",
-      "image": "assets/women/Perfume women prueba.png",
-      "subtitle": "Romántica, suave y memorable.",
-      "family": "Floral – almizclada",
-      "notes": ["Rosa", "Peonía", "Almizcle blanco"]
+      "image": "assets/women/Perfume women prueba.png"
     },
     {
       "name": "Rosé Divine",
-      "description": "Esencia delicada y fresca 50ml",
+      "description": "Esencia delicada y fresca 50ml.",
+      "longDescription": "Rosa jugosa y chispeante con matices frutales y cítricos. Fresco, juvenil y limpio; ideal para climas templados o cálidos. Evoca un jardín rosado al amanecer.",
       "price": "7400",
-      "image": "assets/women/Perfume women prueba.png",
-      "subtitle": "Frescura rosada con brillo sutil.",
-      "family": "Floral – fresca",
-      "notes": ["Rosa", "Lichi", "Cítricos"]
+      "image": "assets/women/Perfume women prueba.png"
     },
     {
       "name": "Fleur d’Été",
-      "description": "Perfume de verano con notas cítricas 50ml",
+      "description": "Perfume de verano con notas cítricas 50ml.",
+      "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/Perfume women prueba.png",
-      "subtitle": "Ligero, veraniego y radiante.",
-      "family": "Cítrica – floral",
-      "notes": ["Mandarina", "Neroli", "Madera clara"]
+      "image": "assets/women/Perfume women prueba.png"
     },
     {
       "name": "Velvet Bloom",
-      "description": "Aroma envolvente con toques florales 50ml",
+      "description": "Aroma envolvente con toques florales 50ml.",
+      "longDescription": "Tuberosa cremosa con ámbar y vainilla suave. Sensual sin ser pesado, cálido y abrazador, perfecto para tardes y noches. Un aroma que deja huella.",
       "price": "7400",
-      "image": "assets/women/Perfume women prueba.png",
-      "subtitle": "Un abrazo aterciopelado y femenino.",
-      "family": "Floral – ambarada",
-      "notes": ["Tuberosa", "Ámbar", "Vainilla"]
+      "image": "assets/women/Perfume women prueba.png"
     }
   ],
   "men": [
     {
       "name": "Perfume de Hombre 100ml",
       "description": "Aroma intenso y masculino.",
+      "longDescription": "Salida cítrica especiada con corazón aromático y base de maderas secas. Presencia segura, versátil y con gran rendimiento.",
       "price": "16000",
-      "image": "assets/men/Perfume men prueba.png",
-      "subtitle": "Carácter moderno con sello propio.",
-      "family": "Amaderada – especiada",
-      "notes": ["Bergamota", "Cedro", "Pimienta"]
+      "image": "assets/men/Perfume men prueba.png"
     },
     {
       "name": "Perfume de Hombre 100ml – Classic",
-      "description": "Aroma intenso y masculino.",
+      "description": "Aroma clásico y elegante.",
+      "longDescription": "Estilo barbershop: lavanda limpia, fougère elegante y base cálida. Atemporal y varonil, ideal para oficina y ocasiones formales.",
       "price": "16000",
-      "image": "assets/men/Perfume men prueba.png",
-      "subtitle": "Clásico y atemporal.",
-      "family": "Aromática – fougère",
-      "notes": ["Lavanda", "Musgo de roble", "Tonka"]
+      "image": "assets/men/Perfume men prueba.png"
     },
     {
       "name": "Perfume de Hombre 100ml – Intense",
-      "description": "Aroma intenso y masculino.",
+      "description": "Aroma profundo y sofisticado.",
+      "longDescription": "Ámbar resinoso con incienso y maderas. Profundo y envolvente, pensado para destacar de noche o en clima frío. Deja una estela elegante y duradera.",
       "price": "16000",
-      "image": "assets/men/Perfume men prueba.png",
-      "subtitle": "Profundo y magnético.",
-      "family": "Oriental – amaderada",
-      "notes": ["Ámbar", "Incienso", "Sándalo"]
+      "image": "assets/men/Perfume men prueba.png"
     },
     {
       "name": "Perfume de Hombre 100ml – Fresh",
-      "description": "Aroma intenso y masculino.",
+      "description": "Aroma limpio y refrescante.",
+      "longDescription": "Cítricos limpios con acorde acuático y vetiver. Sensación de ducha recién tomada: ligero, deportivo y muy fácil de llevar.",
       "price": "16000",
-      "image": "assets/men/Perfume men prueba.png",
-      "subtitle": "Limpio, versátil y refrescante.",
-      "family": "Cítrica – acuática",
-      "notes": ["Limón", "Notas marinas", "Vetiver"]
+      "image": "assets/men/Perfume men prueba.png"
     },
     {
       "name": "Perfume de Hombre 100ml – Night",
-      "description": "Aroma intenso y masculino.",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
       "price": "16000",
-      "image": "assets/men/Perfume men prueba.png",
-      "subtitle": "Ideal para la noche.",
-      "family": "Ámbar – especiada",
-      "notes": ["Cardamomo", "Cuero", "Vainilla"]
+      "image": "assets/men/Perfume men prueba.png"
     }
   ],
   "black": [
     {
       "name": "Black Parfums 100ml",
       "description": "Inspirado en las mejores fragancias de nicho.",
+      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
       "price": "26000",
-      "image": "assets/black/Perfume black prueba.png",
-      "subtitle": "Sofisticación oscura y adictiva.",
-      "family": "Ambarada – oriental",
-      "notes": ["Resinas", "Vainilla negra", "Maderas"]
+      "image": "assets/black/Perfume black prueba.png"
     },
     {
       "name": "Black Parfums 100ml – Elegance",
-      "description": "Inspirado en las mejores fragancias de nicho.",
+      "description": "Inspirado en la elegancia moderna.",
+      "longDescription": "Maderas limpias, cashmeran sedoso y almizcle. Minimalista y muy pulido: huele a piel impecable y buen gusto. Perfecto para quienes disfrutan aromas discretos pero memorables.",
       "price": "26000",
-      "image": "assets/black/Perfume black prueba.png",
-      "subtitle": "Elegancia minimalista con fondo cálido.",
-      "family": "Amaderada – almizclada",
-      "notes": ["Cashmeran", "Almizcle", "Cedro"]
+      "image": "assets/black/Perfume black prueba.png"
     },
     {
       "name": "Black Parfums 100ml – Intense",
-      "description": "Inspirado en las mejores fragancias de nicho.",
+      "description": "Perfume potente y envolvente.",
+      "longDescription": "Especias vibrantes sobre un ámbar denso con maderas ahumadas. Poderoso, nocturno y muy persistente. Diseñado para quienes buscan un aroma con personalidad fuerte y presencia marcada.",
       "price": "26000",
-      "image": "assets/black/Perfume black prueba.png",
-      "subtitle": "Potente, especiado y envolvente.",
-      "family": "Especiada – oriental",
-      "notes": ["Canela", "Pimienta negra", "Ámbar"]
+      "image": "assets/black/Perfume black prueba.png"
     },
     {
       "name": "Black Parfums 100ml – Supreme",
-      "description": "Inspirado en las mejores fragancias de nicho.",
+      "description": "Aroma imponente y cálido.",
+      "longDescription": "Cuero elegante con benjuí balsámico y patchouli profundo. Presencia imponente con acabado cálido y refinado.",
       "price": "26000",
-      "image": "assets/black/Perfume black prueba.png",
-      "subtitle": "Presencia imponente, sello distintivo.",
-      "family": "Cuero – ambarada",
-      "notes": ["Cuero", "Benjuí", "Patchouli"]
+      "image": "assets/black/Perfume black prueba.png"
     }
   ],
   "red": [
     {
       "name": "Red Parfums 100ml",
-      "description": "Fragancias románticas y cautivadoras.",
+      "description": "Fragancia romántica y cautivadora.",
+      "longDescription": "Frutos rojos jugosos con rosa dulce y vainilla cremosa. Atractivo y juguetón, deja una estela golosa sin saturar. Se adapta a climas cálidos y fríos, ideal para quienes aman los aromas dulces modernos.",
       "price": "24000",
-      "image": "assets/red/Perfume red prueba.jpg",
-      "subtitle": "Pasión envolvente con un toque dulce.",
-      "family": "Floral – afrutada",
-      "notes": ["Frutos rojos", "Rosa", "Vainilla"]
+      "image": "assets/red/Perfume red prueba.jpg"
     }
   ],
   "lavit": [
     {
       "name": "LAVIT Body Splash 210ml",
       "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
       "price": "8000",
-      "image": "assets/lavit/Perfume lavit prueba.jpg",
-      "subtitle": "Bruma ligera para reavivar tu energía.",
-      "family": "Frutal – fresca",
-      "notes": ["Manzana", "Melón", "Flores blancas"]
+      "image": "assets/lavit/Perfume lavit prueba.jpg"
     }
   ],
   "hogar": [
     {
       "name": "Vela HOME 200g",
-      "description": "Vela aromática de cera de soya con tapa de madera.",
+      "description": "Vela aromática de cera de soya.",
+      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
       "price": "12000",
-      "image": "assets/hogar/Hogar prueba.png",
-      "subtitle": "Luz cálida y aroma acogedor.",
-      "notes": ["Vainilla", "Madera suave"]
+      "image": "assets/hogar/Hogar prueba.png"
     },
     {
       "name": "Difusor HOME 120ml",
-      "description": "Difusor ambiental con varillas, aroma floral suave.",
+      "description": "Difusor ambiental con varillas.",
+      "longDescription": "Difusión continua con varillas de fibra. Perfila espacios con flores blancas limpias y sensación de hogar recién ventilado.",
       "price": "14500",
-      "image": "assets/hogar/Hogar prueba.png",
-      "subtitle": "Perfuma tu hogar de forma continua.",
-      "notes": ["Flores blancas", "Algodón limpio"]
+      "image": "assets/hogar/Hogar prueba.png"
     },
     {
       "name": "Spray textil HOME 250ml",
       "description": "Aroma limpio para telas y espacios cerrados.",
+      "longDescription": "Rocío rápido de fragancia tipo lino limpio con toque cítrico. Ideal para cortinas, ropa de cama, sofás y clósets. Refresca sin dejar residuos.",
       "price": "9800",
-      "image": "assets/hogar/Hogar prueba.png",
-      "subtitle": "Refresca al instante cortinas, ropa de cama y sofás.",
-      "notes": ["Lino", "Cítricos suaves"]
+      "image": "assets/hogar/Hogar prueba.png"
     },
     {
       "name": "Set de velas HOME",
       "description": "Pack de tres velas pequeñas con diferentes fragancias.",
+      "longDescription": "Tres mini velas para ambientar distintos rincones. Combina acordes vainillados, cítricos y lavanda para cada momento.",
       "price": "16500",
-      "image": "assets/hogar/Hogar prueba.png",
-      "subtitle": "Tres ambientes, tres experiencias.",
-      "notes": ["Vainilla", "Cítrico", "Lavanda"]
+      "image": "assets/hogar/Hogar prueba.png"
     },
     {
       "name": "Aromatizador eléctrico HOME",
       "description": "Difusor eléctrico con tecnología ultrasónica.",
+      "longDescription": "Nebulización fina y silenciosa con auto-apagado. Úsalo con tus esencias favoritas para perfumar de forma homogénea. Ideal para espacios grandes o dormitorios.",
       "price": "22900",
-      "image": "assets/hogar/Hogar prueba.png",
-      "subtitle": "Nebulización fina y silenciosa.",
-      "notes": ["Agua", "Esencia concentrada (a elección)"]
+      "image": "assets/hogar/Hogar prueba.png"
     },
     {
       "name": "Esencia concentrada HOME 30ml",
       "description": "Aceite esencial concentrado ideal para difusores.",
+      "longDescription": "Alta concentración para una perfumación notoria con pocas gotas. Disponible en varias familias aromáticas.",
       "price": "8700",
-      "image": "assets/hogar/Hogar prueba.png",
-      "subtitle": "Una gota, un ambiente nuevo.",
-      "notes": ["Lavanda", "Cítricos", "Vainilla (según variante)"]
+      "image": "assets/hogar/Hogar prueba.png"
     },
     {
       "name": "Vela de lujo HOME 300g",
       "description": "Vela premium con aroma a madera y vainilla.",
+      "longDescription": "Mezcla de cera premium con mecha de algodón. Aroma envolvente y cálido que llena salones y dormitorios amplios.",
       "price": "15800",
-      "image": "assets/hogar/Hogar prueba.png",
-      "subtitle": "Cera premium y larga duración.",
-      "notes": ["Madera", "Vainilla", "Tonka"]
+      "image": "assets/hogar/Hogar prueba.png"
     }
   ]
 }
