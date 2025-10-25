@@ -1,4 +1,3 @@
-<script>
 // Página de detalle con layout 2 columnas (Imagen | Detalle: Título → Specs → Despacho → Precio → CTA)
 
 const PHONE = "56912345678";
@@ -18,23 +17,14 @@ async function loadData() {
   return res.json();
 }
 
-/* ===== helpers de especificaciones =====
-   Preferimos Familia/Notas/Descripción breve si existen.
-   Si no hay, caemos a Tipo/Género y descripción original.
-*/
 function buildSpecs(categoryKey, p) {
   const specs = [];
-
-  // Preferidos (si existen en el JSON)
-  if (p.family)  specs.push({ label: "Familia", value: p.family });
+  if (p.family) specs.push({ label: "Familia", value: p.family });
   if (Array.isArray(p.notes) && p.notes.length) {
     specs.push({ label: "Notas", value: p.notes.join(", ") });
   }
-  if (p.description) {
-    specs.push({ label: "Descripción breve", value: p.description });
-  }
+  if (p.description) specs.push({ label: "Descripción breve", value: p.description });
 
-  // Fallback si no vino nada arriba
   if (specs.length === 0) {
     const mapTipo = {
       women: "Perfume",
@@ -45,12 +35,10 @@ function buildSpecs(categoryKey, p) {
       hogar: "Artículo para el hogar",
     };
     const mapGenero = { women: "Mujer", men: "Hombre" };
-
     if (mapGenero[categoryKey]) specs.push({ label: "Género", value: mapGenero[categoryKey] });
     specs.push({ label: "Tipo", value: mapTipo[categoryKey] || "Producto" });
     if (p.description) specs.push({ label: "Descripción breve", value: p.description });
   }
-
   return specs;
 }
 
@@ -91,26 +79,20 @@ function renderProduct(p, categoryKey) {
   const specsHTML = specsToHTML(buildSpecs(categoryKey, p));
 
   container.innerHTML = `
-    <!-- Botón compartir flotante -->
     <button id="shareBtn" type="button" class="btn btn-ghost share-float" aria-label="Compartir">
       <svg class="icon-share" viewBox="0 0 24 24" aria-hidden="true">
         <path d="M15 8.5V6l6 6-6 6v-2.5h-8a4.5 4.5 0 0 1 0-9h8Z"/>
       </svg>
     </button>
 
-    <!-- Columna izquierda: imagen -->
     <div class="p-gallery">
       <img src="${p.image}" alt="${p.name}" loading="eager">
     </div>
 
-    <!-- Columna derecha: Título → Specs → Despacho → Precio → CTA -->
     <div class="p-right">
       <h1 class="p-title">${p.name}</h1>
-
       ${specsHTML}
-
       ${shippingBadgeHTML()}
-
       ${p.price ? `<div class="p-price">${money(p.price)}</div>` : ""}
 
       <div class="p-actions">
@@ -124,17 +106,15 @@ function renderProduct(p, categoryKey) {
     </div>
   `;
 
-  // Compartir
   const shareBtn = container.querySelector("#shareBtn");
   if (shareBtn) {
     shareBtn.addEventListener("click", async () => {
       const title = p.name || "Producto";
       const text  = "Mira este producto de Esencia y Alma";
       const url   = location.href;
-
       if (navigator.share) {
         try { await navigator.share({ title, text, url }); }
-        catch (_) { /* cancelado */ }
+        catch (_) {}
       } else {
         try {
           await navigator.clipboard.writeText(url);
@@ -148,7 +128,6 @@ function renderProduct(p, categoryKey) {
   }
 }
 
-// -------- Arranque --------
 (async () => {
   try {
     const { c, i } = getParams();
@@ -161,4 +140,3 @@ function renderProduct(p, categoryKey) {
     renderProduct(null, "");
   }
 })();
-</script>
