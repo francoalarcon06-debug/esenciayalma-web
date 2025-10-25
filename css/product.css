@@ -22,9 +22,9 @@
   box-shadow: var(--shadow);
   display: grid;
   grid-template-columns: 380px 1fr 260px; /* imagen / specs / compra */
-  grid-template-rows: auto auto;          /* fila 1 (imagen+buy) + fila 2 (p-info a lo ancho) */
+  grid-template-rows: auto;               /* una sola fila centrada */
   gap: 32px;
-  align-items: start;
+  align-items: center; /* ✅ centra verticalmente los tres bloques */
   padding: 36px 42px;
   max-width: 1200px;
   margin: 0 auto;
@@ -32,7 +32,7 @@
 
 /* ====== COLUMNA IZQUIERDA: IMAGEN ====== */
 .p-gallery {
-  grid-column: 1;   /* fila 1, col 1 */
+  grid-column: 1;
   grid-row: 1;
   border-radius: 14px;
   overflow: hidden;
@@ -49,61 +49,18 @@
   object-position: center;
 }
 
-/* ====== COLUMNA DERECHA: TÍTULO + SUBTÍTULO + PRECIO + CTA ====== */
-.p-buy {
-  --buy-width: 340px;
-  grid-column: 3;   /* fila 1, col 3 */
-  grid-row: 1;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;       /* bloque centrado */
-  justify-content: flex-start;
-  gap: 16px;
-  margin-top: 8px;
-  text-align: left;
-}
-.p-title,
-.p-sub,
-.p-price,
-.p-actions { width: var(--buy-width); max-width: 100%; }
-.p-title{
-  margin: 0;
-  font-family: "DM Serif Display", serif;
-  font-size: clamp(26px, 3vw, 34px);
-}
-.p-sub{
-  color:#5c5c5c;
-  font-size: 15px;
-  line-height: 1.5;
-  margin: 0;
-}
-.p-sub strong { color:#2b2b2b; }
-.p-price { font-size: 24px; font-weight: 800; }
-.p-actions .btn-primary{
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 14px 18px;
-  white-space: nowrap;
-  width: 100%;
-  justify-content: center;
-}
-.p-actions .icon-wa { width: 22px; height: 22px; }
-
-/* ====== FILA INFERIOR A LO ANCHO: ESPECIFICACIONES + DESPACHO ====== */
-/* Hacemos que .p-info ocupe la fila 2 de la tarjeta completa y centramos su contenido */
+/* ====== COLUMNA CENTRAL: ESPECIFICACIONES Y DESPACHO ====== */
 .p-info {
-  grid-column: 1 / -1;   /* ocupa TODO el ancho de la tarjeta */
-  grid-row: 2;
-
+  grid-column: 2;
+  grid-row: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;    /* centra hijos */
+  align-items: center; /* centra los hijos horizontalmente */
+  justify-content: center; /* ✅ centra verticalmente respecto a la imagen y el bloque derecho */
   gap: 14px;
 }
 
-/* Especificaciones principales (card rosa) centrada y con ancho cómodo */
+/* Especificaciones principales */
 .p-specs {
   background: #fff7fa;
   border: 1px solid #f4c1d6;
@@ -112,8 +69,8 @@
   box-shadow: 0 2px 6px rgba(0,0,0,0.04);
 
   width: 100%;
-  max-width: 620px;       /* controla el ancho visual */
-  margin: 0 auto;         /* centrada */
+  max-width: 620px;
+  margin: 0 auto;
 }
 .p-specs h2 {
   margin: 0 0 10px;
@@ -130,60 +87,100 @@
 }
 .p-specs li { margin-bottom: 6px; }
 
-/* Franja de confianza (Despacho a todo Chile) centrada debajo */
-.p-trust{
-  display:grid;
+/* Franja de confianza (Despacho a todo Chile) */
+.p-trust {
+  display: grid;
   grid-template-columns: 1fr;
-  gap:10px;
+  gap: 10px;
   margin-top: 12px;
-
   width: 100%;
-  max-width: 620px;       /* mismo ancho que specs */
+  max-width: 620px;
   margin-left: auto;
   margin-right: auto;
 }
-.p-trust--single .p-trust__item{ justify-content:center; }
-.p-trust__item{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:10px 12px;
-  border:1px solid #f4c1d6;
-  border-radius:10px;
-  background:#fff;
-  box-shadow:0 2px 6px rgba(0,0,0,.04);
-  font-size:14.5px;
-  color:#333;
+.p-trust--single .p-trust__item { justify-content: center; }
+.p-trust__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid #f4c1d6;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,.04);
+  font-size: 14.5px;
+  color: #333;
 }
-.p-trust__item svg{
-  width:20px;
-  height:20px;
-  fill:#c43c73;
+.p-trust__item svg {
+  width: 20px;
+  height: 20px;
+  fill: #c43c73;
 }
 
+/* ====== COLUMNA DERECHA: TÍTULO + SUBTÍTULO + PRECIO + CTA ====== */
+.p-buy {
+  --buy-width: 340px;
+  grid-column: 3;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
+  margin-top: 8px;
+  text-align: left;
+}
+.p-title,
+.p-sub,
+.p-price,
+.p-actions { width: var(--buy-width); max-width: 100%; }
+.p-title {
+  margin: 0;
+  font-family: "DM Serif Display", serif;
+  font-size: clamp(26px, 3vw, 34px);
+}
+.p-sub {
+  color: #5c5c5c;
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 0;
+}
+.p-sub strong { color: #2b2b2b; }
+.p-price { font-size: 24px; font-weight: 800; }
+.p-actions .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 18px;
+  white-space: nowrap;
+  width: 100%;
+  justify-content: center;
+}
+.p-actions .icon-wa { width: 22px; height: 22px; }
+
 /* ====== COMPARTIR (solo ícono) ====== */
-.share-float{
-  position:absolute;
+.share-float {
+  position: absolute;
   top: 14px;
   right: 14px;
-  display:inline-grid;
-  place-items:center;
-  width:40px;
-  height:40px;
-  border-radius:999px;
-  padding:0;
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  padding: 0;
 }
-.icon-share{ width:20px; height:20px; fill:currentColor; }
-.share-float.copied::after{
-  content:"copiado";
-  position:absolute;
-  top:-10px; right:44px;
-  background:#000;
-  color:#fff;
-  font-size:12px;
-  padding:3px 6px;
-  border-radius:6px;
-  opacity:.9;
+.icon-share { width: 20px; height: 20px; fill: currentColor; }
+.share-float.copied::after {
+  content: "copiado";
+  position: absolute;
+  top: -10px; right: 44px;
+  background: #000;
+  color: #fff;
+  font-size: 12px;
+  padding: 3px 6px;
+  border-radius: 6px;
+  opacity: .9;
 }
 
 /* ====== RESPONSIVE ====== */
@@ -193,7 +190,9 @@
     grid-template-rows: auto auto;
     padding: 24px;
     gap: 24px;
+    align-items: start;
   }
+
   .p-gallery { grid-column: 1; grid-row: 1; }
   .p-buy     { grid-column: 1; grid-row: 1; }
   .p-info    { grid-column: 1; grid-row: 2; }
