@@ -10,11 +10,13 @@
   display:inline-flex;align-items:center;gap:8px;
   font-weight:600;
 }
+
 /* Variante dentro del recuadro */
 .product .crumb-btn.inside{
   position:absolute;
   top:14px;
-  left:14px; /* valor base (fallback) */
+  /* ahora el botón se alinea con el borde interno usando la variable */
+  left:var(--pad-x) !important;
   margin:0;
   z-index:3;
 }
@@ -30,7 +32,11 @@
   grid-template-columns:520px 1fr;
   gap:36px;
   align-items:start;
-  padding:76px 42px 36px; /* un poco más arriba */
+
+  /* Usamos una variable para el padding horizontal (y la reutilizamos para el botón) */
+  --pad-x: 42px;
+  padding:76px var(--pad-x) 36px;
+
   max-width:1200px;
   margin:0 auto;
 }
@@ -180,30 +186,22 @@
 }
 .icon-wa{ width:22px; height:22px; }
 
-/* ====== Alineación fina del botón “Volver al catálogo” (desktop) ====== */
-/* Forzamos la posición para que empiece donde arranca la imagen */
-.product > a.crumb-btn.inside{
-  left:45px !important; /* ajusta si quieres 56/60 segun tu ojo */
-}
-
 /* ====== RESPONSIVE ====== */
 @media (max-width:980px){
   .product{
     grid-template-columns:1fr;
     gap:24px;
-    /* Más espacio arriba para despegar la imagen de los botones */
-    padding:82px 24px 24px;
+
+    /* En móvil cambiamos el padding lateral y el botón sigue alineado automáticamente */
+    --pad-x: 24px;
+    padding:82px var(--pad-x) 24px;
   }
   .p-right{ order:2 }
   .p-gallery{
     order:1;
-    /* Un toque extra por si acaso, se puede quitar si no hace falta */
     margin-top:6px;
   }
 
-  /* Alineación fina en móvil */
-  .product > a.crumb-btn.inside{
-    top:12px;
-    left:34px !important; /* mueve el botón para que alinee con la imagen en mobile */
-  }
+  /* Si quisieras un ajuste fino extra en móvil, podrías sumar/restar aquí:
+     .product .crumb-btn.inside{ left: calc(var(--pad-x) + 2px) !important; } */
 }
