@@ -2,7 +2,7 @@
 // Catálogo – Esencia y Alma
 // =======================
 
-const WA_PHONE = "56912345678";
+const WA_PHONE = "56961114225";
 const WA_MSG   = encodeURIComponent("Hola, me interesa este producto 👇");
 
 // Mapeo legible para nombres de categorías
