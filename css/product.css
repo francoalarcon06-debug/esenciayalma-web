@@ -16,8 +16,7 @@
   top:14px;
   left:14px;
   margin:0;
-  z-index:10;                 /* por encima de la imagen */
-  box-shadow:0 2px 10px rgba(0,0,0,.08);
+  z-index:3;
 }
 
 /* ====== TARJETA – 2 COLUMNAS ====== */
@@ -31,9 +30,7 @@
   grid-template-columns:520px 1fr;
   gap:36px;
   align-items:start;
-
-  /* MÁS ESPACIO ARRIBA para separar botón/imagen del borde superior */
-  padding:76px 42px 36px;
+  padding:44px 42px 36px; /* un poco más arriba */
   max-width:1200px;
   margin:0 auto;
 }
@@ -53,11 +50,11 @@
 
 /* ====== COLUMNA IZQUIERDA (Imagen) ====== */
 .p-gallery{
+  position: relative; /* para z-index del volver */
+  z-index: 1;
   border-radius:14px;overflow:hidden;background:#f8f8f8;
   display:flex;align-items:center;justify-content:center;
   aspect-ratio:1/1;
-  position:relative; /* asegura stacking por debajo del botón */
-  z-index:1;
 }
 .p-gallery img{width:100%;height:100%;object-fit:cover;object-position:center;}
 
@@ -71,14 +68,26 @@
   font-size:clamp(28px,3.2vw,40px);
 }
 
-/* Specs (panel rosa) */
-.p-specs{
-  background:#fff7fa;border:1px solid #f4c1d6;border-radius:12px;
-  padding:16px 18px;box-shadow:0 2px 6px rgba(0,0,0,.04);
+/* Descripción (panel rosa, crece hacia abajo) */
+.p-descbox{
+  background:#fff7fa;
+  border:1px solid #f4c1d6;
+  border-radius:12px;
+  padding:16px 18px;
+  box-shadow:0 2px 6px rgba(0,0,0,.04);
+  width:100%;
 }
-.p-specs h2{margin:0 0 10px;font-size:16px;font-weight:700;color:#c43c73;}
-.p-specs ul{list-style:none;margin:0;padding:0;font-size:14.5px;color:#444;}
-.p-specs li{margin-bottom:6px;}
+.p-descbox h2{
+  margin:0 0 10px;
+  font-size:16px;font-weight:700;color:#c43c73;
+}
+.p-descbody{
+  font-size:14.5px;color:#444;line-height:1.6;
+  overflow:visible;           /* no recorta */
+  word-wrap:break-word;       /* protege en palabras muy largas */
+}
+.p-descbody p{ margin:0 0 10px; }
+.p-descbody p:last-child{ margin-bottom:0; }
 
 /* Despacho badge */
 .p-trust{
@@ -105,9 +114,7 @@
 /* ====== RESPONSIVE ====== */
 @media (max-width:980px){
   .product{
-    grid-template-columns:1fr;gap:24px;
-    /* también mayor separación arriba en mobile */
-    padding:48px 24px 24px;
+    grid-template-columns:1fr;gap:24px;padding:28px 24px 24px;
   }
   .p-right{order:2}
   .p-gallery{order:1}
