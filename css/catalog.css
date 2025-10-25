@@ -226,21 +226,3 @@ body {
     transform:none;          /* anulamos cualquier desplazamiento */
   }
 }
-/* Limitar el área clickeable de "Ver todo" solo al texto */
-a.sec-link--bottom{
-  display: inline !important;      /* deja de ocupar todo el ancho */
-  position: static !important;     /* por si estaba absoluto */
-  width: auto !important;
-  max-width: max-content;           /* la caja se ajusta al texto */
-  padding: 0 !important;
-  margin: 0;
-  flex: 0 0 auto !important;        /* si está dentro de un contenedor flex */
-  align-self: flex-start;           /* se alinea al inicio, no se estira */
-  cursor: pointer;
-}
-
-/* Por si algún estilo añadía pseudo-elementos que expandían el hit-area */
-a.sec-link--bottom::before,
-a.sec-link--bottom::after{
-  content: none !important;
-}
