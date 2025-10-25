@@ -66,24 +66,37 @@
 
   <script src="js/product.page.js"></script>
   <script>
-    // Enlazar tanto el botón de WhatsApp del footer como el enlace "Contacto" del menú
-    const PHONE = "56961114225";
-    const MSG   = encodeURIComponent("¡Hola! Me interesa el catálogo de Esencia y Alma.");
-    const wa    = `https://wa.me/${PHONE}?text=${MSG}`;
+    // WhatsApp unificado para footer y menú "Contacto"
+    (function () {
+      const PHONE = "56961114225";
+      const MSG   = encodeURIComponent("¡Hola! Me interesa el catálogo de Esencia y Alma.");
+      const wa    = `https://wa.me/${PHONE}?text=${MSG}`;
 
-    const waBtn = document.getElementById("whatsapp-cta");
-    if (waBtn) {
-      waBtn.href = wa;
-      waBtn.target = "_blank";
-      waBtn.rel = "noopener";
-    }
+      // Botón WhatsApp del footer
+      const waBtn = document.getElementById("whatsapp-cta");
+      if (waBtn) {
+        waBtn.href = wa;
+        waBtn.target = "_blank";
+        waBtn.rel = "noopener";
+        waBtn.addEventListener("click", function (e) {
+          // Por si algún estilo o script bloquea, forzamos la apertura
+          e.preventDefault();
+          window.open(wa, "_blank", "noopener");
+        });
+      }
 
-    const menuContacto = document.getElementById("menu-contacto");
-    if (menuContacto) {
-      menuContacto.href = wa;
-      menuContacto.target = "_blank";
-      menuContacto.rel = "noopener";
-    }
+      // Enlace "Contacto" del menú superior
+      const menuContacto = document.getElementById("menu-contacto");
+      if (menuContacto) {
+        menuContacto.href = wa;
+        menuContacto.target = "_blank";
+        menuContacto.rel = "noopener";
+        menuContacto.addEventListener("click", function (e) {
+          e.preventDefault();
+          window.open(wa, "_blank", "noopener");
+        });
+      }
+    })();
   </script>
 </body>
 </html>
