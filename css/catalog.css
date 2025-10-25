@@ -183,6 +183,12 @@ body {
   background: #fff2f6;
 }
 
+/* ====== Enlace “Ver todo” — limitar área clickeable al texto ====== */
+.sec-link--bottom {
+  display: inline !important;   /* evita que ocupe todo el ancho */
+  cursor: pointer;
+}
+
 /* ====== RESPONSIVE (solo móvil) ====== */
 @media (max-width: 980px) {
   .catalog-shell {
