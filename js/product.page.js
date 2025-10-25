@@ -1,6 +1,6 @@
 // Página de detalle con layout 2 columnas (Imagen | Detalle)
 
-const PHONE = "56912345678";
+const PHONE = "56961114225";
 const BASE_WA_MSG = "Hola, me interesa este producto 👇";
 
 const money = (v) =>
