@@ -185,9 +185,14 @@
   .product{
     grid-template-columns:1fr;
     gap:24px;
-    padding:28px 24px 24px;
+    /* Más espacio arriba para despegar la imagen de los botones */
+    padding:88px 24px 24px;
   }
   .p-right{ order:2 }
-  .p-gallery{ order:1 }
+  .p-gallery{
+    order:1;
+    /* Un toque extra por si acaso, se puede quitar si no hace falta */
+    margin-top:6px;
+  }
   .product .crumb-btn.inside{ top:12px; left:12px; }
 }
