@@ -46,19 +46,18 @@
   object-position: center;
 }
 
-/* ====== COLUMNA CENTRAL: ESPECIFICACIONES + DESPACHO ====== */
-/* Centramos su contenido y limitamos un ancho lindo para la tarjeta */
+/* ====== COLUMNA CENTRAL ====== */
+/* Cambios para centrar el bloque rosa y el chip dentro de la tarjeta blanca */
 .p-info {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  align-items: center;                    /* <— centra el contenido */
-}
-.p-specs,
-.p-trust {
+
+  /* NUEVO: centramos el bloque completo en la tarjeta y le damos un ancho cómodo */
+  justify-self: center;          /* centra el grid-item respecto del contenedor blanco */
   width: 100%;
-  max-width: 560px;                       /* <— ancho máximo centrado */
-  margin-inline: auto;
+  max-width: 620px;              /* ancho visual del bloque central */
+  align-items: center;           /* centra los hijos dentro del bloque */
 }
 
 /* Especificaciones principales */
@@ -68,6 +67,11 @@
   border-radius: 12px;
   padding: 16px 18px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+
+  /* aseguran centrado del card */
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 .p-specs h2 {
   margin: 0 0 10px;
@@ -84,12 +88,16 @@
 }
 .p-specs li { margin-bottom: 6px; }
 
-/* Franja de confianza (Despacho a todo Chile), debajo de specs */
+/* Franja de confianza (Despacho a todo Chile), debajo de specs y centrada */
 .p-trust{
   display:grid;
   grid-template-columns: 1fr;
   gap:10px;
-  margin-top: 12px;                       /* <— separada de especificaciones */
+  margin-top: 12px;
+
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 .p-trust--single .p-trust__item{ justify-content:center; }
 .p-trust__item{
@@ -111,20 +119,16 @@
 }
 
 /* ====== COLUMNA DERECHA: TÍTULO + SUBTÍTULO + PRECIO + CTA ====== */
-/* Centramos el bloque como conjunto, pero alineamos a la izquierda su contenido.
-   Así el título, la descripción, el precio y el botón comparten el MISMO borde izquierdo. */
 .p-buy {
   --buy-width: 340px;                     /* ancho visual del bloque derecho */
   display: flex;
   flex-direction: column;
-  align-items: center;                     /* <— centra el bloque */
+  align-items: center;                     /* bloque centrado */
   justify-content: flex-start;
   gap: 16px;
   margin-top: 8px;
-  text-align: left;                        /* <— contenido alineado a la izquierda */
+  text-align: left;                        /* contenido alineado a la izquierda */
 }
-
-/* Todos estos comparten el mismo ancho y, por ende, el mismo borde izquierdo */
 .p-title,
 .p-sub,
 .p-price,
@@ -132,33 +136,26 @@
   width: var(--buy-width);
   max-width: 100%;
 }
-
 .p-title{
   margin: 0;
   font-family: "DM Serif Display", serif;
   font-size: clamp(26px, 3vw, 34px);
 }
-
 .p-sub{
   color:#5c5c5c;
   font-size: 15px;
   line-height: 1.5;
-  margin: 0;                               /* pegado al título */
+  margin: 0;
 }
 .p-sub strong { color:#2b2b2b; }
-
-.p-price {
-  font-size: 24px;
-  font-weight: 800;
-}
-
+.p-price { font-size: 24px; font-weight: 800; }
 .p-actions .btn-primary {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   padding: 14px 18px;
   white-space: nowrap;
-  width: 100%;                              /* <— el botón marca el borde izq. de referencia */
+  width: 100%;
   justify-content: center;
 }
 .p-actions .icon-wa { width: 22px; height: 22px; }
@@ -195,8 +192,6 @@
     padding: 24px;
     gap: 24px;
   }
-
-  /* Ajustes móviles: todo centrado y con el mismo ancho visual */
   .p-buy {
     --buy-width: 100%;
     align-items: center;
