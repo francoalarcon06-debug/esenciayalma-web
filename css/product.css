@@ -1,9 +1,10 @@
+/* ====== CONTENEDOR DE PÁGINA ====== */
 .product-main {
   padding: 40px 0 60px;
   background: var(--soft);
 }
 
-/* Botón de volver arriba */
+/* Volver al catálogo */
 .crumb-btn {
   margin: 12px 0 24px;
   display: inline-flex;
@@ -12,7 +13,7 @@
   font-weight: 600;
 }
 
-/* ====== Tarjeta general ====== */
+/* ====== TARJETA (3 columnas) ====== */
 .product {
   position: relative; /* para botón compartir flotante */
   background: #fff;
@@ -20,7 +21,7 @@
   border-radius: 16px;
   box-shadow: var(--shadow);
   display: grid;
-  grid-template-columns: 380px 1fr 260px; /* 3 columnas: imagen / specs / precio */
+  grid-template-columns: 380px 1fr 260px; /* imagen / specs / compra */
   gap: 32px;
   align-items: start;
   padding: 36px 42px;
@@ -28,7 +29,7 @@
   margin: 0 auto;
 }
 
-/* ====== Imagen ====== */
+/* ====== COLUMNA IZQUIERDA: IMAGEN ====== */
 .p-gallery {
   border-radius: 14px;
   overflow: hidden;
@@ -45,26 +46,12 @@
   object-position: center;
 }
 
-/* ====== Info principal (título + subtítulo dinámico + especificaciones + despacho) ====== */
+/* ====== COLUMNA CENTRAL: ESPECIFICACIONES + DESPACHO ====== */
 .p-info {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
-.p-info h1 {
-  margin: 0;
-  font-family: "DM Serif Display", serif;
-  font-size: clamp(26px, 3vw, 34px);
-}
-
-/* Texto dinámico bajo el título (subtitle/family/notes) */
-.p-sub{
-  color:#5c5c5c;
-  font-size: 15px;
-  line-height: 1.5;
-  margin: 2px 0 2px;
-}
-.p-sub strong { color:#2b2b2b; }
 
 /* Especificaciones principales */
 .p-specs {
@@ -96,7 +83,7 @@
   display:grid;
   grid-template-columns: 1fr;
   gap:10px;
-  margin: 2px 0 0;          /* pegado bajo especificaciones */
+  margin: 2px 0 0;         /* pegado bajo especificaciones */
 }
 .p-trust--single .p-trust__item{
   justify-content:center;
@@ -119,20 +106,38 @@
   fill:#c43c73;
 }
 
-/* ====== Columna derecha (precio + CTA) ====== */
+/* ====== COLUMNA DERECHA: TÍTULO + SUBTÍTULO + PRECIO + CTA ====== */
 .p-buy {
   display: flex;
   flex-direction: column;
-  align-items: center;       /* CENTRADO */
+  align-items: center;       /* centrado del bloque */
   justify-content: flex-start;
   gap: 16px;
   margin-top: 8px;
-  text-align: center;        /* CENTRADO */
+  text-align: center;        /* centrado del texto */
 }
+
+/* Título en la columna derecha */
+.p-title{
+  margin: 0;
+  font-family: "DM Serif Display", serif;
+  font-size: clamp(26px, 3vw, 34px);
+}
+
+/* Subtítulo bajo el título (una sola línea de apoyo por producto) */
+.p-sub{
+  color:#5c5c5c;
+  font-size: 15px;
+  line-height: 1.5;
+  margin: 2px 0 2px;
+}
+.p-sub strong { color:#2b2b2b; }
+
 .p-price {
   font-size: 24px;
   font-weight: 800;
 }
+
 .p-actions .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -145,7 +150,7 @@
   height: 22px;
 }
 
-/* Botón Compartir (solo ícono) */
+/* ====== COMPARTIR (solo ícono) ====== */
 .share-float{
   position:absolute;
   top: 14px;
@@ -174,12 +179,16 @@
   opacity:.9;
 }
 
-/* ====== Responsive ====== */
+/* ====== RESPONSIVE ====== */
 @media (max-width: 980px) {
   .product {
     grid-template-columns: 1fr;
     padding: 24px;
     gap: 24px;
   }
-  .p-buy { align-items: center; text-align: center; }
+
+  .p-buy {
+    align-items: center;
+    text-align: center;
+  }
 }
