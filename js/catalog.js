@@ -5,7 +5,7 @@
 */
 
 const WA_PHONE = "56961114225";
-const WA_MSG   = encodeURIComponent("Hola, me interesa este producto 👇");
+const WA_GREET = "Hola, me interesa este producto";
 
 // -------- Utils --------
 const money = (v) => `$${(Number(String(v).replace(/[^\d]/g, "")) || 0).toLocaleString("es-CL")}`;
@@ -45,20 +45,12 @@ function card(product) {
   el.className = "card";
   el.setAttribute("role", "listitem");
 
-  // URL absoluta al detalle del producto (para vista previa en WhatsApp)
-  const c = product._c || product.categoryKey || "";
-  const i = typeof product._i === "number" ? product._i : (typeof product.idx === "number" ? product.idx : 0);
-  const detailUrl = new URL(`producto.html?c=${encodeURIComponent(c)}&i=${encodeURIComponent(i)}`, location.href).href;
+  // URL pública del detalle para incluirla en el mensaje
+  const detailUrl = `${location.origin}/producto.html?c=${encodeURIComponent(product._c || product.categoryKey || "")}&i=${encodeURIComponent(typeof product._i === "number" ? product._i : (typeof product.idx === "number" ? product.idx : 0))}`;
 
-  // Mensaje con link primero -> genera preview en WhatsApp
-  const msg = [
-    detailUrl,
-    "",
-    "Hola, me interesa este producto 👇",
-    product.name
-  ].join("\n");
-
-  const href = `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(msg)}`;
+  // Mensaje WA en el orden solicitado (saludo -> nombre -> link)
+  const waText = `${WA_GREET}\n"${product.name}"\n${detailUrl}`;
+  const href = `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(waText)}`;
 
   el.innerHTML = `
     <div class="card__img">
@@ -86,7 +78,7 @@ function card(product) {
     </div>
   `;
 
-  // --- NUEVO: hacer clickeable toda la tarjeta (excepto el botón de WhatsApp) ---
+  // --- Hacer clickeable toda la tarjeta (excepto el botón de WhatsApp) ---
   el.style.cursor = "pointer";
   el.addEventListener("click", (ev) => {
     if (ev.target.closest(".card__btn")) return; // no interceptar el botón
@@ -414,7 +406,7 @@ async function setupCarouselSection(sectionEl, items) {
   track.innerHTML = "";
   track.classList.remove("static");
 
-  // --- NUEVO: agregamos metadatos de categoría+índice a cada producto para el click ---
+  // --- Agregamos metadatos de categoría+índice a cada producto para el click ---
   const withMeta = (Array.isArray(items) ? items : []).map((p, i) => ({ ...p, _c: key, _i: i }));
   withMeta.forEach(p => track.appendChild(card(p)));
 
@@ -493,13 +485,12 @@ async function setupCarouselSection(sectionEl, items) {
       const list = Array.isArray(data[key]) ? data[key] : [];
       await setupCarouselSection(sec, list);
 
-      // ===== ÚNICO CAMBIO: setear automáticamente el enlace "Ver todo" =====
+      // Setear automáticamente el enlace "Ver todo"
       const link = sec.querySelector(".sec-link--bottom");
       if (link) {
         const k = (key || "").trim();
         link.href = k ? `catalogo.html?category=${encodeURIComponent(k)}` : `catalogo.html`;
       }
-      // =====================================================================
     }
   } catch (e) {
     console.error(e);
