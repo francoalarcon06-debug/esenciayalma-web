@@ -1,10 +1,15 @@
 .product-main{ padding:28px 0 48px; background:var(--soft); }
 
-.crumb{
-  display:inline-block; margin:8px 0 16px; font-weight:600; color:#333;
+/* Botón de volver arriba (antes era solo un link) */
+.crumb-btn{
+  margin:8px 0 16px;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-weight:600;
 }
-.crumb:hover{ color:var(--primary); }
 
+/* Tarjeta del producto */
 .product{
   background:#fff; border:1px solid #00000010; border-radius:16px; box-shadow:var(--shadow);
   display:grid; gap:24px; grid-template-columns: 480px 1fr; align-items:start; padding:18px;
