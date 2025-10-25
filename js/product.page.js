@@ -16,25 +16,18 @@ async function loadData() {
   return res.json();
 }
 
-/** Especificaciones simples por categoría */
-function buildSpecs(categoryKey, product) {
+/** Especificaciones solo desde el producto: Familia / Notas / Descripción breve */
+function buildSpecsFromProduct(product) {
   const specs = [];
-  const mapTipo = {
-    women: "Perfume",
-    men: "Perfume",
-    black: "Perfume",
-    red: "Perfume",
-    lavit: "Body Splash",
-    hogar: "Artículo para el hogar",
-  };
-  const mapGenero = { women: "Mujer", men: "Hombre" };
-
-  if (mapGenero[categoryKey]) specs.push({ label: "Género", value: mapGenero[categoryKey] });
-  specs.push({ label: "Tipo", value: mapTipo[categoryKey] || "Producto" });
+  if (product?.family) {
+    specs.push({ label: "Familia", value: product.family });
+  }
+  if (Array.isArray(product?.notes) && product.notes.length) {
+    specs.push({ label: "Notas", value: product.notes.join(", ") });
+  }
   if (product?.description) {
     specs.push({ label: "Descripción breve", value: product.description });
   }
-
   return specs;
 }
 
@@ -51,24 +44,13 @@ function specsToHTML(specs) {
   `;
 }
 
-/** Bloque bajo el título: frase + familia + notas (todo opcional) */
+/** Texto bajo el título: SOLO el subtitle */
 function subtitleBlockHTML(p) {
-  const rows = [];
-
-  if (p.subtitle) rows.push(`${p.subtitle}`);
-
-  const lineParts = [];
-  if (p.family) lineParts.push(`<strong>Familia:</strong> ${p.family}`);
-  if (Array.isArray(p.notes) && p.notes.length) {
-    lineParts.push(`<strong>Notas:</strong> ${p.notes.join(", ")}`);
-  }
-  if (lineParts.length) rows.push(lineParts.join(" · "));
-
-  if (!rows.length) return "";
-  return `<div class="p-sub">${rows.join("<br>")}</div>`;
+  if (!p?.subtitle) return "";
+  return `<div class="p-sub">${p.subtitle}</div>`;
 }
 
-/** Solo “Despacho a todo Chile” — para ir debajo de las especificaciones */
+/** Badge “Despacho a todo Chile” (bajo especificaciones) */
 function shippingBadgeHTML() {
   return `
     <div class="p-trust p-trust--single" style="margin-top:10px">
@@ -80,7 +62,7 @@ function shippingBadgeHTML() {
   `;
 }
 
-function renderProduct(p, categoryKey) {
+function renderProduct(p) {
   const container = document.getElementById("product");
   if (!p) {
     container.innerHTML = `<div style="padding:24px">No encontramos este producto.</div>`;
@@ -91,8 +73,8 @@ function renderProduct(p, categoryKey) {
     BASE_WA_MSG
   )}%0A${encodeURIComponent(p.name)}`;
 
-  const specsHTML = specsToHTML(buildSpecs(categoryKey, p));
   const subHTML   = subtitleBlockHTML(p);
+  const specsHTML = specsToHTML(buildSpecsFromProduct(p));
 
   container.innerHTML = `
     <!-- Botón de compartir flotante (solo ícono) -->
@@ -107,7 +89,7 @@ function renderProduct(p, categoryKey) {
       <img src="${p.image}" alt="${p.name}" loading="eager">
     </div>
 
-    <!-- Columna central: título + bloque dinámico + especificaciones + despacho -->
+    <!-- Columna central: título + subtitle + especificaciones + despacho -->
     <div class="p-info">
       <h1>${p.name}</h1>
       ${subHTML}
@@ -129,7 +111,7 @@ function renderProduct(p, categoryKey) {
     </div>
   `;
 
-  // — Compartir: Web Share API + fallback copiar al portapapeles
+  // Compartir: Web Share API + fallback a copiar al portapapeles
   const shareBtn = container.querySelector("#shareBtn");
   if (shareBtn) {
     shareBtn.addEventListener("click", async () => {
@@ -160,9 +142,9 @@ function renderProduct(p, categoryKey) {
     const data = await loadData();
     const list = Array.isArray(data[c]) ? data[c] : [];
     const product = list[i] || null;
-    renderProduct(product, c);
+    renderProduct(product);
   } catch (e) {
     console.error(e);
-    renderProduct(null, "");
+    renderProduct(null);
   }
 })();
