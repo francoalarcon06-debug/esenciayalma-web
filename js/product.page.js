@@ -45,17 +45,23 @@ function descriptionBoxHTML(p) {
   `;
 }
 
-/* ====== Badge Despacho (camión sólido y cerrado) ====== */
+/* ====== Badge Despacho (camión relleno y cerrado) ====== */
 function shippingBadgeHTML() {
   return `
     <div class="p-trust p-trust--single">
       <div class="p-trust__item">
-        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" width="20" height="20">
-          <!-- Cuerpo + cabina del camión como una sola figura sólida -->
-          <path fill="currentColor" d="M2 7h12v5h4l2 2v4H2V7z"/>
-          <!-- Ruedas -->
-          <circle cx="9" cy="18" r="2" fill="currentColor"/>
-          <circle cx="19" cy="18" r="2" fill="currentColor"/>
+        <svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="20">
+          <g fill="currentColor">
+            <!-- Cuerpo del camión -->
+            <rect x="3" y="9" width="11" height="5" rx="1"></rect>
+            <!-- Cabina / parte delantera -->
+            <path d="M15 9h3.6c.3 0 .58.14.76.38l2.1 2.82c.17.22.27.5.27.78V14H15V9z"></path>
+            <!-- Suelo (cierra la base visual) -->
+            <rect x="3" y="14" width="18" height="1"></rect>
+            <!-- Ruedas -->
+            <circle cx="7" cy="18" r="2"></circle>
+            <circle cx="17" cy="18" r="2"></circle>
+          </g>
         </svg>
         <span><strong>Despacho a todo Chile</strong></span>
       </div>
