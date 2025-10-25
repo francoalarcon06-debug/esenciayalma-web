@@ -1,4 +1,4 @@
-// Página de detalle de producto (3 columnas + compartir flotante + confianza)
+// Página de detalle de producto (título y subtítulo en la columna derecha)
 const PHONE = "56912345678";
 const BASE_WA_MSG = "Hola, me interesa este producto 👇";
 
@@ -16,12 +16,10 @@ async function loadData() {
   return res.json();
 }
 
-/** Especificaciones solo desde el producto: Familia / Notas / Descripción breve */
+/** Especificaciones: Familia / Notas / Descripción breve (si existen) */
 function buildSpecsFromProduct(product) {
   const specs = [];
-  if (product?.family) {
-    specs.push({ label: "Familia", value: product.family });
-  }
+  if (product?.family) specs.push({ label: "Familia", value: product.family });
   if (Array.isArray(product?.notes) && product.notes.length) {
     specs.push({ label: "Notas", value: product.notes.join(", ") });
   }
@@ -44,7 +42,7 @@ function specsToHTML(specs) {
   `;
 }
 
-/** Texto bajo el título: SOLO el subtitle */
+/** Solo el subtítulo bajo el título */
 function subtitleBlockHTML(p) {
   if (!p?.subtitle) return "";
   return `<div class="p-sub">${p.subtitle}</div>`;
@@ -89,16 +87,16 @@ function renderProduct(p) {
       <img src="${p.image}" alt="${p.name}" loading="eager">
     </div>
 
-    <!-- Columna central: título + subtitle + especificaciones + despacho -->
+    <!-- Columna central: solo especificaciones + despacho -->
     <div class="p-info">
-      <h1>${p.name}</h1>
-      ${subHTML}
       ${specsHTML}
       ${shippingBadgeHTML()}
     </div>
 
-    <!-- Columna derecha: precio + CTA (centrados) -->
+    <!-- Columna derecha: TÍTULO + SUBTÍTULO + PRECIO + CTA (centrados) -->
     <div class="p-buy">
+      <h1 class="p-title">${p.name}</h1>
+      ${subHTML}
       ${p.price ? `<div class="p-price">${money(p.price)}</div>` : ""}
       <div class="p-actions" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center;">
         <a class="btn btn-primary" href="${wa}" target="_blank" rel="noopener">
@@ -111,7 +109,7 @@ function renderProduct(p) {
     </div>
   `;
 
-  // Compartir: Web Share API + fallback a copiar al portapapeles
+  // Compartir: Web Share API + fallback a copiar
   const shareBtn = container.querySelector("#shareBtn");
   if (shareBtn) {
     shareBtn.addEventListener("click", async () => {
@@ -148,3 +146,4 @@ function renderProduct(p) {
     renderProduct(null);
   }
 })();
+
