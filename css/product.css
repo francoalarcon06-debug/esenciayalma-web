@@ -106,3 +106,23 @@
   .p-gallery{order:1}
   .product .crumb-btn.inside{top:12px;left:12px;}
 }
+/* Botón "Volver al catálogo" dentro de la tarjeta */
+.product .crumb-btn.inside{
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 10;                /* << por encima de la imagen */
+  margin: 0;
+}
+
+/* Asegura que la galería quede por debajo del botón */
+.p-gallery{
+  position: relative;         /* crea contexto local */
+  z-index: 1;                 /* << debajo del botón */
+}
+
+/* (opcional) pequeña sombra para legibilidad si pisa la foto */
+.product .crumb-btn.inside {
+  box-shadow: 0 2px 10px rgba(0,0,0,.08);
+}
+
