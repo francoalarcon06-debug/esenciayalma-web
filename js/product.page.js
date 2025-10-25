@@ -45,13 +45,18 @@ function descriptionBoxHTML(p) {
   `;
 }
 
-/* ====== Badge Despacho ====== */
+/* ====== Badge Despacho (camión con base cerrada) ====== */
 function shippingBadgeHTML() {
   return `
     <div class="p-trust p-trust--single">
       <div class="p-trust__item">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M3 7h13a3 3 0 0 1 3 3v6h-2v-3H5v3H3V8a1 1 0 0 1 1-1Zm2 6h12v-3a1 1 0 0 0-1-1H5v4Zm14 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-12 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"/>
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <!-- Cuerpo del camión (cerrado por abajo) -->
+          <path d="M2 7h11a2 2 0 0 1 2 2v3h3l2 2v4h-2
+                   a3 3 0 1 1-6 0H9a3 3 0 1 1-6 0H2V7Z"/>
+          <!-- Ruedas -->
+          <circle cx="9" cy="18" r="2"/>
+          <circle cx="19" cy="18" r="2"/>
         </svg>
         <span><strong>Despacho a todo Chile</strong></span>
       </div>
