@@ -51,10 +51,27 @@ function specsToHTML(specs) {
   `;
 }
 
-/** Solo “Despacho a todo Chile” — para columna derecha, bajo WhatsApp */
+/** Bloque bajo el título: frase + familia + notas (todo opcional) */
+function subtitleBlockHTML(p) {
+  const rows = [];
+
+  if (p.subtitle) rows.push(`${p.subtitle}`);
+
+  const lineParts = [];
+  if (p.family) lineParts.push(`<strong>Familia:</strong> ${p.family}`);
+  if (Array.isArray(p.notes) && p.notes.length) {
+    lineParts.push(`<strong>Notas:</strong> ${p.notes.join(", ")}`);
+  }
+  if (lineParts.length) rows.push(lineParts.join(" · "));
+
+  if (!rows.length) return "";
+  return `<div class="p-sub">${rows.join("<br>")}</div>`;
+}
+
+/** Solo “Despacho a todo Chile” — para ir debajo de las especificaciones */
 function shippingBadgeHTML() {
   return `
-    <div class="p-trust p-trust--single">
+    <div class="p-trust p-trust--single" style="margin-top:10px">
       <div class="p-trust__item">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h13a3 3 0 0 1 3 3v6h-2v-3H5v3H3V8a1 1 0 0 1 1-1Zm2 6h12v-3a1 1 0 0 0-1-1H5v4Zm14 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-12 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"/></svg>
         <span><strong>Despacho a todo Chile</strong></span>
@@ -75,6 +92,7 @@ function renderProduct(p, categoryKey) {
   )}%0A${encodeURIComponent(p.name)}`;
 
   const specsHTML = specsToHTML(buildSpecs(categoryKey, p));
+  const subHTML   = subtitleBlockHTML(p);
 
   container.innerHTML = `
     <!-- Botón de compartir flotante (solo ícono) -->
@@ -89,13 +107,15 @@ function renderProduct(p, categoryKey) {
       <img src="${p.image}" alt="${p.name}" loading="eager">
     </div>
 
-    <!-- Columna central: título y especificaciones (sin descripción bajo el nombre) -->
+    <!-- Columna central: título + bloque dinámico + especificaciones + despacho -->
     <div class="p-info">
       <h1>${p.name}</h1>
+      ${subHTML}
       ${specsHTML}
+      ${shippingBadgeHTML()}
     </div>
 
-    <!-- Columna derecha: precio + CTA + envío -->
+    <!-- Columna derecha: precio + CTA (centrados) -->
     <div class="p-buy">
       ${p.price ? `<div class="p-price">${money(p.price)}</div>` : ""}
       <div class="p-actions" style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center;">
@@ -106,7 +126,6 @@ function renderProduct(p, categoryKey) {
           Consultar por WhatsApp
         </a>
       </div>
-      ${shippingBadgeHTML()}
     </div>
   `;
 
