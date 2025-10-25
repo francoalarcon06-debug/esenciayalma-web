@@ -98,8 +98,7 @@ function renderProduct(p, categoryKey) {
     <div class="p-right">
       <h1 class="p-title">${p.name}</h1>
 
-      <!-- Arriba: despacho + precio + CTA -->
-      ${shippingBadgeHTML()}
+      <!-- Primero: precio + CTA -->
       ${p.price ? `<div class="p-price">${money(p.price)}</div>` : ""}
 
       <div class="p-actions">
@@ -111,7 +110,10 @@ function renderProduct(p, categoryKey) {
         </a>
       </div>
 
-      <!-- Descripción (nuevo) -->
+      <!-- Luego: Despacho bajo el botón -->
+      ${shippingBadgeHTML()}
+
+      <!-- Descripción -->
       ${descriptionBoxHTML(p)}
     </div>
   `;
