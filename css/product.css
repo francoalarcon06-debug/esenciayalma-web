@@ -10,26 +10,29 @@
   display:inline-flex;align-items:center;gap:8px;
   font-weight:600;
 }
-/* Variante: botón dentro de la tarjeta (esquina sup. izquierda) */
+/* Variante dentro del recuadro */
 .product .crumb-btn.inside{
   position:absolute;
   top:14px;
   left:14px;
-  margin:0;                 /* sin separación extra */
-  z-index:3;                /* sobre la imagen/contenido */
+  margin:0;
+  z-index:3;
 }
 
 /* ====== TARJETA – 2 COLUMNAS ====== */
 .product{
-  position:relative; /* para el botón compartir y el volver inside */
-  background:#fff;border:1px solid #00000010;border-radius:16px;
+  position:relative;
+  background:#fff;
+  border:1px solid #00000010;
+  border-radius:16px;
   box-shadow:var(--shadow);
   display:grid;
-  grid-template-columns: 520px 1fr; /* Imagen | Detalle */
+  grid-template-columns:520px 1fr;
   gap:36px;
-  align-items:start;         /* empieza arriba */
+  align-items:start;
   padding:36px 42px;
-  max-width:1200px;margin:0 auto;
+  max-width:1200px;
+  margin:0 auto;
 }
 
 /* Compartir */
@@ -41,13 +44,15 @@
 .icon-share{width:20px;height:20px;fill:currentColor;}
 .share-float.copied::after{
   content:"copiado";position:absolute;top:-10px;right:44px;
-  background:#000;color:#fff;font-size:12px;padding:3px 6px;border-radius:6px;opacity:.9;
+  background:#000;color:#fff;font-size:12px;
+  padding:3px 6px;border-radius:6px;opacity:.9;
 }
 
 /* ====== COLUMNA IZQUIERDA (Imagen) ====== */
 .p-gallery{
   border-radius:14px;overflow:hidden;background:#f8f8f8;
-  display:flex;align-items:center;justify-content:center;aspect-ratio:1/1;
+  display:flex;align-items:center;justify-content:center;
+  aspect-ratio:1/1;
 }
 .p-gallery img{width:100%;height:100%;object-fit:cover;object-position:center;}
 
@@ -71,12 +76,15 @@
 .p-specs li{margin-bottom:6px;}
 
 /* Despacho badge */
-.p-trust{display:grid;grid-template-columns:1fr;gap:10px;margin-top:2px;}
+.p-trust{
+  display:grid;grid-template-columns:1fr;gap:10px;margin-top:2px;
+}
 .p-trust--single .p-trust__item{justify-content:flex-start;}
 .p-trust__item{
   display:flex;align-items:center;gap:10px;
-  padding:10px 12px;border:1px solid #f4c1d6;border-radius:10px;background:#fff;
-  box-shadow:0 2px 6px rgba(0,0,0,.04);font-size:14.5px;color:#333;
+  padding:10px 12px;border:1px solid #f4c1d6;border-radius:10px;
+  background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.04);
+  font-size:14.5px;color:#333;
 }
 .p-trust__item svg{width:20px;height:20px;fill:#c43c73;}
 
@@ -84,18 +92,17 @@
 .p-price{font-size:32px;font-weight:800;margin-top:4px;}
 .p-actions .btn-primary{
   display:inline-flex;align-items:center;gap:8px;
-  padding:14px 18px;white-space:nowrap;width:100%;justify-content:center;
+  padding:14px 18px;white-space:nowrap;width:100%;
+  justify-content:center;
 }
 .icon-wa{width:22px;height:22px;}
 
 /* ====== RESPONSIVE ====== */
-@media (max-width: 980px){
+@media (max-width:980px){
   .product{
     grid-template-columns:1fr;gap:24px;padding:24px;
   }
   .p-right{order:2}
   .p-gallery{order:1}
-
-  /* el botón dentro de la tarjeta se mantiene en la esquina */
   .product .crumb-btn.inside{top:12px;left:12px;}
 }
