@@ -1,4 +1,4 @@
-// Página de detalle con layout 2 columnas (Imagen | Detalle: Título → Specs → Despacho → Precio → CTA)
+// Página de detalle con layout 2 columnas (Imagen | Detalle)
 
 const PHONE = "56912345678";
 const BASE_WA_MSG = "Hola, me interesa este producto 👇";
@@ -17,17 +17,15 @@ async function loadData() {
   return res.json();
 }
 
-/** Especificaciones desde el producto; fallback por categoría si faltan */
+/* ====== Especificaciones ====== */
 function buildSpecs(categoryKey, p) {
   const specs = [];
 
   if (p.family) specs.push({ label: "Familia", value: p.family });
-  if (Array.isArray(p.notes) && p.notes.length) {
+  if (Array.isArray(p.notes) && p.notes.length)
     specs.push({ label: "Notas", value: p.notes.join(", ") });
-  }
-  if (p.description) {
+  if (p.description)
     specs.push({ label: "Descripción breve", value: p.description });
-  }
 
   if (specs.length === 0) {
     const mapTipo = {
@@ -39,9 +37,11 @@ function buildSpecs(categoryKey, p) {
       hogar: "Artículo para el hogar",
     };
     const mapGenero = { women: "Mujer", men: "Hombre" };
-    if (mapGenero[categoryKey]) specs.push({ label: "Género", value: mapGenero[categoryKey] });
+    if (mapGenero[categoryKey])
+      specs.push({ label: "Género", value: mapGenero[categoryKey] });
     specs.push({ label: "Tipo", value: mapTipo[categoryKey] || "Producto" });
-    if (p.description) specs.push({ label: "Descripción breve", value: p.description });
+    if (p.description)
+      specs.push({ label: "Descripción breve", value: p.description });
   }
 
   return specs;
@@ -53,29 +53,37 @@ function specsToHTML(specs) {
     <div class="p-specs">
       <h2>Especificaciones principales</h2>
       <ul>
-        ${specs.map(s => `<li><strong>${s.label}:</strong> <span>${s.value}</span></li>`).join("")}
+        ${specs
+          .map(
+            (s) =>
+              `<li><strong>${s.label}:</strong> <span>${s.value}</span></li>`
+          )
+          .join("")}
       </ul>
     </div>
   `;
 }
 
-/** Badge de despacho a todo Chile */
+/* ====== Badge Despacho ====== */
 function shippingBadgeHTML() {
   return `
     <div class="p-trust p-trust--single">
       <div class="p-trust__item">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h13a3 3 0 0 1 3 3v6h-2v-3H5v3H3V8a1 1 0 0 1 1-1Zm2 6h12v-3a1 1 0 0 0-1-1H5v4Zm14 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-12 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"/></svg>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 7h13a3 3 0 0 1 3 3v6h-2v-3H5v3H3V8a1 1 0 0 1 1-1Zm2 6h12v-3a1 1 0 0 0-1-1H5v4Zm14 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-12 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"/>
+        </svg>
         <span><strong>Despacho a todo Chile</strong></span>
       </div>
     </div>
   `;
 }
 
-/** SIEMPRE volver al catálogo completo (sin filtros) */
+/* ====== Link volver (sin filtros) ====== */
 function catalogUrlForCategory() {
   return "catalogo.html";
 }
 
+/* ====== Render ====== */
 function renderProduct(p, categoryKey) {
   const container = document.getElementById("product");
   if (!p) {
@@ -94,7 +102,7 @@ function renderProduct(p, categoryKey) {
     <!-- Botón “Volver al catálogo” dentro del recuadro blanco -->
     <a href="${backHref}" class="btn btn-ghost crumb-btn inside">Volver al catálogo</a>
 
-    <!-- Botón de compartir flotante (solo ícono) -->
+    <!-- Botón de compartir flotante -->
     <button id="shareBtn" type="button" class="btn btn-ghost share-float" aria-label="Compartir">
       <svg class="icon-share" viewBox="0 0 24 24" aria-hidden="true">
         <path d="M15 8.5V6l6 6-6 6v-2.5h-8a4.5 4.5 0 0 1 0-9h8Z"/>
@@ -106,14 +114,12 @@ function renderProduct(p, categoryKey) {
       <img src="${p.image}" alt="${p.name}" loading="eager">
     </div>
 
-    <!-- Columna derecha: título + especificaciones + despacho + precio + CTA -->
+    <!-- Columna derecha: contenido -->
     <div class="p-right">
       <h1 class="p-title">${p.name}</h1>
 
-      ${specsHTML}
-
+      <!-- Sección superior: Despacho + Precio + Botón -->
       ${shippingBadgeHTML()}
-
       ${p.price ? `<div class="p-price">${money(p.price)}</div>` : ""}
 
       <div class="p-actions">
@@ -124,20 +130,24 @@ function renderProduct(p, categoryKey) {
           Consultar por WhatsApp
         </a>
       </div>
+
+      <!-- Finalmente las especificaciones -->
+      ${specsHTML}
     </div>
   `;
 
-  // — Compartir: Web Share API + fallback copiar al portapapeles
+  // ====== Botón compartir ======
   const shareBtn = container.querySelector("#shareBtn");
   if (shareBtn) {
     shareBtn.addEventListener("click", async () => {
       const title = p.name || "Producto";
-      const text  = "Mira este producto de Esencia y Alma";
-      const url   = location.href;
+      const text = "Mira este producto de Esencia y Alma";
+      const url = location.href;
 
       if (navigator.share) {
-        try { await navigator.share({ title, text, url }); }
-        catch (_) { /* cancelado */ }
+        try {
+          await navigator.share({ title, text, url });
+        } catch (_) {}
       } else {
         try {
           await navigator.clipboard.writeText(url);
@@ -151,7 +161,7 @@ function renderProduct(p, categoryKey) {
   }
 }
 
-// -------- Arranque --------
+/* ====== Cargar ====== */
 (async () => {
   try {
     const { c, i } = getParams();
