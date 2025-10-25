@@ -32,8 +32,8 @@
   gap:36px;
   align-items:start;
 
-  /* 👇 MÁS ESPACIO ARRIBA para que el botón no toque la imagen */
-  padding:56px 42px 36px;
+  /* MÁS ESPACIO ARRIBA para separar botón/imagen del borde superior */
+  padding:72px 42px 36px;
   max-width:1200px;
   margin:0 auto;
 }
@@ -106,8 +106,8 @@
 @media (max-width:980px){
   .product{
     grid-template-columns:1fr;gap:24px;
-    /* un poco menos de padding en mobile */
-    padding:36px 24px 24px;
+    /* también mayor separación arriba en mobile */
+    padding:48px 24px 24px;
   }
   .p-right{order:2}
   .p-gallery{order:1}
