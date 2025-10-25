@@ -134,7 +134,7 @@
 .p-descbody p{ margin:0 0 10px; }
 .p-descbody p:last-child{ margin-bottom:0; }
 
-/* Despacho badge */
+/* ====== Despacho badge ====== */
 .p-trust{
   display:grid;
   grid-template-columns:1fr;
@@ -154,13 +154,16 @@
   font-size:14.5px;
   color:#333;
 }
-.p-trust__item svg{
-  width:20px;
-  height:20px;
-  fill:#c43c73;
+
+/* Nuevo: camión con color rosado */
+.truck-icon {
+  width:22px;
+  height:22px;
+  object-fit:contain;
+  filter: brightness(0) saturate(100%) invert(24%) sepia(77%) saturate(1180%) hue-rotate(312deg) brightness(95%) contrast(97%);
 }
 
-/* Precio + CTA */
+/* ====== Precio + CTA ====== */
 .p-price{
   font-size:32px;
   font-weight:800;
