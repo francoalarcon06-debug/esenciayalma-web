@@ -17,13 +17,20 @@ async function loadData() {
   return res.json();
 }
 
+/** Construye especificaciones:
+ * - Si el producto trae family / notes / description, prioriza eso
+ * - Si no, usa fallback por categoría (Tipo, Género) + descripción breve
+ */
 function buildSpecs(categoryKey, p) {
   const specs = [];
+
   if (p.family) specs.push({ label: "Familia", value: p.family });
   if (Array.isArray(p.notes) && p.notes.length) {
     specs.push({ label: "Notas", value: p.notes.join(", ") });
   }
-  if (p.description) specs.push({ label: "Descripción breve", value: p.description });
+  if (p.description) {
+    specs.push({ label: "Descripción breve", value: p.description });
+  }
 
   if (specs.length === 0) {
     const mapTipo = {
@@ -39,6 +46,7 @@ function buildSpecs(categoryKey, p) {
     specs.push({ label: "Tipo", value: mapTipo[categoryKey] || "Producto" });
     if (p.description) specs.push({ label: "Descripción breve", value: p.description });
   }
+
   return specs;
 }
 
@@ -54,6 +62,7 @@ function specsToHTML(specs) {
   `;
 }
 
+/** Badge de despacho a todo Chile */
 function shippingBadgeHTML() {
   return `
     <div class="p-trust p-trust--single">
@@ -65,6 +74,13 @@ function shippingBadgeHTML() {
   `;
 }
 
+/** Determina a qué scope volver según la categoría */
+function catalogUrlForCategory(categoryKey) {
+  const perf = ["women", "men", "black", "red", "lavit"];
+  const scope = perf.includes(categoryKey) ? "perfumeria" : "hogar";
+  return `catalogo.html?scope=${scope}`;
+}
+
 function renderProduct(p, categoryKey) {
   const container = document.getElementById("product");
   if (!p) {
@@ -74,25 +90,35 @@ function renderProduct(p, categoryKey) {
 
   const wa = `https://wa.me/${PHONE}?text=${encodeURIComponent(
     BASE_WA_MSG
-  )}%0A${encodeURIComponent(p.name)}`;
+  )}%0A${encodeURIComponent(p.name)}%0A${encodeURIComponent(location.href)}`;
 
   const specsHTML = specsToHTML(buildSpecs(categoryKey, p));
+  const backHref = catalogUrlForCategory(categoryKey);
 
   container.innerHTML = `
+    <!-- Botón “Volver al catálogo” dentro del recuadro blanco -->
+    <a href="${backHref}" class="btn btn-ghost crumb-btn inside">Volver al catálogo</a>
+
+    <!-- Botón de compartir flotante (solo ícono) -->
     <button id="shareBtn" type="button" class="btn btn-ghost share-float" aria-label="Compartir">
       <svg class="icon-share" viewBox="0 0 24 24" aria-hidden="true">
         <path d="M15 8.5V6l6 6-6 6v-2.5h-8a4.5 4.5 0 0 1 0-9h8Z"/>
       </svg>
     </button>
 
+    <!-- Columna izquierda: imagen -->
     <div class="p-gallery">
       <img src="${p.image}" alt="${p.name}" loading="eager">
     </div>
 
+    <!-- Columna derecha: título + especificaciones + despacho + precio + CTA -->
     <div class="p-right">
       <h1 class="p-title">${p.name}</h1>
+
       ${specsHTML}
+
       ${shippingBadgeHTML()}
+
       ${p.price ? `<div class="p-price">${money(p.price)}</div>` : ""}
 
       <div class="p-actions">
@@ -106,15 +132,17 @@ function renderProduct(p, categoryKey) {
     </div>
   `;
 
+  // — Compartir: Web Share API + fallback copiar al portapapeles
   const shareBtn = container.querySelector("#shareBtn");
   if (shareBtn) {
     shareBtn.addEventListener("click", async () => {
       const title = p.name || "Producto";
       const text  = "Mira este producto de Esencia y Alma";
       const url   = location.href;
+
       if (navigator.share) {
         try { await navigator.share({ title, text, url }); }
-        catch (_) {}
+        catch (_) { /* usuario canceló */ }
       } else {
         try {
           await navigator.clipboard.writeText(url);
@@ -128,6 +156,7 @@ function renderProduct(p, categoryKey) {
   }
 }
 
+// -------- Arranque --------
 (async () => {
   try {
     const { c, i } = getParams();
