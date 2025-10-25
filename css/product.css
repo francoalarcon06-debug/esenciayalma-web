@@ -14,7 +14,8 @@
 .product .crumb-btn.inside{
   position:absolute;
   top:14px;
-  left:14px;
+  /* Alinear con el inicio del contenido (padding-left de .product en desktop) */
+  left:42px;
   margin:0;
   z-index:3;
 }
@@ -194,5 +195,6 @@
     /* Un toque extra por si acaso, se puede quitar si no hace falta */
     margin-top:6px;
   }
-  .product .crumb-btn.inside{ top:12px; left:12px; }
+  /* Alinear con padding-left de .product en móvil (24px) */
+  .product .crumb-btn.inside{ top:12px; left:24px; }
 }
