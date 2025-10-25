@@ -183,7 +183,7 @@
 /* ====== Alineación fina del botón “Volver al catálogo” (desktop) ====== */
 /* Forzamos la posición para que empiece donde arranca la imagen */
 .product > a.crumb-btn.inside{
-  left:48px !important; /* ajusta si quieres 56/60 segun tu ojo */
+  left:45px !important; /* ajusta si quieres 56/60 segun tu ojo */
 }
 
 /* ====== RESPONSIVE ====== */
