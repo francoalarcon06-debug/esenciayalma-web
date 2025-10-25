@@ -10,10 +10,18 @@
   display:inline-flex;align-items:center;gap:8px;
   font-weight:600;
 }
+/* Variante: botón dentro de la tarjeta (esquina sup. izquierda) */
+.product .crumb-btn.inside{
+  position:absolute;
+  top:14px;
+  left:14px;
+  margin:0;                 /* sin separación extra */
+  z-index:3;                /* sobre la imagen/contenido */
+}
 
 /* ====== TARJETA – 2 COLUMNAS ====== */
 .product{
-  position:relative; /* para el botón compartir */
+  position:relative; /* para el botón compartir y el volver inside */
   background:#fff;border:1px solid #00000010;border-radius:16px;
   box-shadow:var(--shadow);
   display:grid;
@@ -87,4 +95,7 @@
   }
   .p-right{order:2}
   .p-gallery{order:1}
+
+  /* el botón dentro de la tarjeta se mantiene en la esquina */
+  .product .crumb-btn.inside{top:12px;left:12px;}
 }
