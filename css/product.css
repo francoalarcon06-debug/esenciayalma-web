@@ -47,10 +47,18 @@
 }
 
 /* ====== COLUMNA CENTRAL: ESPECIFICACIONES + DESPACHO ====== */
+/* Centramos su contenido y limitamos un ancho lindo para la tarjeta */
 .p-info {
   display: flex;
   flex-direction: column;
   gap: 14px;
+  align-items: center;                    /* <— centra el contenido */
+}
+.p-specs,
+.p-trust {
+  width: 100%;
+  max-width: 560px;                       /* <— ancho máximo centrado */
+  margin-inline: auto;
 }
 
 /* Especificaciones principales */
@@ -74,20 +82,16 @@
   font-size: 14.5px;
   color: #444;
 }
-.p-specs li {
-  margin-bottom: 6px;
-}
+.p-specs li { margin-bottom: 6px; }
 
-/* Franja de confianza (Despacho a todo Chile) */
+/* Franja de confianza (Despacho a todo Chile), debajo de specs */
 .p-trust{
   display:grid;
   grid-template-columns: 1fr;
   gap:10px;
-  margin: 2px 0 0;         /* pegado bajo especificaciones */
+  margin-top: 12px;                       /* <— separada de especificaciones */
 }
-.p-trust--single .p-trust__item{
-  justify-content:center;
-}
+.p-trust--single .p-trust__item{ justify-content:center; }
 .p-trust__item{
   display:flex;
   align-items:center;
@@ -107,29 +111,39 @@
 }
 
 /* ====== COLUMNA DERECHA: TÍTULO + SUBTÍTULO + PRECIO + CTA ====== */
+/* Centramos el bloque como conjunto, pero alineamos a la izquierda su contenido.
+   Así el título, la descripción, el precio y el botón comparten el MISMO borde izquierdo. */
 .p-buy {
+  --buy-width: 340px;                     /* ancho visual del bloque derecho */
   display: flex;
   flex-direction: column;
-  align-items: center;       /* centrado del bloque */
+  align-items: center;                     /* <— centra el bloque */
   justify-content: flex-start;
   gap: 16px;
   margin-top: 8px;
-  text-align: center;        /* centrado del texto */
+  text-align: left;                        /* <— contenido alineado a la izquierda */
 }
 
-/* Título en la columna derecha */
+/* Todos estos comparten el mismo ancho y, por ende, el mismo borde izquierdo */
+.p-title,
+.p-sub,
+.p-price,
+.p-actions {
+  width: var(--buy-width);
+  max-width: 100%;
+}
+
 .p-title{
   margin: 0;
   font-family: "DM Serif Display", serif;
   font-size: clamp(26px, 3vw, 34px);
 }
 
-/* Subtítulo bajo el título (una sola línea de apoyo por producto) */
 .p-sub{
   color:#5c5c5c;
   font-size: 15px;
   line-height: 1.5;
-  margin: 2px 0 2px;
+  margin: 0;                               /* pegado al título */
 }
 .p-sub strong { color:#2b2b2b; }
 
@@ -144,11 +158,10 @@
   gap: 8px;
   padding: 14px 18px;
   white-space: nowrap;
+  width: 100%;                              /* <— el botón marca el borde izq. de referencia */
+  justify-content: center;
 }
-.p-actions .icon-wa {
-  width: 22px;
-  height: 22px;
-}
+.p-actions .icon-wa { width: 22px; height: 22px; }
 
 /* ====== COMPARTIR (solo ícono) ====== */
 .share-float{
@@ -162,11 +175,7 @@
   border-radius:999px;
   padding:0;
 }
-.icon-share{
-  width:20px;
-  height:20px;
-  fill:currentColor;
-}
+.icon-share{ width:20px; height:20px; fill:currentColor; }
 .share-float.copied::after{
   content:"copiado";
   position:absolute;
@@ -187,8 +196,10 @@
     gap: 24px;
   }
 
+  /* Ajustes móviles: todo centrado y con el mismo ancho visual */
   .p-buy {
+    --buy-width: 100%;
     align-items: center;
-    text-align: center;
+    text-align: left;
   }
 }
