@@ -1,60 +1,76 @@
-// Página de detalle de producto
-const PHONE = "56912345678";
-const BASE_WA_MSG = "Hola, me interesa este producto 👇";
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Producto – Esencia y Alma</title>
+  <meta name="description" content="Detalle del producto de Esencia y Alma.">
+  <link rel="icon" type="image/png" href="assets/images/Favicon.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/images/Favicon.png" sizes="180x180">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/product.css">
+</head>
+<body>
 
-const money = (v) => `$${(Number(String(v).replace(/[^\d]/g, "")) || 0).toLocaleString("es-CL")}`;
-
-function getParams() {
-  const p = new URLSearchParams(location.search);
-  return { c: p.get("c") || "", i: Number(p.get("i") || "0") };
-}
-
-async function loadData() {
-  const res = await fetch("data/products.json", { cache: "no-store" });
-  if (!res.ok) throw new Error("No pude cargar data/products.json");
-  return res.json();
-}
-
-function renderProduct(p) {
-  const container = document.getElementById("product");
-  if (!p) {
-    container.innerHTML = `<div style="padding:24px">No encontramos este producto.</div>`;
-    return;
-  }
-
-  const wa = `https://wa.me/${PHONE}?text=${encodeURIComponent(BASE_WA_MSG)}%0A${encodeURIComponent(p.name)}`;
-
-  container.innerHTML = `
-    <div class="p-gallery">
-      <img src="${p.image}" alt="${p.name}" loading="eager">
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="index.html#inicio">Esencia y Alma</a>
+      <nav class="menu">
+        <a href="catalogo.html?scope=perfumeria">Perfumería</a>
+        <a href="catalogo.html?scope=hogar">Hogar</a>
+        <a href="index.html#contacto">Contacto</a>
+      </nav>
     </div>
+  </header>
 
-    <div class="p-info">
-      <h1>${p.name}</h1>
-      ${p.description ? `<p class="p-desc">${p.description}</p>` : ""}
-      ${p.price ? `<div class="p-price">${money(p.price)}</div>` : ""}
+  <!-- CONTENIDO -->
+  <main class="product-main">
+    <div class="container">
+      <!-- Ahora el enlace de retorno es un botón fantasma -->
+      <a href="catalogo.html" class="btn btn-ghost crumb-btn">← Volver al catálogo</a>
 
-      <div class="p-actions">
-        <a class="btn btn-primary" href="${wa}" target="_blank">
-          <svg class="icon-wa" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true">
-            <path fill="currentColor" d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
-          </svg>
-          Consultar por WhatsApp
-        </a>
+      <div id="product" class="product">
+        <!-- Se completa por JS -->
       </div>
     </div>
-  `;
-}
+  </main>
 
-(async () => {
-  try {
-    const { c, i } = getParams();
-    const data = await loadData();
-    const list = Array.isArray(data[c]) ? data[c] : [];
-    const product = list[i] || null;
-    renderProduct(product);
-  } catch (e) {
-    console.error(e);
-    renderProduct(null);
-  }
-})();
+  <!-- FOOTER -->
+  <footer id="contacto" class="footer">
+    <div class="container">
+      <div class="footer__inner" style="align-items:flex-start;">
+        <div class="footer__brand" style="max-width:640px;">
+          <div style="
+            width:260px;height:26px;border-radius:8px;margin:0 0 14px 0;
+            background:linear-gradient(90deg,#ff6aa8 0%,#c43c73 100%);
+            display:flex;align-items:center;justify-content:center;
+            color:#fff;font-weight:700;">
+            Esencia y Alma
+          </div>
+          <p style="margin:0;">Una colección de fragancias y artículos para el hogar creados para disfrutar la elegancia y armonía todos los días.</p>
+        </div>
+        <div class="footer__contact">
+          <a class="btn btn-ghost" id="whatsapp-cta" target="_blank" href="#" style="display:inline-flex;align-items:center;gap:10px;">
+            <svg width="22" height="22" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.65-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.49-.084-.182-.133-.38-.232"/>
+            </svg>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+      <p class="center" style="margin-top:16px;">© 2025 Esencia y Alma. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="js/product.page.js"></script>
+  <script>
+    const PHONE = "56912345678";
+    const MSG   = encodeURIComponent("¡Hola! Me interesa el catálogo de Esencia y Alma.");
+    const wa    = `https://wa.me/${PHONE}?text=${MSG}`;
+    const waBtn = document.getElementById("whatsapp-cta");
+    if (waBtn) waBtn.href = wa;
+  </script>
+</body>
+</html>
