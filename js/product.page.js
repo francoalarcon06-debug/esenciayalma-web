@@ -84,9 +84,7 @@ function renderProduct(p, categoryKey) {
 
     <!-- Compartir -->
     <button id="shareBtn" type="button" class="btn btn-ghost share-float" aria-label="Compartir">
-      <svg class="icon-share" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M15 8.5V6l6 6-6 6v-2.5h-8a4.5 4.5 0 0 1 0-9h8Z"/>
-      </svg>
+      <img class="share-icon" src="assets/images/share-arrow.png" alt="">
     </button>
 
     <!-- Columna izquierda -->
