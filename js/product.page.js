@@ -17,10 +17,7 @@ async function loadData() {
   return res.json();
 }
 
-/** Construye especificaciones:
- * - Si el producto trae family / notes / description, prioriza eso
- * - Si no, usa fallback por categoría (Tipo, Género) + descripción breve
- */
+/** Especificaciones desde el producto; fallback por categoría si faltan */
 function buildSpecs(categoryKey, p) {
   const specs = [];
 
@@ -74,11 +71,9 @@ function shippingBadgeHTML() {
   `;
 }
 
-/** Determina a qué scope volver según la categoría */
-function catalogUrlForCategory(categoryKey) {
-  const perf = ["women", "men", "black", "red", "lavit"];
-  const scope = perf.includes(categoryKey) ? "perfumeria" : "hogar";
-  return `catalogo.html?scope=${scope}`;
+/** SIEMPRE volver al catálogo completo (sin filtros) */
+function catalogUrlForCategory() {
+  return "catalogo.html";
 }
 
 function renderProduct(p, categoryKey) {
@@ -93,7 +88,7 @@ function renderProduct(p, categoryKey) {
   )}%0A${encodeURIComponent(p.name)}%0A${encodeURIComponent(location.href)}`;
 
   const specsHTML = specsToHTML(buildSpecs(categoryKey, p));
-  const backHref = catalogUrlForCategory(categoryKey);
+  const backHref = catalogUrlForCategory();
 
   container.innerHTML = `
     <!-- Botón “Volver al catálogo” dentro del recuadro blanco -->
@@ -142,7 +137,7 @@ function renderProduct(p, categoryKey) {
 
       if (navigator.share) {
         try { await navigator.share({ title, text, url }); }
-        catch (_) { /* usuario canceló */ }
+        catch (_) { /* cancelado */ }
       } else {
         try {
           await navigator.clipboard.writeText(url);
