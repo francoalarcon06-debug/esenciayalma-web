@@ -15,7 +15,7 @@
   position:absolute;
   top:14px;
   /* Alinear con el inicio del contenido (padding-left de .product en desktop) */
-  left:42px;
+  left:58px;
   margin:0;
   z-index:3;
 }
