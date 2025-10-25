@@ -81,11 +81,21 @@ function renderCard(p) {
       </div>
     </div>
   `;
+
+  // --- NUEVO: click en la tarjeta abre la página de detalle (salvo el botón WA) ---
+  el.style.cursor = "pointer";
+  el.addEventListener("click", (ev) => {
+    if (ev.target.closest(".card__btn")) return;
+    const c = p.categoryKey || "";
+    const i = typeof p.idx === "number" ? p.idx : 0;
+    location.href = `producto.html?c=${encodeURIComponent(c)}&i=${encodeURIComponent(i)}`;
+  });
+
   return el;
 }
 
 // ------- Estado y render -------
-let ALL = [];       // [{...product, categoryKey}]
+let ALL = [];       // [{...product, categoryKey, idx}]
 let CATS = [];      // [{key,label,count}]
 let SCOPE = "";     // "", "perfumeria", "hogar"
 
@@ -114,7 +124,7 @@ function buildFromJSON(json) {
       count,
     });
 
-    list.forEach(p => ALL.push({ ...p, categoryKey: key }));
+    list.forEach((p, i) => ALL.push({ ...p, categoryKey: key, idx: i }));
   }
 }
 
@@ -201,7 +211,6 @@ function injectScopeBadge() {
     <button type="button" aria-label="Quitar vista ${label}" title="Quitar vista ${label}">×</button>
   `;
   Object.assign(badge.style, {
-    // Chip del ancho del contenido (texto + X)
     display: "inline-flex",
     alignItems: "center",
     gap: "8px",
@@ -227,10 +236,8 @@ function injectScopeBadge() {
     padding: "2px 4px",
   });
 
-  // Insertar el badge como PRIMER elemento del formulario de filtros (arriba de "Tipo de producto")
   form.insertBefore(badge, form.firstElementChild);
 
-  // Al hacer click en la X, quitamos el scope de la URL y recargamos mostrando todas las categorías
   btn.addEventListener("click", () => {
     const params = currentParams();
     params.delete("scope");
@@ -307,7 +314,7 @@ function injectScopeBadge() {
       renderGrid(applyFilters(state));
     });
 
-    // === NUEVO: aplicar filtros al instante al cambiar "Tipo de producto" ===
+    // Aplicar al instante al cambiar "Tipo de producto"
     $cat.addEventListener("change", () => {
       const state = {
         category: $cat.value,
@@ -315,34 +322,27 @@ function injectScopeBadge() {
         max: qs("#fMax").value,
         sort: qs("#fSort").value,
       };
-      setParams(state); // conserva 'scope'
+      setParams(state);
       renderGrid(applyFilters(state));
     });
 
-    // === NUEVO: máscara para precios (solo números, 5 dígitos máx, y con puntos) ===
+    // Máscara de dinero
     function attachMoneyMask(input) {
       if (!input) return;
       const format = (raw) => {
-        // Solo dígitos y máximo 5
         const digits = String(raw).replace(/\D/g, "").slice(0, 5);
         if (!digits) return "";
-        // Formatear con miles (es-CL -> puntos)
         return Number(digits).toLocaleString("es-CL");
       };
-      // Normaliza en cada cambio (tecleo/pegar/borrar)
       input.addEventListener("input", () => {
-        const posEnd = input.selectionEnd; // caret fallback (lo enviaremos al final)
         const val = input.value;
         const next = format(val);
         if (val !== next) input.value = next;
-        // mover cursor al final (comportamiento simple y estable)
         input.setSelectionRange(input.value.length, input.value.length);
       });
-      // Extra por si el navegador autocompleta: normalizar al entrar/salir
       ["blur", "change"].forEach(evt =>
         input.addEventListener(evt, () => (input.value = format(input.value)))
       );
-      // Preformatear si trae valor de la URL
       input.value = format(input.value);
     }
 
