@@ -1,193 +1,115 @@
 /* ====== CONTENEDOR ====== */
-.product-main {
-  padding: 40px 0 60px;
-  background: var(--soft);
+.product-main{
+  padding:40px 0 60px;
+  background:var(--soft);
 }
 
-/* ====== BOTÓN VOLVER ====== */
-.crumb-btn {
-  margin: 12px 0 24px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 600;
+/* Volver */
+.crumb-btn{
+  margin:12px 0 24px;
+  display:inline-flex;align-items:center;gap:8px;
+  font-weight:600;
 }
-
-/* Variante dentro del recuadro (tarjeta) */
-.product .crumb-btn.inside {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  margin: 0;
-  z-index: 20; /* siempre sobre la imagen */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+/* Variante dentro del recuadro */
+.product .crumb-btn.inside{
+  position:absolute;
+  top:14px;
+  left:14px;
+  margin:0;
+  z-index:10;                 /* por encima de la imagen */
+  box-shadow:0 2px 10px rgba(0,0,0,.08);
 }
 
 /* ====== TARJETA – 2 COLUMNAS ====== */
-.product {
-  position: relative; /* necesario para el posicionamiento absoluto del botón */
-  background: #fff;
-  border: 1px solid #00000010;
-  border-radius: 16px;
-  box-shadow: var(--shadow);
-  display: grid;
-  grid-template-columns: 520px 1fr; /* Imagen | Detalle */
-  gap: 36px;
-  align-items: start;
-  padding: 36px 42px;
-  max-width: 1200px;
-  margin: 0 auto;
+.product{
+  position:relative;
+  background:#fff;
+  border:1px solid #00000010;
+  border-radius:16px;
+  box-shadow:var(--shadow);
+  display:grid;
+  grid-template-columns:520px 1fr;
+  gap:36px;
+  align-items:start;
+
+  /* 👇 MÁS ESPACIO ARRIBA para que el botón no toque la imagen */
+  padding:56px 42px 36px;
+  max-width:1200px;
+  margin:0 auto;
 }
 
-/* ====== COMPARTIR ====== */
-.share-float {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  display: inline-grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 999px;
-  padding: 0;
+/* Compartir */
+.share-float{
+  position:absolute;top:14px;right:14px;
+  display:inline-grid;place-items:center;
+  width:40px;height:40px;border-radius:999px;padding:0;
 }
-.icon-share {
-  width: 20px;
-  height: 20px;
-  fill: currentColor;
-}
-.share-float.copied::after {
-  content: "copiado";
-  position: absolute;
-  top: -10px;
-  right: 44px;
-  background: #000;
-  color: #fff;
-  font-size: 12px;
-  padding: 3px 6px;
-  border-radius: 6px;
-  opacity: 0.9;
+.icon-share{width:20px;height:20px;fill:currentColor;}
+.share-float.copied::after{
+  content:"copiado";position:absolute;top:-10px;right:44px;
+  background:#000;color:#fff;font-size:12px;
+  padding:3px 6px;border-radius:6px;opacity:.9;
 }
 
-/* ====== COLUMNA IZQUIERDA (IMAGEN) ====== */
-.p-gallery {
-  position: relative; /* contexto local */
-  z-index: 1; /* debajo del botón */
-  border-radius: 14px;
-  overflow: hidden;
-  background: #f8f8f8;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: 1/1;
+/* ====== COLUMNA IZQUIERDA (Imagen) ====== */
+.p-gallery{
+  border-radius:14px;overflow:hidden;background:#f8f8f8;
+  display:flex;align-items:center;justify-content:center;
+  aspect-ratio:1/1;
+  position:relative; /* asegura stacking por debajo del botón */
+  z-index:1;
 }
-.p-gallery img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+.p-gallery img{width:100%;height:100%;object-fit:cover;object-position:center;}
+
+/* ====== COLUMNA DERECHA (Detalle) ====== */
+.p-right{
+  display:flex;flex-direction:column;gap:16px;
+}
+.p-title{
+  margin:0;
+  font-family:"DM Serif Display",serif;
+  font-size:clamp(28px,3.2vw,40px);
 }
 
-/* ====== COLUMNA DERECHA (DETALLE) ====== */
-.p-right {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+/* Specs (panel rosa) */
+.p-specs{
+  background:#fff7fa;border:1px solid #f4c1d6;border-radius:12px;
+  padding:16px 18px;box-shadow:0 2px 6px rgba(0,0,0,.04);
 }
-.p-title {
-  margin: 0;
-  font-family: "DM Serif Display", serif;
-  font-size: clamp(28px, 3.2vw, 40px);
-}
+.p-specs h2{margin:0 0 10px;font-size:16px;font-weight:700;color:#c43c73;}
+.p-specs ul{list-style:none;margin:0;padding:0;font-size:14.5px;color:#444;}
+.p-specs li{margin-bottom:6px;}
 
-/* ====== PANEL ROSA (ESPECIFICACIONES) ====== */
-.p-specs {
-  background: #fff7fa;
-  border: 1px solid #f4c1d6;
-  border-radius: 12px;
-  padding: 16px 18px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+/* Despacho badge */
+.p-trust{
+  display:grid;grid-template-columns:1fr;gap:10px;margin-top:2px;
 }
-.p-specs h2 {
-  margin: 0 0 10px;
-  font-size: 16px;
-  font-weight: 700;
-  color: #c43c73;
+.p-trust--single .p-trust__item{justify-content:flex-start;}
+.p-trust__item{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 12px;border:1px solid #f4c1d6;border-radius:10px;
+  background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.04);
+  font-size:14.5px;color:#333;
 }
-.p-specs ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  font-size: 14.5px;
-  color: #444;
-}
-.p-specs li {
-  margin-bottom: 6px;
-}
+.p-trust__item svg{width:20px;height:20px;fill:#c43c73;}
 
-/* ====== DESPACHO ====== */
-.p-trust {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
-  margin-top: 2px;
+/* Precio + CTA */
+.p-price{font-size:32px;font-weight:800;margin-top:4px;}
+.p-actions .btn-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 18px;white-space:nowrap;width:100%;
+  justify-content:center;
 }
-.p-trust--single .p-trust__item {
-  justify-content: flex-start;
-}
-.p-trust__item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
-  border: 1px solid #f4c1d6;
-  border-radius: 10px;
-  background: #fff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
-  font-size: 14.5px;
-  color: #333;
-}
-.p-trust__item svg {
-  width: 20px;
-  height: 20px;
-  fill: #c43c73;
-}
-
-/* ====== PRECIO + CTA ====== */
-.p-price {
-  font-size: 32px;
-  font-weight: 800;
-  margin-top: 4px;
-}
-.p-actions .btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 14px 18px;
-  white-space: nowrap;
-  width: 100%;
-  justify-content: center;
-}
-.icon-wa {
-  width: 22px;
-  height: 22px;
-}
+.icon-wa{width:22px;height:22px;}
 
 /* ====== RESPONSIVE ====== */
-@media (max-width: 980px) {
-  .product {
-    grid-template-columns: 1fr;
-    gap: 24px;
-    padding: 24px;
+@media (max-width:980px){
+  .product{
+    grid-template-columns:1fr;gap:24px;
+    /* un poco menos de padding en mobile */
+    padding:36px 24px 24px;
   }
-  .p-right {
-    order: 2;
-  }
-  .p-gallery {
-    order: 1;
-  }
-  .product .crumb-btn.inside {
-    top: 12px;
-    left: 12px;
-  }
+  .p-right{order:2}
+  .p-gallery{order:1}
+  .product .crumb-btn.inside{top:12px;left:12px;}
 }
