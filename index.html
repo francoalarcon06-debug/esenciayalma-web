@@ -28,9 +28,16 @@
 
   <!-- Limitar área clickeable de “Ver todo” solo al texto -->
   <style>
-    .sec-bottom{ pointer-events:none; }
+    .sec-bottom{
+      pointer-events:none;   /* bloquea clicks fuera del enlace */
+      display:block;
+      width:100%;
+      text-align:right;      /* alinea el enlace a la derecha */
+      margin-top:16px;       /* separa del carrusel */
+      padding-right:4px;     /* pequeño respiro del borde */
+    }
     .sec-bottom .sec-link--bottom{
-      pointer-events:auto;
+      pointer-events:auto;   /* vuelve a permitir clicks solo en el texto */
       display:inline;
       position:static;
       width:auto;
