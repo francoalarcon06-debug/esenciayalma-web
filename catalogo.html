@@ -20,7 +20,8 @@
       <nav class="menu">
         <a href="catalogo.html?scope=perfumeria">Perfumería</a>
         <a href="catalogo.html?scope=hogar">Hogar</a>
-        <a href="index.html#contacto">Contacto</a>
+        <!-- CAMBIO: este enlace se rellena a WhatsApp por script -->
+        <a id="nav-contact" href="#">Contacto</a>
       </nav>
     </div>
   </header>
@@ -133,8 +134,18 @@
     const PHONE = "56961114225";
     const MSG   = encodeURIComponent("¡Hola! Me interesa el catálogo de Esencia y Alma.");
     const wa    = `https://wa.me/${PHONE}?text=${MSG}`;
+
+    // Footer
     const waBtn = document.getElementById("whatsapp-cta");
     if (waBtn) waBtn.href = wa;
+
+    // NAV Contacto (arriba a la derecha) — MISMO ENLACE QUE EL BOTÓN WHATSAPP
+    const navContact = document.getElementById("nav-contact");
+    if (navContact) {
+      navContact.href = wa;
+      navContact.target = "_blank";
+      navContact.rel = "noopener";
+    }
   </script>
 </body>
 </html>
