@@ -184,9 +184,24 @@ body {
 }
 
 /* ====== Enlace “Ver todo” — limitar área clickeable al texto ====== */
-.sec-link--bottom {
-  display: inline !important;   /* evita que ocupe todo el ancho */
+.sec-bottom{
+  pointer-events: none; /* el contenedor no recibe clics */
+}
+.sec-bottom .sec-link--bottom{
+  pointer-events: auto;     /* solo el enlace es clickeable */
+  display: inline !important;
+  position: static !important;
+  width: auto !important;
+  max-width: max-content;
+  padding: 0;
+  margin: 0;
+  flex: 0 0 auto !important;
+  align-self: flex-start;
   cursor: pointer;
+}
+.sec-bottom .sec-link--bottom::before,
+.sec-bottom .sec-link--bottom::after{
+  content: none !important; /* por si había overlays */
 }
 
 /* ====== RESPONSIVE (solo móvil) ====== */
