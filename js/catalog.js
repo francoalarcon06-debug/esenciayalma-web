@@ -52,9 +52,20 @@ function card(product) {
   const waText = `${WA_GREET}\n"${product.name}"\n${detailUrl}`;
   const href = `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(waText)}`;
 
+  // CAMBIO: normalizamos la ruta de imagen (espacios/tildes) y fijamos tamaño
+  const safeSrc = encodeURI(product.image || product.imageUrl || ""); // evita errores por espacios/acentos
+
   el.innerHTML = `
     <div class="card__img">
-      <img src="${product.image}" alt="${product.name}" loading="lazy">
+      <!-- CAMBIO: width/height fijos para estabilidad de layout; fallback si falla -->
+      <img
+        src="${safeSrc}"
+        alt="${product.name}"
+        loading="lazy"
+        decoding="async"
+        width="195"
+        height="270"
+        onerror="this.onerror=null;this.src='assets/images/placeholder-340x330.webp'">
     </div>
 
     <div class="card__body">
