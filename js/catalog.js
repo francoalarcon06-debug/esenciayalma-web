@@ -481,9 +481,16 @@ async function setupCarouselSection(sectionEl, items) {
     addEventListener("resize", onResize, { passive: true });
 
     // por si cambian métricas del layout (fuentes, etc.)
-    const ro = new ResizeObserver(() => applyMode());
-    ro.observe(track);
-    sectionEl._ro = ro;
+    if (typeof ResizeObserver !== "undefined") {
+      const ro = new ResizeObserver(() => applyMode());
+      ro.observe(track);
+      sectionEl._ro = ro;
+    } else {
+      // Fallbacks para navegadores móviles sin ResizeObserver
+      addEventListener("orientationchange", () => setTimeout(applyMode, 250), { passive: true });
+      waitImages(track).then(applyMode).catch(() => {});
+      setTimeout(applyMode, 400);
+    }
   }
 }
 
