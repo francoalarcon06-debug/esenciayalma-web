@@ -48,6 +48,13 @@
       "longDescription": "Tuberosa cremosa con ámbar y vainilla suave. Sensual sin ser pesado, cálido y abrazador, perfecto para tardes y noches. Un aroma que deja huella.",
       "price": "7400",
       "image": "assets/women/ch.png"
+    },
+    {
+      "name": "212 Heroes For Her",
+      "description": "Perfume de verano con notas cítricas 50ml.",
+      "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
+      "price": "7400",
+      "image": "assets/women/212_heroes_for_her.png"
     }
   ],
   "men": [
