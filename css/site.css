@@ -1,3 +1,4 @@
+site.css
 :root{
   --text:#2b2b2b; --muted:#6b6b6b;
   --primary:#ea4c89; --primary-600:#d63d78;
@@ -408,23 +409,5 @@ a{text-decoration:none;color:inherit}
   /* Flechas: ligerísimo ajuste para no robar espacio visual */
   .nav-btn{
     top: 46%;
-  }
-}
-
-/* ======== AGREGADO: MÓVIL – marco 340x330 + frasco 195x270 (contain) ======== */
-@media (max-width: 640px){
-  /* Marco fijo del área de imagen para homogeneizar catálogo en cel */
-  .card__img{
-    height: 330px !important;       /* alto del marco */
-    background: #fff;               /* fondo blanco puro (#FFFFFF) */
-    display: flex; align-items: center; justify-content: center;
-    overflow: hidden;
-  }
-  /* Frasco siempre 195x270 centrado y sin recortes */
-  .card__img img{
-    width: 195px !important;
-    height: 270px !important;
-    object-fit: contain !important; /* respeta proporción, no recorta */
-    transform: none !important;     /* desactiva el hover-scale en mobile */
   }
 }
