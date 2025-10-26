@@ -52,20 +52,9 @@ function card(product) {
   const waText = `${WA_GREET}\n"${product.name}"\n${detailUrl}`;
   const href = `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(waText)}`;
 
-  // CAMBIO: normalizamos la ruta de imagen (espacios/tildes) y fijamos tamaño
-  const safeSrc = encodeURI(product.image || product.imageUrl || ""); // evita errores por espacios/acentos
-
   el.innerHTML = `
     <div class="card__img">
-      <!-- CAMBIO: width/height fijos para estabilidad de layout; fallback si falla -->
-      <img
-        src="${safeSrc}"
-        alt="${product.name}"
-        loading="lazy"
-        decoding="async"
-        width="195"
-        height="270"
-        onerror="this.onerror=null;this.src='assets/images/placeholder-340x330.webp'">
+      <img src="${product.image}" alt="${product.name}" loading="lazy">
     </div>
 
     <div class="card__body">
@@ -428,7 +417,8 @@ async function setupCarouselSection(sectionEl, items) {
     return;
   }
 
-  await waitImages(track);
+  // ❌ Antes: esperábamos a que carguen TODAS las imágenes
+  // await waitImages(track);
 
   // función que decide y aplica el modo según el ancho real
   const applyMode = () => {
@@ -465,8 +455,14 @@ async function setupCarouselSection(sectionEl, items) {
     }
   };
 
-  // aplicar ahora
+  // aplicar ahora (inmediato, sin esperar imágenes)
   applyMode();
+
+  // ✔️ Cuando las imágenes terminen (o fallen), re-medimos sin bloquear la UI
+  waitImages(track).then(() => {
+    track._loopAPI?.remeasure?.();
+    applyMode();
+  }).catch(() => {});
 
   // actualizar automáticamente en rotación/cambio de tamaño
   if (!sectionEl._responsiveInited) {
@@ -481,16 +477,9 @@ async function setupCarouselSection(sectionEl, items) {
     addEventListener("resize", onResize, { passive: true });
 
     // por si cambian métricas del layout (fuentes, etc.)
-    if (typeof ResizeObserver !== "undefined") {
-      const ro = new ResizeObserver(() => applyMode());
-      ro.observe(track);
-      sectionEl._ro = ro;
-    } else {
-      // Fallbacks para navegadores móviles sin ResizeObserver
-      addEventListener("orientationchange", () => setTimeout(applyMode, 250), { passive: true });
-      waitImages(track).then(applyMode).catch(() => {});
-      setTimeout(applyMode, 400);
-    }
+    const ro = new ResizeObserver(() => applyMode());
+    ro.observe(track);
+    sectionEl._ro = ro;
   }
 }
 
