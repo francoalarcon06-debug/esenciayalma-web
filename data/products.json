@@ -43,11 +43,11 @@
       "image": "assets/women/carolina_herrera.png"
     },
     {
-      "name": "Velvet Bloom",
+      "name": "CH",
       "description": "Aroma envolvente con toques florales 50ml.",
       "longDescription": "Tuberosa cremosa con ámbar y vainilla suave. Sensual sin ser pesado, cálido y abrazador, perfecto para tardes y noches. Un aroma que deja huella.",
       "price": "7400",
-      "image": "assets/women/Perfume women prueba.png"
+      "image": "assets/women/ch.png"
     }
   ],
   "men": [
