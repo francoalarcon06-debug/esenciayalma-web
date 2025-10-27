@@ -54,7 +54,14 @@ function card(product) {
 
   el.innerHTML = `
     <div class="card__img">
-      <img src="${product.image}" alt="${product.name}" loading="lazy">
+       <img
+          src="${encodeURI(product.image || '')}"
+          alt="${product.name}"
+          loading="lazy"
+          decoding="async"
+          width="1080"
+          height="1050"
+          onerror="this.onerror=null;this.src='assets/images/placeholder-340x330.webp'">
     </div>
 
     <div class="card__body">
