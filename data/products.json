@@ -83,6 +83,27 @@
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
       "image": "assets/women/212_vip.png"
+    },
+    {
+      "name": "La vida es bella",
+      "description": "Perfume de verano con notas cítricas 50ml.",
+      "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
+      "price": "7400",
+      "image": "assets/women/la_vida_es_bella.png"
+    },
+    {
+      "name": "La vida es bella Rosé",
+      "description": "Perfume de verano con notas cítricas 50ml.",
+      "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
+      "price": "7400",
+      "image": "assets/women/la_vida_es_bella_rose.png"
+    },
+    {
+      "name": "La vida es bella Intense",
+      "description": "Perfume de verano con notas cítricas 50ml.",
+      "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
+      "price": "7400",
+      "image": "assets/women/la_vida_es_bella_intense.png"
     }
   ],
   "men": [
