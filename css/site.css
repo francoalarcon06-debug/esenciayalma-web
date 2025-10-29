@@ -108,15 +108,13 @@ a{text-decoration:none;color:inherit}
 .sec-link--bottom{
   display:block;
   text-align:right;
-  color:#000;                /* texto negro */
+  color:#000;
   font-weight:600;
-  font-size:17px;            /* más grande */
-  margin-top:18px;           /* más separación */
-  text-decoration:none;      /* sin subrayado */
+  font-size:17px;
+  margin-top:18px;
+  text-decoration:none;
 }
-.sec-link--bottom:hover{
-  color:#000;                /* se mantiene negro al pasar el mouse */
-}
+.sec-link--bottom:hover{ color:#000; }
 
 /* Puente suave hero → primera sección (sin línea) */
 #mujer.catalog-section{
@@ -186,17 +184,18 @@ a{text-decoration:none;color:inherit}
   min-width:260px;
 }
 
-/* Recuadro imagen */
+/* Recuadro imagen – marco universal */
 .card__img{
   width:100%;
-  height:360px;
+  aspect-ratio: 1080 / 1050; /* mismo marco que tus imágenes Canva */
   background:#f6f6f6;
   display:flex;align-items:center;justify-content:center;
   padding:0;margin:0;overflow:hidden;
 }
 .card__img img{
-  width:100%;height:100%;
-  object-fit:cover;
+  inline-size:100%;
+  block-size:100%;
+  object-fit:contain;       /* no recorta; siempre entra completa */
   object-position:center;
   transition:transform .35s ease;
   will-change:transform;
@@ -305,8 +304,9 @@ a{text-decoration:none;color:inherit}
 
   .track{ padding: 6px 4px 10px; }
 
-  .card__img{ width:100%; height:260px; padding:0; margin:0; overflow:hidden; }
-  .card__img img{ object-fit:cover; object-position:center; }
+  /* Mantener el mismo marco en compact desktop (sin forzar height) */
+  .card__img{ width:100%; padding:0; margin:0; overflow:hidden; }
+  .card__img img{ object-fit:contain; object-position:center; }
 
   .card__body{
     padding:12px;
@@ -347,33 +347,26 @@ a{text-decoration:none;color:inherit}
     align-items: flex-start;
     gap: 14px;
   }
-  /* El bloque de texto puede usar todo el ancho */
   .footer__brand{
     max-width: none !important;
     width: 100%;
   }
-  .footer__brand p{
-    max-width: none;
-  }
-  /* Botón WhatsApp a la línea de abajo y ancho completo */
-  .footer__contact{
-    width: 100%;
-  }
+  .footer__brand p{ max-width: none; }
+  .footer__contact{ width: 100%; }
   .footer__contact .btn{
     width: 100%;
     justify-content: center;
     margin-top: 6px;
   }
 }
+
 /* ===== MODO COMPACTO PARA CELULARES (solo móvil) ===== */
 @media (max-width: 768px){
 
-  /* Menos aire vertical para que quepa todo */
   .catalog-section{
     padding: 28px 0 32px;
   }
 
-  /* Título y subtítulo más compactos */
   .sec-title{
     font-size: clamp(22px, 5.4vw, 28px);
     margin: 0 0 6px;
@@ -384,29 +377,16 @@ a{text-decoration:none;color:inherit}
     line-height: 1.45;
   }
 
-  /* Carrusel: menos padding y separación */
   .track{
     gap: 12px;
     padding: 6px 2px 10px;
   }
 
-  /* Imagen de la tarjeta: altura fluida según alto de pantalla */
-  .card__img{
-    height: clamp(180px, 36vh, 250px);
-  }
+  /* Mantener el mismo marco también en móvil (sin alturas variables) */
+  .card__img{ width:100%; }
+  .card__img img{ object-fit:contain; }
 
-  /* Contenido de la tarjeta: un pelín más compacto */
-  .card__body{
-    padding: 12px;
-  }
-
-  /* Botón dentro de la tarjeta */
-  .card__btn{
-    padding: 12px 14px;
-  }
-
-  /* Flechas: ligerísimo ajuste para no robar espacio visual */
-  .nav-btn{
-    top: 46%;
-  }
+  .card__body{ padding: 12px; }
+  .card__btn{ padding: 12px 14px; }
+  .nav-btn{ top: 46%; }
 }
