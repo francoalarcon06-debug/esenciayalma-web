@@ -62,6 +62,27 @@
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
       "image": "assets/women/212_vip_rose.png"
+    },
+    {
+      "name": "212 Carolina Herrera",
+      "description": "Perfume de verano con notas cítricas 50ml.",
+      "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
+      "price": "7400",
+      "image": "assets/women/212_carolina_herrera.png"
+    },
+    {
+      "name": "212 sexy",
+      "description": "Perfume de verano con notas cítricas 50ml.",
+      "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
+      "price": "7400",
+      "image": "assets/women/212_sexy.png"
+    },
+    {
+      "name": "212 VIP",
+      "description": "Perfume de verano con notas cítricas 50ml.",
+      "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
+      "price": "7400",
+      "image": "assets/women/212_vip.png"
     }
   ],
   "men": [
