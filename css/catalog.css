@@ -168,15 +168,30 @@
   box-shadow: var(--shadow);
 }
 
-/* Ajuste visual tarjetas */
-.card__img {
-  height: 280px;
+/* ====== MEDIA de la tarjeta (MARCO 1080×1050) ======
+   Reemplaza el alto fijo por aspect-ratio para uniformidad
+   y usa object-fit para no deformar el frasco. */
+.card__img{
+  /* Reservamos relación 1080 / 1050 con fallback por si no viene la var */
+  aspect-ratio: var(--media-w,1080) / var(--media-h,1050);
+  overflow: hidden;
+  background: #fff;          /* por si el PNG trae transparencia */
+  border-radius: 12px;       /* opcional: si tus cards ya tienen radios, podés quitarlo */
 }
+.card__img .card__media{
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;       /* NO recorta; si querés llenar, usar 'cover' */
+  object-position: center bottom;
+}
+
+/* (Quitamos el alto fijo previo)
+.card__img { height: 280px; }
 @media (max-width: 760px) {
-  .card__img {
-    height: clamp(180px, 36vh, 260px);
-  }
+  .card__img { height: clamp(180px, 36vh, 260px); }
 }
+*/
 
 /* ====== FONDO GENERAL ====== */
 body {
