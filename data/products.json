@@ -923,6 +923,90 @@
       ]
     },
     {
+      "name": "Invictus",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/invictus.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Invictus Platinum",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/invictus_platinum.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Paco Rabanne",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/paco_rabanne.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "XS",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/xs.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Pure XS",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/pure_xs.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Black XS",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/black_xs.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
       "name": "One Million Intense",
       "description": "Fragancia cálida y elegante.",
       "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
