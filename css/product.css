@@ -116,12 +116,12 @@
 }
 
 /* ====== VARIANTES (chips de ml) ====== */
-/* Contenedor de chips: debajo del título, alineados a la derecha en desktop */
+/* Contenedor de chips: debajo del título, alineados SIEMPRE a la izquierda */
 .variant-chips{
   display:flex;
   flex-wrap:wrap;
   gap:8px;
-  justify-content:flex-end;
+  justify-content:flex-start; /* <- cambio: antes estaba 'flex-end' */
   margin:6px 0 2px; /* pequeño respiro con el título y el precio */
 }
 
@@ -246,7 +246,7 @@
     margin-top:6px;
   }
 
-  /* Chips en móvil: alineación a la izquierda para lectura natural */
+  /* Chips en móvil: ya están a la izquierda */
   .variant-chips{
     justify-content:flex-start;
     margin:8px 0 2px;
