@@ -867,11 +867,11 @@
   ],
   "men": [
     {
-      "name": "Perfume de Hombre 100ml",
+      "name": "Azzaro",
       "description": "Aroma intenso y masculino.",
       "longDescription": "Salida cítrica especiada con corazón aromático y base de maderas secas. Presencia segura, versátil y con gran rendimiento.",
       "price": "16000",
-      "image": "assets/men/Perfume men prueba.png",
+      "image": "assets/men/azzaro.png",
       "variants": [
         { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
@@ -881,11 +881,11 @@
       ]
     },
     {
-      "name": "Perfume de Hombre 100ml – Classic",
+      "name": "Azzaro Wanted",
       "description": "Aroma clásico y elegante.",
       "longDescription": "Estilo barbershop: lavanda limpia, fougère elegante y base cálida. Atemporal y varonil, ideal para oficina y ocasiones formales.",
       "price": "16000",
-      "image": "assets/men/Perfume men prueba.png",
+      "image": "assets/men/azzaro_wanted.png",
       "variants": [
         { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
@@ -895,11 +895,11 @@
       ]
     },
     {
-      "name": "Perfume de Hombre 100ml – Intense",
+      "name": "Phantom",
       "description": "Aroma profundo y sofisticado.",
       "longDescription": "Ámbar resinoso con incienso y maderas. Profundo y envolvente, pensado para destacar de noche o en clima frío. Deja una estela elegante y duradera.",
       "price": "16000",
-      "image": "assets/men/Perfume men prueba.png",
+      "image": "assets/men/phantom.png",
       "variants": [
         { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
@@ -909,11 +909,11 @@
       ]
     },
     {
-      "name": "Perfume de Hombre 100ml – Fresh",
+      "name": "One Million",
       "description": "Aroma limpio y refrescante.",
       "longDescription": "Cítricos limpios con acorde acuático y vetiver. Sensación de ducha recién tomada: ligero, deportivo y muy fácil de llevar.",
       "price": "16000",
-      "image": "assets/men/Perfume men prueba.png",
+      "image": "assets/men/one_million.png",
       "variants": [
         { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
@@ -923,11 +923,11 @@
       ]
     },
     {
-      "name": "Perfume de Hombre 100ml – Night",
+      "name": "One Million Intense",
       "description": "Fragancia cálida y elegante.",
       "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
       "price": "16000",
-      "image": "assets/men/Perfume men prueba.png",
+      "image": "assets/men/one_million_intense.png",
       "variants": [
         { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
