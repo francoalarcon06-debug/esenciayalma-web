@@ -7,9 +7,11 @@
       "price": "16000",
       "image": "assets/women/live_irresistible.png",
       "variants": [
+        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
         { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" }
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
       ]
     },
     {
