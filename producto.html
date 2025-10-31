@@ -10,6 +10,46 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/site.css">
   <link rel="stylesheet" href="css/product.css">
+
+  <!-- Estilos mínimos para chips de variantes -->
+  <style>
+    .variant-chips {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end; /* a la derecha debajo del título */
+      margin: 6px 0 10px;
+    }
+    .variant-chip {
+      appearance: none;
+      border: 1px solid #ffd0e2;
+      background: #fff;
+      color: var(--text, #2b2b2b);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1;
+      padding: 10px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: var(--shadow, 0 10px 30px rgba(0,0,0,.08));
+      transition: background .2s, border-color .2s, transform .06s;
+    }
+    .variant-chip:hover { border-color: #ffb2cf; transform: translateY(-1px); }
+    .variant-chip:focus { outline: 2px solid #ff86b5; outline-offset: 2px; }
+    .variant-chip[aria-pressed="true"] {
+      background: #ffe4ef; /* rosado clarito activo */
+      border-color: #ff86b5;
+      font-weight: 600;
+    }
+    .variant-chip:disabled {
+      opacity: .5; cursor: not-allowed; text-decoration: line-through;
+    }
+    /* Ajustes mobile: mantener todo legible y respirado */
+    @media (max-width: 640px) {
+      .variant-chips { justify-content: flex-start; } /* en móvil a la izquierda si el ancho es estrecho */
+      .variant-chip { font-size: 13px; padding: 9px 11px; }
+    }
+  </style>
 </head>
 <body>
 
@@ -33,6 +73,8 @@
         <!-- Botón dentro del recuadro blanco -->
         <a href="catalogo.html" class="btn btn-ghost crumb-btn inside">Volver al catálogo</a>
         <!-- El resto del contenido se inyecta por JS -->
+        <!-- Contenedor que inyectaremos bajo el título una vez cargado el producto -->
+        <div id="variantChipsMount" style="display:none;"></div>
       </section>
     </div>
   </main>
@@ -95,6 +137,155 @@
           e.preventDefault();
           window.open(wa, "_blank", "noopener");
         });
+      }
+    })();
+  </script>
+
+  <!-- Script para chips de variantes (no rompe nada si no hay variants) -->
+  <script>
+    (function () {
+      const PRODUCT_SECTION = document.getElementById('product');
+      const MOUNT_PLACEHOLDER = document.getElementById('variantChipsMount');
+
+      // Utilidades
+      const fmtCLP = (n) => {
+        const num = typeof n === 'string' ? parseInt(n, 10) : n;
+        return new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP', maximumFractionDigits: 0 }).format(num);
+      };
+      const qs = (sel, root=document) => root.querySelector(sel);
+      const qsa = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+
+      // Obtiene el índice del producto desde la URL (?c=women&i=1)
+      function getParams() {
+        const p = new URLSearchParams(location.search);
+        return { c: p.get('c') || p.get('scope') || 'women', i: parseInt(p.get('i') || '0', 10) };
+      }
+
+      // Busca elementos de título, precio y botón WhatsApp dentro del bloque renderizado
+      function findTitleEl() {
+        return qs('#product h1, #product .product__title, #product [data-title]');
+      }
+      function findPriceEl() {
+        // intentos comunes
+        return qs('#product [data-price], #product .product__price, #product .price, #product h3, #product .price-value');
+      }
+      function findWhatsAppBtnInCard() {
+        // botón "Consultar por WhatsApp" dentro de la tarjeta
+        const links = qsa('#product a, #product button');
+        return links.find(el => /whatsapp/i.test(el.textContent || ''));
+      }
+
+      // Espera a que product.page.js termine de inyectar el HTML
+      function waitForRender(timeoutMs = 4000) {
+        return new Promise((resolve) => {
+          const start = performance.now();
+          const iv = setInterval(() => {
+            const title = findTitleEl();
+            const price = findPriceEl();
+            if (title && price) {
+              clearInterval(iv);
+              resolve({ title, price });
+            } else if (performance.now() - start > timeoutMs) {
+              clearInterval(iv);
+              resolve({ title, price });
+            }
+          }, 60);
+        });
+      }
+
+      async function initVariants() {
+        const { c, i } = getParams();
+
+        // Carga data/products.json para leer las variantes del producto
+        let data;
+        try {
+          const res = await fetch('data/products.json', { cache: 'no-store' });
+          data = await res.json();
+        } catch (e) {
+          return; // si falla, no hacemos nada
+        }
+
+        const list = data?.[c] || [];
+        const product = list?.[i];
+        if (!product || !Array.isArray(product.variants) || product.variants.length === 0) {
+          return; // sin variants => no renderizamos chips
+        }
+
+        // Espera a que se renderice la tarjeta
+        const { title, price } = await waitForRender();
+        if (!title || !price) return;
+
+        // Monto por defecto: 100ml si existe; si no, el primero
+        const defaultIdx = product.variants.findIndex(v => Number(v.ml) === 100);
+        let current = defaultIdx >= 0 ? product.variants[defaultIdx] : product.variants[0];
+
+        // Construir barra de chips
+        const bar = document.createElement('div');
+        bar.className = 'variant-chips';
+        product.variants.forEach((v, idx) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'variant-chip';
+          btn.textContent = `${v.ml} ml`;
+          const isActive = (Number(v.ml) === Number(current.ml));
+          btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+
+          btn.addEventListener('click', () => {
+            current = v;
+            // actualizar estados visuales
+            qsa('.variant-chip', bar).forEach(b => b.setAttribute('aria-pressed', 'false'));
+            btn.setAttribute('aria-pressed', 'true');
+            // actualizar precio mostrado
+            price.textContent = fmtCLP(v.price);
+            // actualizar WhatsApp del card (si existe)
+            const waBtn = findWhatsAppBtnInCard();
+            if (waBtn && waBtn.href) {
+              try {
+                const url = new URL(waBtn.href);
+                const baseText = "¡Hola! Me interesa este producto";
+                const name = product.name || (title.textContent || '').trim();
+                const msg = `${baseText}: ${name} (${v.ml} ml) – ${fmtCLP(v.price)}`;
+                url.searchParams.set('text', msg);
+                waBtn.href = url.toString();
+              } catch (e) { /* noop */ }
+            }
+          });
+
+          bar.appendChild(btn);
+        });
+
+        // Insertar la barra justo debajo del título
+        // Si el HTML lo permite, la colocamos después del título.
+        if (title.parentNode) {
+          title.parentNode.insertBefore(bar, title.nextSibling);
+        } else {
+          // Fallback: usamos el placeholder dentro de #product
+          MOUNT_PLACEHOLDER.style.display = 'block';
+          MOUNT_PLACEHOLDER.appendChild(bar);
+        }
+
+        // Setear precio inicial según la variante por defecto
+        price.textContent = fmtCLP(current.price);
+
+        // También ajustar el botón de WhatsApp inicial del card
+        const waBtnInitial = findWhatsAppBtnInCard();
+        if (waBtnInitial && waBtnInitial.href) {
+          try {
+            const url = new URL(waBtnInitial.href);
+            const baseText = "¡Hola! Me interesa este producto";
+            const name = product.name || (title.textContent || '').trim();
+            const msg = `${baseText}: ${name} (${current.ml} ml) – ${fmtCLP(current.price)}`;
+            url.searchParams.set('text', msg);
+            waBtnInitial.href = url.toString();
+          } catch (e) { /* noop */ }
+        }
+      }
+
+      // Inicia cuando el DOM está listo
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initVariants);
+      } else {
+        initVariants();
       }
     })();
   </script>
