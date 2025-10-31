@@ -43,413 +43,826 @@
       "description": "Notas románticas y suaves 50ml.",
       "longDescription": "Ramo de rosas y peonías con un velo limpio de almizcle blanco. Romántico y sutil, perfecto para momentos especiales o para elevar un look diario. Su aroma perdura de forma delicada en la piel.",
       "price": "7400",
-      "image": "assets/women/very_good_girl.png"
+      "image": "assets/women/very_good_girl.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Carolina",
       "description": "Esencia delicada y fresca 50ml.",
       "longDescription": "Rosa jugosa y chispeante con matices frutales y cítricos. Fresco, juvenil y limpio; ideal para climas templados o cálidos. Evoca un jardín rosado al amanecer.",
       "price": "7400",
-      "image": "assets/women/carolina.png"
+      "image": "assets/women/carolina.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Carolina Herrera",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/carolina_herrera.png"
+      "image": "assets/women/carolina_herrera.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "CH",
       "description": "Aroma envolvente con toques florales 50ml.",
       "longDescription": "Tuberosa cremosa con ámbar y vainilla suave. Sensual sin ser pesado, cálido y abrazador, perfecto para tardes y noches. Un aroma que deja huella.",
       "price": "7400",
-      "image": "assets/women/ch.png"
+      "image": "assets/women/ch.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "212 Heroes For Her",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/212_heroes_for_her.png"
+      "image": "assets/women/212_heroes_for_her.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "212 VIP Rosé",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/212_vip_rose.png"
+      "image": "assets/women/212_vip_rose.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "212 Carolina Herrera",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/212_carolina_herrera.png"
+      "image": "assets/women/212_carolina_herrera.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "212 sexy",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/212_sexy.png"
+      "image": "assets/women/212_sexy.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "212 VIP",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/212_vip.png"
+      "image": "assets/women/212_vip.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "La vida es bella",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/la_vida_es_bella.png"
+      "image": "assets/women/la_vida_es_bella.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "La vida es bella Rosé",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/la_vida_es_bella_rose.png"
+      "image": "assets/women/la_vida_es_bella_rose.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "La vida es bella Intense",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/la_vida_es_bella_intense.png"
+      "image": "assets/women/la_vida_es_bella_intense.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Idole",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/idole.png"
+      "image": "assets/women/idole.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Poeme",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/poeme.png"
+      "image": "assets/women/poeme.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "O de lancome",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/o_de_lancome.png"
+      "image": "assets/women/o_de_lancome.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Tresor",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/tresor.png"
+      "image": "assets/women/tresor.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "La Nuit Tresor",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/la_nuit_tresor.png"
+      "image": "assets/women/la_nuit_tresor.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Light Blue",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/light_blue.png"
+      "image": "assets/women/light_blue.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Dolce",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/dolce.png"
+      "image": "assets/women/dolce.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Chanel N°5",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/chanel_n5.png"
+      "image": "assets/women/chanel_n5.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Coco Chanel",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/coco_chanel.png"
+      "image": "assets/women/coco_chanel.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Coco Mademoiselle",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/coco_mademoiselle.png"
+      "image": "assets/women/coco_mademoiselle.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Fame",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/fame.png"
+      "image": "assets/women/fame.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Lady Million",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/lady_million.png"
+      "image": "assets/women/lady_million.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Lady Million Empire",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/lady_million_empire.png"
+      "image": "assets/women/lady_million_empire.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Ultra Violet",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/ultra_violet.png"
+      "image": "assets/women/ultra_violet.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "XS Black Woman",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/xs_black_woman.png"
+      "image": "assets/women/xs_black_woman.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Olympea",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/olympea.png"
+      "image": "assets/women/olympea.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Paris",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/paris.png"
+      "image": "assets/women/paris.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Black Opium",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/black_opium.png"
+      "image": "assets/women/black_opium.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Libre",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/libre.png"
+      "image": "assets/women/libre.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "My Way",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/my_way.png"
+      "image": "assets/women/my_way.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Emporio",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/emporio.png"
+      "image": "assets/women/emporio.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Sí",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/si.png"
+      "image": "assets/women/si.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Acqua Di Gioia",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/acqua_di_gioia.png"
+      "image": "assets/women/acqua_di_gioia.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Halloween",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/halloween.png"
+      "image": "assets/women/halloween.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Duende",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/duende.png"
+      "image": "assets/women/duende.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Amor Amor",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/amor_amor.png"
+      "image": "assets/women/amor_amor.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Eden",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/eden.png"
+      "image": "assets/women/eden.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Anais Anais",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/anais_anais.png"
+      "image": "assets/women/anais_anais.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Gloria",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/gloria.png"
+      "image": "assets/women/gloria.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Euphoria",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/euphoria.png"
+      "image": "assets/women/euphoria.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Eternity",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/eternity.png"
+      "image": "assets/women/eternity.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Escape",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/escape.png"
+      "image": "assets/women/escape.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "CK One",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/ck_one.png"
+      "image": "assets/women/ck_one.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Ralph",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/ralph.png"
+      "image": "assets/women/ralph.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Woman",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/woman.png"
+      "image": "assets/women/woman.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Poison",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/poison.png"
+      "image": "assets/women/poison.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "J'adore",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/jadore.png"
+      "image": "assets/women/jadore.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Miss Dior Rosé",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/miss_dior_rose.png"
+      "image": "assets/women/miss_dior_rose.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Paloma Picasso",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/paloma_picasso.png"
+      "image": "assets/women/paloma_picasso.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "L'eau D'isey",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/leau_disey.png"
+      "image": "assets/women/leau_disey.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Lolita Lempieka",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/lolita_lempieka.png"
+      "image": "assets/women/lolita_lempieka.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Tommy Girl",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/tommy_girl.png"
+      "image": "assets/women/tommy_girl.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Be Delicious",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/be_delicius.png"
+      "image": "assets/women/be_delicius.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Animale",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/animale.png"
+      "image": "assets/women/animale.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Angel",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/angel.png"
+      "image": "assets/women/angel.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Nina",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/nina.png"
+      "image": "assets/women/nina.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Can Can",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/can_can.png"
+      "image": "assets/women/can_can.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     }
   ],
   "men": [
@@ -458,35 +871,70 @@
       "description": "Aroma intenso y masculino.",
       "longDescription": "Salida cítrica especiada con corazón aromático y base de maderas secas. Presencia segura, versátil y con gran rendimiento.",
       "price": "16000",
-      "image": "assets/men/Perfume men prueba.png"
+      "image": "assets/men/Perfume men prueba.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Perfume de Hombre 100ml – Classic",
       "description": "Aroma clásico y elegante.",
       "longDescription": "Estilo barbershop: lavanda limpia, fougère elegante y base cálida. Atemporal y varonil, ideal para oficina y ocasiones formales.",
       "price": "16000",
-      "image": "assets/men/Perfume men prueba.png"
+      "image": "assets/men/Perfume men prueba.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Perfume de Hombre 100ml – Intense",
       "description": "Aroma profundo y sofisticado.",
       "longDescription": "Ámbar resinoso con incienso y maderas. Profundo y envolvente, pensado para destacar de noche o en clima frío. Deja una estela elegante y duradera.",
       "price": "16000",
-      "image": "assets/men/Perfume men prueba.png"
+      "image": "assets/men/Perfume men prueba.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Perfume de Hombre 100ml – Fresh",
       "description": "Aroma limpio y refrescante.",
       "longDescription": "Cítricos limpios con acorde acuático y vetiver. Sensación de ducha recién tomada: ligero, deportivo y muy fácil de llevar.",
       "price": "16000",
-      "image": "assets/men/Perfume men prueba.png"
+      "image": "assets/men/Perfume men prueba.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Perfume de Hombre 100ml – Night",
       "description": "Fragancia cálida y elegante.",
       "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
       "price": "16000",
-      "image": "assets/men/Perfume men prueba.png"
+      "image": "assets/men/Perfume men prueba.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     }
   ],
   "black": [
@@ -495,28 +943,56 @@
       "description": "Inspirado en las mejores fragancias de nicho.",
       "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
       "price": "26000",
-      "image": "assets/black/Perfume black prueba.png"
+      "image": "assets/black/Perfume black prueba.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Black Parfums 100ml – Elegance",
       "description": "Inspirado en la elegancia moderna.",
       "longDescription": "Maderas limpias, cashmeran sedoso y almizcle. Minimalista y muy pulido: huele a piel impecable y buen gusto. Perfecto para quienes disfrutan aromas discretos pero memorables.",
       "price": "26000",
-      "image": "assets/black/Perfume black prueba.png"
+      "image": "assets/black/Perfume black prueba.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Black Parfums 100ml – Intense",
       "description": "Perfume potente y envolvente.",
       "longDescription": "Especias vibrantes sobre un ámbar denso con maderas ahumadas. Poderoso, nocturno y muy persistente. Diseñado para quienes buscan un aroma con personalidad fuerte y presencia marcada.",
       "price": "26000",
-      "image": "assets/black/Perfume black prueba.png"
+      "image": "assets/black/Perfume black prueba.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Black Parfums 100ml – Supreme",
       "description": "Aroma imponente y cálido.",
       "longDescription": "Cuero elegante con benjuí balsámico y patchouli profundo. Presencia imponente con acabado cálido y refinado.",
       "price": "26000",
-      "image": "assets/black/Perfume black prueba.png"
+      "image": "assets/black/Perfume black prueba.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     }
   ],
   "red": [
@@ -525,7 +1001,14 @@
       "description": "Fragancia romántica y cautivadora.",
       "longDescription": "Frutos rojos jugosos con rosa dulce y vainilla cremosa. Atractivo y juguetón, deja una estela golosa sin saturar. Se adapta a climas cálidos y fríos, ideal para quienes aman los aromas dulces modernos.",
       "price": "24000",
-      "image": "assets/red/Perfume red prueba.jpg"
+      "image": "assets/red/Perfume red prueba.jpg",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     }
   ],
   "lavit": [
@@ -534,7 +1017,14 @@
       "description": "Frescura y vitalidad todo el día.",
       "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
       "price": "8000",
-      "image": "assets/lavit/Perfume lavit prueba.jpg"
+      "image": "assets/lavit/Perfume lavit prueba.jpg",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     }
   ],
   "hogar": [
@@ -543,49 +1033,98 @@
       "description": "Vela aromática de cera de soya.",
       "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
       "price": "12000",
-      "image": "assets/hogar/Hogar prueba.png"
+      "image": "assets/hogar/Hogar prueba.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Difusor HOME 120ml",
       "description": "Difusor ambiental con varillas.",
       "longDescription": "Difusión continua con varillas de fibra. Perfila espacios con flores blancas limpias y sensación de hogar recién ventilado.",
       "price": "14500",
-      "image": "assets/hogar/Hogar prueba.png"
+      "image": "assets/hogar/Hogar prueba.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Spray textil HOME 250ml",
       "description": "Aroma limpio para telas y espacios cerrados.",
       "longDescription": "Rocío rápido de fragancia tipo lino limpio con toque cítrico. Ideal para cortinas, ropa de cama, sofás y clósets. Refresca sin dejar residuos.",
       "price": "9800",
-      "image": "assets/hogar/Hogar prueba.png"
+      "image": "assets/hogar/Hogar prueba.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Set de velas HOME",
       "description": "Pack de tres velas pequeñas con diferentes fragancias.",
       "longDescription": "Tres mini velas para ambientar distintos rincones. Combina acordes vainillados, cítricos y lavanda para cada momento.",
       "price": "16500",
-      "image": "assets/hogar/Hogar prueba.png"
+      "image": "assets/hogar/Hogar prueba.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Aromatizador eléctrico HOME",
       "description": "Difusor eléctrico con tecnología ultrasónica.",
       "longDescription": "Nebulización fina y silenciosa con auto-apagado. Úsalo con tus esencias favoritas para perfumar de forma homogénea. Ideal para espacios grandes o dormitorios.",
       "price": "22900",
-      "image": "assets/hogar/Hogar prueba.png"
+      "image": "assets/hogar/Hogar prueba.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Esencia concentrada HOME 30ml",
       "description": "Aceite esencial concentrado ideal para difusores.",
       "longDescription": "Alta concentración para una perfumación notoria con pocas gotas. Disponible en varias familias aromáticas.",
       "price": "8700",
-      "image": "assets/hogar/Hogar prueba.png"
+      "image": "assets/hogar/Hogar prueba.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Vela de lujo HOME 300g",
       "description": "Vela premium con aroma a madera y vainilla.",
       "longDescription": "Mezcla de cera premium con mecha de algodón. Aroma envolvente y cálido que llena salones y dormitorios amplios.",
       "price": "15800",
-      "image": "assets/hogar/Hogar prueba.png"
+      "image": "assets/hogar/Hogar prueba.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     }
   ]
 }
