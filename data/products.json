@@ -19,14 +19,24 @@
       "description": "Fragancia femenina y elegante 50ml.",
       "longDescription": "Un perfume delicado y seguro de sí mismo: abre dulce y cremoso, evoluciona a un corazón floral limpio y deja un rastro suave que se siente cómodo y chic. Perfecto para quienes buscan un aroma elegante sin ser abrumador.",
       "price": "7400",
-      "image": "assets/women/organza.png"
+      "image": "assets/women/organza.png",
+      "variants": [
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Good Girl",
       "description": "Aroma floral y dulce 50ml.",
       "longDescription": "Una mezcla gourmand sutil con flores cremosas y vainilla ligera. Ideal para uso diario si te gustan los aromas femeninos, envolventes y brillantes. Su duración es prolongada y deja una estela suave y luminosa.",
       "price": "7400",
-      "image": "assets/women/good_girl.png"
+      "image": "assets/women/good_girl.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 5, "price": "1500" }
+      ]
     },
     {
       "name": "Very Good Girl",
