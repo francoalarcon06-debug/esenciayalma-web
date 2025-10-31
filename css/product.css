@@ -115,7 +115,51 @@
   font-size:clamp(28px,3.2vw,40px);
 }
 
-/* Descripción (panel rosa, crece hacia abajo) */
+/* ====== VARIANTES (chips de ml) ====== */
+/* Contenedor de chips: debajo del título, alineados a la derecha en desktop */
+.variant-chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  justify-content:flex-end;
+  margin:6px 0 2px; /* pequeño respiro con el título y el precio */
+}
+
+/* Chip individual */
+.variant-chip{
+  appearance:none;
+  border:1px solid #ffd0e2;            /* borde rosado suave */
+  background:#fff;
+  color:var(--text, #2b2b2b);
+  font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-size:14px;
+  line-height:1;
+  padding:10px 12px;
+  border-radius:999px;
+  cursor:pointer;
+  box-shadow:var(--shadow, 0 10px 30px rgba(0,0,0,.08));
+  transition:background .2s, border-color .2s, transform .06s;
+}
+.variant-chip:hover{
+  border-color:#ffb2cf;
+  transform:translateY(-1px);
+}
+.variant-chip:focus{
+  outline:2px solid #ff86b5;           /* focus accesible */
+  outline-offset:2px;
+}
+.variant-chip[aria-pressed="true"]{
+  background:#ffe4ef;                  /* rosado clarito activo */
+  border-color:#ff86b5;
+  font-weight:600;
+}
+.variant-chip:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+  text-decoration:line-through;
+}
+
+/* ====== Descripción (panel rosa, crece hacia abajo) ====== */
 .p-descbox{
   background:#fff7fa;
   border:1px solid #f4c1d6;
@@ -200,6 +244,16 @@
   .p-gallery{
     order:1;
     margin-top:6px;
+  }
+
+  /* Chips en móvil: alineación a la izquierda para lectura natural */
+  .variant-chips{
+    justify-content:flex-start;
+    margin:8px 0 2px;
+  }
+  .variant-chip{
+    font-size:13px;
+    padding:9px 11px;
   }
 
   /* Si quisieras un ajuste fino extra en móvil, podrías sumar/restar aquí:
