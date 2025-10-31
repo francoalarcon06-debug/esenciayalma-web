@@ -405,6 +405,34 @@
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
       "image": "assets/women/be_delicius.png"
+    },
+    {
+      "name": "Animale",
+      "description": "Perfume de verano con notas cítricas 50ml.",
+      "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
+      "price": "7400",
+      "image": "assets/women/animale.png"
+    },
+    {
+      "name": "Angel",
+      "description": "Perfume de verano con notas cítricas 50ml.",
+      "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
+      "price": "7400",
+      "image": "assets/women/angel.png"
+    },
+    {
+      "name": "Nina",
+      "description": "Perfume de verano con notas cítricas 50ml.",
+      "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
+      "price": "7400",
+      "image": "assets/women/nina.png"
+    },
+    {
+      "name": "Can Can",
+      "description": "Perfume de verano con notas cítricas 50ml.",
+      "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
+      "price": "7400",
+      "image": "assets/women/can_can.png"
     }
   ],
   "men": [
