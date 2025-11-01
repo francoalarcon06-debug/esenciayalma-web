@@ -879,6 +879,23 @@
       ]
     }
   ],
+  "colonias": [
+    {
+      "name": "LAVIT Body Splash 210ml",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/lavit/Perfume lavit prueba.jpg",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    }
+  ],
+  ],
   "men": [
     {
       "name": "Azzaro",
