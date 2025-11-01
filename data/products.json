@@ -221,11 +221,11 @@
       ]
     },
     {
-      "name": "Poeme",
+      "name": "Paradox",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/poeme.png",
+      "image": "assets/women/paradox.png",
       "variants": [
         { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
@@ -487,11 +487,11 @@
       ]
     },
     {
-      "name": "Emporio",
+      "name": "La Vida es Bella Elixir",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/emporio.png",
+      "image": "assets/women/la_vida_es_bella_elixir.png",
       "variants": [
         { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
@@ -599,11 +599,11 @@
       ]
     },
     {
-      "name": "Gloria",
+      "name": "Burberry Her",
       "description": "Perfume de verano con notas cítricas 50ml.",
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
-      "image": "assets/women/gloria.png",
+      "image": "assets/women/burberry_her.png",
       "variants": [
         { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
@@ -856,6 +856,20 @@
       "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
       "price": "7400",
       "image": "assets/women/can_can.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Devotion",
+      "description": "Perfume de verano con notas cítricas 50ml.",
+      "longDescription": "Cítricos brillantes y flores blancas transparentes sobre maderas claras. Un aroma de vacaciones: ligero, radiante y muy fácil de usar. Se siente natural y optimista.",
+      "price": "7400",
+      "image": "assets/women/devotion.png",
       "variants": [
         { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
