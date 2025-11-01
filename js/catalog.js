@@ -495,7 +495,7 @@ async function setupCarouselSection(sectionEl, items) {
   try {
     const data = await loadData();
     for (const sec of document.querySelectorAll(".catalog-section")) {
-      const key  = sec.getAttribute("data-category"); // women, men, black, red, lavit, hogar
+      const key  = sec.getAttribute("data-category"); // women, men, colonias, black, red, lavit, hogar
       const list = Array.isArray(data[key]) ? data[key] : [];
       await setupCarouselSection(sec, list);
 
