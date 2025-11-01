@@ -939,9 +939,23 @@
   ],
   "men": [
     {
-      "name": "Azzaro",
+      "name": "Drakkar Noir",
       "description": "Aroma intenso y masculino.",
       "longDescription": "Salida cítrica especiada con corazón aromático y base de maderas secas. Presencia segura, versátil y con gran rendimiento.",
+      "price": "16000",
+      "image": "assets/men/drakkar_noir.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Azzaro Pour Homme",
+      "description": "Aroma clásico y elegante.",
+      "longDescription": "Estilo barbershop: lavanda limpia, fougère elegante y base cálida. Atemporal y varonil, ideal para oficina y ocasiones formales.",
       "price": "16000",
       "image": "assets/men/azzaro.png",
       "variants": [
@@ -953,25 +967,11 @@
       ]
     },
     {
-      "name": "Burberry Hero",
-      "description": "Aroma clásico y elegante.",
-      "longDescription": "Estilo barbershop: lavanda limpia, fougère elegante y base cálida. Atemporal y varonil, ideal para oficina y ocasiones formales.",
-      "price": "16000",
-      "image": "assets/men/burberry_hero.png",
-      "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
-      ]
-    },
-    {
-      "name": "Phantom",
+      "name": "Quorum",
       "description": "Aroma profundo y sofisticado.",
       "longDescription": "Ámbar resinoso con incienso y maderas. Profundo y envolvente, pensado para destacar de noche o en clima frío. Deja una estela elegante y duradera.",
       "price": "16000",
-      "image": "assets/men/phantom.png",
+      "image": "assets/men/quorum.png",
       "variants": [
         { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
@@ -981,11 +981,11 @@
       ]
     },
     {
-      "name": "One Million",
+      "name": "Paco Rabanne",
       "description": "Aroma limpio y refrescante.",
       "longDescription": "Cítricos limpios con acorde acuático y vetiver. Sensación de ducha recién tomada: ligero, deportivo y muy fácil de llevar.",
       "price": "16000",
-      "image": "assets/men/one_million.png",
+      "image": "assets/men/paco_rabanne.png",
       "variants": [
         { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
@@ -995,21 +995,7 @@
       ]
     },
     {
-      "name": "Invictus",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
-      "price": "16000",
-      "image": "assets/men/invictus.png",
-      "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
-      ]
-    },
-    {
-      "name": "Invictus Platinum",
+      "name": "Invictus Platinum (P. Rabanne)",
       "description": "Fragancia cálida y elegante.",
       "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
       "price": "16000",
@@ -1023,90 +1009,6 @@
       ]
     },
     {
-      "name": "Paco Rabanne",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
-      "price": "16000",
-      "image": "assets/men/paco_rabanne.png",
-      "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
-      ]
-    },
-    {
-      "name": "XS",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
-      "price": "16000",
-      "image": "assets/men/xs.png",
-      "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
-      ]
-    },
-    {
-      "name": "Pure XS",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
-      "price": "16000",
-      "image": "assets/men/pure_xs.png",
-      "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
-      ]
-    },
-    {
-      "name": "Black XS",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
-      "price": "16000",
-      "image": "assets/men/black_xs.png",
-      "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
-      ]
-    },
-    {
-      "name": "One Million Intense",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
-      "price": "16000",
-      "image": "assets/men/one_million_intense.png",
-      "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
-      ]
-    },
-    {
-      "name": "Polo Sport",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
-      "price": "16000",
-      "image": "assets/men/polo_sport.png",
-      "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
-      ]
-    },
-        {
       "name": "Polo Blue",
       "description": "Fragancia cálida y elegante.",
       "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
@@ -1121,123 +1023,11 @@
       ]
     },
     {
-      "name": "Polo Red",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
-      "price": "16000",
-      "image": "assets/men/polo_red.png",
-      "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
-      ]
-    },
-    {
-      "name": "Polo Black",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
-      "price": "16000",
-      "image": "assets/men/polo_black.png",
-      "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
-      ]
-    },
-    {
-      "name": "Bad Boy",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
-      "price": "16000",
-      "image": "assets/men/bad_boy.png",
-      "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
-      ]
-    },
-    {
-      "name": "Herrera",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
-      "price": "16000",
-      "image": "assets/men/herrera.png",
-      "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
-      ]
-    },
-    {
-      "name": "Bleu",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
-      "price": "16000",
-      "image": "assets/men/bleu.png",
-      "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
-      ]
-    },
-    {
-      "name": "212 Heroes",
+      "name": "212 Heroes Men",
       "description": "Fragancia cálida y elegante.",
       "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
       "price": "16000",
       "image": "assets/men/212_heroes.png",
-      "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
-      ]
-    },
-    {
-      "name": "212 For Men",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
-      "price": "16000",
-      "image": "assets/men/212_for_men.png",
-      "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
-      ]
-    },
-    {
-      "name": "212 VIP Black",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
-      "price": "16000",
-      "image": "assets/men/212_vip_black.png",
-      "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
-      ]
-    },
-    {
-      "name": "212 VIP Men",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
-      "price": "16000",
-      "image": "assets/men/212_vip_men.png",
       "variants": [
         { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
@@ -1261,11 +1051,11 @@
       ]
     },
     {
-      "name": "Acqua D'gio Profondo",
+      "name": "Tommy",
       "description": "Fragancia cálida y elegante.",
       "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
       "price": "16000",
-      "image": "assets/men/acqua_dgio_profondo.png",
+      "image": "assets/men/tommy.png",
       "variants": [
         { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
@@ -1275,123 +1065,11 @@
       ]
     },
     {
-      "name": "Acqua Di Gio",
+      "name": "Carolina Herrera",
       "description": "Fragancia cálida y elegante.",
       "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
       "price": "16000",
-      "image": "assets/men/acqua_di_gio.png",
-      "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
-      ]
-    },
-    {
-      "name": "Acqua Di Gio Absolu",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
-      "price": "16000",
-      "image": "assets/men/acqua_di_gio_absolu.png",
-      "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
-      ]
-    },
-    {
-      "name": "Fahrenheit",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
-      "price": "16000",
-      "image": "assets/men/fahrenheit.png",
-      "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
-      ]
-    },
-    {
-      "name": "Sauvage",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
-      "price": "16000",
-      "image": "assets/men/sauvage.png",
-      "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
-      ]
-    },
-    {
-      "name": "Sauvage Elixir",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
-      "price": "16000",
-      "image": "assets/men/sauvage_elixir.png",
-      "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
-      ]
-    },
-    {
-      "name": "MYSLF",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
-      "price": "16000",
-      "image": "assets/men/myslf.png",
-      "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
-      ]
-    },
-    {
-      "name": "Boss",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
-      "price": "16000",
-      "image": "assets/men/boss.png",
-      "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
-      ]
-    },
-    {
-      "name": "Elements",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
-      "price": "16000",
-      "image": "assets/men/elements.png",
-      "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
-      ]
-    },
-    {
-      "name": "Quorum",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
-      "price": "16000",
-      "image": "assets/men/quorum.png",
+      "image": "assets/men/herrera.png",
       "variants": [
         { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
@@ -1415,11 +1093,25 @@
       ]
     },
     {
-      "name": "Y Edt",
+      "name": "Ted Lapidus Pour Homme",
       "description": "Fragancia cálida y elegante.",
       "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
       "price": "16000",
-      "image": "assets/men/y_edt.png",
+      "image": "assets/men/ted_lapidus_pour_homme.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+        {
+      "name": "Polo Sport",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/polo_sport.png",
       "variants": [
         { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
@@ -1429,11 +1121,11 @@
       ]
     },
     {
-      "name": "Le Beau",
+      "name": "212 For Men",
       "description": "Fragancia cálida y elegante.",
       "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
       "price": "16000",
-      "image": "assets/men/le_beau.png",
+      "image": "assets/men/212_for_men.png",
       "variants": [
         { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
@@ -1443,11 +1135,11 @@
       ]
     },
     {
-      "name": "Eros",
+      "name": "Sauvage Elixir (C. Dior)",
       "description": "Fragancia cálida y elegante.",
       "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
       "price": "16000",
-      "image": "assets/men/eros.png",
+      "image": "assets/men/sauvage_elixir.png",
       "variants": [
         { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
@@ -1457,11 +1149,137 @@
       ]
     },
     {
-      "name": "Light Blue Men",
+      "name": "XS",
       "description": "Fragancia cálida y elegante.",
       "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
       "price": "16000",
-      "image": "assets/men/light_blue_men.png",
+      "image": "assets/men/xs.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Burberry Hero",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/burberry_hero.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Sauvage",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/sauvage.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Fahrenheit",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/fahrenheit.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Acqua D'gio Profondo",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/acqua_dgio_profondo.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Elements",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/elements.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Acqua Di Gio Pour Homme",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/acqua_di_gio.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Halloween Man",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/halloween.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Boss",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/boss.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "212 Vip Men",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/212_vip_men.png",
       "variants": [
         { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
@@ -1485,11 +1303,249 @@
       ]
     },
     {
-      "name": "Halloween",
+      "name": "XS Black Men",
       "description": "Fragancia cálida y elegante.",
       "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
       "price": "16000",
-      "image": "assets/men/halloween.png",
+      "image": "assets/men/black_xs.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Eros",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/eros.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "One Million Intense",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/one_million_intense.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Light Blue Men",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/light_blue_men.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Polo Black",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/polo_black.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Y EDT (Y.S.L)",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/y_edt.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Le Beau (J.P GAULTIER)",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/le_beau.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "One Million",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/one_million.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "MYSLF (Y.S.L)",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/myslf.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Invictus",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/invictus.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Acqua Di Gio Absolu",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/acqua_di_gio_absolu.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Polo Red",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/polo_red.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Gucci Guilty",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/gucci_guilty.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "212 Vip Black",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/212_vip_black.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Bleu (Chanel)",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/bleu.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Pure XS",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/pure_xs.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Bad Boy",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/bad_boy.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Phantom",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/phantom.png",
       "variants": [
         { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
