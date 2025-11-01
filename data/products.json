@@ -11,7 +11,7 @@
         { "ml": 100, "price": "16000" },
         { "ml": 50,  "price": "9900" },
         { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 15, "price": "1500" }
       ]
     },
     {
@@ -21,6 +21,48 @@
       "price": "7400",
       "image": "assets/women/organza.png",
       "variants": [
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Oscar de la Renta",
+      "description": "Fragancia femenina y elegante 50ml.",
+      "longDescription": "Un perfume delicado y seguro de sí mismo: abre dulce y cremoso, evoluciona a un corazón floral limpio y deja un rastro suave que se siente cómodo y chic. Perfecto para quienes buscan un aroma elegante sin ser abrumador.",
+      "price": "7400",
+      "image": "assets/women/oscar_de_la_renta.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Flower by Kenzo",
+      "description": "Fragancia femenina y elegante 50ml.",
+      "longDescription": "Un perfume delicado y seguro de sí mismo: abre dulce y cremoso, evoluciona a un corazón floral limpio y deja un rastro suave que se siente cómodo y chic. Perfecto para quienes buscan un aroma elegante sin ser abrumador.",
+      "price": "7400",
+      "image": "assets/women/flower_by_kenzo.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+        {
+      "name": "Boss Woman",
+      "description": "Fragancia femenina y elegante 50ml.",
+      "longDescription": "Un perfume delicado y seguro de sí mismo: abre dulce y cremoso, evoluciona a un corazón floral limpio y deja un rastro suave que se siente cómodo y chic. Perfecto para quienes buscan un aroma elegante sin ser abrumador.",
+      "price": "7400",
+      "image": "assets/women/boss_woman.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
         { "ml": 50,  "price": "9900" },
         { "ml": 20,  "price": "5200" },
         { "ml": 5, "price": "1500" }
