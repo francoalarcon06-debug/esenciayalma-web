@@ -895,11 +895,11 @@
       ]
     },
     {
-      "name": "Azzaro Wanted",
+      "name": "Burberry Hero",
       "description": "Aroma clásico y elegante.",
       "longDescription": "Estilo barbershop: lavanda limpia, fougère elegante y base cálida. Atemporal y varonil, ideal para oficina y ocasiones formales.",
       "price": "16000",
-      "image": "assets/men/azzaro_wanted.png",
+      "image": "assets/men/burberry_hero.png",
       "variants": [
         { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
@@ -1119,11 +1119,11 @@
       ]
     },
     {
-      "name": "CH Men Privé",
+      "name": "Bleu",
       "description": "Fragancia cálida y elegante.",
       "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
       "price": "16000",
-      "image": "assets/men/ch_men_prive.png",
+      "image": "assets/men/bleu.png",
       "variants": [
         { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
@@ -1203,11 +1203,11 @@
       ]
     },
     {
-      "name": "Emporio Armani",
+      "name": "Acqua D'gio Profondo",
       "description": "Fragancia cálida y elegante.",
       "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
       "price": "16000",
-      "image": "assets/men/emporio_armani.png",
+      "image": "assets/men/acqua_dgio_profondo.png",
       "variants": [
         { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
@@ -1287,11 +1287,11 @@
       ]
     },
     {
-      "name": "Hugo Now",
+      "name": "MYSLF",
       "description": "Fragancia cálida y elegante.",
       "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
       "price": "16000",
-      "image": "assets/men/hugo_now.png",
+      "image": "assets/men/myslf.png",
       "variants": [
         { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
