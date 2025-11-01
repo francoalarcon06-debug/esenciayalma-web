@@ -1341,6 +1341,90 @@
         { "ml": 20,  "price": "5200" },
         { "ml": 5, "price": "1500" }
       ]
+    },
+    {
+      "name": "Y Edt",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/y_edt.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Le Beau",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/le_beau.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Eros",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/eros.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Light Blue Men",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/light_blue_men.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "CK One",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/ck_one.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Halloween",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/halloween.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
     }
   ],
   "black": [
