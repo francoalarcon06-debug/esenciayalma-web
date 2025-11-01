@@ -1160,12 +1160,110 @@
         { "ml": 5, "price": "1500" }
       ]
     },
-        {
+    {
       "name": "212 VIP Men",
       "description": "Fragancia cálida y elegante.",
       "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
       "price": "16000",
       "image": "assets/men/212_vip_men.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Armani Code Sport",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/armani_code_sport.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Emporio Armani",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/emporio_armani.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Acqua Di Gio",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/acqua_di_gio.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Acqua Di Gio Absolu",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/acqua_di_gio_absolu.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Fahrenheit",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/fahrenheit.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Sauvage",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/sauvage.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Sauvage Elixir",
+      "description": "Fragancia cálida y elegante.",
+      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "price": "16000",
+      "image": "assets/men/sauvage_elixir.png",
       "variants": [
         { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
