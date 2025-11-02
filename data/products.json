@@ -2023,59 +2023,83 @@
   ],
   "black": [
     {
-      "name": "Black Parfums 100ml",
+      "name": "Santal 33",
       "description": "Inspirado en las mejores fragancias de nicho.",
       "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
       "price": "26000",
-      "image": "assets/black/Perfume black prueba.png",
+      "image": "assets/black/santal_33.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 100, "price": "16000" }
       ]
     },
     {
-      "name": "Black Parfums 100ml – Elegance",
-      "description": "Inspirado en la elegancia moderna.",
-      "longDescription": "Maderas limpias, cashmeran sedoso y almizcle. Minimalista y muy pulido: huele a piel impecable y buen gusto. Perfecto para quienes disfrutan aromas discretos pero memorables.",
+      "name": "Ombré Leather (2018)",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
       "price": "26000",
-      "image": "assets/black/Perfume black prueba.png",
+      "image": "assets/black/onbre_leather.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 100, "price": "16000" }
       ]
     },
     {
-      "name": "Black Parfums 100ml – Intense",
-      "description": "Perfume potente y envolvente.",
-      "longDescription": "Especias vibrantes sobre un ámbar denso con maderas ahumadas. Poderoso, nocturno y muy persistente. Diseñado para quienes buscan un aroma con personalidad fuerte y presencia marcada.",
+      "name": "Silver Mountain Water Edp",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
       "price": "26000",
-      "image": "assets/black/Perfume black prueba.png",
+      "image": "assets/black/silver_mountain_water_edp.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 100, "price": "16000" }
       ]
     },
     {
-      "name": "Black Parfums 100ml – Supreme",
-      "description": "Aroma imponente y cálido.",
-      "longDescription": "Cuero elegante con benjuí balsámico y patchouli profundo. Presencia imponente con acabado cálido y refinado.",
+      "name": "Aventus Edp",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
       "price": "26000",
-      "image": "assets/black/Perfume black prueba.png",
+      "image": "assets/black/aventus_edp.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 100, "price": "16000" }
+      ]
+    },
+    {
+      "name": "Neroli Portofino",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "price": "26000",
+      "image": "assets/black/neroli_portofino.png",
+      "variants": [
+        { "ml": 100, "price": "16000" }
+      ]
+    },
+    {
+      "name": "Born in Roma Uomo",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "price": "26000",
+      "image": "assets/black/born_in_roma_oumo.png",
+      "variants": [
+        { "ml": 100, "price": "16000" }
+      ]
+    },
+    {
+      "name": "Erba Pura",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "price": "26000",
+      "image": "assets/black/erba_pura.png",
+      "variants": [
+        { "ml": 100, "price": "16000" }
+      ]
+    },
+    {
+      "name": "L'immensité",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "price": "26000",
+      "image": "assets/black/limmensite.png",
+      "variants": [
+        { "ml": 100, "price": "16000" }
       ]
     }
   ],
