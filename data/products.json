@@ -2105,17 +2105,53 @@
   ],
   "red": [
     {
-      "name": "Red Parfums 100ml",
-      "description": "Fragancia romántica y cautivadora.",
-      "longDescription": "Frutos rojos jugosos con rosa dulce y vainilla cremosa. Atractivo y juguetón, deja una estela golosa sin saturar. Se adapta a climas cálidos y fríos, ideal para quienes aman los aromas dulces modernos.",
-      "price": "24000",
-      "image": "assets/red/Perfume red prueba.jpg",
+      "name": "English Pear and Freesia",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "price": "26000",
+      "image": "assets/red/english_pear_and_freesia.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 100, "price": "16000" }
+      ]
+    },
+    {
+      "name": "Black Orchid",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "price": "26000",
+      "image": "assets/red/black_orchid.png",
+      "variants": [
+        { "ml": 100, "price": "16000" }
+      ]
+    },
+    {
+      "name": "Love Don't Be Shy",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "price": "26000",
+      "image": "assets/red/love_dont_be_shy.png",
+      "variants": [
+        { "ml": 100, "price": "16000" }
+      ]
+    },
+    {
+      "name": "Soleil Blanc",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "price": "26000",
+      "image": "assets/red/soleil_blanc.png",
+      "variants": [
+        { "ml": 100, "price": "16000" }
+      ]
+    },
+    {
+      "name": "Baccarat Rougue",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "price": "26000",
+      "image": "assets/red/baccarat_rouge.png",
+      "variants": [
+        { "ml": 100, "price": "16000" }
       ]
     }
   ],
