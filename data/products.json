@@ -2157,11 +2157,165 @@
   ],
   "lavit": [
     {
-      "name": "LAVIT Body Splash 210ml",
+      "name": "Fruits Of Summer",
       "description": "Frescura y vitalidad todo el día.",
       "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
       "price": "8000",
-      "image": "assets/lavit/Perfume lavit prueba.jpg",
+      "image": "assets/lavit/fruits_of_summer.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Tropical Caribbean Coconut Passion",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/lavit/tropical_Caribbean_coconut_passion.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Forever Young Black Raspberry",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/lavit/forever_young_black_raspberry.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Fresh Garden Rock In Rio",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/lavit/fresh_garden_rock_in_rio.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Fantasy Of Love Pink Chiffon",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/lavit/fantasy_of_love_pink_chiffon.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Sweet Romance Sheer Love",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/lavit/sweet_romance_sheer_love.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Tropical Caribbean Hydra Cream",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/lavit/tropical_caribbean_hydra_cream.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Sweet Romance Hydra Cream",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/lavit/sweet_romance_hydra_cream.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Fantasy Of Love Hydra Cream",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/lavit/fantasy_of_love_hydra_cream.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Pack Lavit: Fantasy Of Love + Hydra Cream",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/lavit/fantasy_of_love_+_cream.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Pack Lavit: Tropical Caribbean + Hydra Cream",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/lavit/tropical_caribbean_+_cream.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+    {
+      "name": "Pack Lavit: Sweet Romance + Hydra Cream",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/lavit/sweet_romance_+_cream.png",
       "variants": [
         { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
