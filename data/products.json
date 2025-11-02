@@ -1541,17 +1541,483 @@
   ],
   "colonias": [
     {
-      "name": "LAVIT Body Splash 210ml",
+      "name": "Woman",
       "description": "Frescura y vitalidad todo el día.",
       "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
       "price": "8000",
-      "image": "assets/lavit/Perfume lavit prueba.jpg",
+      "image": "assets/colonias/woman.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "Oscar de la Renta",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/oscar_de_la_renta.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "Chanel N°5",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/chanel_n5.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "Tresor",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/tresor.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "Carolina Herrera",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/carolina_herrera.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "212 Heroes Woman",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/212_heroes_woman.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "Anais Anais",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/anais_anais.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "O de Lancome",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/o_de_lancome.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "212 Carolina Herrera",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/212_carolina_herrera.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "Eden",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/eden.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "Can Can",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/can_can.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "Olympea",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/olympea.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "CK One",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/ck_one.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "Jádore",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/jadore.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "Nina",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/nina.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "Ralph",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/ralph.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "Be Delicious",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/be_delicious.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "Lolita Lempicka",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/lolita_lempicka.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "La Nuit Tresor",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/la_nuit_tresor.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "Tommy Girl",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/tommy_girl.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "212 Vip",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/212_vip.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "Amor Amor",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/amor_amor.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "Halloween",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/halloween.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "212 Sexy",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/212_sexy.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "Light Blue Woman",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/light_blue_woman.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "Acqua Di Gioia",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/acqua_di_gioia.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "La Vida es Bella",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/la_vida_es_bella.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "Good Girl",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/good_girl.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "My Way (G. Armani)",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/my_way.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "212 Vip Rosé",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/212_vip_rose.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "Phantom",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/phantom.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "Azzaro",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/azzaro.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "Sauvage",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/sauvage.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "Tommy",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/tommy.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "Paco Rabanne",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/paco_rabanne.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "Carolina Herrera",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/carolina_herrera_men.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "Agua Brava",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/agua_brava.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "One Million",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/one_million.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "Hugo Boss Men",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/hugo_boss_men.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "Polo Sport",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/polo_sport.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "212 Vip Men",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/212_vip_men.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "XS Black Men",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/xs_black_men.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "Acqua Di Gio",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/acqua_di_gio.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "212 For Men",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/212_for_men.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "Invictus",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/invictus.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "Polo Blue Men",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/polo_blue_men.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "Polo Red",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/polo_red.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
+      ]
+    },
+    {
+      "name": "Bad Boy",
+      "description": "Frescura y vitalidad todo el día.",
+      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
+      "price": "8000",
+      "image": "assets/colonias/bad_boy.png",
+      "variants": [
+        { "ml": 400, "price": "20000" }
       ]
     }
   ],
