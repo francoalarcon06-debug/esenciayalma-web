@@ -24,19 +24,17 @@ const niceTitleFromSlug = (s) =>
     .map(w => w.charAt(0).toUpperCase() + w.slice(1))
     .join(" ");
 
+// ---- JSON loader con cache-busting ----
 async function loadJSON(url) {
-  const res = await fetch(url, { cache: "no-store" });
-  if (!res.ok) throw new Error(`No pude cargar ${url}`);
+  const bust = url.includes("?") ? `&v=${Date.now()}` : `?v=${Date.now()}`;
+  const res = await fetch(url + bust, { cache: "no-store" });
+  if (!res.ok) throw new Error(`No pude cargar ${url} (${res.status})`);
   return res.json();
 }
 
 async function loadProductsAny() {
-  // Soporta:
-  // 1) Array de productos: [{id, name, price, image, category}, ...]
-  // 2) Objeto por categorías: { women:[...], men:[...], ... }
   const data = await loadJSON("data/products.json");
   if (Array.isArray(data)) {
-    // agrupamos por category (slug)
     const byCat = new Map();
     data.forEach((p) => {
       const k = slug(p.category || "");
@@ -46,7 +44,6 @@ async function loadProductsAny() {
     });
     return byCat;
   } else {
-    // asumimos objeto { cat: array }
     const byCat = new Map();
     Object.keys(data || {}).forEach((k) => {
       const ks = slug(k);
@@ -59,22 +56,22 @@ async function loadProductsAny() {
 
 async function loadHomeConfig() {
   try {
-    // opcional
     const cfg = await loadJSON("data/home.config.json");
-    // normalizamos campos esperados
-    return {
+    const norm = {
       order: Array.isArray(cfg.order) ? cfg.order.map(slug) : [],
       visibility: cfg.visibility || {},
       titles: cfg.titles || {},
       subtitles: cfg.subtitles || {}
     };
-  } catch (_) {
-    // si no existe, defaults
+    console.info("[home] config cargado:", norm);
+    return norm;
+  } catch (e) {
+    console.warn("[home] no se pudo cargar data/home.config.json; usando defaults visibles. Detalle:", e.message || e);
     return { order: [], visibility: {}, titles: {}, subtitles: {} };
   }
 }
 
-/* ====== Inyección de CSS (una sola vez) para alinear precio/botón ====== */
+/* ====== Inyección de CSS (una sola vez) ====== */
 (() => {
   if (document.getElementById("card-equalize-css")) return;
   const s = document.createElement("style");
@@ -85,11 +82,9 @@ async function loadHomeConfig() {
     .card__content{flex:1 1 auto}
     .card__footer{margin-top:auto;display:flex;flex-direction:column;gap:12px}
 
-    /* Forzar que cualquier imagen LLENE el marco fijo sin dejar bordes */
     .card__img{overflow:hidden}
     .card__img img{width:100%;height:100%;object-fit:cover;object-position:center center}
 
-    /* Gestos: permitir scroll vertical del documento y drag horizontal del carrusel */
     .is-viewport, .carousel .track{ touch-action: pan-y; }
     .is-viewport{ cursor: grab; }
     .is-viewport.dragging{ cursor: grabbing; }
@@ -97,16 +92,13 @@ async function loadHomeConfig() {
   document.head.appendChild(s);
 })();
 
-/* ====== Tarjeta con footer fijo ====== */
+/* ====== Tarjeta ====== */
 function card(product) {
   const el = document.createElement("article");
   el.className = "card";
   el.setAttribute("role", "listitem");
 
-  // URL pública del detalle para incluirla en el mensaje
   const detailUrl = `${location.origin}/producto.html?c=${encodeURIComponent(product._c || product.categoryKey || "")}&i=${encodeURIComponent(typeof product._i === "number" ? product._i : (typeof product.idx === "number" ? product.idx : 0))}`;
-
-  // Mensaje WA en el orden solicitado (saludo -> nombre -> link)
   const waText = `${WA_GREET}\n"${product.name}"\n${detailUrl}`;
   const href = `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(waText)}`;
 
@@ -142,10 +134,9 @@ function card(product) {
     </div>
   `;
 
-  // --- Hacer clickeable toda la tarjeta (excepto el botón de WhatsApp) ---
   el.style.cursor = "pointer";
   el.addEventListener("click", (ev) => {
-    if (ev.target.closest(".card__btn")) return; // no interceptar el botón
+    if (ev.target.closest(".card__btn")) return;
     const c = product._c || product.categoryKey || "";
     const i = typeof product._i === "number" ? product._i : (typeof product.idx === "number" ? product.idx : 0);
     location.href = `producto.html?c=${encodeURIComponent(c)}&i=${encodeURIComponent(i)}`;
@@ -154,7 +145,6 @@ function card(product) {
   return el;
 }
 
-// Espera a que las imágenes tengan tamaño (para medir bien)
 function waitImages(container) {
   const pend = [...container.querySelectorAll("img")].filter(i => !i.complete);
   if (pend.length === 0) return Promise.resolve();
@@ -168,10 +158,9 @@ function waitImages(container) {
   });
 }
 
-// Easing para el nudge suave
 const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
 
-// ========= Motor de cinta (transform + reciclaje) =========
+// ========= Motor de cinta =========
 function initLoop(track, { speed = 24 } = {}) {
   if (track._loopInited) return;
   track._loopInited = true;
@@ -179,7 +168,6 @@ function initLoop(track, { speed = 24 } = {}) {
   const originals = [...track.children];
   if (originals.length === 0) return;
 
-  // Contenedor interno en fila
   const row = document.createElement("div");
   const GAP = parseFloat(getComputedStyle(track).gap || "16") || 16;
 
@@ -191,13 +179,12 @@ function initLoop(track, { speed = 24 } = {}) {
     transition: "none"
   });
 
-  // El track actúa como viewport
   Object.assign(track.style, { overflow: "hidden", position: "relative" });
   track.classList.add("is-viewport");
 
   originals.forEach(n => row.appendChild(n));
   track.appendChild(row);
-  track._row = row; // guardamos referencia para poder desmontar
+  track._row = row;
 
   const widthOf = (el) => el.getBoundingClientRect().width;
   const childCount = () => row.children.length;
@@ -217,11 +204,7 @@ function initLoop(track, { speed = 24 } = {}) {
   let lastTs = 0, offset = 0;
   let tweenActive = false, tweenStart = 0, tweenDur = 0, tweenTarget = 0, tweenPrev = 0;
 
-  // Auto-scroll SIEMPRE activo
-  const BASE_SPEED = speed;
   let autoSpeed = speed;
-
-  // Desplazamiento extra por dedo (solo cuando hay drag horizontal)
   let dragDelta = 0;
 
   const startTweenOffset = (delta, duration = 500) => {
@@ -258,7 +241,6 @@ function initLoop(track, { speed = 24 } = {}) {
     if (!lastTs) lastTs = ts;
     const dt = (ts - lastTs) / 1000; lastTs = ts;
 
-    // avanzar offset por auto-scroll
     offset += autoSpeed * dt;
 
     applyTweenStep(ts);
@@ -269,11 +251,9 @@ function initLoop(track, { speed = 24 } = {}) {
   recycleAndRender();
   requestAnimationFrame(tick);
 
-  // Saltos de 3 tarjetas
   const forwardThree  = () => Math.max(spanFirst() - offset, 0) + spanSecond() + spanThird();
   const backwardThree = () => offset + spanLast() + spanPrevLast();
 
-  // API pública para flechas
   track._loopAPI = {
     nudgeForward : (px) => startTweenOffset(+px, 520),
     nudgeBackward: (px) => startTweenOffset(-px, 520),
@@ -282,7 +262,6 @@ function initLoop(track, { speed = 24 } = {}) {
     _stepBackward: backwardThree
   };
 
-  // ====== GESTOS (bloqueo de dirección + solo dentro de .card + sin pausar auto-scroll) ======
   let deciding = false;
   let dragging = false;
   let startX = 0, startY = 0;
@@ -404,7 +383,6 @@ function initLoop(track, { speed = 24 } = {}) {
   });
 }
 
-// Desmontar el loop y dejar el DOM como estaba (para volver a modo estático)
 function destroyLoop(track) {
   if (!track._loopInited) return;
   const row = track._row;
@@ -420,7 +398,6 @@ function destroyLoop(track) {
   track.classList.remove("is-viewport","dragging");
 }
 
-/* ===== helpers de medición ===== */
 function getGap(track) {
   return parseFloat(getComputedStyle(track).gap || "16") || 16;
 }
@@ -489,7 +466,7 @@ function moveBefore(el, before) {
   }
 }
 
-/* ====== Configura una sección (render de productos + carrusel) ====== */
+/* ====== Configura una sección ====== */
 async function setupCarouselSection(sectionEl, items) {
   const carousel = sectionEl.querySelector(".carousel");
   const track    = carousel.querySelector(".track");
@@ -561,7 +538,7 @@ async function setupCarouselSection(sectionEl, items) {
   }
 }
 
-/* ====== Orden y visibilidad (HOME) ====== */
+/* ====== Orden y visibilidad ====== */
 function computeHomeOrder(allCats, cfg) {
   const orderCfg = Array.isArray(cfg.order) ? cfg.order.map(slug) : [];
   const setCfg = new Set(orderCfg);
@@ -578,6 +555,14 @@ function isVisible(cat, cfg) {
   try {
     const [byCat, cfg] = await Promise.all([loadProductsAny(), loadHomeConfig()]);
 
+    // Paso 0: si el config dice false, ocultamos visualmente de una (aunque no haya render todavía)
+    qa(".catalog-section").forEach(sec => {
+      const cat = sec.getAttribute("data-category");
+      if ((cfg.visibility || {})[cat] === false) {
+        sec.style.display = "none";
+      }
+    });
+
     const allCats = Array.from(byCat.keys());
     if (!allCats.length) return;
 
@@ -585,7 +570,7 @@ function isVisible(cat, cfg) {
     const footer = q("footer");
     const insertBeforeEl = footer || null;
 
-    // Crear / actualizar / reordenar secciones visibles
+    // Crear / actualizar / reordenar solo visibles
     finalOrder.forEach((cat) => {
       if (!isVisible(cat, cfg)) return;
       const title = (cfg.titles && cfg.titles[cat]) || niceTitleFromSlug(cat);
@@ -594,7 +579,7 @@ function isVisible(cat, cfg) {
       if (insertBeforeEl) moveBefore(sec, insertBeforeEl);
     });
 
-    // Render de productos según visibilidad
+    // Render visibles
     finalOrder.forEach((cat) => {
       if (!isVisible(cat, cfg)) return;
       const items = byCat.get(cat) || [];
@@ -609,7 +594,6 @@ function isVisible(cat, cfg) {
       const items = byCat.get(cat) || [];
       sec.style.display = (active && items.length) ? "" : "none";
 
-      // Actualizar el link "Ver todo"
       const link = sec.querySelector(".sec-link--bottom");
       if (link) {
         const k = (cat || "").trim();
