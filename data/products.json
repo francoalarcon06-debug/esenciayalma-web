@@ -2327,17 +2327,103 @@
   ],
     "juvenil": [
     {
-      "name": "Vela HOME 200g",
+      "name": "Cloud",
       "description": "Vela aromática de cera de soya.",
       "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
       "price": "12000",
-      "image": "assets/hogar/Hogar prueba.png",
+      "image": "assets/juvenil/cloud.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "9900" }
+      ]
+    },
+    {
+      "name": "Fantasy",
+      "description": "Vela aromática de cera de soya.",
+      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "price": "12000",
+      "image": "assets/juvenil/fantasy.png",
+      "variants": [
+        { "ml": 50,  "price": "9900" }
+      ]
+    },
+    {
+      "name": "Selena",
+      "description": "Vela aromática de cera de soya.",
+      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "price": "12000",
+      "image": "assets/juvenil/selena.png",
+      "variants": [
+        { "ml": 50,  "price": "9900" }
+      ]
+    },
+    {
+      "name": "Bombshell",
+      "description": "Vela aromática de cera de soya.",
+      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "price": "12000",
+      "image": "assets/juvenil/bombshell.png",
+      "variants": [
+        { "ml": 50,  "price": "9900" }
+      ]
+    },
+    {
+      "name": "Thank You Next",
+      "description": "Vela aromática de cera de soya.",
+      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "price": "12000",
+      "image": "assets/juvenil/thank_u_next.png",
+      "variants": [
+        { "ml": 50,  "price": "9900" }
+      ]
+    },
+    {
+      "name": "Meow",
+      "description": "Vela aromática de cera de soya.",
+      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "price": "12000",
+      "image": "assets/juvenil/meow.png",
+      "variants": [
+        { "ml": 50,  "price": "9900" }
+      ]
+    },
+    {
+      "name": "Sweet Like Candy",
+      "description": "Vela aromática de cera de soya.",
+      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "price": "12000",
+      "image": "assets/juvenil/sweet_like.png",
+      "variants": [
+        { "ml": 50,  "price": "9900" }
+      ]
+    },
+    {
+      "name": "Legacy",
+      "description": "Vela aromática de cera de soya.",
+      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "price": "12000",
+      "image": "assets/juvenil/legacy.png",
+      "variants": [
+        { "ml": 50,  "price": "9900" }
+      ]
+    },
+    {
+      "name": "Spirit Diesel",
+      "description": "Vela aromática de cera de soya.",
+      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "price": "12000",
+      "image": "assets/juvenil/spirit_diesel.png",
+      "variants": [
+        { "ml": 50,  "price": "9900" }
+      ]
+    },
+    {
+      "name": "Invictus Aqua",
+      "description": "Vela aromática de cera de soya.",
+      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "price": "12000",
+      "image": "assets/juvenil/invictus_aqua.png",
+      "variants": [
+        { "ml": 50,  "price": "9900" }
       ]
     }
   ],
