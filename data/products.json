@@ -2325,6 +2325,22 @@
       ]
     }
   ],
+    "juvenil": [
+    {
+      "name": "Vela HOME 200g",
+      "description": "Vela aromática de cera de soya.",
+      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "price": "12000",
+      "image": "assets/hogar/Hogar prueba.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    }
+  ]
   "hogar": [
     {
       "name": "Vela HOME 200g",
