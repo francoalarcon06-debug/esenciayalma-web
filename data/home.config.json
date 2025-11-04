@@ -1,0 +1,50 @@
+{
+  "order": [
+    "women",
+    "men",
+    "colonias",
+    "black",
+    "red",
+    "lavit",
+    "juvenil",
+    "packs-promocionales",
+    "essien",
+    "hair-care",
+    "hogar"
+  ],
+  "visibility": {
+    "women": true,
+    "men": true,
+    "colonias": true,
+    "black": true,
+    "red": true,
+    "lavit": true,
+    "juvenil": true,
+    "packs-promocionales": true,
+    "essien": true,
+    "hair-care": true,
+    "hogar": true
+  },
+  "titles": {
+    "women": "Perfumes de Mujer",
+    "men": "Perfumes de Hombre",
+    "colonias": "Colonias",
+    "black": "Línea Black Parfums",
+    "red": "Línea Red Parfums",
+    "lavit": "Línea LAVIT Body Splash",
+    "hogar": "Artículos para el hogar",
+    "juvenil": "Juvenil",
+    "packs-promocionales": "Packs Promocionales",
+    "essien": "Essien",
+    "hair-care": "Hair Care"
+  },
+  "subtitles": {
+    "women": "Nueva imagen. Fragancias femeninas inspiradas en marcas de lujo.",
+    "men": "Aromas masculinos intensos y elegantes.",
+    "colonias": "Aromas frescos y ligeros para el día a día.",
+    "black": "Fragancias profundas, sofisticadas y magnéticas.",
+    "red": "Audaces, envolventes y memorables.",
+    "lavit": "Inspirados en Victoria's Secret, Bath & Body Works, Escada.",
+    "hogar": "Crea ambientes únicos con nuestra colección para el hogar."
+  }
+}
