@@ -26,12 +26,12 @@
     "hogar": true
   },
   "titles": {
-    "women": "Perfumes de Mujerrrr",
+    "women": "Perfumes de Mujer",
     "men": "Perfumes de Hombre",
     "colonias": "Colonias",
-    "black": "Línea Black Parfums",
-    "red": "Línea Red Parfums",
-    "lavit": "Línea LAVIT Body Splash",
+    "black": "Black Parfums",
+    "red": "Red Parfums",
+    "lavit": "LAVIT Body Splash",
     "hogar": "Artículos para el hogar",
     "juvenil": "Juvenil",
     "packs-promocionales": "Packs Promocionales",
@@ -39,7 +39,7 @@
     "hair-care": "Hair Care"
   },
   "subtitles": {
-    "women": "Nueva imagen. Fragancias femeninas inspiradas en marcas de lujoooooo.",
+    "women": "Nueva imagen. Fragancias femeninas inspiradas en marcas de lujo.",
     "men": "Aromas masculinos intensos y elegantes.",
     "colonias": "Aromas frescos y ligeros para el día a día.",
     "black": "Fragancias profundas, sofisticadas y magnéticas.",
