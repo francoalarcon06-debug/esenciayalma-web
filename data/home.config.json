@@ -13,7 +13,7 @@
     "hogar"
   ],
   "visibility": {
-    "women": false,
+    "women": true,
     "men": true,
     "colonias": true,
     "black": true,
