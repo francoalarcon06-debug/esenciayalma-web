@@ -2427,6 +2427,56 @@
       ]
     }
   ],
+  "packs-promocionales": [
+    {
+      "name": "Crema Corporal",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "price": "26000",
+      "image": "assets/packs_promocionales/crema_corporal.png",
+      "variants": [
+      ]
+    },
+    {
+      "name": "Chanel N°5",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "price": "26000",
+      "image": "assets/packs_promocionales/chanel_n5.png",
+      "variants": [
+      ]
+    },
+    {
+      "name": "Love Don't Be Shy",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "price": "26000",
+      "image": "assets/red/love_dont_be_shy.png",
+      "variants": [
+        { "ml": 100, "price": "16000" }
+      ]
+    },
+    {
+      "name": "Soleil Blanc",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "price": "26000",
+      "image": "assets/red/soleil_blanc.png",
+      "variants": [
+        { "ml": 100, "price": "16000" }
+      ]
+    },
+    {
+      "name": "Baccarat Rougue",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "price": "26000",
+      "image": "assets/red/baccarat_rouge.png",
+      "variants": [
+        { "ml": 100, "price": "16000" }
+      ]
+    }
+  ],
   "hogar": [
     {
       "name": "Vela HOME 200g",
