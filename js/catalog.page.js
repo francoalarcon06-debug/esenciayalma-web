@@ -10,14 +10,8 @@ const MEDIA_W = 1080;
 const MEDIA_H = 1050;
 
 // Mapeo legible para nombres de categorías
-const CATEGORY_LABELS = {
-  women: "Perfumes de Mujer",
-  men: "Perfumes de Hombre",
-  black: "Línea Black Parfums",
-  red: "Línea Red Parfums",
-  lavit: "Línea LAVIT Body Splash",
-  hogar: "Artículos para el hogar",
-};
+// Ahora se carga dinámicamente desde data/home.config.json (json.titles)
+let CATEGORY_LABELS = {};
 
 // -------- Utils --------
 const money = (v) => {
@@ -55,6 +49,32 @@ async function loadData() {
   const res = await fetch("data/products.json", { cache: "no-store" });
   if (!res.ok) throw new Error("No pude cargar data/products.json");
   return res.json();
+}
+
+// Cargar títulos de categorías desde home.config.json
+async function loadHomeConfig() {
+  try {
+    const res = await fetch("data/home.config.json", { cache: "no-store" });
+    if (!res.ok) throw new Error("No pude cargar data/home.config.json");
+    const json = await res.json();
+    // Se espera algo como: { "titles": { women: "...", men: "...", ... } }
+    CATEGORY_LABELS = json.titles || {};
+  } catch (err) {
+    console.error("Error cargando home.config.json, usando labels por defecto", err);
+    // Fallback por si falla la carga del config
+    CATEGORY_LABELS = {
+      women: "Perfumes de Mujer",
+      men: "Perfumes de Hombre",
+      colonias: "Colonias",
+      black: "Black Parfums",
+      red: "Red Parfums",
+      lavit: "LAVIT Body Splash",
+      hogar: "Artículos para el hogar",
+      juvenil: "Juvenil",
+      "packs-promocionales": "Packs Promocionales",
+      essien: "Essien",
+    };
+  }
 }
 
 // ------- Render tarjeta (reutiliza estilos del sitio) -------
@@ -272,6 +292,10 @@ function injectScopeBadge() {
     const params = currentParams();
     SCOPE = (params.get("scope") || "").toLowerCase();
 
+    // Primero cargamos los títulos desde home.config.json
+    await loadHomeConfig();
+
+    // Luego cargamos los productos
     const data = await loadData();
     buildFromJSON(data);
 
