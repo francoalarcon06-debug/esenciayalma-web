@@ -2864,7 +2864,7 @@
       "description": "Vela premium con aroma a madera y vainilla.",
       "longDescription": "Mezcla de cera premium con mecha de algodón. Aroma envolvente y cálido que llena salones y dormitorios amplios.",
       "price": "15800",
-      "image": "assets/hogar/ambientador_sinfonia_aromatica.png",
+      "image": "assets/hogar/recarga_sinfonia_aromatica.png",
       "variants": [
         { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
