@@ -9,7 +9,6 @@
     "juvenil",
     "packs-promocionales",
     "essien",
-    "hair-care",
     "hogar"
   ],
   "visibility": {
@@ -22,7 +21,6 @@
     "juvenil": true,
     "packs-promocionales": true,
     "essien": true,
-    "hair-care": true,
     "hogar": true
   },
   "titles": {
@@ -36,7 +34,6 @@
     "juvenil": "Juvenil",
     "packs-promocionales": "Packs Promocionales",
     "essien": "Essien",
-    "hair-care": "Hair Care"
   },
   "subtitles": {
     "women": "Nueva imagen. Fragancias femeninas inspiradas en marcas de lujo.",
