@@ -341,6 +341,17 @@ a{text-decoration:none;color:inherit}
     white-space: nowrap;
   }
 
+  /* ajustes finos del menú en móvil */
+  .menu a:nth-child(1){  /* Perfumería */
+    margin-left: 8px;
+  }
+  .menu a:nth-child(2){  /* Hogar */
+    margin-left: 8px;
+  }
+  .menu a:nth-child(3){  /* Contacto */
+    margin-right: 8px;
+  }
+
   @supports not (overflow-x: clip){
     html, body { overflow-x: hidden; }
   }
