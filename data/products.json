@@ -2618,6 +2618,148 @@
       ]
     }
   ],
+  "essien": [
+    {
+      "name": "Crema Baba de Caracol",
+      "description": "Vela aromática de cera de soya.",
+      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "price": "12000",
+      "image": "assets/essien/baba_de_caracol.png",
+      "variants": [
+        { "ml": 50,  "price": "9900" }
+      ]
+    },
+    {
+      "name": "Crema Gusano de Seda",
+      "description": "Vela aromática de cera de soya.",
+      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "price": "12000",
+      "image": "assets/essien/gusano_de_seda.png",
+      "variants": [
+        { "ml": 50,  "price": "9900" }
+      ]
+    },
+    {
+      "name": "Crema Perfection",
+      "description": "Vela aromática de cera de soya.",
+      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "price": "12000",
+      "image": "assets/essien/perfection.png",
+      "variants": [
+        { "ml": 50,  "price": "9900" }
+      ]
+    },
+    {
+      "name": "Crema de Propóleo",
+      "description": "Vela aromática de cera de soya.",
+      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "price": "12000",
+      "image": "assets/essien/propoleo.png",
+      "variants": [
+        { "ml": 50,  "price": "9900" }
+      ]
+    },
+    {
+      "name": "Crema Total 5",
+      "description": "Vela aromática de cera de soya.",
+      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "price": "12000",
+      "image": "assets/essien/total5.png",
+      "variants": [
+        { "ml": 50,  "price": "9900" }
+      ]
+    },
+    {
+      "name": "Crema de Células Madre",
+      "description": "Vela aromática de cera de soya.",
+      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "price": "12000",
+      "image": "assets/essien/celulas_madre.png",
+      "variants": [
+        { "ml": 50,  "price": "9900" }
+      ]
+    },
+    {
+      "name": "Lift Extreme",
+      "description": "Vela aromática de cera de soya.",
+      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "price": "12000",
+      "image": "assets/essien/lift_extreme.png",
+      "variants": [
+        { "ml": 50,  "price": "9900" }
+      ]
+    },
+    {
+      "name": "Phytocomplex",
+      "description": "Vela aromática de cera de soya.",
+      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "price": "12000",
+      "image": "assets/essien/phytocomplex.png",
+      "variants": [
+        { "ml": 50,  "price": "9900" }
+      ]
+    },
+    {
+      "name": "Crema Skin Scrub",
+      "description": "Vela aromática de cera de soya.",
+      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "price": "12000",
+      "image": "assets/essien/skin_scrub.png",
+      "variants": [
+        { "ml": 50,  "price": "9900" }
+      ]
+    },
+    {
+      "name": "Dermacare",
+      "description": "Vela aromática de cera de soya.",
+      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "price": "12000",
+      "image": "assets/essien/dermacare.png",
+      "variants": [
+        { "ml": 50,  "price": "9900" }
+      ]
+    },
+    {
+      "name": "Shampoo de Argán",
+      "description": "Vela aromática de cera de soya.",
+      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "price": "12000",
+      "image": "assets/essien/shampoo.png",
+      "variants": [
+        { "ml": 50,  "price": "9900" }
+      ]
+    },
+    {
+      "name": "Acondicionador de Argán",
+      "description": "Vela aromática de cera de soya.",
+      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "price": "12000",
+      "image": "assets/essien/acondicionador.png",
+      "variants": [
+        { "ml": 50,  "price": "9900" }
+      ]
+    },
+    {
+      "name": "Máscara de Cabello",
+      "description": "Vela aromática de cera de soya.",
+      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "price": "12000",
+      "image": "assets/essien/mascara.png",
+      "variants": [
+        { "ml": 50,  "price": "9900" }
+      ]
+    },
+        {
+      "name": "Aceite de Argán",
+      "description": "Vela aromática de cera de soya.",
+      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "price": "12000",
+      "image": "assets/essien/aceite_argan.png",
+      "variants": [
+        { "ml": 50,  "price": "9900" }
+      ]
+    }
+  ],
   "hogar": [
     {
       "name": "Vela HOME 200g",
