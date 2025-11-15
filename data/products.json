@@ -2762,11 +2762,11 @@
   ],
   "hogar": [
     {
-      "name": "Vela HOME 200g",
+      "name": "Difusor Hogar Dulce Hogar",
       "description": "Vela aromática de cera de soya.",
       "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
       "price": "12000",
-      "image": "assets/hogar/Hogar prueba.png",
+      "image": "assets/hogar/difusor_hogar_dulce_hogar.png",
       "variants": [
         { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
@@ -2776,11 +2776,11 @@
       ]
     },
     {
-      "name": "Difusor HOME 120ml",
+      "name": "Difusor Sinfonía Aromática",
       "description": "Difusor ambiental con varillas.",
       "longDescription": "Difusión continua con varillas de fibra. Perfila espacios con flores blancas limpias y sensación de hogar recién ventilado.",
       "price": "14500",
-      "image": "assets/hogar/Hogar prueba.png",
+      "image": "assets/hogar/difusor_sinfonia_aromatica.png",
       "variants": [
         { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
@@ -2790,11 +2790,11 @@
       ]
     },
     {
-      "name": "Spray textil HOME 250ml",
+      "name": "Difusor Susurros del Bosque",
       "description": "Aroma limpio para telas y espacios cerrados.",
       "longDescription": "Rocío rápido de fragancia tipo lino limpio con toque cítrico. Ideal para cortinas, ropa de cama, sofás y clósets. Refresca sin dejar residuos.",
       "price": "9800",
-      "image": "assets/hogar/Hogar prueba.png",
+      "image": "assets/hogar/difusor_susurros_del_bosque.png",
       "variants": [
         { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
@@ -2804,11 +2804,11 @@
       ]
     },
     {
-      "name": "Set de velas HOME",
+      "name": "Ambientador Hogar Dulce Hogar",
       "description": "Pack de tres velas pequeñas con diferentes fragancias.",
       "longDescription": "Tres mini velas para ambientar distintos rincones. Combina acordes vainillados, cítricos y lavanda para cada momento.",
       "price": "16500",
-      "image": "assets/hogar/Hogar prueba.png",
+      "image": "assets/hogar/ambientador_hogar_dulce_hogar.png",
       "variants": [
         { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
@@ -2818,11 +2818,11 @@
       ]
     },
     {
-      "name": "Aromatizador eléctrico HOME",
+      "name": "Ambientador Sinfonía Aromática",
       "description": "Difusor eléctrico con tecnología ultrasónica.",
       "longDescription": "Nebulización fina y silenciosa con auto-apagado. Úsalo con tus esencias favoritas para perfumar de forma homogénea. Ideal para espacios grandes o dormitorios.",
       "price": "22900",
-      "image": "assets/hogar/Hogar prueba.png",
+      "image": "assets/hogar/ambientador_sinfonia_aromatica.png",
       "variants": [
         { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
@@ -2832,11 +2832,11 @@
       ]
     },
     {
-      "name": "Esencia concentrada HOME 30ml",
+      "name": "Ambientador Susurros del Bosque",
       "description": "Aceite esencial concentrado ideal para difusores.",
       "longDescription": "Alta concentración para una perfumación notoria con pocas gotas. Disponible en varias familias aromáticas.",
       "price": "8700",
-      "image": "assets/hogar/Hogar prueba.png",
+      "image": "assets/hogar/ambientador_susurros_del_bosque.png",
       "variants": [
         { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
@@ -2846,11 +2846,39 @@
       ]
     },
     {
-      "name": "Vela de lujo HOME 300g",
+      "name": "Recarga Hogar Dulce Hogar",
       "description": "Vela premium con aroma a madera y vainilla.",
       "longDescription": "Mezcla de cera premium con mecha de algodón. Aroma envolvente y cálido que llena salones y dormitorios amplios.",
       "price": "15800",
-      "image": "assets/hogar/Hogar prueba.png",
+      "image": "assets/hogar/recarga_hogar_dulce_hogar.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+        {
+      "name": "Recarga Sinfonía Aromática",
+      "description": "Vela premium con aroma a madera y vainilla.",
+      "longDescription": "Mezcla de cera premium con mecha de algodón. Aroma envolvente y cálido que llena salones y dormitorios amplios.",
+      "price": "15800",
+      "image": "assets/hogar/ambientador_sinfonia_aromatica.png",
+      "variants": [
+        { "ml": 400, "price": "20000" },
+        { "ml": 100, "price": "16000" },
+        { "ml": 50,  "price": "9900" },
+        { "ml": 20,  "price": "5200" },
+        { "ml": 5, "price": "1500" }
+      ]
+    },
+        {
+      "name": "Recarga Susurros del Bosque",
+      "description": "Vela premium con aroma a madera y vainilla.",
+      "longDescription": "Mezcla de cera premium con mecha de algodón. Aroma envolvente y cálido que llena salones y dormitorios amplios.",
+      "price": "15800",
+      "image": "assets/hogar/recarga_susurros_del_bosque.png",
       "variants": [
         { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
