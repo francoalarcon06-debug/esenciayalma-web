@@ -2447,33 +2447,183 @@
       ]
     },
     {
-      "name": "Love Don't Be Shy",
+      "name": "Ralph",
       "description": "Inspirado en las mejores fragancias de nicho.",
       "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
       "price": "26000",
-      "image": "assets/red/love_dont_be_shy.png",
+      "image": "assets/packs_promocionales/ralph.png",
       "variants": [
-        { "ml": 100, "price": "16000" }
       ]
     },
     {
-      "name": "Soleil Blanc",
+      "name": "Tresor",
       "description": "Inspirado en las mejores fragancias de nicho.",
       "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
       "price": "26000",
-      "image": "assets/red/soleil_blanc.png",
+      "image": "assets/packs_promocionales/tresor.png",
       "variants": [
-        { "ml": 100, "price": "16000" }
       ]
     },
     {
-      "name": "Baccarat Rougue",
+      "name": "Carolina Herrera",
       "description": "Inspirado en las mejores fragancias de nicho.",
       "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
       "price": "26000",
-      "image": "assets/red/baccarat_rouge.png",
+      "image": "assets/packs_promocionales/carolina_herrera.png",
       "variants": [
-        { "ml": 100, "price": "16000" }
+      ]
+    },
+    {
+      "name": "C.K One",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "price": "26000",
+      "image": "assets/packs_promocionales/ck_one.png",
+      "variants": [
+      ]
+    },
+    {
+      "name": "Tommy Girl",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "price": "26000",
+      "image": "assets/packs_promocionales/tommy_girl.png",
+      "variants": [
+      ]
+    },
+    {
+      "name": "Amor Amor",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "price": "26000",
+      "image": "assets/packs_promocionales/amor_amor.png",
+      "variants": [
+      ]
+    },
+    {
+      "name": "Good Girl",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "price": "26000",
+      "image": "assets/packs_promocionales/good_girl.png",
+      "variants": [
+      ]
+    },
+    {
+      "name": "Halloween",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "price": "26000",
+      "image": "assets/packs_promocionales/halloween.png",
+      "variants": [
+      ]
+    },
+    {
+      "name": "212 Sexy",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "price": "26000",
+      "image": "assets/packs_promocionales/212_sexy.png",
+      "variants": [
+      ]
+    },
+    {
+      "name": "La Vida es Bella",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "price": "26000",
+      "image": "assets/packs_promocionales/la_vida_es_bella.png",
+      "variants": [
+      ]
+    },
+    {
+      "name": "Carolina Herrera",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "price": "26000",
+      "image": "assets/packs_promocionales/carolina_herrera.png",
+      "variants": [
+      ]
+    },
+    {
+      "name": "After Shave",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "price": "26000",
+      "image": "assets/packs_promocionales/after_shave.png",
+      "variants": [
+      ]
+    },
+    {
+      "name": "Polo Blue",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "price": "26000",
+      "image": "assets/packs_promocionales/polo_blue.png",
+      "variants": [
+      ]
+    },
+    {
+      "name": "212 For Men",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "price": "26000",
+      "image": "assets/packs_promocionales/212_for_men.png",
+      "variants": [
+      ]
+    },
+    {
+      "name": "Sauvage",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "price": "26000",
+      "image": "assets/packs_promocionales/sauvage.png",
+      "variants": [
+      ]
+    },
+    {
+      "name": "Acqua Di Gio",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "price": "26000",
+      "image": "assets/packs_promocionales/acqua_di_gio.png",
+      "variants": [
+      ]
+    },
+    {
+      "name": "Boss",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "price": "26000",
+      "image": "assets/packs_promocionales/boss.png",
+      "variants": [
+      ]
+    },
+    {
+      "name": "XS Black Men",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "price": "26000",
+      "image": "assets/packs_promocionales/xs_black_men.png",
+      "variants": [
+      ]
+    },
+    {
+      "name": "One Million",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "price": "26000",
+      "image": "assets/packs_promocionales/one_million.png",
+      "variants": [
+      ]
+    },
+    {
+      "name": "Invictus",
+      "description": "Inspirado en las mejores fragancias de nicho.",
+      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "price": "26000",
+      "image": "assets/packs_promocionales/invictus.png",
+      "variants": [
       ]
     }
   ],
