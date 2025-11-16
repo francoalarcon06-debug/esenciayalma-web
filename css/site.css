@@ -260,6 +260,70 @@ a{text-decoration:none;color:inherit}
   .nav-btn.next{right:2px}
 }
 
+/* ===== BANNERS PROMOCIONALES HOME ===== */
+.catalog-promos{
+  width:100%;
+  background-color:#fdeef4; /* tono suave que combina con la marca */
+  padding:20px 0 40px;
+}
+.promo-slider{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+  left:50%;
+  transform:translateX(-50%);
+}
+.promo-track{
+  display:flex;
+  transition:transform 0.5s ease;
+}
+.promo-slide{
+  flex:0 0 100%;
+}
+.promo-slide img{
+  width:100%;
+  height:auto;
+  display:block;
+}
+.promo-arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  border:none;
+  background:rgba(255,255,255,0.85);
+  width:40px;
+  height:40px;
+  border-radius:999px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+  cursor:pointer;
+  box-shadow:0 6px 16px rgba(0,0,0,0.12);
+  transition:background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  z-index:2;
+}
+.promo-arrow:hover{
+  background:#ffffff;
+  transform:translateY(-50%) scale(1.05);
+  box-shadow:0 10px 24px rgba(0,0,0,0.18);
+}
+.promo-prev{left:16px;}
+.promo-next{right:16px;}
+
+@media (max-width:768px){
+  .catalog-promos{
+    padding:16px 0 28px;
+  }
+  .promo-arrow{
+    width:32px;
+    height:32px;
+    font-size:18px;
+  }
+  .promo-prev{left:8px;}
+  .promo-next{right:8px;}
+}
+
 /* FOOTER */
 .footer{
   padding:28px 0;
