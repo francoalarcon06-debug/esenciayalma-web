@@ -343,7 +343,7 @@ a{text-decoration:none;color:inherit}
 
   /* ajustes finos del menú en móvil */
   .menu a:nth-child(1){  /* Perfumería */
-    margin-left: 20px;
+    margin-left: 35px;
   }
   .menu a:nth-child(2){  /* Hogar */
     margin-left: 8px;
