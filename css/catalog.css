@@ -286,8 +286,15 @@ body {
     margin-right: 0;
   }
   .sort-group select {
-    max-width: 130px;
-    padding-right: 32px;
+    max-width: 115px;
+    padding: 6px 28px 6px 8px;
+    font-size: 12px;
+    line-height: 1;
+    transform: scale(0.92);
+    transform-origin: right center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   /* Paginador en móvil: que no quede apretado */
