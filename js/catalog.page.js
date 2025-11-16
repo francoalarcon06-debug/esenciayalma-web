@@ -142,7 +142,7 @@ let CATS = [];      // [{key,label,count}]
 let SCOPE = "";     // "", "perfumeria", "hogar"
 
 // Para paginación
-let CURRENT_STATE = null;   // {category,min,max,sort,page}
+let CURRENT_STATE = null;   // {category,min,max,sort,search,page}
 let CURRENT_PAGE = 1;
 let FILTERED = [];          // lista filtrada completa (todas las páginas)
 
@@ -190,7 +190,7 @@ function populateCategorySelect(select) {
   });
 }
 
-function applyFilters({ category, min, max, sort }) {
+function applyFilters({ category, min, max, sort, search }) {
   let list = ALL.slice();
 
   if (category) list = list.filter(p => p.categoryKey === category);
@@ -199,6 +199,15 @@ function applyFilters({ category, min, max, sort }) {
   const maxN = parsePesos(max);
   if (minN) list = list.filter(p => parsePesos(p.price) >= minN);
   if (maxN) list = list.filter(p => parsePesos(p.price) <= maxN);
+
+  const term = (search || "").trim().toLowerCase();
+  if (term) {
+    list = list.filter(p => {
+      const name = (p.name || "").toLowerCase();
+      const desc = (p.description || "").toLowerCase();
+      return name.includes(term) || desc.includes(term);
+    });
+  }
 
   switch (sort) {
     case "priceAsc":
@@ -348,9 +357,12 @@ function clearFilters() {
   qs("#fMin").value = "";
   qs("#fMax").value = "";
   qs("#fSort").value = "relevance";
+  const searchInput = qs("#searchInput");
+  if (searchInput) searchInput.value = "";
+
   // eliminamos otros parámetros pero setParams preserva scope
   setParams({});
-  const state = { category: "", min: "", max: "", sort: "relevance", page: 1 };
+  const state = { category: "", min: "", max: "", sort: "relevance", search: "", page: 1 };
   updateView(state, 1);
 }
 
@@ -400,6 +412,7 @@ function injectScopeBadge() {
     const params = currentParams();
     params.delete("scope");
     params.delete("page");
+    params.delete("q");
     const query = params.toString();
     const url = query ? `${location.pathname}?${query}` : location.pathname;
     location.href = url;
@@ -416,6 +429,7 @@ function goToPage(page) {
     min: state.min,
     max: state.max,
     sort: state.sort,
+    q: state.search,
     page: nextPage
   });
   updateView(state, nextPage);
@@ -440,12 +454,15 @@ function goToPage(page) {
     const $cat = qs("#fCategory");
     populateCategorySelect($cat);
 
+    const $search = qs("#searchInput");
+
     // Cargar estado inicial desde URL (si viene ?category=women, etc.)
     const initState = {
       category: params.get("category") || "",
       min: params.get("min") || "",
       max: params.get("max") || "",
       sort: params.get("sort") || "relevance",
+      search: params.get("q") || "",
       page: parseInt(params.get("page") || "1", 10) || 1,
     };
 
@@ -462,6 +479,7 @@ function goToPage(page) {
     qs("#fMin").value = initState.min || "";
     qs("#fMax").value = initState.max || "";
     qs("#fSort").value = initState.sort;
+    if ($search) $search.value = initState.search || "";
 
     // Render inicial (con paginación)
     updateView(initState, initState.page);
@@ -469,7 +487,7 @@ function goToPage(page) {
     // Badge informativo de scope dentro del panel de filtros (con X) — arriba del select
     injectScopeBadge();
 
-    // Eventos
+    // Eventos filtros
     qs("#filtersForm").addEventListener("submit", (e) => {
       e.preventDefault();
       const state = {
@@ -477,6 +495,7 @@ function goToPage(page) {
         min: qs("#fMin").value,
         max: qs("#fMax").value,
         sort: qs("#fSort").value,
+        search: $search ? $search.value : "",
         page: 1,
       };
       setParams({
@@ -484,6 +503,7 @@ function goToPage(page) {
         min: state.min,
         max: state.max,
         sort: state.sort,
+        q: state.search,
         page: 1,
       });
       updateView(state, 1);
@@ -497,6 +517,7 @@ function goToPage(page) {
         min: qs("#fMin").value,
         max: qs("#fMax").value,
         sort: qs("#fSort").value,
+        search: $search ? $search.value : "",
         page: 1,
       };
       setParams({
@@ -504,6 +525,7 @@ function goToPage(page) {
         min: state.min,
         max: state.max,
         sort: state.sort,
+        q: state.search,
         page: 1,
       });
       updateView(state, 1);
@@ -516,6 +538,7 @@ function goToPage(page) {
         min: qs("#fMin").value,
         max: qs("#fMax").value,
         sort: qs("#fSort").value,
+        search: $search ? $search.value : "",
         page: 1,
       };
       setParams({
@@ -523,10 +546,34 @@ function goToPage(page) {
         min: state.min,
         max: state.max,
         sort: state.sort,
+        q: state.search,
         page: 1,
       });
       updateView(state, 1);
     });
+
+    // Búsqueda en vivo por nombre/descripcion
+    if ($search) {
+      $search.addEventListener("input", () => {
+        const state = {
+          category: $cat.value,
+          min: qs("#fMin").value,
+          max: qs("#fMax").value,
+          sort: qs("#fSort").value,
+          search: $search.value,
+          page: 1,
+        };
+        setParams({
+          category: state.category,
+          min: state.min,
+          max: state.max,
+          sort: state.sort,
+          q: state.search,
+          page: 1,
+        });
+        updateView(state, 1);
+      });
+    }
 
     // Máscara de dinero
     function attachMoneyMask(input) {
