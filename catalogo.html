@@ -13,18 +13,17 @@
 </head>
 <body>
 
-  <!-- NAV (reutiliza estilos de site.css) -->
+  <!-- NAV -->
   <header class="nav">
     <div class="container nav__inner">
       <a class="brand" href="index.html#inicio">Esencia y Alma</a>
       <nav class="menu">
-        <!-- Solo Contacto en el menú -->
         <a id="nav-contact" href="#">Contacto</a>
       </nav>
     </div>
   </header>
 
-  <!-- HERO del catálogo -->
+  <!-- HERO -->
   <section class="catalog-hero">
     <div class="container">
       <h1 class="catalog-title">Catálogo</h1>
@@ -32,16 +31,15 @@
     </div>
   </section>
 
-  <!-- LAYOUT de 2 columnas: filtros a la izquierda + resultados a la derecha -->
+  <!-- SHELL 2 COLUMNAS -->
   <div class="container catalog-shell">
-    <!-- ASIDE: Filtros (mismos ids/estructura) -->
+
+    <!-- ASIDE FILTROS -->
     <aside class="filters-aside">
       <form id="filtersForm" class="filters-wrap" autocomplete="off">
         <div class="f-item">
           <label for="fCategory">Tipo de producto</label>
-          <select id="fCategory">
-            <!-- opciones se llenan dinámicamente desde products.json -->
-          </select>
+          <select id="fCategory"></select>
         </div>
 
         <div class="f-item">
@@ -61,17 +59,21 @@
       </form>
     </aside>
 
-    <!-- MAIN: Toolbar arriba + grid abajo -->
+    <!-- MAIN -->
     <main class="results-main">
+
       <div class="toolbar">
-        <!-- NUEVO: bloque izquierdo con conteo + buscador -->
+
         <div class="toolbar-left">
           <div id="count">0 resultados</div>
+
+          <!-- 🔥 CORREGIDO: input con ID correcto para búsqueda en vivo -->
           <div class="search-wrap">
             <input
-              id="fSearch"
+              id="searchInput"
+              class="search-input"
               type="search"
-              placeholder="Buscar por nombre o descripción"
+              placeholder="Buscar por nombre"
               autocomplete="off"
             >
           </div>
@@ -86,16 +88,16 @@
             <option value="nameAsc">Nombre: A–Z</option>
           </select>
         </div>
+
       </div>
 
       <section class="grid" id="grid" aria-live="polite"></section>
 
-      <!-- NUEVO: contenedor para la paginación -->
       <nav id="pager" class="pager" aria-label="Paginación de productos"></nav>
     </main>
   </div>
 
-  <!-- Estado vacío -->
+  <!-- ESTADO VACÍO -->
   <template id="emptyTpl">
     <div class="empty">
       <p>No encontramos productos con esos filtros.</p>
@@ -103,11 +105,11 @@
     </div>
   </template>
 
-  <!-- FOOTER (idéntico al de index) -->
+  <!-- FOOTER -->
   <footer id="contacto" class="footer">
     <div class="container">
       <div class="footer__inner" style="align-items:flex-start;">
-        <!-- Bloque marca -->
+
         <div class="footer__brand" style="max-width:640px;">
           <div style="
             width:260px;height:26px;border-radius:8px;margin:0 0 14px 0;
@@ -121,19 +123,17 @@
           </p>
         </div>
 
-        <!-- Bloque contacto (solo WhatsApp) -->
         <div class="footer__contact">
           <a class="btn btn-ghost" id="whatsapp-cta" target="_blank" href="#" style="display:inline-flex;align-items:center;gap:10px;">
-            <!-- Ícono WhatsApp (color hereda del botón) -->
             <svg width="22" height="22" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
               <path fill="currentColor" d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.65-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
             </svg>
             WhatsApp
           </a>
         </div>
+
       </div>
 
-      <!-- Copyright fijo -->
       <p class="center" style="margin-top:16px;">
         © 2025 Esencia y Alma. Todos los derechos reservados.
       </p>
@@ -142,17 +142,15 @@
 
   <script src="js/catalog.page.js"></script>
 
-  <!-- SCRIPT para WhatsApp (misma lógica que en index) -->
+  <!-- LOGICA WHATSAPP -->
   <script>
     const PHONE = "56961114225";
     const MSG   = encodeURIComponent("¡Hola! Me interesa el catálogo de Esencia y Alma.");
     const wa    = `https://wa.me/${PHONE}?text=${MSG}`;
 
-    // Footer
     const waBtn = document.getElementById("whatsapp-cta");
     if (waBtn) waBtn.href = wa;
 
-    // NAV Contacto (arriba a la derecha)
     const navContact = document.getElementById("nav-contact");
     if (navContact) {
       navContact.href = wa;
@@ -160,5 +158,6 @@
       navContact.rel = "noopener";
     }
   </script>
+
 </body>
 </html>
