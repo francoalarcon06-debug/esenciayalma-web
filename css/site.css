@@ -343,13 +343,13 @@ a{text-decoration:none;color:inherit}
 
   /* ajustes finos del menú en móvil */
   .menu a:nth-child(1){  /* Perfumería */
-    margin-left: 8px;
+    margin-left: 4px;
   }
   .menu a:nth-child(2){  /* Hogar */
-    margin-left: 8px;
+    margin-left: 10px;
   }
   .menu a:nth-child(3){  /* Contacto */
-    margin-right: 8px;
+    margin-right: 2px;
   }
 
   @supports not (overflow-x: clip){
