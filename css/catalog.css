@@ -168,6 +168,56 @@
   box-shadow: var(--shadow);
 }
 
+/* ====== PAGINACIÓN ====== */
+.pager {
+  margin: 0 0 40px;
+}
+.pager-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(0,0,0,.04);
+  font-size: 14px;
+}
+.pager-btn,
+.pager-page {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 6px 10px;
+  min-width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font: inherit;
+  color: #444;
+  transition: background .15s ease, color .15s ease, transform .05s ease;
+}
+.pager-btn:hover,
+.pager-page:hover {
+  background: #f7f1f5;
+}
+.pager-btn[disabled],
+.pager-page[disabled] {
+  opacity: .4;
+  cursor: default;
+}
+.pager-page--current {
+  background: #34495e;
+  color: #fff;
+  font-weight: 700;
+}
+.pager-ellipsis {
+  padding: 0 4px;
+  color: #aaa;
+}
+
 /* ====== MEDIA de la tarjeta (MARCO 1080×1050) ====== */
 .card__img{
   /* Reservamos relación 1080 / 1050 con fallback por si no viene la var */
@@ -238,6 +288,13 @@ body {
   .sort-group select {
     max-width: 150px;      /* evita que el texto + flecha sobresalgan del contenedor */
     padding-right: 40px;   /* flecha un poco más cerca del texto */
+  }
+
+  /* Paginador en móvil: que no quede apretado */
+  .pager-inner {
+    flex-wrap: wrap;
+    gap: 4px;
+    padding: 8px 10px;
   }
 
   /* ===== Botón WhatsApp en dos líneas ===== */
