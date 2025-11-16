@@ -264,7 +264,8 @@ a{text-decoration:none;color:inherit}
 .catalog-promos{
   width:100%;
   background-color:#fdeef4; /* tono suave que combina con la marca */
-  padding:20px 0 40px;
+  margin-top:-16px;          /* subimos el bloque para tapar la franja rosa */
+  padding:0 0 40px;          /* sin padding arriba, solo abajo */
 }
 .promo-slider{
   position:relative;
@@ -313,7 +314,8 @@ a{text-decoration:none;color:inherit}
 
 @media (max-width:768px){
   .catalog-promos{
-    padding:16px 0 28px;
+    margin-top:-16px;    /* mismo ajuste en móvil */
+    padding:0 0 28px;    /* sin espacio rosa arriba */
   }
   .promo-arrow{
     width:32px;
