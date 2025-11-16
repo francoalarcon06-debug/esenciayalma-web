@@ -109,6 +109,32 @@
   flex-wrap: nowrap;
   white-space: nowrap;
 }
+
+/* Bloque izquierdo: conteo + buscador */
+.toolbar-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+/* Buscador debajo del conteo */
+.search-wrap {
+  width: 260px;
+}
+.search-wrap input {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid #f0c4da;
+  font-size: 0.9rem;
+  outline: none;
+  background: #fff;
+}
+.search-wrap input::placeholder {
+  color: #b5b5b5;
+}
+
 .sort-group {
   display: flex;
   align-items: center;
@@ -279,6 +305,17 @@ body {
     gap: 10px;
     padding-right: 0;
   }
+
+  /* En móvil el bloque izquierdo ocupa el ancho disponible
+     y el buscador se ve debajo del conteo, a lo ancho */
+  .toolbar-left {
+    flex: 1;
+    min-width: 0;
+  }
+  .search-wrap {
+    width: 100%;
+  }
+
   .sort-group {
     gap: 4px;
     margin-right: 0;
@@ -294,7 +331,7 @@ body {
     white-space: nowrap;
     overflow: hidden;
 
-    /* 💥 NUEVO: mover un poco más a la izquierda */
+    /* mover un poco más a la izquierda */
     margin-left: -6px;
   }
 
