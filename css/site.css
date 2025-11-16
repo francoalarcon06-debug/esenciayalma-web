@@ -117,25 +117,11 @@ a{text-decoration:none;color:inherit}
 .sec-link--bottom:hover{ color:#000; }
 
 /* Puente suave hero → primera sección (sin línea) */
+/* Mantenemos solo el ajuste de posición; quitamos el degradado */
 #mujer.catalog-section{
   position:relative;
   margin-top:-48px;
   padding-top:48px;
-}
-#mujer.catalog-section::before{
-  content:"";
-  position:absolute;
-  left:0; right:0; top:-48px;
-  height:48px;
-  background:linear-gradient(
-    to bottom,
-    rgba(255,255,255,0) 0%,
-    rgba(255,255,255,0.55) 38%,
-    rgba(255,243,247,0.85) 70%,
-    var(--soft) 100%
-  );
-  pointer-events:none;
-  z-index:0;
 }
 
 /* CARRUSEL */
@@ -280,14 +266,11 @@ a{text-decoration:none;color:inherit}
 }
 .promo-slide{
   flex:0 0 100%;
-  aspect-ratio:1920 / 600;  /* igual al lienzo de Canva; define la altura visible */
 }
 .promo-slide img{
   width:100%;
-  height:100%;
+  height:auto;   /* muestra la imagen completa, sin recortes */
   display:block;
-  object-fit:cover;          /* llena el recuadro */
-  object-position:top center;/* corta la parte inferior (donde está el difuminado) */
 }
 .promo-arrow{
   position:absolute;
