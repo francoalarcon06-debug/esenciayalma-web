@@ -278,16 +278,16 @@ body {
     margin-top: -4px;
     flex-wrap: nowrap;
     white-space: nowrap;
-    gap: 12px;             /* un poco menos de espacio entre texto y sort-group */
-    padding-right: 4px;    /* empuja todo apenas hacia la izquierda */
+    gap: 10px;
+    padding-right: 0;
   }
   .sort-group {
-    gap: 6px;              /* menos espacio entre “Ordenar por” y el select */
-    margin-right: 4px;     /* corre el bloque completo un poquito a la izquierda */
+    gap: 4px;
+    margin-right: 0;
   }
   .sort-group select {
-    max-width: 150px;      /* evita que el texto + flecha sobresalgan del contenedor */
-    padding-right: 40px;   /* flecha un poco más cerca del texto */
+    max-width: 130px;
+    padding-right: 32px;
   }
 
   /* Paginador en móvil: que no quede apretado */
