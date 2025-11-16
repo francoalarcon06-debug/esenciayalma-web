@@ -346,10 +346,10 @@ a{text-decoration:none;color:inherit}
     margin-left: 35px;
   }
   .menu a:nth-child(2){  /* Hogar */
-    margin-left: 8px;
+    margin-left: 1px;
   }
   .menu a:nth-child(3){  /* Contacto */
-    margin-right: 8px;
+    margin-right: 20px;
   }
 
   @supports not (overflow-x: clip){
