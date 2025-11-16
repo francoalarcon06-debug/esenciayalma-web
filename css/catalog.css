@@ -101,7 +101,7 @@
 /* ====== TOOLBAR ====== */
 .toolbar {
   display: flex;
-  align-items: center;
+  align-items: flex-start;   /* 🔼 sube el bloque de "Ordenar por" para alinearlo con el conteo */
   justify-content: space-between;
   gap: 10px;
   color: #6b6b6b;
