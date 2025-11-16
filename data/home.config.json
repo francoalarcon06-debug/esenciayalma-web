@@ -14,14 +14,14 @@
   "visibility": {
     "women": true,
     "men": true,
-    "colonias": true,
-    "black": true,
-    "red": true,
-    "lavit": true,
+    "colonias": false,
+    "black": false,
+    "red": false,
+    "lavit": false,
     "juvenil": true,
-    "packs-promocionales": true,
+    "packs-promocionales": false,
     "essien": true,
-    "hogar": true
+    "hogar": false
   },
   "titles": {
     "women": "Perfumes de Mujer",
