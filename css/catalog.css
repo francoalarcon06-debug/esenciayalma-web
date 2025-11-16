@@ -168,9 +168,7 @@
   box-shadow: var(--shadow);
 }
 
-/* ====== MEDIA de la tarjeta (MARCO 1080×1050) ======
-   Reemplaza el alto fijo por aspect-ratio para uniformidad
-   y usa object-fit para no deformar el frasco. */
+/* ====== MEDIA de la tarjeta (MARCO 1080×1050) ====== */
 .card__img{
   /* Reservamos relación 1080 / 1050 con fallback por si no viene la var */
   aspect-ratio: var(--media-w,1080) / var(--media-h,1050);
@@ -185,13 +183,6 @@
   object-fit: contain;       /* NO recorta; si querés llenar, usar 'cover' */
   object-position: center bottom;
 }
-
-/* (Quitamos el alto fijo previo)
-.card__img { height: 280px; }
-@media (max-width: 760px) {
-  .card__img { height: clamp(180px, 36vh, 260px); }
-}
-*/
 
 /* ====== FONDO GENERAL ====== */
 body {
@@ -231,11 +222,22 @@ body {
   .filters-wrap {
     margin: 0;
   }
+
+  /* Barra superior en móvil: ajustamos espacios para que el select no se corte */
   .toolbar {
     margin-top: -4px;
     flex-wrap: nowrap;
     white-space: nowrap;
-    gap: 18px;               /* separa “25 resultados” de “Ordenar por” */
+    gap: 12px;             /* un poco menos de espacio entre texto y sort-group */
+    padding-right: 4px;    /* empuja todo apenas hacia la izquierda */
+  }
+  .sort-group {
+    gap: 6px;              /* menos espacio entre “Ordenar por” y el select */
+    margin-right: 4px;     /* corre el bloque completo un poquito a la izquierda */
+  }
+  .sort-group select {
+    max-width: 150px;      /* evita que el texto + flecha sobresalgan del contenedor */
+    padding-right: 40px;   /* flecha un poco más cerca del texto */
   }
 
   /* ===== Botón WhatsApp en dos líneas ===== */
