@@ -60,11 +60,9 @@ async function loadHomeConfig() {
     const res = await fetch("data/home.config.json", { cache: "no-store" });
     if (!res.ok) throw new Error("No pude cargar data/home.config.json");
     const json = await res.json();
-    // Se espera algo como: { "titles": { women: "...", men: "...", ... } }
     CATEGORY_LABELS = json.titles || {};
   } catch (err) {
     console.error("Error cargando home.config.json, usando labels por defecto", err);
-    // Fallback por si falla la carga del config
     CATEGORY_LABELS = {
       women: "Perfumes de Mujer",
       men: "Perfumes de Hombre",
@@ -80,11 +78,9 @@ async function loadHomeConfig() {
   }
 }
 
-// ------- Render tarjeta (reutiliza estilos del sitio) -------
+// ------- Render tarjeta -------
 function renderCard(p) {
-  // URL pública del detalle (para incluirla en el mensaje)
   const detailUrl = `${location.origin}/producto.html?c=${encodeURIComponent(p.categoryKey || "")}&i=${encodeURIComponent(typeof p.idx === "number" ? p.idx : 0)}`;
-  // Mensaje WA en el orden solicitado
   const waText = `${WA_GREET}\n"${p.name}"\n${detailUrl}`;
   const href = `https://wa.me/${WA_PHONE}?text=${encodeURIComponent(waText)}`;
 
@@ -92,8 +88,6 @@ function renderCard(p) {
   el.className = "card";
   el.innerHTML = `
     <div class="card__img" style="--media-w:${MEDIA_W};--media-h:${MEDIA_H};">
-      <!-- CAMBIO: se añaden width/height para reservar el aspect-ratio 1080×1050
-           y class="card__media" para aplicar object-fit en CSS -->
       <img
         class="card__media"
         src="${p.image}"
@@ -114,9 +108,7 @@ function renderCard(p) {
         ${p.price ? `<div class="card__price">${money(p.price)}</div>` : ""}
         <div class="card__actions">
           <a class="btn btn-primary card__btn" target="_blank" href="${href}">
-            <svg class="icon-wa" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-              <path fill="currentColor" d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129 .418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
-            </svg>
+            <svg class="icon-wa" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="currentColor" d="..."/></svg>
             Consultar por WhatsApp
           </a>
         </div>
@@ -124,7 +116,6 @@ function renderCard(p) {
     </div>
   `;
 
-  // --- click en la tarjeta abre la página de detalle (salvo el botón WA) ---
   el.style.cursor = "pointer";
   el.addEventListener("click", (ev) => {
     if (ev.target.closest(".card__btn")) return;
@@ -136,21 +127,20 @@ function renderCard(p) {
   return el;
 }
 
-// ------- Estado y render -------
-let ALL = [];       // [{...product, categoryKey, idx}]
-let CATS = [];      // [{key,label,count}]
-let SCOPE = "";     // "", "perfumeria", "hogar"
+// ------- Estado global -------
+let ALL = [];
+let CATS = [];
+let SCOPE = "";
 
-// Para paginación
-let CURRENT_STATE = null;   // {category,min,max,sort,search,page}
+let CURRENT_STATE = null;
 let CURRENT_PAGE = 1;
-let FILTERED = [];          // lista filtrada completa (todas las páginas)
+let FILTERED = [];
 
+// ------- Construcción inicial -------
 function buildFromJSON(json) {
   ALL = [];
   CATS = [];
 
-  // === limitar dataset según scope ===
   let allowed = null;
   if (SCOPE === "perfumeria") {
     allowed = new Set(PERFUMERIA_KEYS);
@@ -159,16 +149,15 @@ function buildFromJSON(json) {
   }
 
   for (const [key, arr] of Object.entries(json)) {
-    if (allowed && !allowed.has(key)) continue; // excluir fuera de scope
+    if (allowed && !allowed.has(key)) continue;
 
     const list = Array.isArray(arr) ? arr : [];
-    const count = list.length;
-    if (count === 0) continue; // no mostrar categorías vacías
+    if (list.length === 0) continue;
 
     CATS.push({
       key,
       label: CATEGORY_LABELS[key] || key,
-      count,
+      count: list.length,
     });
 
     list.forEach((p, i) => ALL.push({ ...p, categoryKey: key, idx: i }));
@@ -176,7 +165,7 @@ function buildFromJSON(json) {
 }
 
 function populateCategorySelect(select) {
-  select.innerHTML = ""; // limpio
+  select.innerHTML = "";
   const optAll = document.createElement("option");
   optAll.value = "";
   optAll.textContent = "Todas las categorías";
@@ -190,6 +179,9 @@ function populateCategorySelect(select) {
   });
 }
 
+// =========================================
+// FILTROS — BÚSQUEDA SOLO POR NOMBRE
+// =========================================
 function applyFilters({ category, min, max, sort, search }) {
   let list = ALL.slice();
 
@@ -204,28 +196,22 @@ function applyFilters({ category, min, max, sort, search }) {
   if (term) {
     list = list.filter(p => {
       const name = (p.name || "").toLowerCase();
-      const desc = (p.description || "").toLowerCase();
-      return name.includes(term) || desc.includes(term);
+      return name.includes(term);   // <---- SOLO NOMBRE
     });
   }
 
   switch (sort) {
-    case "priceAsc":
-      list.sort((a,b) => parsePesos(a.price) - parsePesos(b.price));
-      break;
-    case "priceDesc":
-      list.sort((a,b) => parsePesos(b.price) - parsePesos(a.price));
-      break;
-    case "nameAsc":
-      list.sort((a,b) => a.name.localeCompare(b.name, "es"));
-      break;
-    // relevance: deja el orden natural
+    case "priceAsc": list.sort((a,b) => parsePesos(a.price) - parsePesos(b.price)); break;
+    case "priceDesc": list.sort((a,b) => parsePesos(b.price) - parsePesos(a.price)); break;
+    case "nameAsc": list.sort((a,b) => a.name.localeCompare(b.name, "es")); break;
   }
 
   return list;
 }
 
-// Actualiza el texto "1 - 20 de X resultados"
+// =========================================
+// Render — Conteo, grilla, paginación
+// =========================================
 function updateCount(total, page, pageSize) {
   const el = qs("#count");
   if (!el) return;
@@ -237,11 +223,9 @@ function updateCount(total, page, pageSize) {
 
   const start = (page - 1) * pageSize + 1;
   const end = Math.min(total, page * pageSize);
-  const word = total === 1 ? "resultado" : "resultados";
-  el.textContent = `${start} - ${end} de ${total} ${word}`;
+  el.textContent = `${start} - ${end} de ${total} resultados`;
 }
 
-// Renderiza SOLO la grilla (ya paginada)
 function renderGrid(items) {
   const grid = qs("#grid");
   grid.innerHTML = "";
@@ -257,12 +241,10 @@ function renderGrid(items) {
   items.forEach(p => grid.appendChild(renderCard(p)));
 }
 
-// Renderiza paginador en #pager
 function renderPager(total, page, totalPages) {
   const pager = qs("#pager");
   if (!pager) return;
 
-  // Si no hace falta paginar, no mostramos nada
   if (total <= PAGE_SIZE || totalPages <= 1) {
     pager.innerHTML = "";
     return;
@@ -270,74 +252,46 @@ function renderPager(total, page, totalPages) {
 
   const parts = [];
 
-  // Botón anterior
   const prevDisabled = page <= 1 ? "disabled" : "";
-  const prevPage = page > 1 ? page - 1 : 1;
-  parts.push(
-    `<button class="pager-btn pager-prev" data-page="${prevPage}" ${prevDisabled} aria-label="Página anterior">‹</button>`
-  );
+  parts.push(`<button class="pager-btn pager-prev" data-page="${page - 1}" ${prevDisabled}>‹</button>`);
 
-  // Cálculo de páginas a mostrar (1, ..., page-1, page, page+1, ..., last)
   const pages = [];
-  const add = (n) => {
-    if (n < 1 || n > totalPages) return;
-    if (!pages.includes(n)) pages.push(n);
-  };
+  const add = (n) => { if (n > 0 && n <= totalPages && !pages.includes(n)) pages.push(n); };
 
-  add(1);
-  add(page - 1);
-  add(page);
-  add(page + 1);
-  add(totalPages);
-
+  add(1); add(page - 1); add(page); add(page + 1); add(totalPages);
   pages.sort((a,b) => a - b);
 
   let last = 0;
   for (const p of pages) {
-    if (last && p - last > 1) {
-      // hueco -> puntos suspensivos
-      parts.push(`<span class="pager-ellipsis">…</span>`);
-    }
-    const isCurrent = p === page;
-    if (isCurrent) {
-      parts.push(
-        `<button class="pager-page pager-page--current" data-page="${p}" aria-current="page">${p}</button>`
-      );
-    } else {
-      parts.push(
-        `<button class="pager-page" data-page="${p}">${p}</button>`
-      );
-    }
+    if (last && p - last > 1) parts.push(`<span class="pager-ellipsis">…</span>`);
+
+    if (p === page)
+      parts.push(`<button class="pager-page pager-page--current" data-page="${p}" aria-current="page">${p}</button>`);
+    else
+      parts.push(`<button class="pager-page" data-page="${p}">${p}</button>`);
+
     last = p;
   }
 
-  // Botón siguiente
   const nextDisabled = page >= totalPages ? "disabled" : "";
-  const nextPage = page < totalPages ? page + 1 : totalPages;
-  parts.push(
-    `<button class="pager-btn pager-next" data-page="${nextPage}" ${nextDisabled} aria-label="Página siguiente">›</button>`
-  );
+  parts.push(`<button class="pager-btn pager-next" data-page="${page + 1}" ${nextDisabled}>›</button>`);
 
   pager.innerHTML = `<div class="pager-inner">${parts.join("")}</div>`;
 }
 
-// Recalcula lista filtrada + página y actualiza TODO (count, grid, pager)
 function updateView(state, pageOverride) {
   FILTERED = applyFilters(state);
   const total = FILTERED.length;
   const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
 
   let page = pageOverride || state.page || 1;
-  if (page < 1) page = 1;
   if (page > totalPages) page = totalPages;
 
   CURRENT_STATE = { ...state, page };
   CURRENT_PAGE = page;
 
-  // Texto "1 - 20 de X resultados"
   updateCount(total, page, PAGE_SIZE);
 
-  // Si no hay resultados, renderizamos estado vacío y limpiamos pager
   if (!total) {
     renderGrid([]);
     renderPager(0, 1, 1);
@@ -345,28 +299,29 @@ function updateView(state, pageOverride) {
   }
 
   const start = (page - 1) * PAGE_SIZE;
-  const pageItems = FILTERED.slice(start, start + PAGE_SIZE);
-
-  renderGrid(pageItems);
+  renderGrid(FILTERED.slice(start, start + PAGE_SIZE));
   renderPager(total, page, totalPages);
 }
 
-// Limpia controles pero conserva el `scope`
+// =========================================
+// Acción: limpiar filtros
+// =========================================
 function clearFilters() {
   qs("#fCategory").value = "";
   qs("#fMin").value = "";
   qs("#fMax").value = "";
   qs("#fSort").value = "relevance";
-  const searchInput = qs("#searchInput");
-  if (searchInput) searchInput.value = "";
 
-  // eliminamos otros parámetros pero setParams preserva scope
+  const s = qs("#searchInput");
+  if (s) s.value = "";
+
   setParams({});
-  const state = { category: "", min: "", max: "", sort: "relevance", search: "", page: 1 };
-  updateView(state, 1);
+  updateView({ category:"", min:"", max:"", sort:"relevance", search:"", page:1 }, 1);
 }
 
-// === Badge dentro del panel de filtros con botón para quitar el scope (ARRIBA DEL SELECT) ===
+// =========================================
+// Badge de "scope"
+// =========================================
 function injectScopeBadge() {
   if (SCOPE !== "perfumeria" && SCOPE !== "hogar") return;
 
@@ -375,55 +330,52 @@ function injectScopeBadge() {
 
   const label = SCOPE === "hogar" ? "Hogar" : "Perfumería";
   const badge = document.createElement("div");
-  badge.setAttribute("id", "scopeBadge");
+  badge.id = "scopeBadge";
   badge.innerHTML = `
     <span style="font-weight:700;">${label}</span>
-    <button type="button" aria-label="Quitar vista ${label}" title="Quitar vista ${label}">×</button>
+    <button type="button">×</button>
   `;
-  Object.assign(badge.end ? badge.end : badge.style, {
+  Object.assign(badge.style, {
     display: "inline-flex",
     alignItems: "center",
     gap: "8px",
-    alignSelf: "flex-start",
-    width: "auto",
-    maxWidth: "100%",
-    marginBottom: "8px",
     padding: "6px 10px",
+    marginBottom: "8px",
     borderRadius: "12px",
-    fontSize: "13px",
-    color: "#c43c73",
     background: "#ffe3ef",
+    color: "#c43c73",
+    fontSize: "13px",
   });
+
   const btn = badge.querySelector("button");
   Object.assign(btn.style, {
-    appearance: "none",
-    border: "none",
-    background: "transparent",
-    fontSize: "18px",
-    lineHeight: "1",
-    cursor: "pointer",
-    color: "#c43c73",
-    padding: "2px 4px",
+    appearance:"none",
+    border:"none",
+    background:"transparent",
+    fontSize:"18px",
+    cursor:"pointer",
+    color:"#c43c73"
   });
 
   form.insertBefore(badge, form.firstElementChild);
 
   btn.addEventListener("click", () => {
-    const params = currentParams();
-    params.delete("scope");
-    params.delete("page");
-    params.delete("q");
-    const query = params.toString();
-    const url = query ? `${location.pathname}?${query}` : location.pathname;
-    location.href = url;
+    const p = currentParams();
+    p.delete("scope");
+    p.delete("page");
+    p.delete("q");
+    location.href = p.toString() ? `${location.pathname}?${p}` : location.pathname;
   });
 }
 
-// Cambiar de página desde el paginador
+// =========================================
+// Paginar
+// =========================================
 function goToPage(page) {
   if (!CURRENT_STATE) return;
   const nextPage = Math.max(1, page | 0);
   const state = { ...CURRENT_STATE, page: nextPage };
+
   setParams({
     category: state.category,
     min: state.min,
@@ -432,31 +384,28 @@ function goToPage(page) {
     q: state.search,
     page: nextPage
   });
+
   updateView(state, nextPage);
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-// ------- Arranque -------
-// (IIFE)
+// =========================================
+// ARRANQUE
+// =========================================
 (async () => {
   try {
     const params = currentParams();
     SCOPE = (params.get("scope") || "").toLowerCase();
 
-    // Primero cargamos los títulos desde home.config.json
     await loadHomeConfig();
-
-    // Luego cargamos los productos
     const data = await loadData();
     buildFromJSON(data);
 
-    // Llenar select categoría dinámicamente (solo categorías existentes y no vacías)
     const $cat = qs("#fCategory");
     populateCategorySelect($cat);
 
     const $search = qs("#searchInput");
 
-    // Cargar estado inicial desde URL (si viene ?category=women, etc.)
     const initState = {
       category: params.get("category") || "",
       min: params.get("min") || "",
@@ -466,28 +415,20 @@ function goToPage(page) {
       page: parseInt(params.get("page") || "1", 10) || 1,
     };
 
-    // Ajustes según scope
-    if (SCOPE === "perfumeria" && initState.category === "hogar") {
-      initState.category = "";
-    }
-    if (SCOPE === "hogar" && initState.category && initState.category !== "hogar") {
-      initState.category = "";
-    }
+    if (SCOPE === "perfumeria" && initState.category === "hogar") initState.category = "";
+    if (SCOPE === "hogar" && initState.category !== "hogar") initState.category = "";
 
-    // Prellenar controles
-    $cat.value = initState.category || "";
-    qs("#fMin").value = initState.min || "";
-    qs("#fMax").value = initState.max || "";
+    $cat.value = initState.category;
+    qs("#fMin").value = initState.min;
+    qs("#fMax").value = initState.max;
     qs("#fSort").value = initState.sort;
-    if ($search) $search.value = initState.search || "";
+    if ($search) $search.value = initState.search;
 
-    // Render inicial (con paginación)
     updateView(initState, initState.page);
 
-    // Badge informativo de scope dentro del panel de filtros (con X) — arriba del select
     injectScopeBadge();
 
-    // Eventos filtros
+    // FORM submit
     qs("#filtersForm").addEventListener("submit", (e) => {
       e.preventDefault();
       const state = {
@@ -499,12 +440,8 @@ function goToPage(page) {
         page: 1,
       };
       setParams({
-        category: state.category,
-        min: state.min,
-        max: state.max,
-        sort: state.sort,
-        q: state.search,
-        page: 1,
+        category: state.category, min: state.min, max: state.max,
+        sort: state.sort, q: state.search, page: 1,
       });
       updateView(state, 1);
     });
@@ -521,17 +458,12 @@ function goToPage(page) {
         page: 1,
       };
       setParams({
-        category: state.category,
-        min: state.min,
-        max: state.max,
-        sort: state.sort,
-        q: state.search,
-        page: 1,
+        category: state.category, min: state.min, max: state.max,
+        sort: state.sort, q: state.search, page: 1,
       });
       updateView(state, 1);
     });
 
-    // Aplicar al instante al cambiar "Tipo de producto"
     $cat.addEventListener("change", () => {
       const state = {
         category: $cat.value,
@@ -542,17 +474,15 @@ function goToPage(page) {
         page: 1,
       };
       setParams({
-        category: state.category,
-        min: state.min,
-        max: state.max,
-        sort: state.sort,
-        q: state.search,
-        page: 1,
+        category: state.category, min: state.min, max: state.max,
+        sort: state.sort, q: state.search, page: 1,
       });
       updateView(state, 1);
     });
 
-    // Búsqueda en vivo por nombre/descripcion + Enter
+    // =========================================
+    // BÚSQUEDA EN VIVO + ENTER
+    // =========================================
     if ($search) {
       const runSearch = () => {
         const state = {
@@ -584,40 +514,32 @@ function goToPage(page) {
       });
     }
 
-    // Máscara de dinero
+    // Máscara dinero
     function attachMoneyMask(input) {
       if (!input) return;
-      const format = (raw) => {
+      const format = raw => {
         const digits = String(raw).replace(/\D/g, "").slice(0, 5);
-        if (!digits) return "";
-        return Number(digits).toLocaleString("es-CL");
+        return digits ? Number(digits).toLocaleString("es-CL") : "";
       };
       input.addEventListener("input", () => {
-        const val = input.value;
-        const next = format(val);
-        if (val !== next) input.value = next;
-        input.setSelectionRange(input.value.length, input.value.length);
+        const next = format(input.value);
+        if (input.value !== next) input.value = next;
       });
-      ["blur", "change"].forEach(evt =>
-        input.addEventListener(evt, () => (input.value = format(input.value)))
-      );
+      ["blur","change"].forEach(evt => input.addEventListener(evt, () => input.value = format(input.value)));
       input.value = format(input.value);
     }
 
     attachMoneyMask(qs("#fMin"));
     attachMoneyMask(qs("#fMax"));
 
-    // Clicks en el paginador (delegado)
-    const pagerEl = qs("#pager");
-    if (pagerEl) {
-      pagerEl.addEventListener("click", (e) => {
-        const btn = e.target.closest("[data-page]");
-        if (!btn || btn.disabled) return;
+    // Paginar (delegado)
+    qs("#pager")?.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-page]");
+      if (btn && !btn.disabled) {
         const page = parseInt(btn.dataset.page || "1", 10);
-        if (!page || page === CURRENT_PAGE) return;
-        goToPage(page);
-      });
-    }
+        if (page && page !== CURRENT_PAGE) goToPage(page);
+      }
+    });
 
   } catch (err) {
     console.error(err);
