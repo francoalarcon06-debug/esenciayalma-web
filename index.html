@@ -53,9 +53,7 @@
     <div class="container nav__inner">
       <a class="brand" href="#inicio">Esencia y Alma</a>
       <nav class="menu">
-        <a href="catalogo.html?scope=perfumeria">Perfumería</a>
-        <a href="catalogo.html?scope=hogar">Hogar</a>
-        <!-- ACTUALIZADO: que “Contacto” abra WhatsApp igual que “Contactar ahora” -->
+        <!-- Solo Contacto en el menú -->
         <a id="nav-contact" href="#" target="_blank" rel="noopener">Contacto</a>
       </nav>
     </div>
@@ -225,7 +223,7 @@
     const wa = `https://wa.me/${PHONE}?text=${MSG}`;
     document.getElementById("btn-whatsapp").href = wa;
     document.getElementById("whatsapp-cta").href = wa;
-    // NUEVO: que el link del menú “Contacto” haga lo mismo
+    // El link del menú “Contacto” hace lo mismo
     const navContact = document.getElementById("nav-contact");
     if (navContact) navContact.href = wa;
   </script>
