@@ -83,7 +83,7 @@ async function loadHomeConfig() {
     .card__footer{margin-top:auto;display:flex;flex-direction:column;gap:12px}
 
     .card__img{overflow:hidden}
-    .card__img img{width:100%;height:100%;object-fit:cover;object-position:center center}
+    .card__img img{width:100%;height:100%;object-fit:contain;object-position:center center}
 
     .is-viewport, .carousel .track{ touch-action: pan-y; }
     .is-viewport{ cursor: grab; }
@@ -387,7 +387,7 @@ function destroyLoop(track) {
   if (!track._loopInited) return;
   const row = track._row;
   if (row) {
-    while (row.firstChild) track.insertBefore(row.firstChild, row);
+    while (row.firstChild) track.insertBefore(row.firstChild, track);
     row.remove();
   }
   track._loopInited = false;
@@ -604,4 +604,69 @@ function isVisible(cat, cfg) {
   } catch (e) {
     console.error(e);
   }
+})();
+
+/* ===== Slider de banners promocionales (home) ===== */
+(() => {
+  const slider = document.getElementById("promoSlider");
+  if (!slider) return;
+
+  const track = slider.querySelector(".promo-track");
+  const slides = slider.querySelectorAll(".promo-slide");
+  const prevBtn = slider.querySelector(".promo-prev");
+  const nextBtn = slider.querySelector(".promo-next");
+
+  if (!track || !slides.length) return;
+
+  let index = 0;
+  let timer = null;
+
+  function goToSlide(newIndex) {
+    const total = slides.length;
+    index = (newIndex + total) % total; // bucle infinito
+    track.style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  function nextSlide() {
+    goToSlide(index + 1);
+  }
+
+  function prevSlide() {
+    goToSlide(index - 1);
+  }
+
+  function startAuto() {
+    stopAuto();
+    timer = setInterval(nextSlide, 3000); // 3 segundos
+  }
+
+  function stopAuto() {
+    if (timer) {
+      clearInterval(timer);
+      timer = null;
+    }
+  }
+
+  // Flechas
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      nextSlide();
+      startAuto();
+    });
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      prevSlide();
+      startAuto();
+    });
+  }
+
+  // Pausar en hover (desktop)
+  slider.addEventListener("mouseenter", stopAuto);
+  slider.addEventListener("mouseleave", startAuto);
+
+  // Iniciar
+  goToSlide(0);
+  startAuto();
 })();
