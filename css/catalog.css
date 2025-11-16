@@ -106,8 +106,8 @@
   gap: 10px;
   color: #6b6b6b;
   margin: 0 0 8px;
-  flex-wrap: nowrap;         /* evita salto de línea */
-  white-space: nowrap;       /* mantiene texto en una sola línea */
+  flex-wrap: nowrap;
+  white-space: nowrap;
 }
 .sort-group {
   display: flex;
@@ -148,12 +148,12 @@
 }
 @media (max-width: 760px) {
   .grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 productos por fila en móvil */
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 @media (max-width: 460px) {
   .grid {
-    grid-template-columns: repeat(2, 1fr); /* mantiene 2 también en pantallas pequeñas */
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -218,19 +218,18 @@
   color: #aaa;
 }
 
-/* ====== MEDIA de la tarjeta (MARCO 1080×1050) ====== */
+/* ====== MEDIA de la tarjeta ====== */
 .card__img{
-  /* Reservamos relación 1080 / 1050 con fallback por si no viene la var */
   aspect-ratio: var(--media-w,1080) / var(--media-h,1050);
   overflow: hidden;
-  background: #fff;          /* por si el PNG trae transparencia */
-  border-radius: 12px;       /* opcional: si tus cards ya tienen radios, podés quitarlo */
+  background: #fff;
+  border-radius: 12px;
 }
 .card__img .card__media{
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;       /* NO recorta; si querés llenar, usar 'cover' */
+  object-fit: contain;
   object-position: center bottom;
 }
 
@@ -239,12 +238,12 @@ body {
   background: #fff2f6;
 }
 
-/* ====== Enlace “Ver todo” — limitar área clickeable al texto ====== */
+/* ====== Enlace “Ver todo” ====== */
 .sec-bottom{
-  pointer-events: none; /* el contenedor no recibe clics */
+  pointer-events: none;
 }
 .sec-bottom .sec-link--bottom{
-  pointer-events: auto;     /* solo el enlace es clickeable */
+  pointer-events: auto;
   display: inline !important;
   position: static !important;
   width: auto !important;
@@ -257,7 +256,7 @@ body {
 }
 .sec-bottom .sec-link--bottom::before,
 .sec-bottom .sec-link--bottom::after{
-  content: none !important; /* por si había overlays */
+  content: none !important;
 }
 
 /* ====== RESPONSIVE (solo móvil) ====== */
@@ -273,7 +272,6 @@ body {
     margin: 0;
   }
 
-  /* Barra superior en móvil: ajustamos espacios para que el select no se corte */
   .toolbar {
     margin-top: -4px;
     flex-wrap: nowrap;
@@ -295,30 +293,31 @@ body {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+
+    /* 💥 NUEVO: mover un poco más a la izquierda */
+    margin-left: -6px;
   }
 
-  /* Paginador en móvil: que no quede apretado */
   .pager-inner {
     flex-wrap: wrap;
     gap: 4px;
     padding: 8px 10px;
   }
 
-  /* ===== Botón WhatsApp en dos líneas ===== */
   .card__btn{
-    display:flex;            /* ya lo es, pero aseguramos en móvil */
-    flex-direction: row;     /* ícono a la izquierda */
+    display:flex;
+    flex-direction: row;
     align-items:center;
     justify-content:center;
     gap:8px;
-    white-space: normal;     /* permite salto de línea */
+    white-space: normal;
     text-align:left;
     line-height:1.15;
-    font-size: 14px;         /* un poco más pequeño para que encaje en 2 líneas */
+    font-size: 14px;
   }
   .card__btn .icon-wa{
     width:26px;
     height:26px;
-    transform:none;          /* anulamos cualquier desplazamiento */
+    transform:none;
   }
 }
