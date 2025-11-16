@@ -9,6 +9,9 @@ const WA_GREET = "Hola, me interesa este producto";
 const MEDIA_W = 1080;
 const MEDIA_H = 1050;
 
+// Tamaño de página para la paginación
+const PAGE_SIZE = 20;
+
 // Mapeo legible para nombres de categorías
 // Ahora se carga dinámicamente desde data/home.config.json (json.titles)
 let CATEGORY_LABELS = {};
@@ -138,6 +141,11 @@ let ALL = [];       // [{...product, categoryKey, idx}]
 let CATS = [];      // [{key,label,count}]
 let SCOPE = "";     // "", "perfumeria", "hogar"
 
+// Para paginación
+let CURRENT_STATE = null;   // {category,min,max,sort,page}
+let CURRENT_PAGE = 1;
+let FILTERED = [];          // lista filtrada completa (todas las páginas)
+
 function buildFromJSON(json) {
   ALL = [];
   CATS = [];
@@ -208,6 +216,23 @@ function applyFilters({ category, min, max, sort }) {
   return list;
 }
 
+// Actualiza el texto "1 - 20 de X resultados"
+function updateCount(total, page, pageSize) {
+  const el = qs("#count");
+  if (!el) return;
+
+  if (!total) {
+    el.textContent = "0 resultados";
+    return;
+  }
+
+  const start = (page - 1) * pageSize + 1;
+  const end = Math.min(total, page * pageSize);
+  const word = total === 1 ? "resultado" : "resultados";
+  el.textContent = `${start} - ${end} de ${total} ${word}`;
+}
+
+// Renderiza SOLO la grilla (ya paginada)
 function renderGrid(items) {
   const grid = qs("#grid");
   grid.innerHTML = "";
@@ -221,7 +246,100 @@ function renderGrid(items) {
   }
 
   items.forEach(p => grid.appendChild(renderCard(p)));
-  qs("#count").textContent = `${items.length} resultado${items.length===1?"":"s"}`;
+}
+
+// Renderiza paginador en #pager
+function renderPager(total, page, totalPages) {
+  const pager = qs("#pager");
+  if (!pager) return;
+
+  // Si no hace falta paginar, no mostramos nada
+  if (total <= PAGE_SIZE || totalPages <= 1) {
+    pager.innerHTML = "";
+    return;
+  }
+
+  const parts = [];
+
+  // Botón anterior
+  const prevDisabled = page <= 1 ? "disabled" : "";
+  const prevPage = page > 1 ? page - 1 : 1;
+  parts.push(
+    `<button class="pager-btn pager-prev" data-page="${prevPage}" ${prevDisabled} aria-label="Página anterior">‹</button>`
+  );
+
+  // Cálculo de páginas a mostrar (1, ..., page-1, page, page+1, ..., last)
+  const pages = [];
+  const add = (n) => {
+    if (n < 1 || n > totalPages) return;
+    if (!pages.includes(n)) pages.push(n);
+  };
+
+  add(1);
+  add(page - 1);
+  add(page);
+  add(page + 1);
+  add(totalPages);
+
+  pages.sort((a,b) => a - b);
+
+  let last = 0;
+  for (const p of pages) {
+    if (last && p - last > 1) {
+      // hueco -> puntos suspensivos
+      parts.push(`<span class="pager-ellipsis">…</span>`);
+    }
+    const isCurrent = p === page;
+    if (isCurrent) {
+      parts.push(
+        `<button class="pager-page pager-page--current" data-page="${p}" aria-current="page">${p}</button>`
+      );
+    } else {
+      parts.push(
+        `<button class="pager-page" data-page="${p}">${p}</button>`
+      );
+    }
+    last = p;
+  }
+
+  // Botón siguiente
+  const nextDisabled = page >= totalPages ? "disabled" : "";
+  const nextPage = page < totalPages ? page + 1 : totalPages;
+  parts.push(
+    `<button class="pager-btn pager-next" data-page="${nextPage}" ${nextDisabled} aria-label="Página siguiente">›</button>`
+  );
+
+  pager.innerHTML = `<div class="pager-inner">${parts.join("")}</div>`;
+}
+
+// Recalcula lista filtrada + página y actualiza TODO (count, grid, pager)
+function updateView(state, pageOverride) {
+  FILTERED = applyFilters(state);
+  const total = FILTERED.length;
+  const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+
+  let page = pageOverride || state.page || 1;
+  if (page < 1) page = 1;
+  if (page > totalPages) page = totalPages;
+
+  CURRENT_STATE = { ...state, page };
+  CURRENT_PAGE = page;
+
+  // Texto "1 - 20 de X resultados"
+  updateCount(total, page, PAGE_SIZE);
+
+  // Si no hay resultados, renderizamos estado vacío y limpiamos pager
+  if (!total) {
+    renderGrid([]);
+    renderPager(0, 1, 1);
+    return;
+  }
+
+  const start = (page - 1) * PAGE_SIZE;
+  const pageItems = FILTERED.slice(start, start + PAGE_SIZE);
+
+  renderGrid(pageItems);
+  renderPager(total, page, totalPages);
 }
 
 // Limpia controles pero conserva el `scope`
@@ -230,9 +348,10 @@ function clearFilters() {
   qs("#fMin").value = "";
   qs("#fMax").value = "";
   qs("#fSort").value = "relevance";
-  setParams({}); // mantiene 'scope' gracias a setParams
-  const items = applyFilters({});
-  renderGrid(items);
+  // eliminamos otros parámetros pero setParams preserva scope
+  setParams({});
+  const state = { category: "", min: "", max: "", sort: "relevance", page: 1 };
+  updateView(state, 1);
 }
 
 // === Badge dentro del panel de filtros con botón para quitar el scope (ARRIBA DEL SELECT) ===
@@ -280,13 +399,31 @@ function injectScopeBadge() {
   btn.addEventListener("click", () => {
     const params = currentParams();
     params.delete("scope");
+    params.delete("page");
     const query = params.toString();
     const url = query ? `${location.pathname}?${query}` : location.pathname;
     location.href = url;
   });
 }
 
+// Cambiar de página desde el paginador
+function goToPage(page) {
+  if (!CURRENT_STATE) return;
+  const nextPage = Math.max(1, page | 0);
+  const state = { ...CURRENT_STATE, page: nextPage };
+  setParams({
+    category: state.category,
+    min: state.min,
+    max: state.max,
+    sort: state.sort,
+    page: nextPage
+  });
+  updateView(state, nextPage);
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
 // ------- Arranque -------
+// (IIFE)
 (async () => {
   try {
     const params = currentParams();
@@ -309,6 +446,7 @@ function injectScopeBadge() {
       min: params.get("min") || "",
       max: params.get("max") || "",
       sort: params.get("sort") || "relevance",
+      page: parseInt(params.get("page") || "1", 10) || 1,
     };
 
     // Ajustes según scope
@@ -325,8 +463,8 @@ function injectScopeBadge() {
     qs("#fMax").value = initState.max || "";
     qs("#fSort").value = initState.sort;
 
-    // Render inicial
-    renderGrid(applyFilters(initState));
+    // Render inicial (con paginación)
+    updateView(initState, initState.page);
 
     // Badge informativo de scope dentro del panel de filtros (con X) — arriba del select
     injectScopeBadge();
@@ -339,9 +477,16 @@ function injectScopeBadge() {
         min: qs("#fMin").value,
         max: qs("#fMax").value,
         sort: qs("#fSort").value,
+        page: 1,
       };
-      setParams(state); // conserva 'scope'
-      renderGrid(applyFilters(state));
+      setParams({
+        category: state.category,
+        min: state.min,
+        max: state.max,
+        sort: state.sort,
+        page: 1,
+      });
+      updateView(state, 1);
     });
 
     qs("#clearBtn").addEventListener("click", clearFilters);
@@ -352,9 +497,16 @@ function injectScopeBadge() {
         min: qs("#fMin").value,
         max: qs("#fMax").value,
         sort: qs("#fSort").value,
+        page: 1,
       };
-      setParams(state); // conserva 'scope'
-      renderGrid(applyFilters(state));
+      setParams({
+        category: state.category,
+        min: state.min,
+        max: state.max,
+        sort: state.sort,
+        page: 1,
+      });
+      updateView(state, 1);
     });
 
     // Aplicar al instante al cambiar "Tipo de producto"
@@ -364,9 +516,16 @@ function injectScopeBadge() {
         min: qs("#fMin").value,
         max: qs("#fMax").value,
         sort: qs("#fSort").value,
+        page: 1,
       };
-      setParams(state);
-      renderGrid(applyFilters(state));
+      setParams({
+        category: state.category,
+        min: state.min,
+        max: state.max,
+        sort: state.sort,
+        page: 1,
+      });
+      updateView(state, 1);
     });
 
     // Máscara de dinero
@@ -391,6 +550,18 @@ function injectScopeBadge() {
 
     attachMoneyMask(qs("#fMin"));
     attachMoneyMask(qs("#fMax"));
+
+    // Clicks en el paginador (delegado)
+    const pagerEl = qs("#pager");
+    if (pagerEl) {
+      pagerEl.addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-page]");
+        if (!btn || btn.disabled) return;
+        const page = parseInt(btn.dataset.page || "1", 10);
+        if (!page || page === CURRENT_PAGE) return;
+        goToPage(page);
+      });
+    }
 
   } catch (err) {
     console.error(err);
