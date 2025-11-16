@@ -341,15 +341,24 @@ a{text-decoration:none;color:inherit}
     white-space: nowrap;
   }
 
+  /* quitar el gap general del menú en móvil
+     para poder controlar los espacios uno por uno */
+  .menu{
+    gap: 0 !important;
+  }
+
   /* ajustes finos del menú en móvil */
   .menu a:nth-child(1){  /* Perfumería */
-    margin-left: 4px;
+    margin-left: 6px;
+    margin-right: 8px;
   }
   .menu a:nth-child(2){  /* Hogar */
-    margin-left: 10px;
+    margin-left: 8px;
+    margin-right: 8px;
   }
   .menu a:nth-child(3){  /* Contacto */
-    margin-right: 2px;
+    margin-left: 8px;
+    margin-right: 6px;
   }
 
   @supports not (overflow-x: clip){
