@@ -64,7 +64,19 @@
     <!-- MAIN: Toolbar arriba + grid abajo -->
     <main class="results-main">
       <div class="toolbar">
-        <div id="count">0 resultados</div>
+        <!-- NUEVO: bloque izquierdo con conteo + buscador -->
+        <div class="toolbar-left">
+          <div id="count">0 resultados</div>
+          <div class="search-wrap">
+            <input
+              id="fSearch"
+              type="search"
+              placeholder="Buscar por nombre o descripción"
+              autocomplete="off"
+            >
+          </div>
+        </div>
+
         <div class="sort-group">
           <label for="fSort">Ordenar por</label>
           <select id="fSort">
