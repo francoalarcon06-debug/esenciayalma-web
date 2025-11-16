@@ -280,11 +280,14 @@ a{text-decoration:none;color:inherit}
 }
 .promo-slide{
   flex:0 0 100%;
+  aspect-ratio:1920 / 600;  /* igual al lienzo de Canva; define la altura visible */
 }
 .promo-slide img{
   width:100%;
-  height:auto;
+  height:100%;
   display:block;
+  object-fit:cover;          /* llena el recuadro */
+  object-position:top center;/* corta la parte inferior (donde está el difuminado) */
 }
 .promo-arrow{
   position:absolute;
