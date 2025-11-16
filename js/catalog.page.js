@@ -552,9 +552,9 @@ function goToPage(page) {
       updateView(state, 1);
     });
 
-    // Búsqueda en vivo por nombre/descripcion
+    // Búsqueda en vivo por nombre/descripcion + Enter
     if ($search) {
-      $search.addEventListener("input", () => {
+      const runSearch = () => {
         const state = {
           category: $cat.value,
           min: qs("#fMin").value,
@@ -572,6 +572,15 @@ function goToPage(page) {
           page: 1,
         });
         updateView(state, 1);
+      };
+
+      $search.addEventListener("input", runSearch);
+
+      $search.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          runSearch();
+        }
       });
     }
 
