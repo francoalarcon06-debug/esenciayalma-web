@@ -801,618 +801,535 @@
   "men": [
     {
       "name": "Drakkar Noir",
-      "description": "Aroma intenso y masculino.",
-      "longDescription": "Salida cítrica especiada con corazón aromático y base de maderas secas. Presencia segura, versátil y con gran rendimiento.",
+      "description": "Aroma masculino intenso, fresco y lleno de carácter.",
+      "longDescription": "Una fragancia fougère clásica, marcada por notas de lavanda, romero, pino y vetiver, que crean un aroma fuerte, limpio y muy varonil. Perfecto para quienes buscan un estilo firme y seguro.",
       "price": "16000",
       "image": "assets/men/drakkar_noir.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
       "name": "Azzaro Pour Homme",
-      "description": "Aroma clásico y elegante.",
-      "longDescription": "Estilo barbershop: lavanda limpia, fougère elegante y base cálida. Atemporal y varonil, ideal para oficina y ocasiones formales.",
+      "description": "Aroma elegante, clásico y profundamente masculino.",
+      "longDescription": "Un icónico aroma fougère, con notas de lavanda, anís estrellado, pachulí y ámbar que equilibran frescura y calidez. Ideal para hombres seguros, tradicionales y con estilo.",
       "price": "16000",
       "image": "assets/men/azzaro.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
       "name": "Quorum",
-      "description": "Aroma profundo y sofisticado.",
-      "longDescription": "Ámbar resinoso con incienso y maderas. Profundo y envolvente, pensado para destacar de noche o en clima frío. Deja una estela elegante y duradera.",
+      "description": "Aroma fuerte, serio y lleno de presencia.",
+      "longDescription": "Fragancia amaderada-aromática con notas de artemisa, tabaco, cuero, pino y musgo de roble. Es intensa, dura y completamente masculina, perfecta para quienes proyectan autoridad.",
       "price": "16000",
       "image": "assets/men/quorum.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
       "name": "Paco Rabanne",
-      "description": "Aroma limpio y refrescante.",
-      "longDescription": "Cítricos limpios con acorde acuático y vetiver. Sensación de ducha recién tomada: ligero, deportivo y muy fácil de llevar.",
+      "description": "Aroma verde, fresco y masculino de estilo clásico.",
+      "longDescription": "Una fragancia aromática con notas de romero, lavanda, pachulí y miel suave. Combina frescura con calidez para un resultado elegante y varonil, ideal para el día a día.",
       "price": "16000",
       "image": "assets/men/paco_rabanne.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
       "name": "Invictus Platinum (P. Rabanne)",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Aroma moderno, fresco y energéticamente masculino.",
+      "longDescription": "Una fragancia aromática-amaderada con notas de pomelo, lavanda, menta y ciprés. Es vibrante, deportiva y seductora, pensada para hombres activos y seguros.",
       "price": "16000",
       "image": "assets/men/invictus_platinum.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
       "name": "Polo Blue",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Aroma azul, limpio y masculino con un toque deportivo.",
+      "longDescription": "Un aroma aromático-fresco que mezcla melón, pepino, albahaca, almizcle y maderas claras. Proyecta libertad, frescura y elegancia relajada, ideal para uso diario.",
       "price": "16000",
       "image": "assets/men/polo_blue.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
       "name": "212 Heroes Men",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Aroma juvenil, moderno y lleno de actitud.",
+      "longDescription": "Un aroma frutal-amaderado, con notas de pera, jengibre, geranio y cuero suave. Combina frescura con masculinidad urbana, perfecto para hombres creativos y seguros.",
       "price": "16000",
       "image": "assets/men/212_heroes.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
       "name": "Armani Code Sport",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Aroma fresco, dinámico y marcadamente masculino.",
+      "longDescription": "Una fragancia aromática-amaderada con notas de menta, limón, jengibre y vetiver. Es limpia, deportiva y refinada, ideal para quienes buscan frescura sin perder elegancia.",
       "price": "16000",
       "image": "assets/men/armani_code_sport.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
       "name": "Tommy",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Frescura juvenil con un estilo relajado y natural.",
+      "longDescription": "Un aroma fresco y ligero que combina notas cítricas, lavanda, arándanos y menta, creando una fragancia limpia, energizante y perfecta para el día a día.",
       "price": "16000",
       "image": "assets/men/tommy.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
       "name": "Carolina Herrera",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Elegancia clásica con un carácter masculino distintivo.",
+      "longDescription": "Una fragancia aromática y refinada que mezcla notas de lavanda, limón, tabaco suave y maderas cálidas, logrando un aroma sofisticado y tradicional.",
       "price": "16000",
       "image": "assets/men/herrera.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
       "name": "Agua Brava",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Masculinidad natural con frescura amaderada.",
+      "longDescription": "Un aroma inspirado en la naturaleza, combinando notas de pino, lavanda, sándalo y musgo, creando un carácter cálido, varonil y con toques herbales.",
       "price": "16000",
       "image": "assets/men/agua_brava.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
       "name": "Ted Lapidus Pour Homme",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Intensidad masculina con una presencia fuerte.",
+      "longDescription": "Una fragancia potente y distintiva con notas de pachulí, ámbar, cuero suave y especias aromáticas, ideal para quienes buscan aromas marcados y varoniles.",
       "price": "16000",
       "image": "assets/men/ted_lapidus_pour_homme.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
         {
       "name": "Polo Sport",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Energía deportiva con una frescura limpia.",
+      "longDescription": "Una fragancia refrescante y dinámica, con notas de limón, menta, aldehídos y maderas claras, perfecta para un estilo activo, moderno y casual.",
       "price": "16000",
       "image": "assets/men/polo_sport.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
       "name": "212 For Men",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Estilo urbano con una frescura moderna y equilibrada.",
+      "longDescription": "Un aroma masculino muy balanceado, combinando cítricos, notas verdes, incienso suave y maderas ligeras, ideal para uso diario y ambientes contemporáneos.",
       "price": "16000",
       "image": "assets/men/212_for_men.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
-      "name": "Sauvage Elixir (C. Dior)",
+      "name": "Intensidad profunda y masculinidad poderosa.",
       "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "longDescription": "Una fragancia extremadamente concentrada, con notas de especias cálidas, lavanda, maderas oscuras y ámbar, creando un aroma impactante, elegante y dominante.",
       "price": "16000",
       "image": "assets/men/sauvage_elixir.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
       "name": "XS",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Aroma moderno, fresco y sutilmente especiado.",
+      "longDescription": "Un aroma vibrante que mezcla notas de limón, menta, geranio, jengibre y maderas sensuales, logrando una fragancia equilibrada, masculina y muy atractiva.",
       "price": "16000",
       "image": "assets/men/xs.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
       "name": "Burberry Hero",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Aroma moderno, enérgico y con un carácter masculino marcado.",
+      "longDescription": "Una fragancia amaderada-fresca que combina bergamota vibrante con maderas cálidas y un fondo terroso muy masculino. Destaca por su estilo limpio, elegante y contemporáneo, ideal para quienes buscan una presencia firme sin perder frescura.",
       "price": "16000",
       "image": "assets/men/burberry_hero.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
       "name": "Sauvage",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Aroma intenso, fresco y profundamente masculino.",
+      "longDescription": "Una fragancia aromática-especiada con notas de bergamota, pimienta negra, lavanda y maderas secas. Es potente, luminosa y muy versátil, perfecta para un hombre seguro, moderno y con presencia.",
       "price": "16000",
       "image": "assets/men/sauvage.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
       "name": "Fahrenheit",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Aroma cálido, audaz y completamente distintivo.",
+      "longDescription": "Una fragancia amaderada-floral con notas de cuero, violeta, nuez moscada y ámbar. Es única, intensa y masculina, ideal para quienes buscan un aroma fuerte, original y con carácter.",
       "price": "16000",
       "image": "assets/men/fahrenheit.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
       "name": "Acqua D'gio Profondo",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Frescura marina con profundidad masculina.",
+      "longDescription": "Una fragancia acuática-aromática con notas de bergamota, mandarina verde, romero y un fondo marino intenso. Es limpia, moderna y elegante, perfecta para un estilo fresco pero sofisticado.",
       "price": "16000",
       "image": "assets/men/acqua_dgio_profondo.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
       "name": "Elements",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Aroma cálido, especiado y marcadamente masculino.",
+      "longDescription": "Una fragancia amaderada-oriental con notas de canela, ámbar, maderas oscuras y toques especiados. Es fuerte, envolvente y con gran presencia, ideal para un hombre seguro y decidido.",
       "price": "16000",
       "image": "assets/men/elements.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
       "name": "Acqua Di Gio Pour Homme",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Frescura limpia y masculinidad elegante.",
+      "longDescription": "Una fragancia cítrica-acuática que mezcla notas de limón, jazmín, bergamota y maderas claras. Es fresca, ligera y muy versátil, perfecta para el día a día y climas cálidos.",
       "price": "16000",
       "image": "assets/men/acqua_di_gio.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" },
+        { "ml": 15,  "price": "5000" }
       ]
     },
     {
       "name": "Halloween Man",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Aroma dulce-especiado con actitud juvenil.",
+      "longDescription": "Una fragancia oriental-amaderada con notas de canela, mandarina, haba tonka y vainilla suave. Es seductora, moderna y con un toque nocturno ideal para llamar la atención sin exagerar.",
       "price": "16000",
       "image": "assets/men/halloween.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
       "name": "Boss",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Aroma masculino clásico, cálido y elegante.",
+      "longDescription": "Una fragancia amaderada-especiada con notas de manzana, canela, maderas cálidas y vainilla ligera. Es equilibrada, versátil y muy profesional, perfecta para uso diario y ambiente formal.",
       "price": "16000",
       "image": "assets/men/boss.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
       "name": "212 Vip Men",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Aroma moderno, vibrante y con estilo nocturno",
+      "longDescription": "Una fragancia oriental-amaderada con notas de limón, menta fresca, especias suaves, vodka y maderas cálidas. Es intensa, juvenil y con un carácter urbano ideal para quienes buscan un aroma distintivo y lleno de energía.",
       "price": "16000",
       "image": "assets/men/212_vip_men.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" },
+        { "ml": 15,  "price": "5000" }
       ]
     },
     {
       "name": "CK One",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Aroma fresco, limpio y universal.",
+      "longDescription": "Una fragancia cítrica-aromática con notas de bergamota, té verde, piña, jazmín y almizcle suave. Es ligera, versátil y perfecta para el día a día, con un estilo minimalista y moderno que se adapta a cualquier ocasión.",
       "price": "16000",
       "image": "assets/men/ck_one.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
       "name": "XS Black Men",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Aroma intenso, dulce y con un toque nocturno.",
+      "longDescription": "Una fragancia oriental-amaderada con notas de limón, praliné, pachulí, ámbar y maderas oscuras. Es profunda, atrevida y seductora, ideal para quienes disfrutan aromas dulces pero masculinos y con personalidad.",
       "price": "16000",
       "image": "assets/men/black_xs.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" },
+        { "ml": 15,  "price": "5000" }
       ]
     },
     {
       "name": "Eros",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Aroma seductor, fresco y poderoso.",
+      "longDescription": "Una fragancia aromática-oriental con notas de menta, limón, manzana verde, haba tonka y maderas cálidas. Es vibrante, juvenil y magnética, ideal para destacar tanto de día como de noche.",
       "price": "16000",
       "image": "assets/men/eros.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
       "name": "One Million Intense",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Aroma fuerte, dulce y lujoso.",
+      "longDescription": "Una fragancia oriental-especiada con notas de canela, cuero suave, mandarina, rosa y ámbar. Es cálida, envolvente y con una estela marcada, pensada para quienes buscan un aroma intenso y llamativo.",
       "price": "16000",
       "image": "assets/men/one_million_intense.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
       "name": "Light Blue Men",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Aroma fresco, mediterráneo y luminoso.",
+      "longDescription": "Una fragancia cítrica-aromática con notas de pomelo, bergamota, romero, pimienta y maderas claras. Es ligera, juvenil y perfecta para climas cálidos o actividades al aire libre, manteniendo un estilo elegante y casual.",
       "price": "16000",
       "image": "assets/men/light_blue_men.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
       "name": "Polo Black",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Aroma elegante, moderno y masculino.",
+      "longDescription": "Una fragancia amaderada-aromática con notas de mango helado, salvia, pachulí y sándalo. Es sofisticada, oscura y versátil, ideal para hombres que buscan un aroma firme y con carácter urbano.",
       "price": "16000",
       "image": "assets/men/polo_black.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
       "name": "Y EDT (Y.S.L)",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Aroma fresco, moderno y energético.",
+      "longDescription": "Una fragancia fougère-aromática con notas de bergamota, manzana verde, jengibre, salvia y maderas ambaradas. Combina limpieza, frescura y profundidad, perfecta para el uso diario o ambientes profesionales gracias a su elegancia juvenil.",
       "price": "16000",
       "image": "assets/men/y_edt.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
       "name": "Le Beau (J.P GAULTIER)",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Aroma dulce, tropical y marcadamente masculino.",
+      "longDescription": "Una fragancia fresca-dulce con carácter exótico, mezclando notas de coco, bergamota y maderas cremosas. Es seductora, veraniega y muy llamativa, ideal para quienes buscan un aroma masculino con un toque tropical elegante.",
       "price": "16000",
       "image": "assets/men/le_beau.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
       "name": "One Million",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Aroma dulce, intenso y altamente llamativo.",
+      "longDescription": "Una fragancia oriental-especiada con notas de canela, cuero suave, mandarina roja y ámbar. Es cálida, potente y reconocible al instante, ideal para quienes buscan un aroma masculino seductor y de presencia fuerte.",
       "price": "16000",
       "image": "assets/men/one_million.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" },
+        { "ml": 15,  "price": "5000" }
       ]
     },
     {
       "name": "MYSLF (Y.S.L)",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Aroma moderno, limpio y masculino.",
+      "longDescription": "Una fragancia amaderada-fresca con notas de bergamota, flor de naranja y maderas elegantes. Es minimalista, refinada y muy versátil, perfecta para el día a día y para quienes buscan un aroma masculino equilibrado y contemporáneo.",
       "price": "16000",
       "image": "assets/men/myslf.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
       "name": "Invictus",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Aroma fresco, deportivo y poderoso.",
+      "longDescription": "Una fragancia aromática-marina que mezcla notas de pomelo, hojas de laurel, ámbar gris y maderas claras. Es vibrante, juvenil y llena de energía, ideal para un hombre que busca proyectar fuerza y dinamismo.",
       "price": "16000",
       "image": "assets/men/invictus.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" },
+        { "ml": 15,  "price": "5000" }
       ]
     },
     {
       "name": "Acqua Di Gio Absolu",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Aroma fresco, elegante y amaderado.",
+      "longDescription": "Una fragancia marina-amaderada que combina notas de frutas cítricas, pachulí, ámbar y maderas cálidas. Es limpia, masculina y sofisticada, perfecta para quienes buscan una frescura madura y elegante.",
       "price": "16000",
       "image": "assets/men/acqua_di_gio_absolu.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
       "name": "Polo Red",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Aroma energético, moderno y vibrante.",
+      "longDescription": "Una fragancia especiada-fresca que combina notas de limón rojo, jengibre, arándano y maderas cálidas. Es dinámica, juvenil y con un perfil seductor ideal para uso diario o salidas nocturnas.",
       "price": "16000",
       "image": "assets/men/polo_red.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
       "name": "Gucci Guilty",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Aroma seductor, cálido y sofisticado.",
+      "longDescription": "Una fragancia aromática-amaderada con notas de lavanda, limón italiano, pachulí y cedro. Es moderna, elegante y con un toque sensual distintivo que acompaña muy bien tanto de día como de noche.",
       "price": "16000",
       "image": "assets/men/gucci_guilty.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
       "name": "212 Vip Black",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Aroma intenso, nocturno y altamente masculino.",
+      "longDescription": "Una fragancia oriental-fresca que mezcla absenta, lavanda, vainilla negra y almizcle. Es seductora, moderna y diseñada para destacar en ambientes nocturnos, perfecta para quienes buscan un aroma fuerte y atractivo.",
       "price": "16000",
       "image": "assets/men/212_vip_black.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
       "name": "Bleu (Chanel)",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Aroma elegante, fresco y profundamente masculino.",
+      "longDescription": "Una fragancia aromática–amaderada con notas de pomelo, incienso, jengibre, pimienta rosa y maderas secas. Es limpia, sofisticada y versátil, ideal para un estilo moderno y seguro.",
       "price": "16000",
       "image": "assets/men/bleu.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
       "name": "Pure XS",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Dulzor especiado con un toque sensual y moderno.",
+      "longDescription": "Una fragancia oriental–fresca que combina jengibre, vainilla, canela, mirra y maderas cálidas. Su aroma es atractivo, juvenil y provocador, perfecto para quienes buscan algo intenso y llamativo.",
       "price": "16000",
       "image": "assets/men/pure_xs.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
       "name": "Bad Boy",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Aroma audaz, moderno y con actitud masculina marcada.",
+      "longDescription": "Una mezcla oriental–especiada con notas de pimienta, cacao, haba tonka, bergamota y maderas ámbar. Es cálida, sofisticada y con un contraste dulce–picante que destaca de inmediato.",
       "price": "16000",
       "image": "assets/men/bad_boy.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     },
     {
       "name": "Phantom",
-      "description": "Fragancia cálida y elegante.",
-      "longDescription": "Especias suaves y cuero con un toque dulce de vainilla. Carismático y nocturno; proyecta sin exagerar y deja un rastro sofisticado.",
+      "description": "Frescura futurista con dulzor moderno y masculino.",
+      "longDescription": "Una fragancia aromática–dulce con notas de lavanda cremosa, limón, manzana verde, vainilla y maderas suaves. Es juvenil, vibrante y distintiva, perfecta para quienes buscan algo moderno y único.",
       "price": "16000",
       "image": "assets/men/phantom.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
         { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50,  "price": "10000" },
+        { "ml": 20,  "price": "6000" }
       ]
     }
   ],
