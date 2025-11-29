@@ -1818,134 +1818,134 @@
   "black": [
     {
       "name": "Santal 33",
-      "description": "Inspirado en las mejores fragancias de nicho.",
-      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "description": "Aroma amaderado, cálido y distintivo, con un carácter profundamente sofisticado.",
+      "longDescription": "Santal 33 es una fragancia masculina de estilo amaderado que combina sándalo cremoso, cardamomo especiado y notas secas de cuero suave. Tiene una vibra moderna, elegante y muy característica, ideal para quienes buscan un aroma único y fácilmente reconocible. Perfecta para uso diario o para destacar en ocasiones especiales.",
       "price": "26000",
       "image": "assets/black/santal_33.png",
       "variants": [
-        { "ml": 100, "price": "16000" }
+        { "ml": 100, "price": "26000" }
       ]
     },
     {
       "name": "Ombré Leather (2018)",
-      "description": "Inspirado en las mejores fragancias de nicho.",
-      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "description": "Un aroma cuero especiado, intenso y elegante con un sello muy masculino.",
+      "longDescription": "Ombré Leather se caracteriza por su mezcla profunda de cuero suave, especias cálidas y un toque floral que aporta equilibrio sin perder firmeza. Proyecta carácter, seguridad y un estilo moderno que destaca. Una fragancia ideal para noches frías, eventos especiales o para quienes buscan un aroma con presencia y personalidad.",
       "price": "26000",
       "image": "assets/black/onbre_leather.png",
       "variants": [
-        { "ml": 100, "price": "16000" }
+        { "ml": 100, "price": "26000" }
       ]
     },
     {
       "name": "Silver Mountain Water Edp",
-      "description": "Inspirado en las mejores fragancias de nicho.",
-      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "description": "Frescura limpia y aromática con un toque cítrico y muy elegante.",
+      "longDescription": "Silver Mountain Water combina notas verdes y refrescantes con cítricos brillantes y un fondo ligeramente almizclado. Evoca la sensación de aire frío de montaña y pureza cristalina. Es una fragancia versátil, equilibrada y extremadamente agradable para quienes prefieren aromas limpios pero sofisticados.",
       "price": "26000",
       "image": "assets/black/silver_mountain_water_edp.png",
       "variants": [
-        { "ml": 100, "price": "16000" }
+        { "ml": 100, "price": "26000" }
       ]
     },
     {
       "name": "Aventus Edp",
-      "description": "Inspirado en las mejores fragancias de nicho.",
-      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "description": "Aroma frutal-amaderado icónico, poderoso y con gran personalidad.",
+      "longDescription": "Aventus mezcla piña fresca, manzana y bergamota con un fondo amaderado de musgo y abedul. Su aroma es elegante, vibrante y distintivo, ideal para quienes buscan proyectar seguridad y estilo. Perfecta para ocasiones formales, reuniones importantes o para ser tu sello personal durante todo el día.",
       "price": "26000",
       "image": "assets/black/aventus_edp.png",
       "variants": [
-        { "ml": 100, "price": "16000" }
+        { "ml": 100, "price": "26000" }
       ]
     },
     {
       "name": "Neroli Portofino",
-      "description": "Inspirado en las mejores fragancias de nicho.",
-      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "description": "Cítrico aromático, brillante y elegante, inspirado en la Riviera italiana.",
+      "longDescription": "Neroli Portofino ofrece una mezcla fresca de neroli, cítricos vibrantes, flores blancas y un fondo limpio muy agradable. Su aroma es sofisticado, veraniego y extremadamente refinado, ideal para climas cálidos y para quienes aman fragancias claras y luminosas. Una opción premium con carácter mediterráneo.",
       "price": "26000",
       "image": "assets/black/neroli_portofino.png",
       "variants": [
-        { "ml": 100, "price": "16000" }
+        { "ml": 100, "price": "26000" }
       ]
     },
     {
       "name": "Born in Roma Uomo",
-      "description": "Inspirado en las mejores fragancias de nicho.",
-      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "description": "Aroma moderno, dulce y especiado, con un toque juvenil y elegante.",
+      "longDescription": "Born in Roma Uomo combina notas dulces equilibradas con especias suaves y un fondo cálido que lo hace envolvente y muy atractivo. Es una fragancia contemporánea, llamativa y perfecta para salidas nocturnas o encuentros especiales. Ideal para quienes buscan un aroma moderno con personalidad marcada.",
       "price": "26000",
       "image": "assets/black/born_in_roma_oumo.png",
       "variants": [
-        { "ml": 100, "price": "16000" }
+        { "ml": 100, "price": "26000" }
       ]
     },
     {
       "name": "Erba Pura",
-      "description": "Inspirado en las mejores fragancias de nicho.",
-      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "description": "Dulzor frutal intenso, exótico y llamativo, con un fondo ambarado elegante.",
+      "longDescription": "Erba Pura destaca por su mezcla de frutas vibrantes, dulces y envolventes, combinadas con un fondo ambarado cálido y lujoso. Es una fragancia poderosa, versátil y muy duradera, ideal para quienes gustan de aromas intensos que llaman la atención. Perfecta para eventos, noches frías o como aroma distintivo.",
       "price": "26000",
       "image": "assets/black/erba_pura.png",
       "variants": [
-        { "ml": 100, "price": "16000" }
+        { "ml": 100, "price": "26000" }
       ]
     },
     {
       "name": "L'immensité",
-      "description": "Inspirado en las mejores fragancias de nicho.",
-      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "description": "Fragancia fresca, ligera y masculina con un toque especiado elegante.",
+      "longDescription": "L’immensité mezcla notas cítricas brillantes con especias suaves y un fondo amaderado limpio. Proyecta una sensación de frescura moderna y bienestar, ideal para quienes buscan un aroma sencillo pero muy refinado. Perfecta para uso diario, oficina o climas cálidos gracias a su estilo fresco y equilibrado.",
       "price": "26000",
       "image": "assets/black/limmensite.png",
       "variants": [
-        { "ml": 100, "price": "16000" }
+        { "ml": 100, "price": "26000" }
       ]
     }
   ],
   "red": [
     {
       "name": "English Pear and Freesia",
-      "description": "Inspirado en las mejores fragancias de nicho.",
-      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "description": "IAroma delicado, frutal y elegante.",
+      "longDescription": "Un perfume luminoso que combina pera madura, fresia suave y un fondo limpio muy femenino. Es refinado, fresco y ligeramente dulce, ideal para mujeres que buscan un toque elegante y natural en su aroma diario.",
       "price": "26000",
       "image": "assets/red/english_pear_and_freesia.png",
       "variants": [
-        { "ml": 100, "price": "16000" }
+        { "ml": 100, "price": "26000" }
       ]
     },
     {
       "name": "Black Orchid",
-      "description": "Inspirado en las mejores fragancias de nicho.",
-      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "description": "Intenso, misterioso y sofisticado.",
+      "longDescription": "Una fragancia profunda y elegante con notas oscuras de orquídea negra, especias suaves y un fondo cálido. Es sensual, con carácter y perfecta para quienes disfrutan aromas intensos y lujosos que destacan tanto de día como de noche.",
       "price": "26000",
       "image": "assets/red/black_orchid.png",
       "variants": [
-        { "ml": 100, "price": "16000" }
+        { "ml": 100, "price": "26000" }
       ]
     },
     {
       "name": "Love Don't Be Shy",
-      "description": "Inspirado en las mejores fragancias de nicho.",
-      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "description": "Dulzura cálida y femenina.",
+      "longDescription": "Un perfume gourmand con mezcla exquisita de azahar, caramelo suave y vainilla cremosa. Es dulce, romántico y envolvente, ideal para mujeres que aman los aromas cálidos, tiernos y con un toque coqueto que deja una estela inolvidable.",
       "price": "26000",
       "image": "assets/red/love_dont_be_shy.png",
       "variants": [
-        { "ml": 100, "price": "16000" }
+        { "ml": 100, "price": "26000" }
       ]
     },
     {
       "name": "Soleil Blanc",
-      "description": "Inspirado en las mejores fragancias de nicho.",
-      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "description": "Elegancia solar y exótica.",
+      "longDescription": "Una fragancia cálida y luminosa que mezcla coco suave, flores blancas y un fondo cremoso. Evoca lujo playero, sofisticación y frescura veraniega. Perfecto para quienes buscan un aroma sensual pero refinado para cualquier ocasión.",
       "price": "26000",
       "image": "assets/red/soleil_blanc.png",
       "variants": [
-        { "ml": 100, "price": "16000" }
+        { "ml": 100, "price": "26000" }
       ]
     },
     {
       "name": "Baccarat Rougue",
-      "description": "Inspirado en las mejores fragancias de nicho.",
-      "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
+      "description": "Aroma cálido, dulce y adictivo.",
+      "longDescription": "Un perfume moderno y destacado que combina notas de jazmín, ámbar y maderas suaves. Es intenso, elegante y con una estela única que todos reconocen. Ideal para mujeres que quieren un aroma exclusivo, lujoso y memorable.",
       "price": "26000",
       "image": "assets/red/baccarat_rouge.png",
       "variants": [
-        { "ml": 100, "price": "16000" }
+        { "ml": 100, "price": "26000" }
       ]
     }
   ],
