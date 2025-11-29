@@ -2,7 +2,7 @@
 // Catálogo – Esencia y Alma
 // =======================
 
-const WA_PHONE = "56961114225";
+const WA_PHONE = "56989174119";
 const WA_GREET = "Hola, me interesa este producto";
 
 // CAMBIO: relación de aspecto “oficial” del marco de imagen (1080 × 1050)
