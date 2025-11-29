@@ -2077,102 +2077,102 @@
     "juvenil": [
     {
       "name": "Cloud",
-      "description": "Vela aromática de cera de soya.",
-      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
-      "price": "12000",
+      "description": "Dulce, suave y muy juvenil.",
+      "longDescription": "Cloud es una fragancia delicada y envolvente que mezcla notas dulces, acordes cremosos y un toque etéreo muy femenino. Se siente tierna, ligera y perfecta para el día a día. Ideal para jóvenes que buscan un perfume suave, cálido y con un estilo moderno y encantador.",
+      "price": "7500",
       "image": "assets/juvenil/cloud.png",
       "variants": [
-        { "ml": 50,  "price": "9900" }
+        { "ml": 50,  "price": "7500" }
       ]
     },
     {
       "name": "Fantasy",
-      "description": "Vela aromática de cera de soya.",
-      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
-      "price": "12000",
+      "description": "Dulce, frutal y encantadora.",
+      "longDescription": "Fantasy combina frutas dulces, flores suaves y un fondo cremoso que la vuelve irresistible y muy femenina. Es una fragancia alegre, llamativa y perfecta para quienes disfrutan aromas dulces con un estilo juvenil. Ideal para uso diario, salidas con amigas o para quienes quieren dejar una impresión dulce y divertida.",
+      "price": "7500",
       "image": "assets/juvenil/fantasy.png",
       "variants": [
-        { "ml": 50,  "price": "9900" }
+        { "ml": 50,  "price": "7500" }
       ]
     },
     {
       "name": "Selena",
       "description": "Vela aromática de cera de soya.",
       "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
-      "price": "12000",
+      "price": "7500",
       "image": "assets/juvenil/selena.png",
       "variants": [
-        { "ml": 50,  "price": "9900" }
+        { "ml": 50,  "price": "7500" }
       ]
     },
     {
       "name": "Bombshell",
       "description": "Vela aromática de cera de soya.",
       "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
-      "price": "12000",
+      "price": "7500",
       "image": "assets/juvenil/bombshell.png",
       "variants": [
-        { "ml": 50,  "price": "9900" }
+        { "ml": 50,  "price": "7500" }
       ]
     },
     {
       "name": "Thank You Next",
       "description": "Vela aromática de cera de soya.",
       "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
-      "price": "12000",
+      "price": "7500",
       "image": "assets/juvenil/thank_u_next.png",
       "variants": [
-        { "ml": 50,  "price": "9900" }
+        { "ml": 50,  "price": "7500" }
       ]
     },
     {
       "name": "Meow",
       "description": "Vela aromática de cera de soya.",
       "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
-      "price": "12000",
+      "price": "7500",
       "image": "assets/juvenil/meow.png",
       "variants": [
-        { "ml": 50,  "price": "9900" }
+        { "ml": 50,  "price": "7500" }
       ]
     },
     {
       "name": "Sweet Like Candy",
       "description": "Vela aromática de cera de soya.",
       "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
-      "price": "12000",
+      "price": "7500",
       "image": "assets/juvenil/sweet_like.png",
       "variants": [
-        { "ml": 50,  "price": "9900" }
+        { "ml": 50,  "price": "7500" }
       ]
     },
     {
       "name": "Legacy",
       "description": "Vela aromática de cera de soya.",
       "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
-      "price": "12000",
+      "price": "7500",
       "image": "assets/juvenil/legacy.png",
       "variants": [
-        { "ml": 50,  "price": "9900" }
+        { "ml": 50,  "price": "7500" }
       ]
     },
     {
       "name": "Spirit Diesel",
       "description": "Vela aromática de cera de soya.",
       "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
-      "price": "12000",
+      "price": "7500",
       "image": "assets/juvenil/spirit_diesel.png",
       "variants": [
-        { "ml": 50,  "price": "9900" }
+        { "ml": 50,  "price": "7500" }
       ]
     },
     {
       "name": "Invictus Aqua",
       "description": "Vela aromática de cera de soya.",
       "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
-      "price": "12000",
+      "price": "7500",
       "image": "assets/juvenil/invictus_aqua.png",
       "variants": [
-        { "ml": 50,  "price": "9900" }
+        { "ml": 50,  "price": "7500" }
       ]
     }
   ],
@@ -2181,16 +2181,17 @@
       "name": "Crema Corporal",
       "description": "Inspirado en las mejores fragancias de nicho.",
       "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
-      "price": "26000",
+      "price": "5000",
       "image": "assets/packs_promocionales/crema_corporal.png",
       "variants": [
+          { "ml": 250,  "price": "5000" }
       ]
     },
     {
       "name": "Chanel N°5 + Crema Corporal",
       "description": "Inspirado en las mejores fragancias de nicho.",
       "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
-      "price": "26000",
+      "price": "13000",
       "image": "assets/packs_promocionales/chanel_n5.png",
       "variants": [
       ]
@@ -2199,7 +2200,7 @@
       "name": "Ralph + Crema Corporal",
       "description": "Inspirado en las mejores fragancias de nicho.",
       "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
-      "price": "26000",
+      "price": "13000",
       "image": "assets/packs_promocionales/ralph.png",
       "variants": [
       ]
@@ -2208,7 +2209,7 @@
       "name": "Tresor + Crema Corporal",
       "description": "Inspirado en las mejores fragancias de nicho.",
       "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
-      "price": "26000",
+      "price": "13000",
       "image": "assets/packs_promocionales/tresor.png",
       "variants": [
       ]
@@ -2217,7 +2218,7 @@
       "name": "Carolina Herrera + Crema Corporal",
       "description": "Inspirado en las mejores fragancias de nicho.",
       "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
-      "price": "26000",
+      "price": "13000",
       "image": "assets/packs_promocionales/carolina_herrera.png",
       "variants": [
       ]
@@ -2226,7 +2227,7 @@
       "name": "C.K One + Crema Corporal",
       "description": "Inspirado en las mejores fragancias de nicho.",
       "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
-      "price": "26000",
+      "price": "13000",
       "image": "assets/packs_promocionales/ck_one.png",
       "variants": [
       ]
@@ -2235,7 +2236,7 @@
       "name": "Tommy Girl + Crema Corporal",
       "description": "Inspirado en las mejores fragancias de nicho.",
       "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
-      "price": "26000",
+      "price": "13000",
       "image": "assets/packs_promocionales/tommy_girl.png",
       "variants": [
       ]
@@ -2244,7 +2245,7 @@
       "name": "Amor Amor + Crema Corporal",
       "description": "Inspirado en las mejores fragancias de nicho.",
       "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
-      "price": "26000",
+      "price": "13000",
       "image": "assets/packs_promocionales/amor_amor.png",
       "variants": [
       ]
@@ -2253,7 +2254,7 @@
       "name": "Good Girl + Crema Corporal",
       "description": "Inspirado en las mejores fragancias de nicho.",
       "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
-      "price": "26000",
+      "price": "13000",
       "image": "assets/packs_promocionales/good_girl.png",
       "variants": [
       ]
@@ -2262,7 +2263,7 @@
       "name": "Halloween + Crema Corporal",
       "description": "Inspirado en las mejores fragancias de nicho.",
       "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
-      "price": "26000",
+      "price": "13000",
       "image": "assets/packs_promocionales/halloween.png",
       "variants": [
       ]
@@ -2271,7 +2272,7 @@
       "name": "212 Sexy + Crema Corporal",
       "description": "Inspirado en las mejores fragancias de nicho.",
       "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
-      "price": "26000",
+      "price": "13000",
       "image": "assets/packs_promocionales/212_sexy.png",
       "variants": [
       ]
@@ -2280,7 +2281,7 @@
       "name": "La Vida es Bella + Crema Corporal",
       "description": "Inspirado en las mejores fragancias de nicho.",
       "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
-      "price": "26000",
+      "price": "13000",
       "image": "assets/packs_promocionales/la_vida_es_bella.png",
       "variants": [
       ]
@@ -2289,16 +2290,17 @@
       "name": "After Shave",
       "description": "Inspirado en las mejores fragancias de nicho.",
       "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
-      "price": "26000",
+      "price": "4000",
       "image": "assets/packs_promocionales/after_shave.png",
       "variants": [
+            { "ml": 100,  "price": "4000" }
       ]
     },
     {
       "name": "Polo Blue + After Shave",
       "description": "Inspirado en las mejores fragancias de nicho.",
       "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
-      "price": "26000",
+      "price": "12000",
       "image": "assets/packs_promocionales/polo_blue.png",
       "variants": [
       ]
@@ -2307,7 +2309,7 @@
       "name": "212 For Men + After Shave",
       "description": "Inspirado en las mejores fragancias de nicho.",
       "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
-      "price": "26000",
+      "price": "12000",
       "image": "assets/packs_promocionales/212_for_men.png",
       "variants": [
       ]
@@ -2316,7 +2318,7 @@
       "name": "Sauvage + After Shave",
       "description": "Inspirado en las mejores fragancias de nicho.",
       "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
-      "price": "26000",
+      "price": "12000",
       "image": "assets/packs_promocionales/sauvage.png",
       "variants": [
       ]
@@ -2325,7 +2327,7 @@
       "name": "Acqua Di Gio + After Shave",
       "description": "Inspirado en las mejores fragancias de nicho.",
       "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
-      "price": "26000",
+      "price": "12000",
       "image": "assets/packs_promocionales/acqua_di_gio.png",
       "variants": [
       ]
@@ -2334,7 +2336,7 @@
       "name": "Boss + After Shave",
       "description": "Inspirado en las mejores fragancias de nicho.",
       "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
-      "price": "26000",
+      "price": "12000",
       "image": "assets/packs_promocionales/boss.png",
       "variants": [
       ]
@@ -2343,7 +2345,7 @@
       "name": "XS Black Men + After Shave",
       "description": "Inspirado en las mejores fragancias de nicho.",
       "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
-      "price": "26000",
+      "price": "12000",
       "image": "assets/packs_promocionales/xs_black_men.png",
       "variants": [
       ]
@@ -2352,7 +2354,7 @@
       "name": "One Million + After Shave",
       "description": "Inspirado en las mejores fragancias de nicho.",
       "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
-      "price": "26000",
+      "price": "12000",
       "image": "assets/packs_promocionales/one_million.png",
       "variants": [
       ]
@@ -2361,7 +2363,7 @@
       "name": "Invictus + After Shave",
       "description": "Inspirado en las mejores fragancias de nicho.",
       "longDescription": "Acorde ambarado moderno con vainilla oscura y maderas resinosas. Sofisticado y adictivo, con fijación notable y estela envolvente.",
-      "price": "26000",
+      "price": "12000",
       "image": "assets/packs_promocionales/invictus.png",
       "variants": [
       ]
@@ -2372,140 +2374,140 @@
       "name": "Crema Baba de Caracol",
       "description": "Vela aromática de cera de soya.",
       "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
-      "price": "12000",
+      "price": "10000",
       "image": "assets/essien/baba_de_caracol.png",
       "variants": [
-        { "ml": 50,  "price": "9900" }
+        { "ml": 50,  "price": "10000" }
       ]
     },
     {
       "name": "Crema Gusano de Seda",
       "description": "Vela aromática de cera de soya.",
       "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
-      "price": "12000",
+      "price": "9000",
       "image": "assets/essien/gusano_de_seda.png",
       "variants": [
-        { "ml": 50,  "price": "9900" }
+        { "ml": 50,  "price": "9000" }
       ]
     },
     {
       "name": "Crema Perfection",
       "description": "Vela aromática de cera de soya.",
       "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
-      "price": "12000",
+      "price": "15000",
       "image": "assets/essien/perfection.png",
       "variants": [
-        { "ml": 50,  "price": "9900" }
+        { "ml": 50,  "price": "15000" }
       ]
     },
     {
       "name": "Crema de Propóleo",
       "description": "Vela aromática de cera de soya.",
       "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
-      "price": "12000",
+      "price": "8000",
       "image": "assets/essien/propoleo.png",
       "variants": [
-        { "ml": 50,  "price": "9900" }
+        { "ml": 50,  "price": "8000" }
       ]
     },
     {
       "name": "Crema Total 5",
       "description": "Vela aromática de cera de soya.",
       "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
-      "price": "12000",
+      "price": "9000",
       "image": "assets/essien/total5.png",
       "variants": [
-        { "ml": 50,  "price": "9900" }
+        { "ml": 50,  "price": "9000" }
       ]
     },
     {
       "name": "Crema de Células Madre",
       "description": "Vela aromática de cera de soya.",
       "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
-      "price": "12000",
+      "price": "12500",
       "image": "assets/essien/celulas_madre.png",
       "variants": [
-        { "ml": 50,  "price": "9900" }
+        { "ml": 50,  "price": "12500" }
       ]
     },
     {
       "name": "Lift Extreme",
       "description": "Vela aromática de cera de soya.",
       "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
-      "price": "12000",
+      "price": "8000",
       "image": "assets/essien/lift_extreme.png",
       "variants": [
-        { "ml": 50,  "price": "9900" }
+        { "ml": 15,  "price": "8000" }
       ]
     },
     {
       "name": "Phytocomplex",
       "description": "Vela aromática de cera de soya.",
       "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
-      "price": "12000",
+      "price": "7000",
       "image": "assets/essien/phytocomplex.png",
       "variants": [
-        { "ml": 50,  "price": "9900" }
+        { "ml": 150,  "price": "7000" }
       ]
     },
     {
       "name": "Crema Skin Scrub",
       "description": "Vela aromática de cera de soya.",
       "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
-      "price": "12000",
+      "price": "7000",
       "image": "assets/essien/skin_scrub.png",
       "variants": [
-        { "ml": 50,  "price": "9900" }
+        { "ml": 200,  "price": "7000" }
       ]
     },
     {
       "name": "Dermacare",
       "description": "Vela aromática de cera de soya.",
       "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
-      "price": "12000",
+      "price": "7000",
       "image": "assets/essien/dermacare.png",
       "variants": [
-        { "ml": 50,  "price": "9900" }
+        { "ml": 80,  "price": "7000" }
       ]
     },
     {
       "name": "Shampoo de Argán",
       "description": "Vela aromática de cera de soya.",
       "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
-      "price": "12000",
+      "price": "6000",
       "image": "assets/essien/shampoo.png",
       "variants": [
-        { "ml": 50,  "price": "9900" }
+        { "ml": 500,  "price": "6000" }
       ]
     },
     {
       "name": "Acondicionador de Argán",
       "description": "Vela aromática de cera de soya.",
       "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
-      "price": "12000",
+      "price": "6000",
       "image": "assets/essien/acondicionador.png",
       "variants": [
-        { "ml": 50,  "price": "9900" }
+        { "ml": 500,  "price": "6000" }
       ]
     },
     {
       "name": "Máscara de Cabello",
       "description": "Vela aromática de cera de soya.",
       "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
-      "price": "12000",
+      "price": "5000",
       "image": "assets/essien/mascara.png",
       "variants": [
-        { "ml": 50,  "price": "9900" }
+        { "ml": 250,  "price": "5000" }
       ]
     },
         {
       "name": "Aceite de Argán",
       "description": "Vela aromática de cera de soya.",
       "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
-      "price": "12000",
+      "price": "7000",
       "image": "assets/essien/aceite_argan.png",
       "variants": [
-        { "ml": 50,  "price": "9900" }
+        { "ml": 100,  "price": "7000" }
       ]
     }
   ],
@@ -2514,126 +2516,90 @@
       "name": "Difusor Hogar Dulce Hogar",
       "description": "Vela aromática de cera de soya.",
       "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
-      "price": "12000",
+      "price": "15000",
       "image": "assets/hogar/difusor_hogar_dulce_hogar.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 150, "price": "15000" }
       ]
     },
     {
       "name": "Difusor Sinfonía Aromática",
       "description": "Difusor ambiental con varillas.",
       "longDescription": "Difusión continua con varillas de fibra. Perfila espacios con flores blancas limpias y sensación de hogar recién ventilado.",
-      "price": "14500",
+      "price": "15000",
       "image": "assets/hogar/difusor_sinfonia_aromatica.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 150, "price": "15000" }
       ]
     },
     {
       "name": "Difusor Susurros del Bosque",
       "description": "Aroma limpio para telas y espacios cerrados.",
       "longDescription": "Rocío rápido de fragancia tipo lino limpio con toque cítrico. Ideal para cortinas, ropa de cama, sofás y clósets. Refresca sin dejar residuos.",
-      "price": "9800",
+      "price": "15000",
       "image": "assets/hogar/difusor_susurros_del_bosque.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 150, "price": "15000" }
       ]
     },
     {
       "name": "Ambientador Hogar Dulce Hogar",
       "description": "Pack de tres velas pequeñas con diferentes fragancias.",
       "longDescription": "Tres mini velas para ambientar distintos rincones. Combina acordes vainillados, cítricos y lavanda para cada momento.",
-      "price": "16500",
+      "price": "10000",
       "image": "assets/hogar/ambientador_hogar_dulce_hogar.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 350, "price": "10000" }
       ]
     },
     {
       "name": "Ambientador Sinfonía Aromática",
       "description": "Difusor eléctrico con tecnología ultrasónica.",
       "longDescription": "Nebulización fina y silenciosa con auto-apagado. Úsalo con tus esencias favoritas para perfumar de forma homogénea. Ideal para espacios grandes o dormitorios.",
-      "price": "22900",
+      "price": "10000",
       "image": "assets/hogar/ambientador_sinfonia_aromatica.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 350, "price": "10000" }
       ]
     },
     {
       "name": "Ambientador Susurros del Bosque",
       "description": "Aceite esencial concentrado ideal para difusores.",
       "longDescription": "Alta concentración para una perfumación notoria con pocas gotas. Disponible en varias familias aromáticas.",
-      "price": "8700",
+      "price": "10000",
       "image": "assets/hogar/ambientador_susurros_del_bosque.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 350, "price": "10000" }
       ]
     },
     {
       "name": "Recarga Hogar Dulce Hogar",
       "description": "Vela premium con aroma a madera y vainilla.",
       "longDescription": "Mezcla de cera premium con mecha de algodón. Aroma envolvente y cálido que llena salones y dormitorios amplios.",
-      "price": "15800",
+      "price": "5400",
       "image": "assets/hogar/recarga_hogar_dulce_hogar.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 350, "price": "5400" }
       ]
     },
         {
       "name": "Recarga Sinfonía Aromática",
       "description": "Vela premium con aroma a madera y vainilla.",
       "longDescription": "Mezcla de cera premium con mecha de algodón. Aroma envolvente y cálido que llena salones y dormitorios amplios.",
-      "price": "15800",
+      "price": "5400",
       "image": "assets/hogar/recarga_sinfonia_aromatica.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 350, "price": "5400" }
       ]
     },
         {
       "name": "Recarga Susurros del Bosque",
       "description": "Vela premium con aroma a madera y vainilla.",
       "longDescription": "Mezcla de cera premium con mecha de algodón. Aroma envolvente y cálido que llena salones y dormitorios amplios.",
-      "price": "15800",
+      "price": "5400",
       "image": "assets/hogar/recarga_susurros_del_bosque.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 350, "price": "5400" }
       ]
     }
   ]
