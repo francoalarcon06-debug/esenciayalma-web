@@ -2097,8 +2097,8 @@
     },
     {
       "name": "Selena",
-      "description": "Vela aromática de cera de soya.",
-      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "description": "Dulce, juvenil y con un toque misterioso.",
+      "longDescription": "Selena es una fragancia inspirada en el estilo dulce y moderno de Ari by Ariana Grande, mezclando frutas brillantes, flores suaves y un fondo cálido que envuelve sin ser intenso. Es un aroma femenino y encantador, ideal para el día a día o para quienes buscan una esencia dulce con un toque elegante.",
       "price": "7500",
       "image": "assets/juvenil/selena.png",
       "variants": [
@@ -2107,8 +2107,8 @@
     },
     {
       "name": "Bombshell",
-      "description": "Vela aromática de cera de soya.",
-      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "description": "Fresco, femenino y muy vibrante.",
+      "longDescription": "Bombshell combina notas frutales chispeantes con flores luminosas y un fondo suave inspirado en el clásico de Victoria’s Secret. Es una fragancia juvenil, coqueta y llena de energía, perfecta para quienes disfrutan aromas frescos pero sensuales. Ideal para uso diario o climas cálidos.",
       "price": "7500",
       "image": "assets/juvenil/bombshell.png",
       "variants": [
@@ -2117,8 +2117,8 @@
     },
     {
       "name": "Thank You Next",
-      "description": "Vela aromática de cera de soya.",
-      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "description": "Dulce, frutal y muy juvenil.",
+      "longDescription": "Thank You Next mezcla frutas dulces, flores suaves y un fondo cremoso inspirado en la fragancia de Ariana Grande. Su aroma es moderno, femenino y divertido, destacando por su dulzor equilibrado y estilo encantador. Ideal para quienes buscan una fragancia juvenil y con personalidad.",
       "price": "7500",
       "image": "assets/juvenil/thank_u_next.png",
       "variants": [
@@ -2127,8 +2127,8 @@
     },
     {
       "name": "Meow",
-      "description": "Vela aromática de cera de soya.",
-      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "description": "Aroma dulce, suave y adorable.",
+      "longDescription": "Meow combina frutas dulces, flores delicadas y un fondo cremoso que evoca el estilo tierno y femenino de Katy Perry. Es cálida, ligera y muy agradable, ideal para el uso diario o para quienes prefieren aromas suaves y encantadores. Perfecta para acompañar rutinas o salidas casuales.",
       "price": "7500",
       "image": "assets/juvenil/meow.png",
       "variants": [
@@ -2137,8 +2137,8 @@
     },
     {
       "name": "Sweet Like Candy",
-      "description": "Vela aromática de cera de soya.",
-      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "description": "Dulzor cremoso y juvenil.",
+      "longDescription": "Sweet Like Candy une frutas dulces, notas cremosas y flores suaves inspiradas en el aroma de Ariana Grande. Es una fragancia gourmand, femenina y muy agradable, perfecta para quienes aman los aromas dulces pero equilibrados. Ideal para el día a día o climas fríos.",
       "price": "7500",
       "image": "assets/juvenil/sweet_like.png",
       "variants": [
@@ -2147,8 +2147,8 @@
     },
     {
       "name": "Legacy",
-      "description": "Vela aromática de cera de soya.",
-      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "description": "Aroma elegante, cálido y masculino.",
+      "longDescription": "Inspirado en Cristiano Ronaldo Legacy, combina notas amaderadas con un toque especiado y un fondo cálido que transmite carácter y estilo. Es una fragancia moderna, sobria y muy atractiva, ideal para el día o la noche y perfecta para quienes buscan un aroma varonil con presencia.",
       "price": "7500",
       "image": "assets/juvenil/legacy.png",
       "variants": [
@@ -2157,8 +2157,8 @@
     },
     {
       "name": "Spirit Diesel",
-      "description": "Vela aromática de cera de soya.",
-      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "description": "Aroma intenso, audaz y juvenil.",
+      "longDescription": "Basado en Diesel Spirit of the Brave, mezcla notas orientales, balsámicas y amaderadas que crean un aroma fuerte, energético y seguro. Es llamativo, moderno y perfecto para quienes quieren destacar con una fragancia con personalidad firme.",
       "price": "7500",
       "image": "assets/juvenil/spirit_diesel.png",
       "variants": [
@@ -2167,8 +2167,8 @@
     },
     {
       "name": "Invictus Aqua",
-      "description": "Vela aromática de cera de soya.",
-      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "description": "Fresco, deportivo y muy energizante.",
+      "longDescription": "Inspirado en Invictus Aqua, combina notas marinas brillantes con cítricos limpios y un fondo amaderado suave. Es una fragancia refrescante, juvenil y perfecta para el uso diario, especialmente en días cálidos o actividades al aire libre.",
       "price": "7500",
       "image": "assets/juvenil/invictus_aqua.png",
       "variants": [
