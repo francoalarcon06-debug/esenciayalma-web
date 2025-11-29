@@ -2514,8 +2514,8 @@
   "hogar": [
     {
       "name": "Difusor Hogar Dulce Hogar",
-      "description": "Vela aromática de cera de soya.",
-      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "description": "Aroma cálido y acogedor para todo el hogar.",
+      "longDescription": "Difusor ambiental ideal para llenar tus espacios con un aroma suave, dulce y muy hogareño. Su fragancia cálida crea un ambiente relajante y agradable durante todo el día, perfecto para salas, dormitorios y áreas comunes.",
       "price": "15000",
       "image": "assets/hogar/difusor_hogar_dulce_hogar.png",
       "variants": [
@@ -2524,8 +2524,8 @@
     },
     {
       "name": "Difusor Sinfonía Aromática",
-      "description": "Difusor ambiental con varillas.",
-      "longDescription": "Difusión continua con varillas de fibra. Perfila espacios con flores blancas limpias y sensación de hogar recién ventilado.",
+      "description": "Fragancia equilibrada y elegante.",
+      "longDescription": "Difusor diseñado para aromatizar el hogar con una mezcla suave y equilibrada que aporta frescura y armonía. Ideal para quienes buscan un ambiente elegante y relajante sin aromas invasivos.",
       "price": "15000",
       "image": "assets/hogar/difusor_sinfonia_aromatica.png",
       "variants": [
@@ -2534,8 +2534,8 @@
     },
     {
       "name": "Difusor Susurros del Bosque",
-      "description": "Aroma limpio para telas y espacios cerrados.",
-      "longDescription": "Rocío rápido de fragancia tipo lino limpio con toque cítrico. Ideal para cortinas, ropa de cama, sofás y clósets. Refresca sin dejar residuos.",
+      "description": "Aroma fresco con notas verdes y naturales.",
+      "longDescription": "Este difusor entrega una fragancia inspirada en la naturaleza, con notas verdes y un toque amaderado suave. Perfecto para quienes desean un ambiente fresco, limpio y con sensación de bosque.",
       "price": "15000",
       "image": "assets/hogar/difusor_susurros_del_bosque.png",
       "variants": [
@@ -2544,8 +2544,8 @@
     },
     {
       "name": "Ambientador Hogar Dulce Hogar",
-      "description": "Pack de tres velas pequeñas con diferentes fragancias.",
-      "longDescription": "Tres mini velas para ambientar distintos rincones. Combina acordes vainillados, cítricos y lavanda para cada momento.",
+      "description": "Aroma dulce y acogedor instantáneo.",
+      "longDescription": "Spray aromatizante con un aroma cálido y dulce ideal para perfumar al instante cualquier espacio. Perfecto para dar sensación de hogar y frescura después de limpiar o antes de recibir visitas.",
       "price": "10000",
       "image": "assets/hogar/ambientador_hogar_dulce_hogar.png",
       "variants": [
@@ -2554,8 +2554,8 @@
     },
     {
       "name": "Ambientador Sinfonía Aromática",
-      "description": "Difusor eléctrico con tecnología ultrasónica.",
-      "longDescription": "Nebulización fina y silenciosa con auto-apagado. Úsalo con tus esencias favoritas para perfumar de forma homogénea. Ideal para espacios grandes o dormitorios.",
+      "description": "Perfume fresco y equilibrado para el hogar.",
+      "longDescription": "Ambientador en spray con una fragancia suave y muy agradable que aporta equilibrio y frescura inmediata. Ideal para usar en salas, baños y dormitorios.",
       "price": "10000",
       "image": "assets/hogar/ambientador_sinfonia_aromatica.png",
       "variants": [
@@ -2564,8 +2564,8 @@
     },
     {
       "name": "Ambientador Susurros del Bosque",
-      "description": "Aceite esencial concentrado ideal para difusores.",
-      "longDescription": "Alta concentración para una perfumación notoria con pocas gotas. Disponible en varias familias aromáticas.",
+      "description": "Aroma natural con sensación de aire puro.",
+      "longDescription": "Spray ambientador inspirado en notas verdes y amaderadas ligeras. Aporta un aroma fresco y natural, perfecto para renovar rápidamente cualquier ambiente.",
       "price": "10000",
       "image": "assets/hogar/ambientador_susurros_del_bosque.png",
       "variants": [
@@ -2574,8 +2574,8 @@
     },
     {
       "name": "Recarga Hogar Dulce Hogar",
-      "description": "Vela premium con aroma a madera y vainilla.",
-      "longDescription": "Mezcla de cera premium con mecha de algodón. Aroma envolvente y cálido que llena salones y dormitorios amplios.",
+      "description": "Aroma dulce y cálido para prolongar tu ambientador.",
+      "longDescription": "Recarga diseñada para mantener tu ambientador siempre listo, con un aroma suave, dulce y muy acogedor que perfuma tus espacios por más tiempo.",
       "price": "5400",
       "image": "assets/hogar/recarga_hogar_dulce_hogar.png",
       "variants": [
@@ -2584,8 +2584,8 @@
     },
         {
       "name": "Recarga Sinfonía Aromática",
-      "description": "Vela premium con aroma a madera y vainilla.",
-      "longDescription": "Mezcla de cera premium con mecha de algodón. Aroma envolvente y cálido que llena salones y dormitorios amplios.",
+      "description": "Fragancia equilibrada y fresca para continuar aromatizando.",
+      "longDescription": "Recarga práctica que permite extender el uso de tu ambientador favorito con una mezcla fresca, suave y muy versátil para cualquier espacio del hogar.",
       "price": "5400",
       "image": "assets/hogar/recarga_sinfonia_aromatica.png",
       "variants": [
@@ -2594,8 +2594,8 @@
     },
         {
       "name": "Recarga Susurros del Bosque",
-      "description": "Vela premium con aroma a madera y vainilla.",
-      "longDescription": "Mezcla de cera premium con mecha de algodón. Aroma envolvente y cálido que llena salones y dormitorios amplios.",
+      "description": "Aroma natural y fresco inspirado en la naturaleza.",
+      "longDescription": "Recarga para ambientador con notas verdes y amaderadas que mantienen tus ambientes frescos, limpios y con un toque natural todo el día.",
       "price": "5400",
       "image": "assets/hogar/recarga_susurros_del_bosque.png",
       "variants": [
