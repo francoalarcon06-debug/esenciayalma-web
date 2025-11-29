@@ -1336,482 +1336,482 @@
   "colonias": [
     {
       "name": "Woman",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Sensación fresca, suave y femenina.",
+      "longDescription": "Una colonia luminosa y delicada que combina notas florales y cítricas ligeras, creando un aroma limpio, suave y perfecto para el día a día. Ideal para quienes buscan frescura y naturalidad sin perder un toque elegante.",
+      "price": "5500",
       "image": "assets/colonias/woman.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "Oscar de la Renta",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Elegancia clásica con un toque floral.",
+      "longDescription": "Una fragancia fresca y femenina que mezcla flores blancas, ligeros matices cítricos y un fondo suave y limpio. Es una colonia versátil, perfecta para quienes disfrutan aromas tradicionales, delicados y muy fáciles de llevar.",
+      "price": "5500",
       "image": "assets/colonias/oscar_de_la_renta.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "Chanel N°5",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Aroma icónico, suave y femenino.",
+      "longDescription": "Una versión más ligera del clásico Chanel N°5, con un perfil floral delicado y toques limpios que aportan frescura sin perder refinamiento. Ideal para quienes aman la elegancia, pero prefieren una colonia más suave y cotidiana.",
+      "price": "5500",
       "image": "assets/colonias/chanel_n5.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "Tresor",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Dulzura femenina y suavidad aterciopelada.",
+      "longDescription": "Una interpretación fresca del tradicional Tresor, donde las notas florales y frutales se vuelven más ligeras y suaves. Entrega una sensación cálida pero delicada, ideal para mujeres románticas que buscan un aroma fácil de usar.",
+      "price": "5500",
       "image": "assets/colonias/tresor.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "Carolina Herrera",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Frescura elegante y femenina.",
+      "longDescription": "Una colonia limpia y refinada con un carácter floral suave, acompañada de toques de cítricos y un fondo ligeramente amaderado. Es fresca, clásica y perfecta para el uso diario.",
+      "price": "5500",
       "image": "assets/colonias/carolina_herrera.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "212 Heroes Woman",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Aroma moderno, juvenil y ligero.",
+      "longDescription": "Una colonia vibrante y femenina que combina notas frutales suaves con flores frescas, dando como resultado un aroma dulce, delicado y muy energizante. Ideal para quienes buscan un estilo actual y espontáneo.",
+      "price": "5500",
       "image": "assets/colonias/212_heroes_woman.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "Anais Anais",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Delicadeza floral en su versión más suave.",
+      "longDescription": "Una colonia romántica y ligera, con flores blancas, lirios y toques limpios que envuelven la piel con una frescura dulce y muy femenina. Perfecta para quienes aman los clásicos suaves.",
+      "price": "5500",
       "image": "assets/colonias/anais_anais.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "O de Lancome",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Cítrica, fresca y muy ligera.",
+      "longDescription": "Una colonia energizante con notas de limón, bergamota y flores verdes que aportan sensación de frescura constante. Ideal para mujeres activas que disfrutan aromas brillantes y revitalizantes.",
+      "price": "5500",
       "image": "assets/colonias/o_de_lancome.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "212 Carolina Herrera",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Frescura moderna y femenina.",
+      "longDescription": "Una colonia suave y fresca con notas florales y un toque limpio característico de la línea 212. Es ligera, juvenil y perfecta para acompañar la rutina diaria sin resultar intensa.",
+      "price": "5500",
       "image": "assets/colonias/212_carolina_herrera.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "Eden",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Aroma verde, fresco y natural.",
+      "longDescription": "Una colonia de estilo herbal y acuático, con notas suaves de flores verdes y un fondo limpio. Transmite serenidad y pureza, ideal para mujeres que prefieren aromas naturales y ligeros.",
+      "price": "5500",
       "image": "assets/colonias/eden.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "Can Can",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Dulzor frutal, coqueto y femenino.",
+      "longDescription": "Colonia de carácter frutal-floral, con notas de cítricos suaves, frutas dulces y flores ligeras sobre un fondo avainillado. Perfecta para mujeres que disfrutan aromas juguetones, alegres y muy femeninos sin resultar pesados.",
+      "price": "5500",
       "image": "assets/colonias/can_can.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "Olympea",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Dulce-salado, sensual y moderno.",
+      "longDescription": "Una colonia inspirada en el estilo de Olympea, con toques de flores blancas, vainilla ligera y un matiz casi salado que la vuelve adictiva. Ideal para mujeres que quieren un aroma con personalidad, sensual y a la vez fácil de usar.",
+      "price": "5500",
       "image": "assets/colonias/olympea.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "CK One",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Frescura limpia, ligera y muy versátil.",
+      "longDescription": "Colonia cítrica y transparente con notas de limón, té verde y flores suaves sobre un fondo de almizcles limpios. Es una fragancia unisex perfecta para quienes buscan un aroma sencillo, moderno y fresco para cualquier momento del día.",
+      "price": "5500",
       "image": "assets/colonias/ck_one.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "Jádore",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Floral luminoso, elegante y femenino.",
+      "longDescription": "Una colonia inspirada en los grandes florales modernos, con jazmín, rosa y flores blancas que se mezclan sobre un fondo suave y ligeramente afrutado. Ideal para mujeres que aman los aromas radiantes, sofisticados y muy femeninos.",
+      "price": "5500",
       "image": "assets/colonias/jadore.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "Nina",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Dulce frutal, juvenil y encantador.",
+      "longDescription": "Colonia de estilo frutal-floral, con manzana dulce, cítricos suaves y flores ligeras que aportan un aire de fantasía. Recomendada para mujeres jóvenes o para quienes buscan un aroma tierno, divertido y fácil de reconocer.",
+      "price": "5500",
       "image": "assets/colonias/nina.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "Ralph",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Frescura azul, vibrante y juvenil.",
+      "longDescription": "Una colonia de carácter frutal-floral con manzana, cítricos suaves y flores ligeras sobre un fondo limpio y acuoso. Ideal para mujeres que prefieren fragancias frescas, alegres y perfectas para el uso diario o climas cálidos.",
+      "price": "5500",
       "image": "assets/colonias/ralph.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "Be Delicious",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Manzana verde, jugosa y luminosa.",
+      "longDescription": "Colonia frutal fresca con protagonista de manzana verde, acompañada de notas acuosas y flores suaves que dan sensación de energía y limpieza. Perfecta para mujeres que disfrutan de aromas chispeantes, modernos y muy fáciles de usar.",
+      "price": "5500",
       "image": "assets/colonias/be_delicious.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "Lolita Lempicka",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Dulzor gourmand, romántico y mágico.",
+      "longDescription": "Una colonia inspirada en los acordes licorosos y dulces de Lolita Lempicka, con matices de vainilla ligera, frutas suaves y un toque empolvado. Ideal para mujeres que aman fragancias originales, femeninas y con un punto de fantasía.",
+      "price": "5500",
       "image": "assets/colonias/lolita_lempicka.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "La Nuit Tresor",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Dulce intenso, nocturno y seductor.",
+      "longDescription": "Colonia de estilo oriental-gourmand, con notas de frutos rojos suaves, flores oscuras y un fondo avainillado que abraza la piel. Recomendada para mujeres que buscan un aroma profundo, romántico y perfecto para la noche.",
+      "price": "5500",
       "image": "assets/colonias/la_nuit_tresor.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "Tommy Girl",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Frescura floral juvenil, simple y luminosa.",
+      "longDescription": "Tommy Girl es una fragancia floral fresca que mezcla notas de cítricos, flores blancas y toques verdes muy limpios. Se siente ligera, natural y vibrante, perfecta para mujeres jóvenes o para quienes buscan un perfume suave para diario. Destaca por ser versátil, simple de usar y muy agradable en clima cálido.",
+      "price": "5500",
       "image": "assets/colonias/tommy_girl.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "212 Vip",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Toque vibrante, moderno y juvenil.",
+      "longDescription": "Una fragancia femenina con notas dulces y florales, acompañadas de un fondo cálido que la hace ideal para destacar tanto de día como de noche. Es sofisticada, llamativa y perfecta para quienes buscan un aroma con personalidad sin perder suavidad.",
+      "price": "5500",
       "image": "assets/colonias/212_vip.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "Amor Amor",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Dulzura intensa con un aire romántico.",
+      "longDescription": "Una colonia vibrante que mezcla frutas rojas, flores suaves y un fondo dulce muy femenino. Es envolvente, juvenil y perfecta para quienes prefieren aromas románticos con un toque alegre y coqueto. Muy agradable para uso diario.",
+      "price": "5500",
       "image": "assets/colonias/amor_amor.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "Halloween",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Aroma suave, floral y encantador.",
+      "longDescription": "Una fragancia delicada que combina flores blancas, notas empolvadas y un fondo ligeramente dulce. Tiene un carácter fresco y femenino, ideal para quienes buscan un perfume suave, elegante y fácil de usar en cualquier ocasión.",
+      "price": "5500",
       "image": "assets/colonias/halloween.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "212 Sexy",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Dulce, cálida y seductoramente femenina.",
+      "longDescription": "Una colonia de estilo oriental floral con notas cremosas, un toque especiado suave y un fondo dulce que envuelve. Es ideal para mujeres que disfrutan aromas más sensuales pero equilibrados, perfectos para tardes y noches.",
+      "price": "5500",
       "image": "assets/colonias/212_sexy.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "Light Blue Woman",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Frescura limpia y femenina.",
+      "longDescription": "Una colonia cítrica y ligera con toques florales y un fondo suave. Se siente brillante, veraniega y muy cómoda para el día a día, ideal para mujeres que prefieren aromas frescos, simples y siempre agradables",
+      "price": "5500",
       "image": "assets/colonias/light_blue_woman.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "Acqua Di Gioia",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Aroma acuático, limpio y elegante.",
+      "longDescription": "Una fragancia fresca inspirada en el mar, con toques de menta, cítricos y flores suaves. Es natural, ligera y relajante, perfecta para quienes buscan un aroma puro, femenino y refrescante para el uso diario",
+      "price": "5500",
       "image": "assets/colonias/acqua_di_gioia.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "La Vida es Bella",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Dulzor elegante y femenino.",
+      "longDescription": "Una colonia dulce y floral con un carácter cálido y reconfortante. Combina flores clásicas con un toque gourmand suave, creando un aroma encantador y duradero. Ideal para quienes disfrutan fragancias dulces con mucha presencia.",
+      "price": "5500",
       "image": "assets/colonias/la_vida_es_bella.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "Good Girl",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Aroma sensual y sofisticado.",
+      "longDescription": "Una fragancia cálida y femenina que mezcla notas florales con un fondo dulce y envolvente. Es elegante, con carácter y perfecta para noches o eventos en los que se busca un aroma marcado pero equilibrado.",
+      "price": "5500",
       "image": "assets/colonias/good_girl.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "My Way (G. Armani)",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Floral moderno y luminoso.",
+      "longDescription": "Una colonia suave y femenina que combina flores blancas, cítricos brillantes y un fondo cremoso delicado. Es ligera, elegante y perfecta para acompañar la rutina diaria con un aroma limpio y actual.",
+      "price": "5500",
       "image": "assets/colonias/my_way.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "212 Vip Rosé",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Femenina, suave y chispeante.",
+      "longDescription": "Una fragancia fresca y floral con un toque afrutado ligero que aporta alegría y suavidad. Es juvenil, elegante y ideal para quienes buscan un aroma femenino, agradable y perfecto para cualquier momento del día.",
+      "price": "5500",
       "image": "assets/colonias/212_vip_rose.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "Phantom",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Toque moderno, dulce y juvenil.",
+      "longDescription": "Una colonia aromática con un estilo dulce y vibrante que mezcla notas frutales, lavanda y un fondo cremoso muy agradable. Se siente moderna, energética y con un punto futurista. Perfecta para quienes buscan un aroma llamativo, juvenil y fácil de usar todos los días.",
+      "price": "5500",
       "image": "assets/colonias/phantom.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "Azzaro",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Aroma clásico, cálido y masculino.",
+      "longDescription": "Una colonia icónica con notas especiadas, hierbas aromáticas y un toque amaderado que transmite carácter y elegancia. Su estilo clásico y atemporal la convierte en una excelente opción para el uso diario. Ideal para quienes prefieren fragancias sólidas, cálidas y muy masculinas.",
+      "price": "5500",
       "image": "assets/colonias/azzaro.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "Sauvage",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Frescura intensa y moderna.",
+      "longDescription": "Una colonia fresca con notas cítricas, pimienta y un fondo amaderado limpio que destaca por su energía. Es elegante, versátil y perfecta para quienes buscan un aroma masculino que funcione tanto de día como de noche. Su estilo moderno la vuelve una de las favoritas.",
+      "price": "5500",
       "image": "assets/colonias/sauvage.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "Tommy",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Fresco, ligero y juvenil.",
+      "longDescription": "Una colonia inspirada en un estilo limpio y relajado, con notas cítricas, toques verdes y un fondo suave. Se siente natural, sencilla y muy agradable para el uso diario. Ideal para quienes prefieren aromas frescos que acompañen sin ser intensos.",
+      "price": "5500",
       "image": "assets/colonias/tommy.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "Paco Rabanne",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Aroma herbal, limpio y tradicional.",
+      "longDescription": "Una colonia clásica masculina que combina notas verdes, hierbas aromáticas y un fondo amaderado suave. Es fresca, natural y perfecta para quienes gustan de aromas tradicionales y fáciles de llevar. Destaca por su estilo simple, limpio y muy masculino.",
+      "price": "5500",
       "image": "assets/colonias/paco_rabanne.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "Carolina Herrera",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Elegante, fresca y aromática.",
+      "longDescription": "Una colonia refinada que mezcla lavanda, cítricos suaves y maderas claras, logrando un aroma equilibrado y muy agradable. Es ideal para hombres que buscan un estilo clásico, limpio y versátil. Perfecta para usar a diario sin resultar intensa.",
+      "price": "5500",
       "image": "assets/colonias/carolina_herrera_men.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "Agua Brava",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Estilo natural, verde y amaderado.",
+      "longDescription": "Una colonia inspirada en la naturaleza, con notas de pino, hojas verdes, hierbas y un fondo amaderado cálido. Es varonil, fresca y muy característica. Perfecta para quienes prefieren fragancias tradicionales con un toque robusto y natural.",
+      "price": "5500",
       "image": "assets/colonias/agua_brava.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "One Million",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Dulce, cálido y llamativo.",
+      "longDescription": "Una colonia con notas especiadas, toques frutales cálidos y un fondo ambarado que entrega carácter y presencia. Es juvenil, intensa y perfecta para quienes disfrutan aromas marcados y seductores. Ideal para destacar tanto de día como de noche.",
+      "price": "5500",
       "image": "assets/colonias/one_million.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "Hugo Boss Men",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Aroma fresco, masculino y equilibrado.",
+      "longDescription": "Una colonia versátil con notas frutales suaves, especias ligeras y un fondo amaderado limpio. Se siente moderna, elegante y fácil de usar en cualquier ocasión. Ideal para quienes buscan un aroma masculino sin ser intenso.",
+      "price": "5500",
       "image": "assets/colonias/hugo_boss_men.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "Polo Sport",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Frescura deportiva y vibrante.",
+      "longDescription": "Una colonia limpia y activa que combina notas cítricas, menta ligera y toques marinos. Es perfecta para quienes llevan un estilo de vida dinámico y buscan algo fresco para el día a día. Destaca por su aroma ligero, deportivo y muy agradable.",
+      "price": "5500",
       "image": "assets/colonias/polo_sport.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "212 Vip Men",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Un aroma moderno, vibrante y lleno de energía masculina.",
+      "longDescription": "Una colonia fresca con toques especiados y notas de menta, lima y maderas suaves. Es juvenil, dinámica y perfecta para quienes buscan un aroma llamativo pero equilibrado para usar a diario. Ideal para hombres seguros y con estilo propio.",
+      "price": "5500",
       "image": "assets/colonias/212_vip_men.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "XS Black Men",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Toque intenso, especiado y seductor.",
+      "longDescription": "Una combinación aromática que mezcla cítricos, praliné, maderas oscuras y un fondo ligeramente dulce. Su carácter moderno y sensual la convierte en una colonia ideal para noches, salidas o para quienes prefieren aromas marcados, masculinos y con personalidad.",
+      "price": "5500",
       "image": "assets/colonias/xs_black_men.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "Acqua Di Gio",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Frescura limpia y elegante.",
+      "longDescription": "Una colonia marina y cítrica que combina bergamota, jazmín y un fondo suave amaderado. Se siente ligera, natural y muy versátil, ideal para hombres que buscan un aroma fresco y agradable para el día a día sin resultar invasivo",
+      "price": "5500",
       "image": "assets/colonias/acqua_di_gio.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "212 For Men",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Aroma urbano, limpio y moderno.",
+      "longDescription": "Una mezcla equilibrada de notas cítricas, verdes y un fondo amaderado suave. Es fresca, práctica y perfecta para acompañar la rutina diaria, manteniéndose elegante sin ser intensa. Una opción ideal para uso continuo y climas cálidos.",
+      "price": "5500",
       "image": "assets/colonias/212_for_men.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "Invictus",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Aroma deportivo, fresco y ganador.",
+      "longDescription": "Una colonia vibrante con notas marinas, cítricos energizantes y un fondo amaderado levemente dulce. Se siente poderosa, juvenil y moderna, ideal para hombres activos que buscan un aroma llamativo y de larga duración.",
+      "price": "5500",
       "image": "assets/colonias/invictus.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "Polo Blue Men",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Frescura azul clásica y masculina.",
+      "longDescription": "Una fragancia limpia y acuática con notas de melón, pepino, albahaca y maderas suaves. Es ligera, refrescante y perfecta para el uso diario, transmitiendo sensación de orden, bienestar y un estilo relajado sin perder elegancia.",
+      "price": "5500",
       "image": "assets/colonias/polo_blue_men.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "Polo Red",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Aroma intenso, moderno y atrevido.",
+      "longDescription": "Una colonia con notas de toronja, arándanos y maderas cálidas que crean una sensación energética y varonil. Es ideal para quienes quieren destacar con un aroma fuerte, juvenil y con un toque deportivo.",
+      "price": "5500",
       "image": "assets/colonias/polo_red.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     },
     {
       "name": "Bad Boy",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Aroma audaz, misterioso y moderno.",
+      "longDescription": "Una mezcla sorprendente de pimienta, cacao y maderas cálidas que genera un aroma potente y atractivo. Es perfecta para noches, eventos o para quienes buscan una identidad marcada y sofisticada sin perder frescura.",
+      "price": "5500",
       "image": "assets/colonias/bad_boy.png",
       "variants": [
-        { "ml": 400, "price": "20000" }
+        { "ml": 400, "price": "5500" }
       ]
     }
   ],
