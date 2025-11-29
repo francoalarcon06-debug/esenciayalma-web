@@ -2372,8 +2372,8 @@
   "essien": [
     {
       "name": "Crema Baba de Caracol",
-      "description": "Vela aromática de cera de soya.",
-      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "description": "Hidratación profunda y reparación intensiva.",
+      "longDescription": "Crema reconstituyente enriquecida con extracto de baba de caracol, ideal para regenerar, suavizar y mejorar la apariencia de la piel. Ayuda a reducir marcas, aporta elasticidad y deja un acabado hidratado y saludable.",
       "price": "10000",
       "image": "assets/essien/baba_de_caracol.png",
       "variants": [
@@ -2382,8 +2382,8 @@
     },
     {
       "name": "Crema Gusano de Seda",
-      "description": "Vela aromática de cera de soya.",
-      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "description": "Regeneración avanzada para una piel más suave.",
+      "longDescription": "Su fórmula con extracto de gusano de seda nutre profundamente y promueve la regeneración celular, dejando la piel más tersa y luminosa. Perfecta para reducir resequedad, mejorar textura y aportar suavidad duradera.",
       "price": "9000",
       "image": "assets/essien/gusano_de_seda.png",
       "variants": [
@@ -2392,8 +2392,8 @@
     },
     {
       "name": "Crema Perfection",
-      "description": "Vela aromática de cera de soya.",
-      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "description": "Luminosidad y tono uniforme.",
+      "longDescription": "Crema aclaradora que ayuda a unificar el tono, atenuar manchas y aportar brillo saludable gracias a su combinación de vitamina C y activos iluminadores. Ideal para quienes buscan una piel más radiante y equilibrada.",
       "price": "15000",
       "image": "assets/essien/perfection.png",
       "variants": [
@@ -2402,8 +2402,8 @@
     },
     {
       "name": "Crema de Propóleo",
-      "description": "Vela aromática de cera de soya.",
-      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "description": "Protección natural y acción calmante.",
+      "longDescription": "Crema multifunción elaborada con propóleo natural, reconocida por sus propiedades purificantes, calmantes y reparadoras. Ayuda a controlar imperfecciones, mejorar la textura y mantener la piel protegida día a día.",
       "price": "8000",
       "image": "assets/essien/propoleo.png",
       "variants": [
@@ -2412,8 +2412,8 @@
     },
     {
       "name": "Crema Total 5",
-      "description": "Vela aromática de cera de soya.",
-      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "description": "Cuidado completo en un solo producto.",
+      "longDescription": "Fórmula facial multifuncional que nutre, humecta, suaviza, reafirma y rejuvenece. Diseñada para brindar un acabado saludable y una sensación de suavidad duradera, ideal como crema diaria de uso integral.",
       "price": "9000",
       "image": "assets/essien/total5.png",
       "variants": [
@@ -2422,8 +2422,8 @@
     },
     {
       "name": "Crema de Células Madre",
-      "description": "Vela aromática de cera de soya.",
-      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "description": "Antiedad avanzado y renovación profunda.",
+      "longDescription": "Tratamiento facial con células madre vegetales y retinol microencapsulado que ayuda a reducir líneas finas, mejorar firmeza y estimular la renovación celular. Ideal para pieles que buscan un efecto rejuvenecedor visible.",
       "price": "12500",
       "image": "assets/essien/celulas_madre.png",
       "variants": [
@@ -2432,8 +2432,8 @@
     },
     {
       "name": "Lift Extreme",
-      "description": "Vela aromática de cera de soya.",
-      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "description": "Efecto lifting inmediato y mirada rejuvenecida.",
+      "longDescription": "Crema diseñada para tensar, alisar y refrescar el contorno de ojos, reduciendo la apariencia de bolsas y líneas finas. Su fórmula ligera aporta firmeza y una apariencia descansada al instante.",
       "price": "8000",
       "image": "assets/essien/lift_extreme.png",
       "variants": [
@@ -2442,8 +2442,8 @@
     },
     {
       "name": "Phytocomplex",
-      "description": "Vela aromática de cera de soya.",
-      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "description": "Gel reafirmante y anticelulitis de efecto tonificante.",
+      "longDescription": "Phytocomplex es un gel anticelulitis que ayuda a mejorar la firmeza y el aspecto de la piel, estimulando la circulación y favoreciendo una textura más suave. Su fórmula es ligera, fresca y de rápida absorción, ideal para complementar rutinas de cuidado corporales enfocadas en la reducción y tonificación.",
       "price": "7000",
       "image": "assets/essien/phytocomplex.png",
       "variants": [
@@ -2452,8 +2452,8 @@
     },
     {
       "name": "Crema Skin Scrub",
-      "description": "Vela aromática de cera de soya.",
-      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "description": "Exfoliación suave, nutritiva y aromática.",
+      "longDescription": "Skin Scrub es una crema exfoliante que renueva la piel removiendo impurezas y células muertas mientras aporta hidratación. Su textura cremosa deja la piel más suave y luminosa, ideal para revitalizarla y mantenerla tersa. Perfecta para usar antes de cremas corporales o tratamientos hidratantes.",
       "price": "7000",
       "image": "assets/essien/skin_scrub.png",
       "variants": [
@@ -2462,8 +2462,8 @@
     },
     {
       "name": "Dermacare",
-      "description": "Vela aromática de cera de soya.",
-      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "description": "Protección solar hidratante para uso diario.",
+      "longDescription": "Dermacare ofrece una combinación de hidratación y alta protección FPS50+, ideal para cuidar la piel del rostro a diario. Ayuda a prevenir el envejecimiento prematuro causado por el sol y mantiene la piel suave y protegida. Perfecta para rutinas urbanas y exposición frecuente a la luz UV.",
       "price": "7000",
       "image": "assets/essien/dermacare.png",
       "variants": [
@@ -2472,8 +2472,8 @@
     },
     {
       "name": "Shampoo de Argán",
-      "description": "Vela aromática de cera de soya.",
-      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "description": "Limpieza nutritiva para un cabello suave y brillante.",
+      "longDescription": "El Shampoo de Argán limpia profundamente mientras nutre y fortalece el cabello, aportando brillo natural y suavidad inmediata. Su fórmula hidratante ayuda a reducir el frizz y mejorar la manejabilidad, ideal para cabellos secos o dañados que necesitan reparación y vitalidad.",
       "price": "6000",
       "image": "assets/essien/shampoo.png",
       "variants": [
@@ -2482,8 +2482,8 @@
     },
     {
       "name": "Acondicionador de Argán",
-      "description": "Vela aromática de cera de soya.",
-      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "description": "Suavidad intensa y nutrición reparadora.",
+      "longDescription": "El Acondicionador de Argán hidrata, desenreda y suaviza profundamente, dejando el cabello más manejable y sedoso. Su fórmula nutritiva repara daños y aporta brillo saludable sin dejar sensación pesada. Ideal para complementar el shampoo y mantener el cabello fuerte y revitalizado.",
       "price": "6000",
       "image": "assets/essien/acondicionador.png",
       "variants": [
@@ -2492,8 +2492,8 @@
     },
     {
       "name": "Máscara de Cabello",
-      "description": "Vela aromática de cera de soya.",
-      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "description": "Reparación profunda para cabello dañado o seco.",
+      "longDescription": "La Máscara de Cabello de Argán ofrece hidratación intensa, reparación y suavidad extrema, revitalizando fibras debilitadas. Nutre profundamente y ayuda a reducir el frizz, aportando un acabado brillante y saludable. Perfecta para tratamientos semanales o para recuperar cabellos muy castigados.",
       "price": "5000",
       "image": "assets/essien/mascara.png",
       "variants": [
@@ -2502,8 +2502,8 @@
     },
         {
       "name": "Aceite de Argán",
-      "description": "Vela aromática de cera de soya.",
-      "longDescription": "Cera de soya de combustión limpia con aroma cálido de vainilla y madera suave. Perfuma sin saturar y crea un ambiente acogedor. Ideal para tardes de descanso o lectura.",
+      "description": "Nutrición concentrada para brillo y suavidad instantánea.",
+      "longDescription": "El Aceite de Argán hidrata, suaviza y repara el cabello, aportando brillo y control del frizz sin dejarlo pesado. Su fórmula natural nutre puntas secas y protege de daños causados por calor o factores ambientales. Ideal como uso diario para mantener un cabello fuerte, flexible y saludable.",
       "price": "7000",
       "image": "assets/essien/aceite_argan.png",
       "variants": [
