@@ -1952,170 +1952,125 @@
   "lavit": [
     {
       "name": "Fruits Of Summer",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Energía frutal, vibrante y juvenil.",
+      "longDescription": "Un body splash jugoso y veraniego que combina frutas dulces y chispeantes con un fondo suave y fresco. Evoca días soleados, buena vibra y una sensación ligera en la piel. Ideal para mujeres que aman aromas frutales, divertidos y perfectos para el uso diario.",
+      "price": "5500",
       "image": "assets/lavit/fruits_of_summer.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 210, "price": "5500" },
+        { "ml": 50, "price": "2000" }
       ]
     },
     {
       "name": "Tropical Caribbean Coconut Passion",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Coco dulce, cálido y veraniego.",
+      "longDescription": "Un aroma cremoso que mezcla coco tropical con vainilla suave, creando una sensación cálida, sensual y relajada. Recuerda a la piel bronceada, la playa y el verano eterno. Perfecto para quienes buscan un body splash dulce, envolvente y muy femenino.",
+      "price": "5500",
       "image": "assets/lavit/tropical_Caribbean_coconut_passion.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 210, "price": "5500" },
+        { "ml": 50, "price": "2000" }
       ]
     },
     {
       "name": "Forever Young Black Raspberry",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Frutal dulce y jugoso, alegre y juvenil.",
+      "longDescription": "Una mezcla deliciosa de frambuesa negra dulce con toques suaves de vainilla que aportan calidez y encanto. Se siente chispeante, divertida y llena de personalidad. Ideal para mujeres jóvenes o quienes disfrutan fragancias frutales con un toque coqueto para todos los días.",
+      "price": "5500",
       "image": "assets/lavit/forever_young_black_raspberry.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 210, "price": "5500" },
+        { "ml": 50, "price": "2000" }
       ]
     },
     {
       "name": "Fresh Garden Rock In Rio",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Frescura verde, ligera y revitalizante.",
+      "longDescription": "Este body splash combina notas verdes limpias con un toque fresco y delicado, evocando jardines húmedos y aire puro. Es liviano, natural y perfecto para quienes aman aromas que transmiten bienestar y frescura suave durante todo el día.",
+      "price": "5500",
       "image": "assets/lavit/fresh_garden_rock_in_rio.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 210, "price": "5500" },
+        { "ml": 50, "price": "2000" }
       ]
     },
     {
       "name": "Fantasy Of Love Pink Chiffon",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Dulzura suave, floral y delicada.",
+      "longDescription": "Una fragancia ligera que mezcla flores suaves con un dulzor cremoso muy femenino. Se siente etérea, romántica y envolvente, ideal para mujeres que prefieren aromas dulces pero suaves, perfectos para el día a día o para ocasiones especiales donde se busca un toque delicado.",
+      "price": "5500",
       "image": "assets/lavit/fantasy_of_love_pink_chiffon.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 210, "price": "5500" },
+        { "ml": 50, "price": "2000" }
       ]
     },
     {
       "name": "Sweet Romance Sheer Love",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Aroma romántico, limpio y femenino.",
+      "longDescription": "Una mezcla floral fresca con un fondo suave y limpio que transmite pureza y dulzura. Es ligera, elegante y muy versátil, ideal para usar después de la ducha, en días cálidos o cuando buscas una fragancia suave pero encantadora.",
+      "price": "5500",
       "image": "assets/lavit/sweet_romance_sheer_love.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 210, "price": "5500" },
+        { "ml": 50, "price": "2000" }
       ]
     },
     {
       "name": "Tropical Caribbean Hydra Cream",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Hidratación suave con un aroma tropical cálido y envolvente.",
+      "longDescription": "Una crema nutritiva con fragancia de coco dulce y toques vainillados que dejan la piel suave, perfumada y luminosa por horas. Su textura ligera se absorbe fácilmente, entregando hidratación profunda sin dejar sensación grasa. Ideal para quienes buscan un aroma playero y relajante que acompañe su rutina diaria.",
+      "price": "4500",
       "image": "assets/lavit/tropical_caribbean_hydra_cream.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50, "price": "4500" }
       ]
     },
     {
       "name": "Sweet Romance Hydra Cream",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Aroma floral suave y femenino con sensación de frescura ligera.",
+      "longDescription": "Una crema hidratante con notas florales delicadas y un fondo limpio que aporta suavidad inmediata y una fragancia romántica que perdura. Su fórmula cremosa se esparce con facilidad, dejando la piel tersa, humectada y con un brillo natural. Perfecta para el uso diario o para quienes disfrutan aromas dulces y sutiles.",
+      "price": "4500",
       "image": "assets/lavit/sweet_romance_hydra_cream.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50, "price": "4500" }
       ]
     },
     {
       "name": "Fantasy Of Love Hydra Cream",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Dulzor frutal suave con un toque juvenil y encantador.",
+      "longDescription": "Una crema humectante con notas frutales frescas y un fondo cremoso que deja la piel suave, perfumada y con sensación aterciopelada. Su textura ligera permite una absorción rápida, ideal para quienes desean hidratación diaria acompañada de un aroma dulce, alegre y femenino.",
+      "price": "4500",
       "image": "assets/lavit/fantasy_of_love_hydra_cream.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
+        { "ml": 50, "price": "4500" }
       ]
     },
     {
       "name": "Pack: Fantasy Of Love + Hydra Cream",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Aroma dulce, suave y femenino.",
+      "longDescription": "Este pack reúne el body splash de Fantasy Of Love junto a su crema hidratante, creando una experiencia aromática dulce y delicada inspirada en Pink Chiffon. Mezcla notas frutales ligeras, flores suaves y un fondo vainillado que aporta calidez y suavidad a la piel. Ideal para quienes buscan un aroma femenino, romántico y muy agradable para el día a día. La crema potencia la duración del aroma y deja una hidratación suave y sedosa.",
+      "price": "9000",
       "image": "assets/lavit/fantasy_of_love_+_cream.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
       ]
     },
     {
       "name": "Pack: Tropical Caribbean + Hydra Cream",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Cálido aroma tropical con coco dulce.",
+      "longDescription": "Este pack combina el body splash Tropical Caribbean con su crema hidratante inspirada en Coconut Passion. Ofrece un aroma cremoso y veraniego que mezcla coco dulce, vainilla suave y un fondo cálido muy envolvente. Es una fragancia perfecta para quienes aman los aromas playeros, sensuales y confortables. La crema complementa el splash, prolongando su duración y dejando la piel hidratada con un aroma cálido que destaca durante todo el día.",
+      "price": "9000",
       "image": "assets/lavit/tropical_caribbean_+_cream.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
       ]
     },
     {
       "name": "Pack: Sweet Romance + Hydra Cream",
-      "description": "Frescura y vitalidad todo el día.",
-      "longDescription": "Bruma ligera con frutas crujientes y flores limpias. Ideal para reanimar el aroma durante el día sin recargar. Deja una sensación fresca en la piel que perdura varias horas.",
-      "price": "8000",
+      "description": "Floral suave y dulce, muy femenino.",
+      "longDescription": "Este pack reúne el body splash Sweet Romance con su crema hidratante inspirada en Sheer Love. Mezcla flores suaves, almizcle limpio y un toque dulce que aporta frescura y delicadeza. Es una fragancia ligera, romántica y perfecta para uso diario, especialmente para quienes prefieren aromas suaves pero encantadores. La crema ayuda a fijar el aroma y deja la piel suave, hidratada y con un acabado perfumado que dura más tiempo.",
+      "price": "9000",
       "image": "assets/lavit/sweet_romance_+_cream.png",
       "variants": [
-        { "ml": 400, "price": "20000" },
-        { "ml": 100, "price": "16000" },
-        { "ml": 50,  "price": "9900" },
-        { "ml": 20,  "price": "5200" },
-        { "ml": 5, "price": "1500" }
       ]
     }
   ],
