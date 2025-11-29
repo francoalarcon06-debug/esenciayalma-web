@@ -5,7 +5,7 @@
    - HOME 100% dinámico con orden/visibilidad desde data/home.config.json (opcional)
 */
 
-const WA_PHONE = "56961114225";
+const WA_PHONE = "56989174119";
 const WA_GREET = "Hola, me interesa este producto";
 
 // -------- Utils --------
